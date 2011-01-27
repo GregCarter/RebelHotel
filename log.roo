@@ -1,0 +1,6 @@
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-26 20:52:27
+project --topLevelPackage edu.unlv.cs.rebelhotel --projectName RebelHotel --java 5
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-26 20:52:28
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-26 20:52:32
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-26 20:57:15
