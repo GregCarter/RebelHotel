@@ -3,7 +3,6 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
-import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
@@ -48,14 +47,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    Converter<Employer, String> ApplicationConversionServiceFactoryBean.getEmployerConverter() {
-        return new Converter<Employer, String>() {
-            public String convert(Employer source) {
-                return new StringBuilder().append(source.getLocation()).toString();
-            }
-        };
-    }
-    
     Converter<UserAccount, String> ApplicationConversionServiceFactoryBean.getUserAccountConverter() {
         return new Converter<UserAccount, String>() {
             public String convert(UserAccount source) {
@@ -77,7 +68,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getWorkRequirementConverter());
         registry.addConverter(getTermConverter());
         registry.addConverter(getStudentConverter());
-        registry.addConverter(getEmployerConverter());
         registry.addConverter(getUserAccountConverter());
         registry.addConverter(getWorkTemplateConverter());
     }

@@ -3,9 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Term" object="${term}" path="/terms" z="XVJaoA8mnKLiaX7Q8uNybnmq/Uo=">
-        
         <field:display field="termYear" id="s_edu_unlv_cs_rebelhotel_domain_Term_termYear" object="${term}" z="tX0HQ4N76BIYLI6tonQibmgnreQ="/>
-    
-    <field:display field="semester" id="s_edu_unlv_cs_rebelhotel_domain_Term_semester" object="${term}" z="OmT2qjTMfKYJWmYFFmzpYMFOoss="/>
+        <field:display field="semester" id="s_edu_unlv_cs_rebelhotel_domain_Term_semester" object="${term}" z="OmT2qjTMfKYJWmYFFmzpYMFOoss="/>
     </page:show>
 </div>

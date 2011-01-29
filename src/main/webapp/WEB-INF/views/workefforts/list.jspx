@@ -4,14 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkEffort" items="${workefforts}" z="hkWx40HfLYNyB8b9jVXEMIjurE8=">
         <table:table data="${workefforts}" id="l_edu_unlv_cs_rebelhotel_domain_WorkEffort" path="/workefforts" z="9MJC5QGkhiyHT8TWwoEzHyyyIwM=">
-            
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_Student" property="student" z="Jo1uhB7aMbp32PX8BcPUUwhy3qg="/>
-        
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_startDate" property="startDate" z="WtbnwwOcESBnywbT+yaj1kfk2A8="/>
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_endDate" property="endDate" z="xxb2CBCskP1hXAQY59pHUnwgCMU="/>
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_hours" property="hours" z="CPGK5fNP8nxg7G1bhlWMlvV4t74="/>
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" property="workPosition" z="6+j5izdYgAfuXc4WLC1LEGStUVc="/>
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" property="verification" z="UAfAPITMsd/ZKlKteR6O1dKctN8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_Student" property="student" z="Jo1uhB7aMbp32PX8BcPUUwhy3qg="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_startDate" property="startDate" z="WtbnwwOcESBnywbT+yaj1kfk2A8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_endDate" property="endDate" z="xxb2CBCskP1hXAQY59pHUnwgCMU="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_hours" property="hours" z="CPGK5fNP8nxg7G1bhlWMlvV4t74="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" property="workPosition" z="6+j5izdYgAfuXc4WLC1LEGStUVc="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" property="verification" z="UAfAPITMsd/ZKlKteR6O1dKctN8="/>
         </table:table>
     </page:list>
 </div>

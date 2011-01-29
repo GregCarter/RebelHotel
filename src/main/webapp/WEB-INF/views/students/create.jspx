@@ -10,11 +10,9 @@
         <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="9HM7Lw5aBP1exgSasdHm3BZhyM4="/>
         <field:input field="major1" id="c_edu_unlv_cs_rebelhotel_domain_Student_major1" min="2" z="e0h6NSXl8Y/9TFgHLz12S2bEEbc="/>
         <field:input field="major2" id="c_edu_unlv_cs_rebelhotel_domain_Student_major2" min="2" z="cCPP1RXUpm+8dgY2rr4vBR/pRgI="/>
-        
-        
-    <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
-    <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
-    <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
+        <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
+        <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
+        <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" z="MlPRzZP5Yzrt03hbToBbk+X+gaM="/>
 </div>

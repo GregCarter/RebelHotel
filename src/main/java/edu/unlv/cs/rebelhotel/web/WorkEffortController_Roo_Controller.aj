@@ -3,7 +3,6 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
-import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Verification;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
@@ -47,9 +46,6 @@ privileged aspect WorkEffortController_Roo_Controller {
         model.addAttribute("workEffort", new WorkEffort());
         addDateTimeFormatPatterns(model);
         List dependencies = new ArrayList();
-        if (Employer.countEmployers() == 0) {
-            dependencies.add(new String[]{"employer", "employers"});
-        }
         if (Student.countStudents() == 0) {
             dependencies.add(new String[]{"Student", "students"});
         }
@@ -103,11 +99,6 @@ privileged aspect WorkEffortController_Roo_Controller {
         model.addAttribute("page", (page == null) ? "1" : page.toString());
         model.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
-    }
-    
-    @ModelAttribute("employers")
-    public Collection<Employer> WorkEffortController.populateEmployers() {
-        return Employer.findAllEmployers();
     }
     
     @ModelAttribute("students")

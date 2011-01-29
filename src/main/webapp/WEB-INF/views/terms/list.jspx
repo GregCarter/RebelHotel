@@ -4,10 +4,8 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Term" items="${terms}" z="XMW22bTdHXXPYIijVvlWkevjU0Y=">
         <table:table data="${terms}" id="l_edu_unlv_cs_rebelhotel_domain_Term" path="/terms" z="VVlX5mM4J5jfzmDQwxjm2/ox7Z8=">
-            
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Term_termYear" property="termYear" z="9IFfJw3e//xK6aZM+ZM27GjlkbA="/>
-        
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Term_semester" property="semester" z="YgBnbIrQDD+dV3nTHNtiQTbifx4="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Term_semester" property="semester" z="YgBnbIrQDD+dV3nTHNtiQTbifx4="/>
         </table:table>
     </page:list>
 </div>

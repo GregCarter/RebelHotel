@@ -38,12 +38,11 @@ public class WorkEffort {
 
     private Verification verification;
 
-    @NotNull
-    @ManyToOne
-    private Employer employer;
-
     private String comment;
 
     @Embedded
     private Supervisor supervisor;
+
+    @Embedded
+    private Employer employer;
 }

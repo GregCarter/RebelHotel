@@ -3,10 +3,8 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_Term" modelAttribute="term" path="/terms" render="${empty dependencies}" z="13WAp7qk0i2MiRjsUS3Iv/W30uk=">
-        
         <field:input field="termYear" id="c_edu_unlv_cs_rebelhotel_domain_Term_termYear" required="true" validationMessageCode="field_invalid_integer" z="M6oMdeMHIX264MDaSxNKlUZWCEs="/>
-    
-    <field:input field="semester" id="c_edu_unlv_cs_rebelhotel_domain_Term_semester" z="07Wwzy+vySQKhHyWc+51eu7nSJc="/>
+        <field:input field="semester" id="c_edu_unlv_cs_rebelhotel_domain_Term_semester" z="07Wwzy+vySQKhHyWc+51eu7nSJc="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Term" render="${not empty dependencies}" z="6b5gHO8CkC8HGOcElTz8eBLEZF0="/>
 </div>

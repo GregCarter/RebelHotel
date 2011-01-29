@@ -3,7 +3,6 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.EmployerDataOnDemand;
 import edu.unlv.cs.rebelhotel.domain.StudentDataOnDemand;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import java.util.List;
@@ -22,9 +21,6 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
     @Autowired
     private StudentDataOnDemand WorkEffortDataOnDemand.studentDataOnDemand;
     
-    @Autowired
-    private EmployerDataOnDemand WorkEffortDataOnDemand.employerDataOnDemand;
-    
     public WorkEffort WorkEffortDataOnDemand.getNewTransientWorkEffort(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkEffort obj = new edu.unlv.cs.rebelhotel.domain.WorkEffort();
         obj.setStudent(studentDataOnDemand.getRandomStudent());
@@ -33,9 +29,9 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
         obj.setHours(new Integer(index));
         obj.setWorkPosition("workPosition_" + index);
         obj.setVerification(null);
-        obj.setEmployer(employerDataOnDemand.getRandomEmployer());
         obj.setComment("comment_" + index);
         obj.setSupervisor(null);
+        obj.setEmployer(null);
         return obj;
     }
     

@@ -4,6 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkTemplate" modelAttribute="workTemplate" path="/worktemplates" z="bGXIzIGjWzFaprN6fx/Fi+wROj8=">
         <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" required="true" z="iMa0Zk/GbVptfiKdSXs0wa0+nrY="/>
-    <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" validationMessageCode="field_invalid_integer" z="6yPhlp92NXEDdE4FtuTYgwstmKk="/>
+        <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" validationMessageCode="field_invalid_integer" z="6yPhlp92NXEDdE4FtuTYgwstmKk="/>
     </form:update>
 </div>

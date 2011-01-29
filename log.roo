@@ -169,3 +169,39 @@ controller all --package ~.web
 poll now
 perform clean
 perform command --mavenCommand compile
+poll now
+field embedded --class ~.domain.WorkEffort --fieldName employer --type ~.domain.Employer
+controller all --package ~.web
+poll now
+perform clean
+perform command --mavenCommand compile
+controller all --package ~.web
+controller all --package ~.web
+help controller
+controller scaffold --entity ~.domain.WorkEffort --class ~.web.WorkEffortController
+controller scaffold --entity ~.domain.WorkEffort --class ~.web.WorkEffortController
+help
+help web mvc install view
+help
+controller all --package ~.web
+controller all --package ~.web
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-28 20:37:14
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-28 20:38:51
+controller all --package ~.web
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-28 20:44:04
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-29 00:08:41
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-29 00:25:36
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-29 00:30:19
+perform clean
+perform command --mavenCommand compile
+perform eclipse
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-29 00:36:06
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-29 00:39:35
+perform clean
+perform command --mavenCommand compile
+perform tests
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-29 00:45:14
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-29 00:46:55
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-29 00:48:06
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-29 00:49:59

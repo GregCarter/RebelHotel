@@ -61,14 +61,6 @@ privileged aspect WorkEffort_Roo_JavaBean {
         this.verification = verification;
     }
     
-    public Employer WorkEffort.getEmployer() {
-        return this.employer;
-    }
-    
-    public void WorkEffort.setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-    
     public String WorkEffort.getComment() {
         return this.comment;
     }
@@ -83,6 +75,14 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setSupervisor(Supervisor supervisor) {
         this.supervisor = supervisor;
+    }
+    
+    public Employer WorkEffort.getEmployer() {
+        return this.employer;
+    }
+    
+    public void WorkEffort.setEmployer(Employer employer) {
+        this.employer = employer;
     }
     
 }
