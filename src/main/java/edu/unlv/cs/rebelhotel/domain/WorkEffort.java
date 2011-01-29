@@ -43,4 +43,7 @@ public class WorkEffort {
     private Employer employer;
 
     private String comment;
+
+    @Embedded
+    private Supervisor supervisor;
 }

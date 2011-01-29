@@ -15,6 +15,8 @@
     <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
     
     
+    
+    <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_WorkEffort" render="${not empty dependencies}" z="W3XbdY/iex0jvHnO25TKrlqRiW0="/>
 </div>

@@ -16,7 +16,8 @@ privileged aspect WorkEffort_Roo_ToString {
         sb.append("WorkPosition: ").append(getWorkPosition()).append(", ");
         sb.append("Verification: ").append(getVerification()).append(", ");
         sb.append("Employer: ").append(getEmployer()).append(", ");
-        sb.append("Comment: ").append(getComment());
+        sb.append("Comment: ").append(getComment()).append(", ");
+        sb.append("Supervisor: ").append(getSupervisor());
         return sb.toString();
     }
     

@@ -35,6 +35,7 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
         obj.setVerification(null);
         obj.setEmployer(employerDataOnDemand.getRandomEmployer());
         obj.setComment("comment_" + index);
+        obj.setSupervisor(null);
         return obj;
     }
     

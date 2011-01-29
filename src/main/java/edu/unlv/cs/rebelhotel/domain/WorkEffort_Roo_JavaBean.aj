@@ -5,6 +5,7 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import edu.unlv.cs.rebelhotel.domain.Verification;
 import java.lang.Integer;
 import java.lang.String;
@@ -74,6 +75,14 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setComment(String comment) {
         this.comment = comment;
+    }
+    
+    public Supervisor WorkEffort.getSupervisor() {
+        return this.supervisor;
+    }
+    
+    public void WorkEffort.setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
     }
     
 }

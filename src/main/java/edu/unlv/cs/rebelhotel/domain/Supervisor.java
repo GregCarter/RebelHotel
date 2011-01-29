@@ -1,12 +1,12 @@
 package edu.unlv.cs.rebelhotel.domain;
 
-import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
+import javax.persistence.Embeddable;
 
 @RooJavaBean
 @RooToString
-@RooEntity
+@Embeddable
 public class Supervisor {
 
     private String firstName;

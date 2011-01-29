@@ -5,8 +5,8 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
-import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
@@ -48,18 +48,18 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    Converter<Supervisor, String> ApplicationConversionServiceFactoryBean.getSupervisorConverter() {
-        return new Converter<Supervisor, String>() {
-            public String convert(Supervisor source) {
-                return new StringBuilder().append(source.getFirstName()).append(" ").append(source.getLastName()).append(" ").append(source.getEmail()).toString();
-            }
-        };
-    }
-    
     Converter<Employer, String> ApplicationConversionServiceFactoryBean.getEmployerConverter() {
         return new Converter<Employer, String>() {
             public String convert(Employer source) {
                 return new StringBuilder().append(source.getLocation()).toString();
+            }
+        };
+    }
+    
+    Converter<UserAccount, String> ApplicationConversionServiceFactoryBean.getUserAccountConverter() {
+        return new Converter<UserAccount, String>() {
+            public String convert(UserAccount source) {
+                return new StringBuilder().append(source.getName()).toString();
             }
         };
     }
@@ -77,8 +77,8 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getWorkRequirementConverter());
         registry.addConverter(getTermConverter());
         registry.addConverter(getStudentConverter());
-        registry.addConverter(getSupervisorConverter());
         registry.addConverter(getEmployerConverter());
+        registry.addConverter(getUserAccountConverter());
         registry.addConverter(getWorkTemplateConverter());
     }
     

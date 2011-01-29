@@ -15,5 +15,7 @@
     <field:display field="comment" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" object="${workeffort}" z="ENk13ZPfTK6Glmeilr2rMFOFB9c="/>
     
     
+    
+    <field:display field="supervisor" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" object="${workeffort}" z="A2vc1Pkh25HeP+VZDuQUz1aW7SA="/>
     </page:show>
 </div>

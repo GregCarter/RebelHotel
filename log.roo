@@ -149,3 +149,23 @@ perform clean
 perform command --mavenCommand compile
 quit
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-28 19:08:48
+field embedded --class ~.domain.WorkEffort --fieldName supervisor --type ~.domain.Supervisor
+perform tests
+// [failed] field embedded --class ~.domain.WorkEffort --fieldName supervisor --type ~.domain.Supervisor
+help entity
+help
+embeddable --class blah
+field embedded --class ~.domain.WorkEffort --fieldName supervisor --type ~.domain.Supervisor
+perform tests
+perform clean
+perform command --mavenCommand compile
+perform tests
+perform  clean
+perform command --mavenCommand compile
+perform tests
+perform tests
+controller all --package ~.web
+// [failed] test integration --entity ~.domain.Supervisor
+poll now
+perform clean
+perform command --mavenCommand compile

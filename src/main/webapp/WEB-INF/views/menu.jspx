@@ -12,10 +12,6 @@
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
         <menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
         </menu:category>
-    <menu:category id="c_rebel" z="2j8YspMJx56ZnXFcX6v1EjuzeUY=">
-            <menu:item id="i_rebel_new" messageCode="global_menu_new" url="/rebels?form" z="a9DOIxfrgH4aWgaV9qLQ3ntYyrI="/>
-        <menu:item id="i_rebel_list" messageCode="global_menu_list" url="/rebels?page=1&amp;size=${empty param.size ? 10 : param.size}" z="YDkZx9wVlS+uEk5NgODnNkljZrc="/>
-        </menu:category>
     <menu:category id="c_supervisor" z="C619HntksWdB9ZL/pyrJe1G1+Y8=">
             <menu:item id="i_supervisor_new" messageCode="global_menu_new" url="/supervisors?form" z="yM/hOT+lIfly4dPo354OTsMKoPQ="/>
         <menu:item id="i_supervisor_list" messageCode="global_menu_list" url="/supervisors?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Qwx5yGhS8U7CWMEq4pqQC6W0Y4k="/>
@@ -35,6 +31,10 @@
     <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
             <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
+        </menu:category>
+    <menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
+            <menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
+        <menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
         </menu:category>
     </menu:menu>
 </div>

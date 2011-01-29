@@ -15,5 +15,7 @@
     <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
     
     
+    
+    <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
     </form:update>
 </div>
