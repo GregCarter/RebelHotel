@@ -4,7 +4,6 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Employer;
-import edu.unlv.cs.rebelhotel.domain.Rebel;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import edu.unlv.cs.rebelhotel.domain.Term;
@@ -16,14 +15,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
-    
-    Converter<Rebel, String> ApplicationConversionServiceFactoryBean.getRebelConverter() {
-        return new Converter<Rebel, String>() {
-            public String convert(Rebel source) {
-                return new StringBuilder().append(source.toString()).toString();
-            }
-        };
-    }
     
     Converter<WorkEffort, String> ApplicationConversionServiceFactoryBean.getWorkEffortConverter() {
         return new Converter<WorkEffort, String>() {
@@ -82,7 +73,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     }
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
-        registry.addConverter(getRebelConverter());
         registry.addConverter(getWorkEffortConverter());
         registry.addConverter(getWorkRequirementConverter());
         registry.addConverter(getTermConverter());
