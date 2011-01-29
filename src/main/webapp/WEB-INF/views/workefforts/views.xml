@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="workefforts/list">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/list.jspx"/>
+    </definition>
+<definition extends="default" name="workefforts/show">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/show.jspx"/>
+    </definition>
+<definition extends="default" name="workefforts/create">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/create.jspx"/>
+    </definition>
+<definition extends="default" name="workefforts/update">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/update.jspx"/>
+    </definition>
+</tiles-definitions>

@@ -4,3 +4,141 @@ project --topLevelPackage edu.unlv.cs.rebelhotel --projectName RebelHotel --java
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-26 20:52:32
 persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-26 20:57:15
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-27 16:05:57
+hint
+// [failed] entity --class Student
+help entity
+entity --class ~.domain.Student --testAutomatically
+entity --class ~.domain.WorkEffort
+entity --class ~.domain.Employer
+entity --class ~.domain.Supervisor
+entity --class ~.domain.WorkTemplate
+entity --class ~.domain.WorkRequirement --testAutomatically
+hint entity
+hint
+help entity
+help
+persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+help test
+test integration
+help test integration
+test integration --entity *
+test mock --entity *
+help test integration
+test mock --entity *
+test mock --entity Employer
+test stub --entity Employer
+entity --class ~.domain.Student --testAutomatically
+entity --class ~.domain.Employer
+test integration --entity Employer
+entity --class ~.domain.WorkRequirement --testAutomatically
+entity --class ~.domain.WorkTemplate --testAutomatically
+entity --class ~.domain.Supervisor --testAutomatically
+entity --class ~.domain.WorkEffort --testAutomatically
+// [failed] entity --class ~.domain.User --testAutomatically
+entity --class ~.domain.Rebel --testAutomatically
+help field number
+field number --fieldName NSHE --class Student --unique --notNull --type java.lang.Long
+// [failed] field number --fieldName NSHE --class ~.domain.Student --unique --notNull --type java.lang.Long
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-27 17:40:05
+field string --fieldName firstName --class ~.domain.Student --notNull --sizeMin 2 
+field string --fieldName lastName --sizeMin 2
+field string --fieldName middleName --sizeMin 2
+help enum
+help enum
+help enum type
+enum type --class Term
+enum type --class Term
+help enum constant
+enum constant --name Fall
+enum constant --name Summer
+enum constant --name Spring
+field set --class Student --fieldName workRequirements --type ~.domain.WorkRequirement
+help enum set
+help field set
+enum type --class Verification
+enum constant --name Accepted
+enum constant --name Denied
+enum constant --name Failed_Validation
+enum constant --name Pending
+// [failed] enum type --class Role
+enum type --class UserRole
+enum constant --name Admin
+enum constant --name Student
+help enum type
+field string --class Supervisor --fieldName firstName
+field string --fieldName lastName
+field string --fieldName email
+field string --fieldName title
+field string --class Employer --fieldName location
+field string --class Student --fieldName major1 --sizeMin 2
+field string --fieldName major2 --sizeMin 2
+field number --fieldName admitTerm --type ~.domain.Term
+field number --fieldName gradTerm --type ~.domain.Term
+entity --class ~.domain.Term --testAutomatically
+field number --fieldName sem --type ~.domain.Semester --notNull
+// [failed] field number --fieldName year --type java.lang.Integer --notNull
+field number --fieldName termYear --type java.lang.Integer --notNull
+help controller all
+controller all --package ~.web
+help field reference
+// [failed] field reference --class Student --fieldName admitTerm --type ~.domain.Term
+field reference --class ~.domain.Student --fieldName admitTerm --type ~.domain.Term
+field reference --class ~.domain.Student --fieldName gradTerm --type ~.domain.Term
+field reference --class WorkEffort --fieldName StudentID --notNull --type ~.domain.Student
+field reference --fieldName Student --type ~.domain.Student --notNull
+quit
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-28 14:33:19
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-28 14:33:51
+help field date
+// [failed] field date --fieldName startDate --type lang.Java.Date --class WorkEffort
+field date --fieldName startDate --type lang.Java.Date --class ~.domain.WorkEffort
+field date --fieldName startDate --type java.util.Date
+field date --fieldName endDate --type java.util.Date
+field number --fieldName hours --type java.lang.Integer
+// [failed] field string --fieldName position
+field string --fieldName workPosition 
+field number --fieldName verification --type ~.domain.Verification
+field reference --fieldName employer --notNull --type ~.domain.Employer
+field string --fieldName comment
+field reference --fieldName supervisor --type ~.domain.Supervisor
+field string --class ~.domain.WorkTemplate --fieldName name --notNull
+field number --fieldName hours --type java.lang.Integer
+help entity
+help field
+help field embedded
+// [failed] field embedded --class WorkEffort --fieldName supervisor --type ~.domain.Supervisor
+help entity
+help
+help
+poll now
+backup
+poll now
+field embedded --class WorkEffort --fieldName supervisor --type ~.domain.Supervisor
+field string --class WorkRequirement --fieldName name --notNull
+field number --fieldName hours --type java.lang.Integer
+enum type --class WorkType
+enum constant --class ~.domain.WorkType --name PayStub
+enum constant --class ~.domain.WorkType --name BusinessCard
+// [failed] field set --class Student --fieldName work --type ~.domain.WorkEffort
+field set --class Student --fieldName workEffort --type ~.domain.WorkEffort
+perform tests
+help perform tests
+help
+perform tests
+help test
+help test integration
+test integration --entity ~.domain.Term
+perform tests
+perform tests
+field number --class ~.domain.Term --fieldName semester --type ~.domain.Semester --notNull
+perform tests
+perform tests -e
+poll now
+perform tests
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-01-28 15:22:17
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-01-28 17:51:53
+poll now
+entity --class ~.domain.UserAccount --testAutomatically
+poll now
+field string --fieldName name --notNull

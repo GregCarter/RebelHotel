@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
+        <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="RFPbdXr7ZKuirMVeSh9ZJKfvMnk=">
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_NSHE" property="NSHE" z="CcS7Yb6jaQP2OM0/FwgIl18cwzw="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="DSzicBjGwxYL/2/kNsf10cNZTGI="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" property="workRequirements" z="91qvopvtsVig37rUZyWtBcBTmRA="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_major1" property="major1" z="a3Q4xRABZnc0jgO6DaYliyTHj1Y="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,54 @@
+package edu.unlv.cs.rebelhotel.domain;
+
+import org.springframework.roo.addon.entity.RooEntity;
+import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.roo.addon.tostring.RooToString;
+import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.validation.constraints.Size;
+import java.util.Set;
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import java.util.HashSet;
+import javax.persistence.ManyToMany;
+import javax.persistence.CascadeType;
+import edu.unlv.cs.rebelhotel.domain.Term;
+import javax.persistence.ManyToOne;
+import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+
+@RooJavaBean
+@RooToString
+@RooEntity
+public class Student {
+
+    @NotNull
+    @Column(unique = true)
+    private Long NSHE;
+
+    @NotNull
+    @Size(min = 2)
+    private String firstName;
+
+    @Size(min = 2)
+    private String lastName;
+
+    @Size(min = 2)
+    private String middleName;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
+
+    @Size(min = 2)
+    private String major1;
+
+    @Size(min = 2)
+    private String major2;
+
+    @ManyToOne
+    private Term admitTerm;
+
+    @ManyToOne
+    private Term gradTerm;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
+}
