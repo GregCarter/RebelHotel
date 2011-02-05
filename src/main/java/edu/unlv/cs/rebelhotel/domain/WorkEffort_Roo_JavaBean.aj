@@ -6,8 +6,8 @@ package edu.unlv.cs.rebelhotel.domain;
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
-import edu.unlv.cs.rebelhotel.domain.Verification;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import java.lang.Integer;
 import java.lang.String;
 

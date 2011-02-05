@@ -1,0 +1,5 @@
+--
+Base user login is root/test
+No locations/methods are secured yet
+User accounts can be created and subsequently logged into
+Access the login page via [BASE_URL]/login

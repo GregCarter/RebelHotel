@@ -4,8 +4,8 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
-import edu.unlv.cs.rebelhotel.domain.Verification;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;

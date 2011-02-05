@@ -3,7 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.Semester;
+import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import java.lang.Integer;
 
 privileged aspect Term_Roo_JavaBean {

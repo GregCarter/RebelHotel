@@ -3,8 +3,8 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
-import edu.unlv.cs.rebelhotel.domain.Semester;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;

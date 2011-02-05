@@ -3,9 +3,16 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
+import java.lang.Boolean;
 import java.lang.String;
+import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
 
 privileged aspect UserAccount_Roo_JavaBean {
+    
+    public MessageDigestPasswordEncoder UserAccount.getPasswordEncoder() {
+        return this.passwordEncoder;
+    }
     
     public String UserAccount.getName() {
         return this.name;
@@ -13,6 +20,26 @@ privileged aspect UserAccount_Roo_JavaBean {
     
     public void UserAccount.setName(String name) {
         this.name = name;
+    }
+    
+    public String UserAccount.getPassword() {
+        return this.password;
+    }
+    
+    public UserGroup UserAccount.getUserGroup() {
+        return this.userGroup;
+    }
+    
+    public void UserAccount.setUserGroup(UserGroup userGroup) {
+        this.userGroup = userGroup;
+    }
+    
+    public Boolean UserAccount.getEnabled() {
+        return this.enabled;
+    }
+    
+    public void UserAccount.setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
     
 }

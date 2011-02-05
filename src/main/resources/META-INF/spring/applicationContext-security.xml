@@ -23,12 +23,15 @@
 	<!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">
     	<!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
-    	<authentication-provider>
-	    	<password-encoder hash="sha-256"/>
+     	<authentication-provider>
+	    	<password-encoder hash="sha-256" />
 	        <user-service>
-	            <user name="admin" password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" authorities="ROLE_ADMIN"/>
-		        <user name="user" password="04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb" authorities="ROLE_USER"/>
+	            <user name="root" password="9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08" authorities="ROLE_ADMIN"/>
+		        <!-- <user name="user" password="04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb" authorities="ROLE_USER"/> -->
 		    </user-service>
+    	</authentication-provider>
+    	<authentication-provider user-service-ref = "userService">
+    		<password-encoder hash = "sha-256" />
     	</authentication-provider>
 	</authentication-manager>
 

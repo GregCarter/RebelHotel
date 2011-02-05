@@ -6,7 +6,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import javax.validation.constraints.NotNull;
 import javax.persistence.ManyToOne;
-import edu.unlv.cs.rebelhotel.domain.Verification;
+import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import javax.persistence.Embedded;

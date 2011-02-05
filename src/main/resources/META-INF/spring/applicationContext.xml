@@ -60,4 +60,25 @@
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    
+    <bean id = "passwordEncoder" class = "org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder">
+    	<constructor-arg value = "SHA-256" />
+    </bean>
+    
+    <bean id = "userAccount" class = "edu.unlv.cs.rebelhotel.domain.UserAccount">
+    	<property name = "passwordEncoder">
+    		<ref local = "passwordEncoder" />
+    	</property>
+    </bean>
+    
+    <!-- <bean id = "authenticationManager" class = "org.springframework.security.authentication.ProviderManager">
+    	<property name = "providers">
+    		<list>
+    			<ref local = "daoAuthenticationProvider" />
+    			<ref local = "anonymousAuthenticationProvider" />
+    			<ref local = "ldapAuthenticationProvider" />
+    		</list>
+    	</property>
+    </bean> -->
+    
 </beans>

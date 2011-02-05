@@ -3,7 +3,7 @@ package edu.unlv.cs.rebelhotel.domain;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
-import edu.unlv.cs.rebelhotel.domain.Semester;
+import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import javax.validation.constraints.NotNull;
 
 @RooJavaBean

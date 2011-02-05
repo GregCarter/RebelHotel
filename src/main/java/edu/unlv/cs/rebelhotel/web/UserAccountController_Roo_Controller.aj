@@ -4,14 +4,18 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
+import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.Arrays;
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -79,6 +83,22 @@ privileged aspect UserAccountController_Roo_Controller {
         model.addAttribute("page", (page == null) ? "1" : page.toString());
         model.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/useraccounts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+    }
+    
+    @RequestMapping(params = { "find=ByName", "form" }, method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByNameForm(Model model) {
+        return "useraccounts/findUserAccountsByName";
+    }
+    
+    @RequestMapping(params = "find=ByName", method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByName(@RequestParam("name") String name, Model model) {
+        model.addAttribute("useraccounts", UserAccount.findUserAccountsByName(name).getResultList());
+        return "useraccounts/list";
+    }
+    
+    @ModelAttribute("usergroups")
+    public Collection<UserGroup> UserAccountController.populateUserGroups() {
+        return Arrays.asList(UserGroup.class.getEnumConstants());
     }
     
     String UserAccountController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
