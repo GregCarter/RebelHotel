@@ -24,14 +24,13 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
     public WorkEffort WorkEffortDataOnDemand.getNewTransientWorkEffort(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkEffort obj = new edu.unlv.cs.rebelhotel.domain.WorkEffort();
         obj.setStudent(studentDataOnDemand.getRandomStudent());
-        obj.setStartDate(new java.util.GregorianCalendar(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR), java.util.Calendar.getInstance().get(java.util.Calendar.MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), java.util.Calendar.getInstance().get(java.util.Calendar.MINUTE), java.util.Calendar.getInstance().get(java.util.Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime());
-        obj.setEndDate(new java.util.GregorianCalendar(java.util.Calendar.getInstance().get(java.util.Calendar.YEAR), java.util.Calendar.getInstance().get(java.util.Calendar.MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH), java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY), java.util.Calendar.getInstance().get(java.util.Calendar.MINUTE), java.util.Calendar.getInstance().get(java.util.Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime());
         obj.setHours(new Integer(index));
         obj.setWorkPosition("workPosition_" + index);
         obj.setVerification(null);
         obj.setComment("comment_" + index);
         obj.setSupervisor(null);
         obj.setEmployer(null);
+        obj.setDuration(null);
         return obj;
     }
     

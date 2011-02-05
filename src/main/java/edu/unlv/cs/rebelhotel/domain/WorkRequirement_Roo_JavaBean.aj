@@ -3,6 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.Student;
 import java.lang.Integer;
 import java.lang.String;
 
@@ -22,6 +23,14 @@ privileged aspect WorkRequirement_Roo_JavaBean {
     
     public void WorkRequirement.setHours(Integer hours) {
         this.hours = hours;
+    }
+    
+    public Student WorkRequirement.getStudent() {
+        return this.student;
+    }
+    
+    public void WorkRequirement.setStudent(Student student) {
+        this.student = student;
     }
     
 }

@@ -10,7 +10,8 @@ privileged aspect WorkRequirement_Roo_ToString {
     public String WorkRequirement.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(getName()).append(", ");
-        sb.append("Hours: ").append(getHours());
+        sb.append("Hours: ").append(getHours()).append(", ");
+        sb.append("Student: ").append(getStudent());
         return sb.toString();
     }
     

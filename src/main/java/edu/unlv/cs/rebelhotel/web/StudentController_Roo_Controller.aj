@@ -86,6 +86,17 @@ privileged aspect StudentController_Roo_Controller {
         return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
+    @RequestMapping(params = { "find=ByNSHEEquals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByNSHEEqualsForm(Model model) {
+        return "students/findStudentsByNSHEEquals";
+    }
+    
+    @RequestMapping(params = "find=ByNSHEEquals", method = RequestMethod.GET)
+    public String StudentController.findStudentsByNSHEEquals(@RequestParam("NSHE") Long NSHE, Model model) {
+        model.addAttribute("students", Student.findStudentsByNSHEEquals(NSHE).getResultList());
+        return "students/list";
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();

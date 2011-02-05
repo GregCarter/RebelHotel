@@ -10,14 +10,13 @@ privileged aspect WorkEffort_Roo_ToString {
     public String WorkEffort.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Student: ").append(getStudent()).append(", ");
-        sb.append("StartDate: ").append(getStartDate()).append(", ");
-        sb.append("EndDate: ").append(getEndDate()).append(", ");
         sb.append("Hours: ").append(getHours()).append(", ");
         sb.append("WorkPosition: ").append(getWorkPosition()).append(", ");
         sb.append("Verification: ").append(getVerification()).append(", ");
         sb.append("Comment: ").append(getComment()).append(", ");
         sb.append("Supervisor: ").append(getSupervisor()).append(", ");
-        sb.append("Employer: ").append(getEmployer());
+        sb.append("Employer: ").append(getEmployer()).append(", ");
+        sb.append("Duration: ").append(getDuration());
         return sb.toString();
     }
     

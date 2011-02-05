@@ -7,9 +7,9 @@ import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import edu.unlv.cs.rebelhotel.domain.Verification;
+import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Date;
 
 privileged aspect WorkEffort_Roo_JavaBean {
     
@@ -19,22 +19,6 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setStudent(Student Student) {
         this.Student = Student;
-    }
-    
-    public Date WorkEffort.getStartDate() {
-        return this.startDate;
-    }
-    
-    public void WorkEffort.setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-    
-    public Date WorkEffort.getEndDate() {
-        return this.endDate;
-    }
-    
-    public void WorkEffort.setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
     
     public Integer WorkEffort.getHours() {
@@ -83,6 +67,14 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setEmployer(Employer employer) {
         this.employer = employer;
+    }
+    
+    public WorkEffortDuration WorkEffort.getDuration() {
+        return this.duration;
+    }
+    
+    public void WorkEffort.setDuration(WorkEffortDuration duration) {
+        this.duration = duration;
     }
     
 }

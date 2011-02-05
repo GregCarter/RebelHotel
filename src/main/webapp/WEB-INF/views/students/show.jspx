@@ -13,5 +13,6 @@
         <field:display field="admitTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" object="${student}" z="6tJ5tkyGsDQH3mlfM1wmlzichRU="/>
         <field:display field="gradTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" object="${student}" z="GVBUTuxqCefJz3zKqOn+kmB04SU="/>
         <field:display field="workEffort" id="s_edu_unlv_cs_rebelhotel_domain_Student_workEffort" object="${student}" z="3B3iTKWLOZDjBTNHxFpZlQNkpbc="/>
+    
     </page:show>
 </div>

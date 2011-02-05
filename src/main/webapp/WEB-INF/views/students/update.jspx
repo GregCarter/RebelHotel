@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_Student" modelAttribute="student" path="/students" z="GBNOAl+i5dH6v0+VrL7CjJscAjc=">
-        <field:input field="NSHE" id="c_edu_unlv_cs_rebelhotel_domain_Student_NSHE" required="true" validationMessageCode="field_invalid_integer" z="ELaNyaXb73pEmfzbuEXrd9Bi0kw="/>
+        <field:input decimalMin="1000000000" field="NSHE" id="c_edu_unlv_cs_rebelhotel_domain_Student_NSHE" required="true" validationMessageCode="field_invalid_integer" z="ZpXcV5KrIIpW4g+njxclUSMdMdo="/>
         <field:input field="firstName" id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" min="2" required="true" z="ZfwFke0QaSpPBgRorUMR8NFmIWU="/>
         <field:input field="lastName" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" min="2" z="IlfhnXlO+rtugVdnRYwnLBnvLho="/>
         <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" min="2" z="TR/g9AIaaZl6U+6WyFf504FKY7c="/>
@@ -13,5 +13,6 @@
         <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
         <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
         <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
+    
     </form:update>
 </div>

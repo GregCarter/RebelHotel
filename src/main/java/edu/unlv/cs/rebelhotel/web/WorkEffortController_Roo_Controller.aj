@@ -16,8 +16,6 @@ import java.util.Collection;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import org.joda.time.format.DateTimeFormat;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +32,6 @@ privileged aspect WorkEffortController_Roo_Controller {
     public String WorkEffortController.create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("workEffort", workEffort);
-            addDateTimeFormatPatterns(model);
             return "workefforts/create";
         }
         workEffort.persist();
@@ -44,7 +41,6 @@ privileged aspect WorkEffortController_Roo_Controller {
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String WorkEffortController.createForm(Model model) {
         model.addAttribute("workEffort", new WorkEffort());
-        addDateTimeFormatPatterns(model);
         List dependencies = new ArrayList();
         if (Student.countStudents() == 0) {
             dependencies.add(new String[]{"Student", "students"});
@@ -55,7 +51,6 @@ privileged aspect WorkEffortController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
-        addDateTimeFormatPatterns(model);
         model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
         model.addAttribute("itemId", id);
         return "workefforts/show";
@@ -71,7 +66,6 @@ privileged aspect WorkEffortController_Roo_Controller {
         } else {
             model.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
         }
-        addDateTimeFormatPatterns(model);
         return "workefforts/list";
     }
     
@@ -79,7 +73,6 @@ privileged aspect WorkEffortController_Roo_Controller {
     public String WorkEffortController.update(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("workEffort", workEffort);
-            addDateTimeFormatPatterns(model);
             return "workefforts/update";
         }
         workEffort.merge();
@@ -89,7 +82,6 @@ privileged aspect WorkEffortController_Roo_Controller {
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String WorkEffortController.updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("workEffort", WorkEffort.findWorkEffort(id));
-        addDateTimeFormatPatterns(model);
         return "workefforts/update";
     }
     
@@ -109,11 +101,6 @@ privileged aspect WorkEffortController_Roo_Controller {
     @ModelAttribute("verifications")
     public Collection<Verification> WorkEffortController.populateVerifications() {
         return Arrays.asList(Verification.class.getEnumConstants());
-    }
-    
-    void WorkEffortController.addDateTimeFormatPatterns(Model model) {
-        model.addAttribute("workEffort_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
-        model.addAttribute("workEffort_enddate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
     }
     
     String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {

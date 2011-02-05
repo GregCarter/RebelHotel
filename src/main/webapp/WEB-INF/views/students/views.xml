@@ -13,4 +13,10 @@
 <definition extends="default" name="students/update">
         <put-attribute name="body" value="/WEB-INF/views/students/update.jspx"/>
     </definition>
+<definition extends="default" name="students/search">
+	<put-attribute name="body" value="/WEB-INF/views/students/search.jspx"/>
+</definition>
+<definition extends="default" name="students/findStudentsByNSHEEquals">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
+    </definition>
 </tiles-definitions>

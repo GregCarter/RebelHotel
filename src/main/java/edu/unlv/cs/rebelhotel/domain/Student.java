@@ -14,13 +14,17 @@ import javax.persistence.CascadeType;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import javax.persistence.ManyToOne;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 
 @RooJavaBean
 @RooToString
-@RooEntity
+@RooEntity(finders = { "findStudentsByNSHEEquals" })
 public class Student {
 
     @NotNull
+    @DecimalMin("1000000000")
+    @Digits(integer = 10, fraction = 0)
     @Column(unique = true)
     private Long NSHE;
 
