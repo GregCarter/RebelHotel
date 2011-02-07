@@ -20,6 +20,7 @@ privileged aspect WorkTemplateDataOnDemand_Roo_DataOnDemand {
         edu.unlv.cs.rebelhotel.domain.WorkTemplate obj = new edu.unlv.cs.rebelhotel.domain.WorkTemplate();
         obj.setName("name_" + index);
         obj.setHours(new Integer(index));
+        obj.setTerm(null);
         return obj;
     }
     

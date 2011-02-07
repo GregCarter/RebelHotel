@@ -4,6 +4,9 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.NotNull;
+import edu.unlv.cs.rebelhotel.domain.Term;
+//import javax.persistence.Embedded;
+import javax.persistence.ManyToOne;
 
 @RooJavaBean
 @RooToString
@@ -14,4 +17,7 @@ public class WorkTemplate {
     private String name;
 
     private Integer hours;
+
+    @ManyToOne
+    private Term term;
 }

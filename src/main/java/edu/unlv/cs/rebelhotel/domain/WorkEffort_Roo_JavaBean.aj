@@ -7,8 +7,10 @@ import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
+import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
-import java.lang.Integer;
+import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
 import java.lang.String;
 
 privileged aspect WorkEffort_Roo_JavaBean {
@@ -21,28 +23,12 @@ privileged aspect WorkEffort_Roo_JavaBean {
         this.Student = Student;
     }
     
-    public Integer WorkEffort.getHours() {
-        return this.hours;
-    }
-    
-    public void WorkEffort.setHours(Integer hours) {
-        this.hours = hours;
-    }
-    
     public String WorkEffort.getWorkPosition() {
         return this.workPosition;
     }
     
     public void WorkEffort.setWorkPosition(String workPosition) {
         this.workPosition = workPosition;
-    }
-    
-    public Verification WorkEffort.getVerification() {
-        return this.verification;
-    }
-    
-    public void WorkEffort.setVerification(Verification verification) {
-        this.verification = verification;
     }
     
     public String WorkEffort.getComment() {
@@ -67,6 +53,38 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setEmployer(Employer employer) {
         this.employer = employer;
+    }
+    
+    public VerificationType WorkEffort.getVerificationType() {
+        return this.verificationType;
+    }
+    
+    public void WorkEffort.setVerificationType(VerificationType verificationType) {
+        this.verificationType = verificationType;
+    }
+    
+    public Validation WorkEffort.getValidation() {
+        return this.validation;
+    }
+    
+    public void WorkEffort.setValidation(Validation validation) {
+        this.validation = validation;
+    }
+    
+    public Verification WorkEffort.getVerification() {
+        return this.verification;
+    }
+    
+    public void WorkEffort.setVerification(Verification verification) {
+        this.verification = verification;
+    }
+    
+    public PayStatus WorkEffort.getPayStatus() {
+        return this.payStatus;
+    }
+    
+    public void WorkEffort.setPayStatus(PayStatus payStatus) {
+        this.payStatus = payStatus;
     }
     
     public WorkEffortDuration WorkEffort.getDuration() {

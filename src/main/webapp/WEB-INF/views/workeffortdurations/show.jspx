@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration" object="${workeffortduration}" path="/workeffortdurations" z="J6Wq7BE2EVtYIj4ic9HAalgmxFg=">
+        <field:display date="true" dateTimePattern="${workEffortDuration_startdate_date_format}" field="startDate" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration_startDate" object="${workeffortduration}" z="ZCsCNAuQRNKamj/rtVwRmuFcNT8="/>
+        <field:display date="true" dateTimePattern="${workEffortDuration_enddate_date_format}" field="endDate" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration_endDate" object="${workeffortduration}" z="dhQ6NTA5/7VlgSNZep4PeX/eZJo="/>
+        <field:display field="hours" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration_hours" object="${workeffortduration}" z="ngRo0iSm7XkB8sBd43tZCuZpcQQ="/>
+    </page:show>
+</div>

@@ -26,6 +26,9 @@
 	<mvc:view-controller path="/test/test"/>
     <mvc:view-controller path="/login"/>
     <mvc:view-controller path="/" view-name="index"/>
+    
+    <!-- <mvc:view-controller path = "/accessDenied" /> -->
+    
 	<mvc:view-controller path="/uncaughtException"/>
 	<mvc:view-controller path="/resourceNotFound"/>
 	<mvc:view-controller path="/dataAccessFailure"/>
@@ -54,6 +57,7 @@
 				<prop key=".NoSuchRequestHandlingMethodException">resourceNotFound</prop>
 				<prop key=".TypeMismatchException">resourceNotFound</prop>
 				<prop key=".MissingServletRequestParameterException">resourceNotFound</prop>
+				<prop key = "org.springframework.security.access.AccessDeniedException">accessDenied</prop>
 			</props>
 		</property>
 	</bean>

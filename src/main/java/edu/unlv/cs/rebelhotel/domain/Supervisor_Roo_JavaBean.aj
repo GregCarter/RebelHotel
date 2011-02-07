@@ -31,12 +31,12 @@ privileged aspect Supervisor_Roo_JavaBean {
         this.email = email;
     }
     
-    public String Supervisor.getTitle() {
-        return this.title;
+    public String Supervisor.getPhone() {
+        return this.phone;
     }
     
-    public void Supervisor.setTitle(String title) {
-        this.title = title;
+    public void Supervisor.setPhone(String phone) {
+        this.phone = phone;
     }
     
 }

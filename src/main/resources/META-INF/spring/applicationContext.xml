@@ -81,4 +81,8 @@
     	</property>
     </bean> -->
     
+    <bean id = "serviceTest" class = "edu.unlv.cs.rebelhotel.service.ServiceTest" />
+    
+    <bean id = "springApplicationContext" class = "edu.unlv.cs.rebelhotel.service.SpringApplicationContext" />
+    
 </beans>

@@ -5,7 +5,11 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
+import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
+import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -98,9 +102,29 @@ privileged aspect WorkEffortController_Roo_Controller {
         return Student.findAllStudents();
     }
     
+    @ModelAttribute("workeffortdurations")
+    public Collection<WorkEffortDuration> WorkEffortController.populateWorkEffortDurations() {
+        return WorkEffortDuration.findAllWorkEffortDurations();
+    }
+    
+    @ModelAttribute("paystatuses")
+    public Collection<PayStatus> WorkEffortController.populatePayStatuses() {
+        return Arrays.asList(PayStatus.class.getEnumConstants());
+    }
+    
+    @ModelAttribute("validations")
+    public Collection<Validation> WorkEffortController.populateValidations() {
+        return Arrays.asList(Validation.class.getEnumConstants());
+    }
+    
     @ModelAttribute("verifications")
     public Collection<Verification> WorkEffortController.populateVerifications() {
         return Arrays.asList(Verification.class.getEnumConstants());
+    }
+    
+    @ModelAttribute("verificationtypes")
+    public Collection<VerificationType> WorkEffortController.populateVerificationTypes() {
+        return Arrays.asList(VerificationType.class.getEnumConstants());
     }
     
     String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {

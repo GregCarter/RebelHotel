@@ -3,6 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.Term;
 import java.lang.Integer;
 import java.lang.String;
 
@@ -22,6 +23,14 @@ privileged aspect WorkTemplate_Roo_JavaBean {
     
     public void WorkTemplate.setHours(Integer hours) {
         this.hours = hours;
+    }
+    
+    public Term WorkTemplate.getTerm() {
+        return this.term;
+    }
+    
+    public void WorkTemplate.setTerm(Term term) {
+        this.term = term;
     }
     
 }

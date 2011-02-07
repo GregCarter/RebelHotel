@@ -4,15 +4,15 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" render="${empty dependencies}" z="mtIzcW2wKXVHla+IgVE0khyNFNI=">
         <field:select field="Student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_Student" itemValue="id" items="${students}" path="/students" required="true" z="6dzLtQb8QVsh6l6dCwW3D1WOPsI="/>
-        
-        
-        <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_hours" validationMessageCode="field_invalid_integer" z="ARj71HgcZhvvT9lxDH7I2X/EPKM="/>
         <field:input field="workPosition" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" z="t6mrQRKmjvNXbHhaHXhvWk6puDE="/>
-        <field:input field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" z="eXjPnZIZ6bMuAZUrVJTutyeIZG0="/>
         <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
         <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
         <field:input field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" z="wniekettublvFpBlLM6Wp9N/nMU="/>
-    <field:input field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" z="MM3jIIulQ7CEKbExD4J+3qNDoUc="/>
+        <field:select field="verificationType" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verificationType" items="${verificationtypes}" path="verificationtypes" z="Kr/5QpSvA7DJVKYxvMEeGemJFiw="/>
+        <field:select field="validation" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_validation" items="${validations}" path="validations" z="vO3fjwp/J0bttFwf4Y2RRFqN9f0="/>
+        <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
+        <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
+        <field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_WorkEffort" render="${not empty dependencies}" z="W3XbdY/iex0jvHnO25TKrlqRiW0="/>
 </div>

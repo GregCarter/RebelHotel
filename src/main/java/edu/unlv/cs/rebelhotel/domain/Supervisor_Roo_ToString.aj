@@ -12,7 +12,7 @@ privileged aspect Supervisor_Roo_ToString {
         sb.append("FirstName: ").append(getFirstName()).append(", ");
         sb.append("LastName: ").append(getLastName()).append(", ");
         sb.append("Email: ").append(getEmail()).append(", ");
-        sb.append("Title: ").append(getTitle());
+        sb.append("Phone: ").append(getPhone());
         return sb.toString();
     }
     

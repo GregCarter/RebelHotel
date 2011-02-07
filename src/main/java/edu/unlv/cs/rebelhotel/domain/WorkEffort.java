@@ -11,6 +11,10 @@ import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import javax.persistence.Embedded;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
+import javax.persistence.Enumerated;
+import edu.unlv.cs.rebelhotel.domain.enums.Validation;
+import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 
 @RooJavaBean
 @RooToString
@@ -21,11 +25,7 @@ public class WorkEffort {
     @ManyToOne
     private Student Student;
 
-    private Integer hours;
-
     private String workPosition;
-
-    private Verification verification;
 
     private String comment;
 
@@ -35,6 +35,18 @@ public class WorkEffort {
     @Embedded
     private Employer employer;
 
-    @Embedded
+    @Enumerated
+    private VerificationType verificationType;
+
+    @Enumerated
+    private Validation validation;
+
+    @Enumerated
+    private Verification verification;
+
+    @Enumerated
+    private PayStatus payStatus;
+
+    @ManyToOne
     private WorkEffortDuration duration;
 }

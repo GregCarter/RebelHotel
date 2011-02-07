@@ -15,5 +15,5 @@ public class Supervisor {
 
     private String email;
 
-    private String title;
+    private String phone;
 }

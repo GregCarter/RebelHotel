@@ -24,12 +24,14 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
     public WorkEffort WorkEffortDataOnDemand.getNewTransientWorkEffort(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkEffort obj = new edu.unlv.cs.rebelhotel.domain.WorkEffort();
         obj.setStudent(studentDataOnDemand.getRandomStudent());
-        obj.setHours(new Integer(index));
         obj.setWorkPosition("workPosition_" + index);
-        obj.setVerification(null);
         obj.setComment("comment_" + index);
         obj.setSupervisor(null);
         obj.setEmployer(null);
+        obj.setVerificationType(null);
+        obj.setValidation(null);
+        obj.setVerification(null);
+        obj.setPayStatus(null);
         obj.setDuration(null);
         return obj;
     }

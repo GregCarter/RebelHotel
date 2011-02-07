@@ -10,7 +10,8 @@ privileged aspect WorkTemplate_Roo_ToString {
     public String WorkTemplate.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(getName()).append(", ");
-        sb.append("Hours: ").append(getHours());
+        sb.append("Hours: ").append(getHours()).append(", ");
+        sb.append("Term: ").append(getTerm());
         return sb.toString();
     }
     
