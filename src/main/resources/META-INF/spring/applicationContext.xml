@@ -57,20 +57,14 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>
-    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
-        <property name="dataSource" ref="dataSource"/>
+    <bean class="org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder" id="passwordEncoder">
+        <constructor-arg value="SHA-256"/>
     </bean>
-    
-    <bean id = "passwordEncoder" class = "org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder">
-    	<constructor-arg value = "SHA-256" />
+    <bean class="edu.unlv.cs.rebelhotel.domain.UserAccount" id="userAccount">
+        <property name="passwordEncoder">
+            <ref local="passwordEncoder"/>
+        </property>
     </bean>
-    
-    <bean id = "userAccount" class = "edu.unlv.cs.rebelhotel.domain.UserAccount">
-    	<property name = "passwordEncoder">
-    		<ref local = "passwordEncoder" />
-    	</property>
-    </bean>
-    
     <!-- <bean id = "authenticationManager" class = "org.springframework.security.authentication.ProviderManager">
     	<property name = "providers">
     		<list>
@@ -80,9 +74,9 @@
     		</list>
     	</property>
     </bean> -->
-    
-    <bean id = "serviceTest" class = "edu.unlv.cs.rebelhotel.service.ServiceTest" />
-    
-    <bean id = "springApplicationContext" class = "edu.unlv.cs.rebelhotel.service.SpringApplicationContext" />
-    
+    <bean class="edu.unlv.cs.rebelhotel.service.ServiceTest" id="serviceTest"/>
+    <bean class="edu.unlv.cs.rebelhotel.service.SpringApplicationContext" id="springApplicationContext"/>
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 </beans>
