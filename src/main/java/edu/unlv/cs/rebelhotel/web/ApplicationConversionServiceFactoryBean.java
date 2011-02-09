@@ -29,12 +29,23 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		};
 	}
 	
+	Converter<edu.unlv.cs.rebelhotel.domain.Term, String> getTermConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.Term, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.Term param) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(param.getSemester().toString()+" "+param.getTermYear().toString());
+				return sb.toString();
+			}
+		};
+	}
+	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
 		// Register application converters and formatters
 		
 		registry.addConverter(getSetConverter());
+		registry.addConverter(getTermConverter());
 	}
 	
 }
