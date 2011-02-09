@@ -39,6 +39,16 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		};
 	}
 	
+	Converter<edu.unlv.cs.rebelhotel.domain.Student, String> getStudentConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.Student, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.Student param) {
+				StringBuilder sb = new StringBuilder();
+				sb.append("("+param.getNSHE().toString()+") "+param.getLastName()+" "+param.getFirstName());
+				return sb.toString();
+			}
+		};
+	}
+	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
@@ -46,6 +56,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		
 		registry.addConverter(getSetConverter());
 		registry.addConverter(getTermConverter());
+		registry.addConverter(getStudentConverter());
 	}
 	
 }
