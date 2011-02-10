@@ -97,6 +97,18 @@ privileged aspect WorkEffortController_Roo_Controller {
         return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
+    @RequestMapping(params = { "find=ByStudentEquals", "form" }, method = RequestMethod.GET)
+    public String WorkEffortController.findWorkEffortsByStudentEqualsForm(Model model) {
+        model.addAttribute("students", Student.findAllStudents());
+        return "workefforts/findWorkEffortsByStudentEquals";
+    }
+    
+    @RequestMapping(params = "find=ByStudentEquals", method = RequestMethod.GET)
+    public String WorkEffortController.findWorkEffortsByStudentEquals(@RequestParam("student") Student Student, Model model) {
+        model.addAttribute("workefforts", WorkEffort.findWorkEffortsByStudentEquals(Student).getResultList());
+        return "workefforts/list";
+    }
+    
     @ModelAttribute("students")
     public Collection<Student> WorkEffortController.populateStudents() {
         return Student.findAllStudents();

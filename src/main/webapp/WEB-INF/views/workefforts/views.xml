@@ -13,4 +13,7 @@
 <definition extends="default" name="workefforts/update">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/update.jspx"/>
     </definition>
+<definition extends="default" name="workefforts/findWorkEffortsByStudentEquals">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/findWorkEffortsByStudentEquals.jspx"/>
+    </definition>
 </tiles-definitions>

@@ -97,6 +97,50 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
+    @RequestMapping(params = { "find=ByMajor1Equals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByMajor1EqualsForm(Model model) {
+        return "students/findStudentsByMajor1Equals";
+    }
+    
+    @RequestMapping(params = "find=ByMajor1Equals", method = RequestMethod.GET)
+    public String StudentController.findStudentsByMajor1Equals(@RequestParam("major1") String major1, Model model) {
+        model.addAttribute("students", Student.findStudentsByMajor1Equals(major1).getResultList());
+        return "students/list";
+    }
+    
+    @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByFirstNameEqualsForm(Model model) {
+        return "students/findStudentsByFirstNameEquals";
+    }
+    
+    @RequestMapping(params = "find=ByFirstNameEquals", method = RequestMethod.GET)
+    public String StudentController.findStudentsByFirstNameEquals(@RequestParam("firstName") String firstName, Model model) {
+        model.addAttribute("students", Student.findStudentsByFirstNameEquals(firstName).getResultList());
+        return "students/list";
+    }
+    
+    @RequestMapping(params = { "find=ByFirstNameLike", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByFirstNameLikeForm(Model model) {
+        return "students/findStudentsByFirstNameLike";
+    }
+    
+    @RequestMapping(params = "find=ByFirstNameLike", method = RequestMethod.GET)
+    public String StudentController.findStudentsByFirstNameLike(@RequestParam("firstName") String firstName, Model model) {
+        model.addAttribute("students", Student.findStudentsByFirstNameLike(firstName).getResultList());
+        return "students/list";
+    }
+    
+    @RequestMapping(params = { "find=ByMajor2Equals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByMajor2EqualsForm(Model model) {
+        return "students/findStudentsByMajor2Equals";
+    }
+    
+    @RequestMapping(params = "find=ByMajor2Equals", method = RequestMethod.GET)
+    public String StudentController.findStudentsByMajor2Equals(@RequestParam("major2") String major2, Model model) {
+        model.addAttribute("students", Student.findStudentsByMajor2Equals(major2).getResultList());
+        return "students/list";
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();

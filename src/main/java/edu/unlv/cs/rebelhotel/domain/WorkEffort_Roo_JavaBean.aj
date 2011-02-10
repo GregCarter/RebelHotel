@@ -95,4 +95,12 @@ privileged aspect WorkEffort_Roo_JavaBean {
         this.duration = duration;
     }
     
+    public String WorkEffort.getMajor() {
+        return this.Major;
+    }
+    
+    public void WorkEffort.setMajor(String Major) {
+        this.Major = Major;
+    }
+    
 }

@@ -16,4 +16,16 @@
 <definition extends="default" name="students/findStudentsByNSHEEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
     </definition>
+<definition extends="default" name="students/findStudentsByMajor1Equals">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByMajor1Equals.jspx"/>
+    </definition>
+<definition extends="default" name="students/findStudentsByFirstNameEquals">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameEquals.jspx"/>
+    </definition>
+<definition extends="default" name="students/findStudentsByFirstNameLike">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameLike.jspx"/>
+    </definition>
+<definition extends="default" name="students/findStudentsByMajor2Equals">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByMajor2Equals.jspx"/>
+    </definition>
 </tiles-definitions>
