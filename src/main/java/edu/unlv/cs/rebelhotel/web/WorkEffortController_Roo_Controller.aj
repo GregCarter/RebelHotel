@@ -47,7 +47,7 @@ privileged aspect WorkEffortController_Roo_Controller {
         model.addAttribute("workEffort", new WorkEffort());
         List dependencies = new ArrayList();
         if (Student.countStudents() == 0) {
-            dependencies.add(new String[]{"Student", "students"});
+            dependencies.add(new String[]{"student", "students"});
         }
         model.addAttribute("dependencies", dependencies);
         return "workefforts/create";

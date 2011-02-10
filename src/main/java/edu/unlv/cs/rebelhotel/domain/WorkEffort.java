@@ -23,7 +23,7 @@ public class WorkEffort {
 
     @NotNull
     @ManyToOne
-    private Student Student;
+    private Student student;
 
     private String workPosition;
 
