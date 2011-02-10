@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec = "http://www.springframework.org/security/tags" id="menu" version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
 	<jsp:output omit-xml-declaration="yes"/>
 
 <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+	<sec:authorize access = "hasRole('ROLE_ANONYMOUS')">
+		<menu:category id = "c_login">
+			<menu:item id = "i_login" url = "/login" />
+		</menu:category>
+	</sec:authorize>
+	<sec:authorize access = "hasRole('ROLE_ADMIN')">
         <menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
             <menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>
         <menu:item id="i_worktemplate_list" messageCode="global_menu_list" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/>
@@ -34,5 +40,6 @@
         <menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
         <menu:item id="fi_useraccount_name" messageCode="global_menu_find" url="/useraccounts?find=ByName&amp;form" z="fonyk5h0KP+whWHK8shgwiSvKuA="/>
         </menu:category>
+	</sec:authorize>
     </menu:menu>
 </div>
