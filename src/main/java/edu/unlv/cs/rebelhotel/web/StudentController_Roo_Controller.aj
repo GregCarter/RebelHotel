@@ -86,19 +86,14 @@ privileged aspect StudentController_Roo_Controller {
         return "redirect:/students";
     }
     
-    @RequestMapping(params = { "find=ByFirstNameLike", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByFirstNameLikeForm(Model uiModel) {
-        return "students/findStudentsByFirstNameLike";
-    }
-    
     @RequestMapping(params = { "find=ByMajor2Equals", "form" }, method = RequestMethod.GET)
     public String StudentController.findStudentsByMajor2EqualsForm(Model uiModel) {
         return "students/findStudentsByMajor2Equals";
     }
     
-    @RequestMapping(params = { "find=ByNSHEEquals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByNSHEEqualsForm(Model uiModel) {
-        return "students/findStudentsByNSHEEquals";
+    @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByFirstNameEqualsForm(Model uiModel) {
+        return "students/findStudentsByFirstNameEquals";
     }
     
     @RequestMapping(params = { "find=ByMajor1Equals", "form" }, method = RequestMethod.GET)
@@ -106,9 +101,14 @@ privileged aspect StudentController_Roo_Controller {
         return "students/findStudentsByMajor1Equals";
     }
     
-    @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByFirstNameEqualsForm(Model uiModel) {
-        return "students/findStudentsByFirstNameEquals";
+    @RequestMapping(params = { "find=ByFirstNameLike", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByFirstNameLikeForm(Model uiModel) {
+        return "students/findStudentsByFirstNameLike";
+    }
+    
+    @RequestMapping(params = { "find=ByNSHEEquals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByNSHEEqualsForm(Model uiModel) {
+        return "students/findStudentsByNSHEEquals";
     }
     
     @ModelAttribute("students")
