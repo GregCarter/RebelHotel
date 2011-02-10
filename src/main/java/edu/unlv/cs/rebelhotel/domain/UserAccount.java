@@ -19,8 +19,7 @@ import javax.persistence.Transient;
 @RooToString
 @RooEntity(finders = { "findUserAccountsByName" })
 public class UserAccount {
-	@Transient
-    private MessageDigestPasswordEncoder passwordEncoder;
+    private transient MessageDigestPasswordEncoder passwordEncoder;
 
     @NotNull
     private String name;

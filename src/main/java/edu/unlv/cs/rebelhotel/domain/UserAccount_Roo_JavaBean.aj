@@ -6,13 +6,8 @@ package edu.unlv.cs.rebelhotel.domain;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import java.lang.Boolean;
 import java.lang.String;
-import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
 
 privileged aspect UserAccount_Roo_JavaBean {
-    
-    public MessageDigestPasswordEncoder UserAccount.getPasswordEncoder() {
-        return this.passwordEncoder;
-    }
     
     public String UserAccount.getName() {
         return this.name;

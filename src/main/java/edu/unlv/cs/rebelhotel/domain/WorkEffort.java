@@ -49,4 +49,5 @@ public class WorkEffort {
 
     @ManyToOne
     private WorkEffortDuration duration;
+    
 }
