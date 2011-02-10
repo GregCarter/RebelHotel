@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_UserAccount" modelAttribute="userAccount" path="/useraccounts" render="${empty dependencies}" z="RzSG8rysPVs7TNR/dOkwR8Ufghc=">
         <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_name" required="true" z="zt0zhI0rRqZx09DI2J0pZ0ROrp0="/>
-        <field:input field="password" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" required="true" z="GdYdMthJw0wuVZ0k5B6mB7QEUS0="/>
+        
         <field:select field="userGroup" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" items="${usergroups}" path="usergroups" z="sRIMSynGJSubX4xr8l1GwlZb0R4="/>
         <field:checkbox field="enabled" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" z="VmA3vpPhfsW+BCroMX1EyJX/uqs="/>
     

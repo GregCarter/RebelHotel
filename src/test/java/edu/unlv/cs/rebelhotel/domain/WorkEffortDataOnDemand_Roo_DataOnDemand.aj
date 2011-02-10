@@ -5,6 +5,7 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.StudentDataOnDemand;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.domain.WorkEffortDurationDataOnDemand;
 import java.util.List;
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
     @Autowired
     private StudentDataOnDemand WorkEffortDataOnDemand.studentDataOnDemand;
     
+    @Autowired
+    private WorkEffortDurationDataOnDemand WorkEffortDataOnDemand.workEffortDurationDataOnDemand;
+    
     public WorkEffort WorkEffortDataOnDemand.getNewTransientWorkEffort(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkEffort obj = new edu.unlv.cs.rebelhotel.domain.WorkEffort();
         obj.setStudent(studentDataOnDemand.getRandomStudent());
@@ -28,11 +32,12 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
         obj.setComment("comment_" + index);
         obj.setSupervisor(null);
         obj.setEmployer(null);
-        obj.setVerificationType(null);
-        obj.setValidation(null);
-        obj.setVerification(null);
-        obj.setPayStatus(null);
-        obj.setDuration(null);
+        obj.setVerificationType(edu.unlv.cs.rebelhotel.domain.enums.VerificationType.class.getEnumConstants()[0]);
+        obj.setValidation(edu.unlv.cs.rebelhotel.domain.enums.Validation.class.getEnumConstants()[0]);
+        obj.setVerification(edu.unlv.cs.rebelhotel.domain.enums.Verification.class.getEnumConstants()[0]);
+        obj.setPayStatus(edu.unlv.cs.rebelhotel.domain.enums.PayStatus.class.getEnumConstants()[0]);
+        obj.setDuration(workEffortDurationDataOnDemand.getRandomWorkEffortDuration());
+        obj.setMajor("Major_" + index);
         return obj;
     }
     

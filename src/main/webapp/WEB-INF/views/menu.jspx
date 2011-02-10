@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec = "http://www.springframework.org/security/tags" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
 	<jsp:output omit-xml-declaration="yes"/>
 
 <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-	<sec:authorize access = "hasRole('ROLE_ANONYMOUS')">
-		<menu:category id = "c_login">
-			<menu:item id = "i_login" url = "/login" />
+	<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
+		<menu:category id="c_login">
+			<menu:item id="i_login" url="/login"/>
 		</menu:category>
 	</sec:authorize>
-	<sec:authorize access = "hasRole('ROLE_ADMIN')">
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
         <menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
             <menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>
         <menu:item id="i_worktemplate_list" messageCode="global_menu_list" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/>
@@ -29,16 +29,21 @@
     <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
             <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
+        
         </menu:category>
     <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
         <menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
-        <menu:item id="fi_student_nsheequals" messageCode="global_menu_find" url="/students?find=ByNSHEEquals&amp;form" z="NkbwIUTYxcMLtDhV+ppFl6M6/Lc="/>
+        
+        
+        
+        
+        
         </menu:category>
     <menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
             <menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
         <menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
-        <menu:item id="fi_useraccount_name" messageCode="global_menu_find" url="/useraccounts?find=ByName&amp;form" z="fonyk5h0KP+whWHK8shgwiSvKuA="/>
+        
         </menu:category>
 	</sec:authorize>
     </menu:menu>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:find finderName="ByMajor1Equals" id="ff_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="1IuE7vrglfFC/LxYcoB+zoivgV4=">
+        <field:input disableFormBinding="true" field="major1" id="f_edu_unlv_cs_rebelhotel_domain_Student_major1" min="2" z="GVcSdDTMQhLZBQH6+az06MJb0Vo="/>
+    </form:find>
+</div>

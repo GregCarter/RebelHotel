@@ -73,6 +73,12 @@ privileged aspect WorkEffortDuration_Roo_Entity {
     }
     
     @Transactional
+    public void WorkEffortDuration.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public WorkEffortDuration WorkEffortDuration.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         WorkEffortDuration merged = this.entityManager.merge(this);

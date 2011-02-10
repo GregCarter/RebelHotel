@@ -14,6 +14,7 @@
         <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
         <field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/>
     <field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" itemValue="id" items="${students}" path="/students" required="true" z="yTkhwm02NTixAW2YlgNkex9c7n4="/>
+    <field:input field="Major" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_Major" z="LYe5xGENz3gb6J5tYU/z/5mAHa4="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_WorkEffort" render="${not empty dependencies}" z="W3XbdY/iex0jvHnO25TKrlqRiW0="/>
 </div>

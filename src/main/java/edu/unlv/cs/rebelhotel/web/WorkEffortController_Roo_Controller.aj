@@ -33,73 +33,89 @@ import org.springframework.web.util.WebUtils;
 privileged aspect WorkEffortController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String WorkEffortController.create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
+    public String WorkEffortController.create(@Valid WorkEffort workEffort, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("workEffort", workEffort);
             return "workefforts/create";
         }
         workEffort.persist();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
+        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String WorkEffortController.createForm(Model model) {
-        model.addAttribute("workEffort", new WorkEffort());
+    public String WorkEffortController.createForm(Model uiModel) {
+        uiModel.addAttribute("workEffort", new WorkEffort());
         List dependencies = new ArrayList();
         if (Student.countStudents() == 0) {
             dependencies.add(new String[]{"student", "students"});
         }
-        model.addAttribute("dependencies", dependencies);
+        uiModel.addAttribute("dependencies", dependencies);
         return "workefforts/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
-        model.addAttribute("itemId", id);
+    public String WorkEffortController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
+        uiModel.addAttribute("itemId", id);
         return "workefforts/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("workefforts", WorkEffort.findWorkEffortEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("workefforts", WorkEffort.findWorkEffortEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) WorkEffort.countWorkEfforts() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
+            uiModel.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
         }
         return "workefforts/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String WorkEffortController.update(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
+    public String WorkEffortController.update(@Valid WorkEffort workEffort, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("workEffort", workEffort);
             return "workefforts/update";
         }
         workEffort.merge();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
+        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String WorkEffortController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workEffort", WorkEffort.findWorkEffort(id));
+    public String WorkEffortController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("workEffort", WorkEffort.findWorkEffort(id));
         return "workefforts/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         WorkEffort.findWorkEffort(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/workefforts";
+    }
+    
+    @RequestMapping(params = { "find=ByStudentEquals", "form" }, method = RequestMethod.GET)
+    public String WorkEffortController.findWorkEffortsByStudentEqualsForm(Model uiModel) {
+        uiModel.addAttribute("students", Student.findAllStudents());
+        return "workefforts/findWorkEffortsByStudentEquals";
+    }
+    
+    @RequestMapping(params = { "find=ByEmployerEquals", "form" }, method = RequestMethod.GET)
+    public String WorkEffortController.findWorkEffortsByEmployerEqualsForm(Model uiModel) {
+        return "workefforts/findWorkEffortsByEmployerEquals";
     }
     
     @ModelAttribute("students")
     public Collection<Student> WorkEffortController.populateStudents() {
         return Student.findAllStudents();
+    }
+    
+    @ModelAttribute("workefforts")
+    public Collection<WorkEffort> WorkEffortController.populateWorkEfforts() {
+        return WorkEffort.findAllWorkEfforts();
     }
     
     @ModelAttribute("workeffortdurations")
@@ -127,8 +143,8 @@ privileged aspect WorkEffortController_Roo_Controller {
         return Arrays.asList(VerificationType.class.getEnumConstants());
     }
     
-    String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

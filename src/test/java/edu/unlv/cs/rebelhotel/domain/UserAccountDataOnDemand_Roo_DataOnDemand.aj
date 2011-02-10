@@ -21,7 +21,7 @@ privileged aspect UserAccountDataOnDemand_Roo_DataOnDemand {
         obj.setPassword("password_" + index);
         obj.setPasswordEncoder(null);
         obj.setName("name_" + index);
-        obj.setUserGroup(null);
+        obj.setUserGroup(edu.unlv.cs.rebelhotel.domain.enums.UserGroup.class.getEnumConstants()[0]);
         obj.setEnabled(Boolean.TRUE);
         return obj;
     }

@@ -9,12 +9,9 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.util.HashSet;
-
-//import javax.persistence.Embedded;
 import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
-
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.validation.constraints.DecimalMin;
@@ -22,7 +19,7 @@ import javax.validation.constraints.Digits;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findStudentsByNSHEEquals" })
+@RooEntity(finders = { "findStudentsByNSHEEquals", "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals" })
 public class Student {
 
     @NotNull
@@ -58,4 +55,8 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
+    
+    boolean hasReachedMilestone() {
+    	return false;
+    }
 }
