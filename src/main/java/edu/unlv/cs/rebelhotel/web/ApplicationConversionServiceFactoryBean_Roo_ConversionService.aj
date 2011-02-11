@@ -25,7 +25,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     Converter<WorkEffort, String> ApplicationConversionServiceFactoryBean.getWorkEffortConverter() {
         return new Converter<WorkEffort, String>() {
             public String convert(WorkEffort workeffort) {
-                return new StringBuilder().append(workeffort.getWorkPosition()).append(" ").append(workeffort.getComment()).append(" ").append(workeffort.getMajor()).toString();
+                return new StringBuilder().append(workeffort.getWorkPosition()).append(" ").append(workeffort.getComment()).append(" ").toString();
             }
         };
     }

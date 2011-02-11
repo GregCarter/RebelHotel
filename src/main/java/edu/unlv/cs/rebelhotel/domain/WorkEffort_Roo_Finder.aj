@@ -3,21 +3,12 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 privileged aspect WorkEffort_Roo_Finder {
-    
-    public static TypedQuery<WorkEffort> WorkEffort.findWorkEffortsByEmployerEquals(Employer employer) {
-        if (employer == null) throw new IllegalArgumentException("The employer argument is required");
-        EntityManager em = WorkEffort.entityManager();
-        TypedQuery<WorkEffort> q = em.createQuery("SELECT WorkEffort FROM WorkEffort AS workeffort WHERE workeffort.employer = :employer", WorkEffort.class);
-        q.setParameter("employer", employer);
-        return q;
-    }
     
     public static TypedQuery<WorkEffort> WorkEffort.findWorkEffortsByStudentEquals(Student student) {
         if (student == null) throw new IllegalArgumentException("The student argument is required");

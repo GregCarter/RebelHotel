@@ -18,7 +18,7 @@ import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findWorkEffortsByStudentEquals", "findWorkEffortsByEmployerEquals" })
+@RooEntity(finders = { "findWorkEffortsByStudentEquals" })
 public class WorkEffort {
 
     @NotNull
@@ -50,5 +50,5 @@ public class WorkEffort {
     @ManyToOne
     private WorkEffortDuration duration;
 
-    private String Major;
+    private String major;
 }
