@@ -31,12 +31,12 @@ public class Student {
     @NotNull
     @Size(min = 2)
     private String firstName;
+    
+    @Size(min = 2)
+    private String middleName;
 
     @Size(min = 2)
     private String lastName;
-
-    @Size(min = 2)
-    private String middleName;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();

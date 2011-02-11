@@ -5,8 +5,8 @@
     <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" z="cZYC67PoW5MiFCVNBuWterMhIjU=">
         <field:display field="NSHE" id="s_edu_unlv_cs_rebelhotel_domain_Student_NSHE" object="${student}" z="Om8QiuST0804rXrTg1cJ26iCGNY="/>
         <field:display field="firstName" id="s_edu_unlv_cs_rebelhotel_domain_Student_firstName" object="${student}" z="0mteuHH5jh4oX0nAbq2YkApp37c="/>
-        <field:display field="lastName" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastName" object="${student}" z="MV/3u5u5Y//qbKb5pE4p3PXgbDY="/>
         <field:display field="middleName" id="s_edu_unlv_cs_rebelhotel_domain_Student_middleName" object="${student}" z="swWBz8PPXJ0GLK8nOkvs+ysHRfM="/>
+        <field:display field="lastName" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastName" object="${student}" z="MV/3u5u5Y//qbKb5pE4p3PXgbDY="/>
         <field:display field="workRequirements" id="s_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" object="${student}" z="KoA/udK4tHnm90te1p7q6r+sDgw="/>
         <field:display field="major1" id="s_edu_unlv_cs_rebelhotel_domain_Student_major1" object="${student}" z="vh0lEitkazHB9rKb+MbrtxYFo8E="/>
         <field:display field="major2" id="s_edu_unlv_cs_rebelhotel_domain_Student_major2" object="${student}" z="QkYXBR6mtXMVxSLf7eo8U922TIA="/>

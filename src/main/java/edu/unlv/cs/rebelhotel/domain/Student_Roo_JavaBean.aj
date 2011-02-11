@@ -28,20 +28,20 @@ privileged aspect Student_Roo_JavaBean {
         this.firstName = firstName;
     }
     
-    public String Student.getLastName() {
-        return this.lastName;
-    }
-    
-    public void Student.setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    
     public String Student.getMiddleName() {
         return this.middleName;
     }
     
     public void Student.setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+    
+    public String Student.getLastName() {
+        return this.lastName;
+    }
+    
+    public void Student.setLastName(String lastName) {
+        this.lastName = lastName;
     }
     
     public Set<WorkRequirement> Student.getWorkRequirements() {

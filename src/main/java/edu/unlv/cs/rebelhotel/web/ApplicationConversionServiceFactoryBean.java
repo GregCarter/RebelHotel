@@ -49,6 +49,24 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		};
 	}
 	
+	Converter<edu.unlv.cs.rebelhotel.domain.Supervisor, String> getSupervisorConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.Supervisor, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.Supervisor param) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(param.getLastName()+" "+param.getFirstName());
+				return sb.toString();
+			}
+		};
+	}
+	
+	Converter<edu.unlv.cs.rebelhotel.domain.Employer, String> getEmployerConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.Employer, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.Employer param) {
+				return param.getLocation();
+			}
+		};
+	}
+	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
@@ -57,6 +75,8 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		registry.addConverter(getSetConverter());
 		registry.addConverter(getTermConverter());
 		registry.addConverter(getStudentConverter());
+		registry.addConverter(getSupervisorConverter());
+		registry.addConverter(getEmployerConverter());
 	}
 	
 }
