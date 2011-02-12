@@ -84,6 +84,17 @@ privileged aspect WorkTemplateController_Roo_Controller {
         return "redirect:/worktemplates?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
+    @RequestMapping(params = { "find=ByNameEquals", "form" }, method = RequestMethod.GET)
+    public String WorkTemplateController.findWorkTemplatesByNameEqualsForm(Model model) {
+        return "worktemplates/findWorkTemplatesByNameEquals";
+    }
+    
+    @RequestMapping(params = "find=ByNameEquals", method = RequestMethod.GET)
+    public String WorkTemplateController.findWorkTemplatesByNameEquals(@RequestParam("name") String name, Model model) {
+        model.addAttribute("worktemplates", WorkTemplate.findWorkTemplatesByNameEquals(name).getResultList());
+        return "worktemplates/list";
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> WorkTemplateController.populateTerms() {
         return Term.findAllTerms();

@@ -13,4 +13,7 @@
 <definition extends="default" name="worktemplates/update">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/update.jspx"/>
     </definition>
+<definition extends="default" name="worktemplates/findWorkTemplatesByNameEquals">
+        <put-attribute name="body" value="/WEB-INF/views/worktemplates/findWorkTemplatesByNameEquals.jspx"/>
+    </definition>
 </tiles-definitions>

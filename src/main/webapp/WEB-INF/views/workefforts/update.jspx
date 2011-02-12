@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" z="cOz1/46+q+zTzhiB5uSOs47IMBA=">
-        <field:select field="Student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_Student" itemValue="id" items="${students}" path="/students" required="true" z="6dzLtQb8QVsh6l6dCwW3D1WOPsI="/>
+        <field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" itemValue="id" items="${students}" path="/students" required="true" z="yTkhwm02NTixAW2YlgNkex9c7n4="/>
         <field:input field="workPosition" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" z="t6mrQRKmjvNXbHhaHXhvWk6puDE="/>
         <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
         <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
@@ -13,5 +13,6 @@
         <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
         <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
         <field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/>
+    <field:input field="major" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_major" z="lbNDgoJR1OEKux0fj5NhiZdG6LQ="/>
     </form:update>
 </div>

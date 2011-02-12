@@ -16,11 +16,11 @@ import java.lang.String;
 privileged aspect WorkEffort_Roo_JavaBean {
     
     public Student WorkEffort.getStudent() {
-        return this.Student;
+        return this.student;
     }
     
-    public void WorkEffort.setStudent(Student Student) {
-        this.Student = Student;
+    public void WorkEffort.setStudent(Student student) {
+        this.student = student;
     }
     
     public String WorkEffort.getWorkPosition() {
@@ -93,6 +93,14 @@ privileged aspect WorkEffort_Roo_JavaBean {
     
     public void WorkEffort.setDuration(WorkEffortDuration duration) {
         this.duration = duration;
+    }
+    
+    public String WorkEffort.getMajor() {
+        return this.major;
+    }
+    
+    public void WorkEffort.setMajor(String major) {
+        this.major = major;
     }
     
 }

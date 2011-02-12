@@ -4,12 +4,10 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_UserAccount" items="${useraccounts}" z="M5gSYCF1XT6i3TOJm/4/UovjgGM=">
         <table:table data="${useraccounts}" id="l_edu_unlv_cs_rebelhotel_domain_UserAccount" path="/useraccounts" z="4yRiS1pq599AKlzmcMMG7ST5FpA=">
-            
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_name" property="name" z="shQk59jvneLbwBS3gVtYtEUllK8="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" property="password" z="fGvd5xTYakOs7GHqM2oL2qWctNo="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" property="userGroup" z="ApnEsKzC/nwopnMpwPa/VYsGHsg="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" property="enabled" z="v67LmVv6c4GIR25ijiOiNDebP5Q="/>
-        
         </table:table>
     </page:list>
 </div>
