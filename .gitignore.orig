@@ -1,0 +1,12 @@
+/target
+.settings
+.project
+.classpath
+.springBeans
+log.roo
+<<<<<<< HEAD
+/backup
+*.zip
+=======
+
+>>>>>>> 3ac40b30ca4767def668a92e452ef11751aa445e
