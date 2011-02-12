@@ -14,12 +14,22 @@
         <field:display field="gradTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" object="${student}" z="GVBUTuxqCefJz3zKqOn+kmB04SU="/>
         <field:display field="workEffort" id="s_edu_unlv_cs_rebelhotel_domain_Student_workEffort" object="${student}" z="3B3iTKWLOZDjBTNHxFpZlQNkpbc="/>
         <div class = "quicklinks">
+        	<!-- For creating a work effort from the student page -->
         	<spring:url value = "/resources/images/rh-pick.png" var = "create_workeffort_image_url" />
         	<spring:message code = "create_workeffort_label" var = "workeffort_title" />
         	<spring:url value = "/workefforts/${itemId}?student" var = "create_workeffort_url" />
         	<span>
         	<a href = "${create_workeffort_url}" alt = "${workeffort_title}" title = "${workeffort_title}">
         		<img src = "${create_workeffort_image_url}" class = "image" alt = "${workeffort_title}" title = "${workeffort_title}" />
+        	</a>
+        	</span>
+        	<!-- For adding a work requirement from the student page -->
+        	<spring:url value = "/resources/images/rh-blank.png" var = "create_workrequirement_image_url" />
+        	<spring:message code = "create_workrequirement_label" var = "workrequirement_title" />
+        	<spring:url value = "/worktemplates/${itemId}?student" var = "create_workrequirement_url" />
+        	<span>
+        	<a href = "${create_workrequirement_url}" alt = "${workrequirement_title}" title = "${workrequirement_title}">
+        		<img src = "${create_workrequirement_image_url}" class = "image" alt = "${workrequirement_title}" title = "${workrequirement_title}" />
         	</a>
         	</span>
         </div>
