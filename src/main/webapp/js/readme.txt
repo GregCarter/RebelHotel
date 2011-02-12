@@ -1,0 +1,1 @@
+Place JavaScript files in this folder.
