@@ -5,6 +5,7 @@
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" render="${empty dependencies}" z="mtIzcW2wKXVHla+IgVE0khyNFNI=">
     	<spring:message code="panel_employer_title" var="employer_form_title"/>
 		<util:panel id="employer_form" title="${employer_form_title}">
+			<!-- <field:input field="employer.name" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_location"/> -->
 			<field:input field="employer.location" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_location"/>
 		</util:panel>
 		<br/>
@@ -27,6 +28,7 @@
         <field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/>
     <field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" itemValue="id" items="${students}" path="/students" required="true" z="yTkhwm02NTixAW2YlgNkex9c7n4="/>
     <field:input field="major" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_major" z="lbNDgoJR1OEKux0fj5NhiZdG6LQ="/>
+ 
     <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
         <field:input field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" z="wniekettublvFpBlLM6Wp9N/nMU="/>
     </form:create>
