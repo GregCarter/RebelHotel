@@ -6,6 +6,7 @@ package edu.unlv.cs.rebelhotel.web;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
@@ -31,16 +32,6 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 privileged aspect WorkEffortController_Roo_Controller {
-    
-    @RequestMapping(method = RequestMethod.POST)
-    public String WorkEffortController.create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
-            return "workefforts/create";
-        }
-        workEffort.persist();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
-    }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String WorkEffortController.createForm(Model model) {
@@ -117,6 +108,11 @@ privileged aspect WorkEffortController_Roo_Controller {
     @ModelAttribute("workeffortdurations")
     public Collection<WorkEffortDuration> WorkEffortController.populateWorkEffortDurations() {
         return WorkEffortDuration.findAllWorkEffortDurations();
+    }
+    
+    @ModelAttribute("workrequirements")
+    public Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
+        return WorkRequirement.findAllWorkRequirements();
     }
     
     @ModelAttribute("paystatuses")

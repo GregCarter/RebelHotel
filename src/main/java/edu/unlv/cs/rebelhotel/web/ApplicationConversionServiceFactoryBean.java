@@ -67,6 +67,16 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		};
 	}
 	
+	Converter<edu.unlv.cs.rebelhotel.domain.WorkEffortDuration, String> getWorkEffortDurationConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.WorkEffortDuration, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.WorkEffortDuration param) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(param.getStartDate().toString() + " " + param.getEndDate().toString());
+				return sb.toString();
+			}
+		};
+	}
+	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
@@ -77,6 +87,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		registry.addConverter(getStudentConverter());
 		registry.addConverter(getSupervisorConverter());
 		registry.addConverter(getEmployerConverter());
+		registry.addConverter(getWorkEffortDurationConverter());
 	}
 	
 }

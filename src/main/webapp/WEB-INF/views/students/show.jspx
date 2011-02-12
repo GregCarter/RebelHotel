@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" z="cZYC67PoW5MiFCVNBuWterMhIjU=">
@@ -13,5 +13,25 @@
         <field:display field="admitTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" object="${student}" z="6tJ5tkyGsDQH3mlfM1wmlzichRU="/>
         <field:display field="gradTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" object="${student}" z="GVBUTuxqCefJz3zKqOn+kmB04SU="/>
         <field:display field="workEffort" id="s_edu_unlv_cs_rebelhotel_domain_Student_workEffort" object="${student}" z="3B3iTKWLOZDjBTNHxFpZlQNkpbc="/>
+        <div class = "quicklinks">
+        	<!-- For creating a work effort from the student page -->
+        	<spring:url value = "/resources/images/rh-pick.png" var = "create_workeffort_image_url" />
+        	<spring:message code = "create_workeffort_label" var = "workeffort_title" />
+        	<spring:url value = "/workefforts/${itemId}?student" var = "create_workeffort_url" />
+        	<span>
+        	<a href = "${create_workeffort_url}" alt = "${workeffort_title}" title = "${workeffort_title}">
+        		<img src = "${create_workeffort_image_url}" class = "image" alt = "${workeffort_title}" title = "${workeffort_title}" />
+        	</a>
+        	</span>
+        	<!-- For adding a work requirement from the student page -->
+        	<spring:url value = "/resources/images/rh-blank.png" var = "create_workrequirement_image_url" />
+        	<spring:message code = "create_workrequirement_label" var = "workrequirement_title" />
+        	<spring:url value = "/worktemplates/${itemId}?student" var = "create_workrequirement_url" />
+        	<span>
+        	<a href = "${create_workrequirement_url}" alt = "${workrequirement_title}" title = "${workrequirement_title}">
+        		<img src = "${create_workrequirement_image_url}" class = "image" alt = "${workrequirement_title}" title = "${workrequirement_title}" />
+        	</a>
+        	</span>
+        </div>
     </page:show>
 </div>
