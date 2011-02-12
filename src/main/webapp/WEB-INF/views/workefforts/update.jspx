@@ -5,11 +5,15 @@
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" z="cOz1/46+q+zTzhiB5uSOs47IMBA=">
         <spring:message code="panel_employer_title" var="employer_form_title"/>
 		<util:panel id="employer_form" title="${employer_form_title}">
+			<!-- TODO remove this before deployment -->
+			<field:simple field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" text="Employer Information"/>
 			<field:input field="employer.location" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_location"/>
 		</util:panel>
 		<br/>
     	<spring:message code="panel_supervisor_title" var="supervisor_form_title"/>
         <util:panel id="supervisor_form" title="${supervisor_form_title}">
+        	<!-- TODO remove this before deployment -->
+        	<field:simple field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" text="Supervisor Information"/>
         	<field:input field="supervisor.firstName" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_firstName"/>
 	        <field:input field="supervisor.lastName" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_lastName"/>
 	        <field:input field="supervisor.email" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_email"/>
@@ -26,8 +30,8 @@
         <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
         <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
         <field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/>
-    <field:input field="major" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_major" z="lbNDgoJR1OEKux0fj5NhiZdG6LQ="/>
-    <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
-        <field:input field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" z="wniekettublvFpBlLM6Wp9N/nMU="/>
+        
+    
+    <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="WL5SIPCYEuGRJqo0wAW1yfp1s6M="/>
     </form:update>
 </div>

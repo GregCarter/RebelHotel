@@ -6,6 +6,7 @@ package edu.unlv.cs.rebelhotel.web;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
@@ -117,6 +118,11 @@ privileged aspect WorkEffortController_Roo_Controller {
     @ModelAttribute("workeffortdurations")
     public Collection<WorkEffortDuration> WorkEffortController.populateWorkEffortDurations() {
         return WorkEffortDuration.findAllWorkEffortDurations();
+    }
+    
+    @ModelAttribute("workrequirements")
+    public Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
+        return WorkRequirement.findAllWorkRequirements();
     }
     
     @ModelAttribute("paystatuses")

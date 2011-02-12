@@ -10,6 +10,9 @@
 <definition extends="default" name="workefforts/create">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/create.jspx"/>
     </definition>
+    <definition extends="default" name="workefforts/createFromStudent">
+        <put-attribute name="body" value="/WEB-INF/views/workefforts/createForStudent.jspx"/>
+    </definition>
 <definition extends="default" name="workefforts/update">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/update.jspx"/>
     </definition>

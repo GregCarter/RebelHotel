@@ -33,7 +33,6 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
         obj.setVerification(null);
         obj.setPayStatus(null);
         obj.setDuration(null);
-        obj.setMajor("major_" + index);
         return obj;
     }
     

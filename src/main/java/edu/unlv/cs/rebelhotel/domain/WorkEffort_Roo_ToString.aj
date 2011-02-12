@@ -19,7 +19,7 @@ privileged aspect WorkEffort_Roo_ToString {
         sb.append("Verification: ").append(getVerification()).append(", ");
         sb.append("PayStatus: ").append(getPayStatus()).append(", ");
         sb.append("Duration: ").append(getDuration()).append(", ");
-        sb.append("Major: ").append(getMajor());
+        sb.append("WorkRequirements: ").append(getWorkRequirements() == null ? "null" : getWorkRequirements().size());
         return sb.toString();
     }
     

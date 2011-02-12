@@ -18,9 +18,10 @@
         <menu:item id="i_workeffortduration_list" messageCode="global_menu_list" url="/workeffortdurations?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/Bhg4tz5tvTDTrfQHuTOt3xWDXo="/>
         </menu:category>
     <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
-            <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
+            
         <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
         <menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
+            <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
             </menu:category>
     <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
@@ -47,5 +48,8 @@
         		<menu:item id="i_login" url="/login"/>
         	</menu:category>
         </security:authorize>
+    <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
+            <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
+        </menu:category>
     </menu:menu>
 </div>
