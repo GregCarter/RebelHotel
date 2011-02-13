@@ -10,4 +10,6 @@ import javax.persistence.Embeddable;
 public class Employer {
 
     private String location;
+
+    private String name;
 }
