@@ -36,7 +36,11 @@ public class Student {
     private String middleName;
 
     @Size(min = 2)
+<<<<<<< HEAD
     private String lastName;
+=======
+    private String middleName; // middle name shouldn't be required.
+>>>>>>> 3bd44b229bd8bec71cc5751e444f137da24b63e8
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
@@ -45,7 +49,7 @@ public class Student {
     private String major1;
 
     @Size(min = 2)
-    private String major2;
+    private String major2; // second major shouldn't be required.
 
     @ManyToOne
     private Term admitTerm;
