@@ -9,7 +9,8 @@ privileged aspect Employer_Roo_ToString {
     
     public String Employer.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Location: ").append(getLocation());
+        sb.append("Location: ").append(getLocation()).append(", ");
+        sb.append("Name: ").append(getName());
         return sb.toString();
     }
     

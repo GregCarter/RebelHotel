@@ -25,13 +25,13 @@
             </menu:category>
     <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
-        <menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
-		<menu:item id="fi_student_nsheequals" messageCode="global_menu_find" url="/students?find=ByNSHEEquals&amp;form" z="NkbwIUTYxcMLtDhV+ppFl6M6/Lc="/>
-        <menu:item id="fi_student_major1equals" messageCode="global_menu_find" url="/students?find=ByMajor1Equals&amp;form" z="dBTfHqRfqnovKNAxMUl9hIOxpWw="/>
-        <menu:item id="fi_student_firstnameequals" messageCode="global_menu_find" url="/students?find=ByFirstNameEquals&amp;form" z="tiqnk5ZkrISXofo2h/km4FL5ZPI="/>
-        <menu:item id="fi_student_firstnamelike" messageCode="global_menu_find" url="/students?find=ByFirstNameLike&amp;form" z="zMuU5zjnZqrbyePUxbCrOqyTKgA="/>
-        <menu:item id="fi_student_major2equals" messageCode="global_menu_find" url="/students?find=ByMajor2Equals&amp;form" z="SrCPiT1QhfHdsvIusNwfaeR4n3E="/>
-        </menu:category>
+			<menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
+            <menu:item id="fi_student_nsheequals" messageCode="global_menu_find" url="/students?find=ByNSHEEquals&amp;form" z="NkbwIUTYxcMLtDhV+ppFl6M6/Lc="/>
+            <menu:item id="fi_student_major1equals" messageCode="global_menu_find" url="/students?find=ByMajor1Equals&amp;form" z="dBTfHqRfqnovKNAxMUl9hIOxpWw="/>
+            <menu:item id="fi_student_firstnameequals" messageCode="global_menu_find" url="/students?find=ByFirstNameEquals&amp;form" z="tiqnk5ZkrISXofo2h/km4FL5ZPI="/>
+            <menu:item id="fi_student_firstnamelike" messageCode="global_menu_find" url="/students?find=ByFirstNameLike&amp;form" z="zMuU5zjnZqrbyePUxbCrOqyTKgA="/>
+            <menu:item id="fi_student_major2equals" messageCode="global_menu_find" url="/students?find=ByMajor2Equals&amp;form" z="SrCPiT1QhfHdsvIusNwfaeR4n3E="/>
+            </menu:category>
     <menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
             <menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
         <menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
