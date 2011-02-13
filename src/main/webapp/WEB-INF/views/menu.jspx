@@ -34,5 +34,9 @@
         <menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
         <menu:item id="fi_useraccount_name" messageCode="global_menu_find" url="/useraccounts?find=ByName&amp;form" z="fonyk5h0KP+whWHK8shgwiSvKuA="/>
         </menu:category>
+    <menu:category id="c_viewprogress" z="Et1uw+1VNaB3lc1xeva1YXC6heA=">
+            <menu:item id="i_viewprogress_new" messageCode="global_menu_new" url="/viewprogresses?form" z="H4jX4xjhJ6bhJzf4Jzgdo1KfGlM="/>
+        <menu:item id="i_viewprogress_list" messageCode="global_menu_list" url="/viewprogresses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fKHXp09Dtruh3CPRaLvkfusGjMc="/>
+        </menu:category>
     </menu:menu>
 </div>
