@@ -13,10 +13,6 @@
             <menu:item id="i_workrequirement_new" messageCode="global_menu_new" url="/workrequirements?form" z="csM8in6vJFFUluBeqSNYi3aS52k="/>
         <menu:item id="i_workrequirement_list" messageCode="global_menu_list" url="/workrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UAs5tAQfRUiBM8rRuURokH94WVA="/>
         </menu:category>
-    <menu:category id="c_workeffortduration" z="mJ5U1EdwVxJTk4cEXwwmHFnBzH4=">
-            <menu:item id="i_workeffortduration_new" messageCode="global_menu_new" url="/workeffortdurations?form" z="rLPIg3ulhnmUKB49SHHRS36uBGg="/>
-        <menu:item id="i_workeffortduration_list" messageCode="global_menu_list" url="/workeffortdurations?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/Bhg4tz5tvTDTrfQHuTOt3xWDXo="/>
-        </menu:category>
     <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
             
         <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>

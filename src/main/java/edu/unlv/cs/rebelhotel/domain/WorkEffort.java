@@ -52,7 +52,7 @@ public class WorkEffort {
     @Enumerated
     private PayStatus payStatus;
 
-    @ManyToOne
+    @Embedded
     private WorkEffortDuration duration;
 
     @ManyToMany(cascade = CascadeType.ALL)

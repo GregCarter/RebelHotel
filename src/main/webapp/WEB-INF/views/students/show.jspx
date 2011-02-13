@@ -19,7 +19,7 @@
         	<!-- For creating a work effort from the student page -->
         	<spring:url value = "/resources/images/rh-pick.png" var = "create_workeffort_image_url" />
         	<spring:message code = "create_workeffort_label" var = "workeffort_title" />
-        	<spring:url value = "/workefforts/${itemId}?student" var = "create_workeffort_url" />
+        	<spring:url value = "/workefforts/${itemId}?forstudent" var = "create_workeffort_url" />
         	<span>
         	<a href = "${create_workeffort_url}" alt = "${workeffort_title}" title = "${workeffort_title}">
         		<img src = "${create_workeffort_image_url}" class = "image" alt = "${workeffort_title}" title = "${workeffort_title}" />
