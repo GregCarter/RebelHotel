@@ -27,7 +27,7 @@
         	<!-- For adding a work requirement from the student page -->
         	<spring:url value = "/resources/images/rh-blank.png" var = "create_workrequirement_image_url" />
         	<spring:message code = "create_workrequirement_label" var = "workrequirement_title" />
-        	<spring:url value = "/worktemplates/${itemId}?student" var = "create_workrequirement_url" />
+        	<spring:url value = "/worktemplates/${itemId}?requirement" var = "create_workrequirement_url" />
         	<span>
         	<a href = "${create_workrequirement_url}" alt = "${workrequirement_title}" title = "${workrequirement_title}">
         		<img src = "${create_workrequirement_image_url}" class = "image" alt = "${workrequirement_title}" title = "${workrequirement_title}" />

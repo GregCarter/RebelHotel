@@ -6,10 +6,11 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import edu.unlv.cs.rebelhotel.domain.ObjectWrapper;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
+import edu.unlv.cs.rebelhotel.form.FormWorkRequirement;
+
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,27 +24,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/worktemplates")
 @Controller
 public class WorkTemplateController {
-	@RequestMapping(value = "/{sid}", params = "student", method = RequestMethod.GET)
+	@RequestMapping(value = "/{sid}", params = "requirement", method = RequestMethod.GET)
     public String createRequirementForm(@PathVariable("sid") Long sid, Model model) {
-        model.addAttribute("objectWrapper", new ObjectWrapper());
+        model.addAttribute("formWorkRequirement", new FormWorkRequirement());
         model.addAttribute("sid", sid);
         return "worktemplates/createRequirement";
     }
 	
 	@RequestMapping(value = "/{sid}", params = "requirement", method = RequestMethod.POST)
-    public String createRequirement(@PathVariable("sid") Long sid, @ModelAttribute("objectWrapper") ObjectWrapper objectWrapper, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors() || objectWrapper.getObj() == null) {
-            model.addAttribute("objectWrapper", objectWrapper);
+    public String createRequirement(@PathVariable("sid") Long sid, @ModelAttribute("formWorkRequirement") FormWorkRequirement formWorkRequirement, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors() || formWorkRequirement.getWorkTemplate() == null) {
+            model.addAttribute("formWorkRequirement", formWorkRequirement);
+            model.addAttribute("sid", sid);
             return "worktemplates/createRequirement";
         }
-        Long wtid = Long.parseLong(objectWrapper.getObj().toString().trim());
-        WorkTemplate workTemplate = WorkTemplate.findWorkTemplate(wtid);
-        //workTemplate.persist();
-        WorkRequirement workRequirement = new WorkRequirement();
-        workRequirement.setHours(workTemplate.getHours());
-        workRequirement.setName(workTemplate.getName());
+        WorkTemplate workTemplate = formWorkRequirement.getWorkTemplate();
         Student student = Student.findStudent(sid);
-        workRequirement.setStudent(student);
+        WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, student);
         workRequirement.persist();
         Set<WorkRequirement> workRequirements = student.getWorkRequirements();
         workRequirements.add(workRequirement);
