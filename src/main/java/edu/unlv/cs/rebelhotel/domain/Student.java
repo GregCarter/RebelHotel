@@ -32,10 +32,8 @@ public class Student {
     @Size(min = 2)
     private String firstName;
     
-    @Size(min = 2)
     private String middleName;
 
-    @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
