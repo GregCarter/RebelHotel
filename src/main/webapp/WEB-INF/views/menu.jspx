@@ -39,7 +39,7 @@
     <menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
             <menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>
         <menu:item id="i_worktemplate_list" messageCode="global_menu_list" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/>
-        <menu:item id="fi_worktemplate_nameequals" messageCode="global_menu_find" url="/worktemplates?find=ByNameEquals&amp;form" z="l+ihaYjBnwP3bwyV6l1HhjMGlu0="/>
+        <menu:item id="fi_worktemplate_nameequals" messageCode="global_menu_find" url="/worktemplates?find=ByNameEquals&amp;form" z="l+ihaYjBnwP3bwyV6l1HhjMGlu0="/>  
             </menu:category>
         </security:authorize>
         <security:authorize access="hasRole('ROLE_ANONYMOUS')">
