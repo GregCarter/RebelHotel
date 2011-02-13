@@ -4,5 +4,6 @@
 .classpath
 .springBeans
 log.roo
+.DS_Store
 /backup
 *.zip
