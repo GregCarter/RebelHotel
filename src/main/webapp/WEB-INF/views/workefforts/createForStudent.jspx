@@ -7,7 +7,8 @@
 		<util:panel id="employer_form" title="${employer_form_title}">
 			<!-- TODO remove this before deployment -->
 			<field:simple field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" text="Employer Information"/>
-			<field:input field="employer.location" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_location"/>
+		<field:input field="employer.name" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_name"/>
+		<field:input field="employer.location" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_location"/>
 		</util:panel>
 		<br/>
     	<spring:message code="panel_supervisor_title" var="supervisor_form_title"/>
