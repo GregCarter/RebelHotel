@@ -19,4 +19,13 @@ public class WorkRequirement {
 
     @ManyToOne
     private Student student;
+    
+    // A method to construct a work requirement from a work template
+    public static WorkRequirement fromWorkTemplate(WorkTemplate wt, Student student) {
+    	WorkRequirement wr = new WorkRequirement();
+    	wr.setHours(wt.getHours());
+    	wr.setName(wt.getName());
+    	wr.setStudent(student);
+    	return wr;
+    }
 }
