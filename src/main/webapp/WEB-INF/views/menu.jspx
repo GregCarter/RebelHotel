@@ -47,5 +47,9 @@
     <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
             <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
         </menu:category>
+    <menu:category id="c_viewprogress" z="Et1uw+1VNaB3lc1xeva1YXC6heA=">
+            <menu:item id="i_viewprogress_new" messageCode="global_menu_new" url="/viewprogresses?form" z="H4jX4xjhJ6bhJzf4Jzgdo1KfGlM="/>
+        <menu:item id="i_viewprogress_list" messageCode="global_menu_list" url="/viewprogresses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fKHXp09Dtruh3CPRaLvkfusGjMc="/>
+        </menu:category>
     </menu:menu>
 </div>

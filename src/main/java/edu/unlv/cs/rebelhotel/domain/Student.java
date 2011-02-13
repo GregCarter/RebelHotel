@@ -43,7 +43,7 @@ public class Student {
     private String major1;
 
     @Size(min = 2)
-    private String major2;
+    private String major2; // second major shouldn't be required.
 
     @ManyToOne
     private Term admitTerm;
