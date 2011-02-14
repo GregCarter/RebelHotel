@@ -34,6 +34,7 @@ public class Student {
     
     private String middleName;
 
+    @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -42,8 +43,7 @@ public class Student {
     @Size(min = 2)
     private String major1;
 
-    @Size(min = 2)
-    private String major2; // second major shouldn't be required.
+    private String major2;
 
     @ManyToOne
     private Term admitTerm;

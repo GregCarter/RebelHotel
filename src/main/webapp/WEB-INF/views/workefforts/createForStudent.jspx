@@ -32,13 +32,12 @@
        
 		<spring:message code="panel_workeffortduration_title" var="workeffortduration_form_title"/>
 		<util:panel id="workeffortduration_form" title="${workeffortduration_form_title}">
-		    <!-- TODO remove this before deployment -->
-			<field:simple field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" text="Work Effort Duration"/>
-			<field:datetime dateTimePattern="${workEffortDuration_startdate_date_format}" field="duration.startDate" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration_startDate" z="e1NnqzkemAXKA+kNm1HTZ7hquPw="/>
-			<field:datetime dateTimePattern="${workEffortDuration_enddate_date_format}" field="duration.endDate" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration_endDate" z="sq/AE9soB8d+B1rhARMLA9KwpqY="/>
-			<field:input field="duration.hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffortDuration_hours" validationMessageCode="field_invalid_integer" z="l3C/BiPrL+qL4qBAbC7fzFTV+m4="/>
+			<field:simple field="workeffortduration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" text="Work Effort Duration"/>
+			<field:datetime dateTimePattern="${workEffortDuration_startdate_date_format}" field="duration.startDate" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration_startDate" z="e1NnqzkemAXKA+kNm1HTZ7hquPw="/>
+			<field:datetime dateTimePattern="${workEffortDuration_enddate_date_format}" field="duration.endDate" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration_endDate" z="sq/AE9soB8d+B1rhARMLA9KwpqY="/>
+			<field:input field="duration.hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration_hours" validationMessageCode="field_invalid_integer" z="l3C/BiPrL+qL4qBAbC7fzFTV+m4="/>
 		</util:panel>
-		<br />
+		<br/>
 
 		<!--<field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/> -->
         <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="WL5SIPCYEuGRJqo0wAW1yfp1s6M="/>
