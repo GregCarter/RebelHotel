@@ -2,15 +2,15 @@
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
- 	<table id="menu" style="display:inline;width:100%;">
+    <table id="menu" style="display:inline;width:100%;">
 		<td id="i_student_new">
-			<a title="Create new Student" href="/RebelHotel/students?form">Create new Student</a>
+			<a title="Create Student" href="/RebelHotel/students?form">Create Student</a>
 		</td>
 		<td id="i_student_list">
-			<a title="List all Students" href="/RebelHotel/students?page=1&amp;size=10">List all Students</a>
+			<a title="Query Students" href="/RebelHotel/students?page=1&amp;size=10">Query Students</a>
 		</td>
-		<td id="i_student_find">
-			<a title="Query Students" href="/RebelHotel/students?find">Query Students</a>
+		<td id="fi_student_nsheequals">
+			<a title="Update Student" href="/RebelHotel/students?find=ByNSHEEquals&amp;form">Update Students</a>
 		</td>
 	</table><br/><br/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_Student" modelAttribute="student" path="/students" z="GBNOAl+i5dH6v0+VrL7CjJscAjc=">

@@ -2,6 +2,17 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <table id="menu" style="display:inline;width:100%;">
+		<td id="i_workeffort_new">
+			<a title="Create Job" href="/RebelHotel/workefforts?form">Create Job</a>
+		</td>
+		<td id="i_workeffort_list">
+			<a title="Query Jobs" href="/RebelHotel/workefforts?page=1&amp;size=10">Query Jobs</a>
+		</td>
+		<td id="fi_student_nsheequals">
+			<a title="Update Student" href="/RebelHotel/workefforts?find=ByStudentEquals&amp;form">Update Job</a>
+		</td>
+	</table><br/><br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkEffort" items="${workefforts}" z="hkWx40HfLYNyB8b9jVXEMIjurE8=">
         <table:table data="${workefforts}" id="l_edu_unlv_cs_rebelhotel_domain_WorkEffort" path="/workefforts" z="9MJC5QGkhiyHT8TWwoEzHyyyIwM=">
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" property="student" z="2ckKbTYcvHBufdKizbRYXCIphms="/>
