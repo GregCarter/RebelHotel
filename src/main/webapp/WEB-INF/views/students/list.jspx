@@ -21,9 +21,8 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="DSzicBjGwxYL/2/kNsf10cNZTGI="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
-            
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_major1" property="major1" z="a3Q4xRABZnc0jgO6DaYliyTHj1Y="/>
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirement" property="workRequirement" z="8kk0klZ9jvCUFRrfOep7GFuPmU0="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" property="workRequirements" z="91qvopvtsVig37rUZyWtBcBTmRA="/>
+			<table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_email" property="email" z="v0BGqklSPHIPXq+NepLkZBAqQxo="/>
         </table:table>
     </page:list>
 </div>

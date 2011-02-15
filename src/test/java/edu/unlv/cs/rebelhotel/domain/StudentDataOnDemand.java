@@ -14,6 +14,7 @@ public class StudentDataOnDemand {
         obj.setLastName("lastName_" + index);
         obj.setMajor1("major1_" + index);
         obj.setMajor2("major2_" + index);
+        obj.setEmail("email_" + index);
         obj.setAdmitTerm(null);
         obj.setGradTerm(null);
         return obj;

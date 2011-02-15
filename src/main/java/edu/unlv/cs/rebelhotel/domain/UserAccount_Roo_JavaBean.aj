@@ -5,16 +5,17 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.String;
 
 privileged aspect UserAccount_Roo_JavaBean {
     
-    public String UserAccount.getName() {
-        return this.name;
+    public Long UserAccount.getNSHE() {
+        return this.NSHE;
     }
     
-    public void UserAccount.setName(String name) {
-        this.name = name;
+    public void UserAccount.setNSHE(Long NSHE) {
+        this.NSHE = NSHE;
     }
     
     public String UserAccount.getPassword() {

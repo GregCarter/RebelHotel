@@ -30,16 +30,19 @@ public class Student {
     private Long NSHE;
 
     @NotNull
+    private String email;
+    
+    @NotNull
     @Size(min = 2)
     private String firstName;
-    
+
     private String middleName;
 
     @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<WorkRequirement> workRequirement = new HashSet<WorkRequirement>();
+    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
 
     @Size(min = 2)
     private String major1;
@@ -73,5 +76,10 @@ public class Student {
     public boolean hasCompletedWorkRequirement(WorkRequirement wr) {
     	ViewProgress progress = new ViewProgress();
     	return (progress.getRemainingHours(wr,progress.computeApprovedHours(wr)) == 0)?true:false;
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("("+getNSHE().toString()+") "+getFirstName()+" "+getLastName());
+        return sb.toString();
     }
 }

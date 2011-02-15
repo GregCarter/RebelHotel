@@ -32,9 +32,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	Converter<edu.unlv.cs.rebelhotel.domain.Term, String> getTermConverter() {
 		return new Converter<edu.unlv.cs.rebelhotel.domain.Term, String>() {
 			public String convert(edu.unlv.cs.rebelhotel.domain.Term param) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(param.getSemester().toString()+" "+param.getTermYear().toString());
-				return sb.toString();
+				return param.toString();
 			}
 		};
 	}
@@ -42,9 +40,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	Converter<edu.unlv.cs.rebelhotel.domain.Student, String> getStudentConverter() {
 		return new Converter<edu.unlv.cs.rebelhotel.domain.Student, String>() {
 			public String convert(edu.unlv.cs.rebelhotel.domain.Student param) {
-				StringBuilder sb = new StringBuilder();
-				sb.append("("+param.getNSHE().toString()+") "+param.getLastName()+" "+param.getFirstName());
-				return sb.toString();
+				return param.toString();
 			}
 		};
 	}
@@ -52,9 +48,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	Converter<edu.unlv.cs.rebelhotel.domain.Supervisor, String> getSupervisorConverter() {
 		return new Converter<edu.unlv.cs.rebelhotel.domain.Supervisor, String>() {
 			public String convert(edu.unlv.cs.rebelhotel.domain.Supervisor param) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(param.getLastName()+" "+param.getFirstName());
-				return sb.toString();
+				return param.toString();
 			}
 		};
 	}
@@ -62,7 +56,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	Converter<edu.unlv.cs.rebelhotel.domain.Employer, String> getEmployerConverter() {
 		return new Converter<edu.unlv.cs.rebelhotel.domain.Employer, String>() {
 			public String convert(edu.unlv.cs.rebelhotel.domain.Employer param) {
-				return param.getLocation();
+				return param.toString();
 			}
 		};
 	}
@@ -70,9 +64,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 	Converter<edu.unlv.cs.rebelhotel.domain.WorkEffortDuration, String> getWorkEffortDurationConverter() {
 		return new Converter<edu.unlv.cs.rebelhotel.domain.WorkEffortDuration, String>() {
 			public String convert(edu.unlv.cs.rebelhotel.domain.WorkEffortDuration param) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(param.getStartDate().toString() + " " + param.getEndDate().toString());
-				return sb.toString();
+				return param.toString();
 			}
 		};
 	}

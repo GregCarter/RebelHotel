@@ -25,4 +25,10 @@ public class WorkEffortDuration {
     private Date endDate;
     
     private Integer hours;
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getStartDate().toString()+" to "+getEndDate().toString()+" ("+getHours().toString()+" hours)");
+        return sb.toString();
+    }
 }

@@ -7,4 +7,7 @@
     <definition extends = "default" name = "test/awesome">
     	<put-attribute name = "body" value = "/WEB-INF/views/test/awesome.jspx" />
     </definition>
+    <definition extends = "default" name = "test/test2">
+    	<put-attribute name = "body" value = "/WEB-INF/views/test/test2.jspx" />
+    </definition>
 </tiles-definitions>

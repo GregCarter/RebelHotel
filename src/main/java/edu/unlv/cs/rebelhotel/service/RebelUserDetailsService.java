@@ -12,9 +12,13 @@ import edu.unlv.cs.rebelhotel.domain.UserAccount;
 @Service("userService")
 public class RebelUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
-		UserAccount ua = (UserAccount) UserAccount.findUserAccountsByName(username).getSingleResult();
-		UserDetails ud = new RebelUserDetails(ua);
-		
-		return ud;
+		try {
+			UserAccount ua = (UserAccount) UserAccount.findUserAccountsByNSHE(Long.parseLong(username.trim())).getSingleResult();
+			UserDetails ud = new RebelUserDetails(ua);
+			return ud;
+		}
+		catch (NumberFormatException exception) {
+			throw new UsernameNotFoundException("Malformed NSHE entered");
+		}
 	}
 }
