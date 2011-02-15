@@ -7,6 +7,8 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" property="name" z="Jts3b4B2mL21AoL7jassUkvSGQU="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_hours" property="hours" z="UMlQ0/+gfF8A7URivcIzg7MSaZ0="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_student" property="student" z="UMBZM12lYzwbalc7LbUL6ihNeYg="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" property="workEffort" z="loEPCDKlA5Y1PYkYKsCNAxIy/SM="/>
+        
         </table:table>
     </page:list>
 </div>

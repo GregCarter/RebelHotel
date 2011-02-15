@@ -13,12 +13,13 @@ privileged aspect Student_Roo_ToString {
         sb.append("FirstName: ").append(getFirstName()).append(", ");
         sb.append("MiddleName: ").append(getMiddleName()).append(", ");
         sb.append("LastName: ").append(getLastName()).append(", ");
-        sb.append("WorkRequirements: ").append(getWorkRequirements() == null ? "null" : getWorkRequirements().size()).append(", ");
+        sb.append("WorkRequirement: ").append(getWorkRequirement() == null ? "null" : getWorkRequirement().size()).append(", ");
         sb.append("Major1: ").append(getMajor1()).append(", ");
         sb.append("Major2: ").append(getMajor2()).append(", ");
         sb.append("AdmitTerm: ").append(getAdmitTerm()).append(", ");
         sb.append("GradTerm: ").append(getGradTerm()).append(", ");
-        sb.append("WorkEffort: ").append(getWorkEffort() == null ? "null" : getWorkEffort().size());
+        sb.append("WorkEffort: ").append(getWorkEffort() == null ? "null" : getWorkEffort().size()).append(", ");
+        sb.append("Milestone: ").append(getMilestone() == null ? "null" : getMilestone().size());
         return sb.toString();
     }
     

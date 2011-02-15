@@ -16,6 +16,7 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
+import javax.persistence.Embedded;
 
 @RooJavaBean
 @RooToString
@@ -38,7 +39,7 @@ public class Student {
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
+    private Set<WorkRequirement> workRequirement = new HashSet<WorkRequirement>();
 
     @Size(min = 2)
     private String major1;
@@ -54,7 +55,23 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
     
-    boolean hasReachedMilestone() {
-    	return false;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<ViewProgress> milestone = new HashSet<ViewProgress>();
+    
+    public boolean hasReachedMilestone() {
+    	boolean reachedMilestone = true;
+    	while (reachedMilestone) {
+    		for (ViewProgress each : milestone) {
+    			if(each.getRemainingHours()!=0) {
+    				reachedMilestone = false;
+    			}
+    		}
+    	}
+    	return reachedMilestone;
+    }
+    
+    public boolean hasCompletedWorkRequirement(WorkRequirement wr) {
+    	ViewProgress progress = new ViewProgress();
+    	return (progress.getRemainingHours(wr,progress.computeApprovedHours(wr)) == 0)?true:false;
     }
 }

@@ -4,21 +4,23 @@
     <jsp:output omit-xml-declaration="yes"/>
     <table id="menu" style="display:inline;width:100%;">
 		<td id="i_student_new">
-			<a title="Create Student" href="/RebelHotel/students?form">Create Student</a>
+			<a href="/RebelHotel/students?form" title="Create Student">Create Student</a>
 		</td>
 		<td id="i_student_list">
-			<a title="Query Students" href="/RebelHotel/students?page=1&amp;size=10">Query Students</a>
+			<a href="/RebelHotel/students?page=1&amp;size=10" title="Query Students">Query Students</a>
 		</td>
 		<td id="fi_student_nsheequals">
-			<a title="Update Student" href="/RebelHotel/students?find=ByNSHEEquals&amp;form">Update Students</a>
+			<a href="/RebelHotel/students?find=ByNSHEEquals&amp;form" title="Update Student">Update Students</a>
 		</td>
-	</table><br/><br/>
+	</table>
+    <br/>
+    <br/>
     <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" z="cZYC67PoW5MiFCVNBuWterMhIjU=">
         <field:display field="NSHE" id="s_edu_unlv_cs_rebelhotel_domain_Student_NSHE" object="${student}" z="Om8QiuST0804rXrTg1cJ26iCGNY="/>
         <field:display field="firstName" id="s_edu_unlv_cs_rebelhotel_domain_Student_firstName" object="${student}" z="0mteuHH5jh4oX0nAbq2YkApp37c="/>
         <field:display field="middleName" id="s_edu_unlv_cs_rebelhotel_domain_Student_middleName" object="${student}" z="swWBz8PPXJ0GLK8nOkvs+ysHRfM="/>
         <field:display field="lastName" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastName" object="${student}" z="MV/3u5u5Y//qbKb5pE4p3PXgbDY="/>
-        <field:display field="workRequirements" id="s_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" object="${student}" z="KoA/udK4tHnm90te1p7q6r+sDgw="/>
+        
        	<br/>
 	<br/>
 	<field:display field="major1" id="s_edu_unlv_cs_rebelhotel_domain_Student_major1" object="${student}" z="vh0lEitkazHB9rKb+MbrtxYFo8E="/>
@@ -26,25 +28,26 @@
         <field:display field="admitTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" object="${student}" z="6tJ5tkyGsDQH3mlfM1wmlzichRU="/>
         <field:display field="gradTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" object="${student}" z="GVBUTuxqCefJz3zKqOn+kmB04SU="/>
         <field:display field="workEffort" id="s_edu_unlv_cs_rebelhotel_domain_Student_workEffort" object="${student}" z="3B3iTKWLOZDjBTNHxFpZlQNkpbc="/>
-        <div class = "quicklinks">
+        <div class="quicklinks">
         	<!-- For creating a work effort from the student page -->
-        	<spring:url value = "/resources/images/rh-pick.png" var = "create_workeffort_image_url" />
-        	<spring:message code = "create_workeffort_label" var = "workeffort_title" />
-        	<spring:url value = "/workefforts/${itemId}?forstudent" var = "create_workeffort_url" />
+        	<spring:url value="/resources/images/rh-pick.png" var="create_workeffort_image_url"/>
+        	<spring:message code="create_workeffort_label" var="workeffort_title"/>
+        	<spring:url value="/workefforts/${itemId}?forstudent" var="create_workeffort_url"/>
         	<span>
-        	<a href = "${create_workeffort_url}" alt = "${workeffort_title}" title = "${workeffort_title}">
-        		<img src = "${create_workeffort_image_url}" class = "image" alt = "${workeffort_title}" title = "${workeffort_title}" />
+        	<a alt="${workeffort_title}" href="${create_workeffort_url}" title="${workeffort_title}">
+        		<img alt="${workeffort_title}" class="image" src="${create_workeffort_image_url}" title="${workeffort_title}"/>
         	</a>
         	</span>
         	<!-- For adding a work requirement from the student page -->
-        	<spring:url value = "/resources/images/rh-blank.png" var = "create_workrequirement_image_url" />
-        	<spring:message code = "create_workrequirement_label" var = "workrequirement_title" />
-        	<spring:url value = "/worktemplates/${itemId}?requirement" var = "create_workrequirement_url" />
+        	<spring:url value="/resources/images/rh-blank.png" var="create_workrequirement_image_url"/>
+        	<spring:message code="create_workrequirement_label" var="workrequirement_title"/>
+        	<spring:url value="/worktemplates/${itemId}?requirement" var="create_workrequirement_url"/>
         	<span>
-        	<a href = "${create_workrequirement_url}" alt = "${workrequirement_title}" title = "${workrequirement_title}">
-        		<img src = "${create_workrequirement_image_url}" class = "image" alt = "${workrequirement_title}" title = "${workrequirement_title}" />
+        	<a alt="${workrequirement_title}" href="${create_workrequirement_url}" title="${workrequirement_title}">
+        		<img alt="${workrequirement_title}" class="image" src="${create_workrequirement_image_url}" title="${workrequirement_title}"/>
         	</a>
         	</span>
         </div>
+    <field:display field="workRequirement" id="s_edu_unlv_cs_rebelhotel_domain_Student_workRequirement" object="${student}" z="FXVdXNwKrtHDBpExo2MSbEgItC0="/>
     </page:show>
 </div>

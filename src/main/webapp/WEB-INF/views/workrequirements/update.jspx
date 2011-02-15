@@ -6,5 +6,7 @@
         <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" required="true" z="0U8ALT9XerLWgnbJhumpQ0031+I="/>
         <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_hours" validationMessageCode="field_invalid_integer" z="Eoo0TuBN5MlPX4XbCcu4M3zEV4o="/>
         <field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_student" itemValue="id" items="${students}" path="/students" z="Rnppbs4IsSjzUgvGptN9pyLr7JQ="/>
+    <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="by/0Zf58pw+PC8o39bh+pS9JlR0="/>
+    
     </form:update>
 </div>

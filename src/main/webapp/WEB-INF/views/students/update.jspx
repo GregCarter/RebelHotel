@@ -4,25 +4,28 @@
     <jsp:output omit-xml-declaration="yes"/>
     <table id="menu" style="display:inline;width:100%;">
 		<td id="i_student_new">
-			<a title="Create Student" href="/RebelHotel/students?form">Create Student</a>
+			<a href="/RebelHotel/students?form" title="Create Student">Create Student</a>
 		</td>
 		<td id="i_student_list">
-			<a title="Query Students" href="/RebelHotel/students?page=1&amp;size=10">Query Students</a>
+			<a href="/RebelHotel/students?page=1&amp;size=10" title="Query Students">Query Students</a>
 		</td>
 		<td id="fi_student_nsheequals">
-			<a title="Update Student" href="/RebelHotel/students?find=ByNSHEEquals&amp;form">Update Students</a>
+			<a href="/RebelHotel/students?find=ByNSHEEquals&amp;form" title="Update Student">Update Students</a>
 		</td>
-	</table><br/><br/>
+	</table>
+    <br/>
+    <br/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_Student" modelAttribute="student" path="/students" z="GBNOAl+i5dH6v0+VrL7CjJscAjc=">
         <field:input decimalMin="1000000000" field="NSHE" id="c_edu_unlv_cs_rebelhotel_domain_Student_NSHE" required="true" validationMessageCode="field_invalid_integer" z="ZpXcV5KrIIpW4g+njxclUSMdMdo="/>
         <field:input field="firstName" id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" min="2" required="true" z="ZfwFke0QaSpPBgRorUMR8NFmIWU="/>
         <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" z="BuRwgbxmRVgdC9lvISnajvdbTNc="/>
         <field:input field="lastName" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" min="2" z="IlfhnXlO+rtugVdnRYwnLBnvLho="/>
-        <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="9HM7Lw5aBP1exgSasdHm3BZhyM4="/>
+        
         <field:input field="major1" id="c_edu_unlv_cs_rebelhotel_domain_Student_major1" min="2" z="e0h6NSXl8Y/9TFgHLz12S2bEEbc="/>
         <field:input field="major2" id="c_edu_unlv_cs_rebelhotel_domain_Student_major2" z="XLzhDLoMRVhdGICs+aoOrxg3olo="/>
         <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
         <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
         <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
+    <field:select field="workRequirement" id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirement" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="Pkjvt8tmmBeP7akvw0azdgvDv3U="/>
     </form:update>
 </div>

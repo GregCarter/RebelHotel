@@ -9,24 +9,9 @@ privileged aspect ViewProgress_Roo_ToString {
     
     public String ViewProgress.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("NSHE: ").append(getNSHE()).append(", ");
-        sb.append("First: ").append(getFirst()).append(", ");
-        sb.append("Last: ").append(getLast()).append(", ");
-        sb.append("Middle: ").append(getMiddle()).append(", ");
-        sb.append("Email: ").append(getEmail()).append(", ");
-        sb.append("Major1: ").append(getMajor1()).append(", ");
-        sb.append("Major2: ").append(getMajor2()).append(", ");
-        sb.append("AdmitTerm: ").append(getAdmitTerm()).append(", ");
-        sb.append("ExpectedGrad: ").append(getExpectedGrad()).append(", ");
-        sb.append("Major1Milestone: ").append(getMajor1Milestone()).append(", ");
-        sb.append("Major2Milestone: ").append(getMajor2Milestone()).append(", ");
-        sb.append("Major1_approved_hrs: ").append(getMajor1_approved_hrs()).append(", ");
-        sb.append("Major1_remaining_hrs: ").append(getMajor1_remaining_hrs()).append(", ");
-        sb.append("Major2_approved_hrs: ").append(getMajor2_approved_hrs()).append(", ");
-        sb.append("Major2_remaining_hrs: ").append(getMajor2_remaining_hrs()).append(", ");
-        sb.append("Total_hrs_approved: ").append(getTotal_hrs_approved()).append(", ");
-        sb.append("Total_hrs_remaining: ").append(getTotal_hrs_remaining()).append(", ");
-        sb.append("General_requirement: ").append(getGeneral_requirement());
+        sb.append("RemainingHours: ").append(getRemainingHours()).append(", ");
+        sb.append("WorkRequirement: ").append(getWorkRequirement()).append(", ");
+        sb.append("ApprovedHours: ").append(getApprovedHours());
         return sb.toString();
     }
     
