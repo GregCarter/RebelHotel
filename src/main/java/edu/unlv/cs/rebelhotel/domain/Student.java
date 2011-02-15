@@ -29,6 +29,7 @@ public class Student {
     private Long NSHE;
 
     @NotNull
+    @Size(min = 2)
     private String email;
     
     @NotNull
@@ -37,6 +38,7 @@ public class Student {
 
     private String middleName;
 
+    @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
