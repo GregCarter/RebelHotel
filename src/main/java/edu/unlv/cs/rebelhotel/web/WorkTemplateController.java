@@ -42,7 +42,7 @@ public class WorkTemplateController {
         Student student = Student.findStudent(sid);
         WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, student);
         workRequirement.persist();
-        Set<WorkRequirement> workRequirements = student.getWorkRequirements();
+        Set<WorkRequirement> workRequirements = student.getWorkRequirement();
         workRequirements.add(workRequirement);
         student.merge();
         return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), request);

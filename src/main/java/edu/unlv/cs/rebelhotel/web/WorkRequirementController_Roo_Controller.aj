@@ -4,6 +4,7 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
@@ -87,6 +88,11 @@ privileged aspect WorkRequirementController_Roo_Controller {
     @ModelAttribute("students")
     public Collection<Student> WorkRequirementController.populateStudents() {
         return Student.findAllStudents();
+    }
+    
+    @ModelAttribute("workefforts")
+    public Collection<WorkEffort> WorkRequirementController.populateWorkEfforts() {
+        return WorkEffort.findAllWorkEfforts();
     }
     
     String WorkRequirementController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {

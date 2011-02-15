@@ -2,6 +2,17 @@
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <table id="menu" style="display:inline;width:100%;">
+		<td id="i_workeffort_new">
+			<a title="Create Job" href="/RebelHotel/workefforts?form">Create Job</a>
+		</td>
+		<td id="i_workeffort_list">
+			<a title="Query Jobs" href="/RebelHotel/workefforts?page=1&amp;size=10">Query Jobs</a>
+		</td>
+		<td id="fi_workeffort_studentequals">
+			<a title="Update Student" href="/RebelHotel/students?find=ByStudentEquals&amp;form">Update Job</a>
+		</td>
+	</table><br/><br/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" z="cOz1/46+q+zTzhiB5uSOs47IMBA=">
         <spring:message code="panel_employer_title" var="employer_form_title"/>
 		<util:panel id="employer_form" title="${employer_form_title}">
