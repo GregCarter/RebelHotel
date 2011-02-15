@@ -54,11 +54,11 @@ privileged aspect Student_Roo_JavaBean {
     }
     
     public Set<WorkRequirement> Student.getWorkRequirement() {
-        return this.workRequirement;
+        return this.workRequirements;
     }
     
     public void Student.setWorkRequirement(Set<WorkRequirement> workRequirement) {
-        this.workRequirement = workRequirement;
+        this.workRequirements = workRequirement;
     }
     
     public String Student.getMajor1() {

@@ -76,7 +76,8 @@ public class Student {
     public boolean hasCompletedWorkRequirement(WorkRequirement wr) {
     	ViewProgress progress = new ViewProgress();
     	return (progress.getRemainingHours(wr,progress.computeApprovedHours(wr)) == 0)?true:false;
-    
+    }
+	
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("("+getNSHE().toString()+") "+getFirstName()+" "+getLastName());
