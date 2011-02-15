@@ -16,16 +16,6 @@ privileged aspect UserAccountDataOnDemand_Roo_DataOnDemand {
     
     private List<UserAccount> UserAccountDataOnDemand.data;
     
-    public UserAccount UserAccountDataOnDemand.getNewTransientUserAccount(int index) {
-        edu.unlv.cs.rebelhotel.domain.UserAccount obj = new edu.unlv.cs.rebelhotel.domain.UserAccount();
-        obj.setPassword("password_" + index);
-        obj.setPasswordEncoder(null);
-        obj.setName("name_" + index);
-        obj.setUserGroup(null);
-        obj.setEnabled(Boolean.TRUE);
-        return obj;
-    }
-    
     public UserAccount UserAccountDataOnDemand.getSpecificUserAccount(int index) {
         init();
         if (index < 0) index = 0;

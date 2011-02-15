@@ -5,8 +5,8 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect WorkEffortDuration_Roo_Configurable {
+privileged aspect ViewProgress_Roo_Configurable {
     
-    declare @type: WorkEffortDuration: @Configurable;
+    declare @type: ViewProgress: @Configurable;
     
 }

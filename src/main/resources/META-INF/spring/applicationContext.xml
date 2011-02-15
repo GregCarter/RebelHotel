@@ -76,9 +76,12 @@
     		</list>
     	</property>
     </bean> -->
-    <bean class="edu.unlv.cs.rebelhotel.service.ServiceTest" id="serviceTest"/>
     <bean class="edu.unlv.cs.rebelhotel.service.SpringApplicationContext" id="springApplicationContext"/>
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id = "userInformation" class = "edu.unlv.cs.rebelhotel.service.UserInformation" scope = "session">
+    	<aop:scoped-proxy />
     </bean>
 </beans>

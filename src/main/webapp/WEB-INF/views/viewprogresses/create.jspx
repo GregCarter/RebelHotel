@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_edu_unlv_cs_rebelhotel_domain_ViewProgress" modelAttribute="viewProgress" path="/viewprogresses" render="${empty dependencies}" z="RTq064uC1UPMoB/i03DTtELAoE0=">
+        <field:input field="NSHE" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_NSHE" validationMessageCode="field_invalid_integer" z="cy9EjQFORem4mdCg52NkKb6+iZs="/>
+        <field:input field="first" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_first" min="2" required="true" z="n2H8XPTz+B05LHDvoL3aP3oqbto="/>
+        <field:input field="last" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_last" min="2" required="true" z="ALdTKbh5hpyyay5tRLqnU9uFzuE="/>
+        <field:input field="middle" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_middle" min="2" required="true" z="Zs5v9u6z8zbKvJ9rxbjegO1KMTg="/>
+        <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_email" min="2" required="true" validationMessageCode="field_invalid_email" z="RnorCSMWxYn65PaH458AQXPcdxI="/>
+        <field:input field="major1" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1" min="2" required="true" z="Q4g9rugf93aCp8ITNATk6vNXVo0="/>
+        <field:input field="major2" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2" min="2" required="true" z="mI8/1AlIGOvFAjt1QNSrx27bvmE="/>
+        <field:input field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_admitTerm" min="2" required="true" z="MkGt7aXMiir3wVqasVivkJjmWQ4="/>
+        <field:input field="expectedGrad" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_expectedGrad" min="2" required="true" z="+kFQJlwHAdXQjBcluKu+LLT/xx0="/>
+        <field:input field="major1Milestone" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1Milestone" min="2" required="true" z="jj675m6mI3Y0ZYGm0bZOFv7ZEuY="/>
+        <field:input field="major2Milestone" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2Milestone" min="2" required="true" z="9SQ5dpPg243DWWWmcOGskrDm22w="/>
+        <field:input field="major1_approved_hrs" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_approved_hrs" validationMessageCode="field_invalid_integer" z="0sl+/G+GfX7/PvXBlng/4tx4VDg="/>
+        <field:input field="major1_remaining_hrs" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_remaining_hrs" validationMessageCode="field_invalid_integer" z="N6lc+7kWeT0AyGU3CFCOVUtLlec="/>
+        <field:input field="major2_approved_hrs" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2_approved_hrs" validationMessageCode="field_invalid_integer" z="WAIFbk5f+wkujvdZ++7kUeVkZ1I="/>
+        <field:input field="major2_remaining_hrs" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2_remaining_hrs" validationMessageCode="field_invalid_integer" z="hv7iQq1RprkJtpnJHwMkHTBW1+8="/>
+        <field:input field="total_hrs_approved" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_total_hrs_approved" validationMessageCode="field_invalid_integer" z="E+/XRZ71agtd5ZARVf+/kba9ICY="/>
+        <field:input field="total_hrs_remaining" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_total_hrs_remaining" validationMessageCode="field_invalid_integer" z="qESSVb5IPejk0/E7XB+ED+K9/mY="/>
+        <field:input field="general_requirement" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_general_requirement" min="2" required="true" z="pCS2jNh4AIfMP+ICVt4MFYBzuUw="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_ViewProgress" render="${not empty dependencies}" z="sDlOUwBMdCzLYZRFKFSbBIJI5CU="/>
+</div>

@@ -28,7 +28,7 @@ public class RebelUserDetails implements UserDetails {
 	}
 	
 	public String getUsername() {
-		return ua.getName();
+		return ua.getNSHE().toString();
 	}
 	
 	public boolean isAccountNonExpired() {

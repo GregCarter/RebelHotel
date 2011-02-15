@@ -8,6 +8,8 @@
     <h3>
       <spring:message arguments="${app_name}" code="welcome_titlepane"/>
     </h3>
-    The passed value was ${str}
+    The passed value was "${str}"
+    <br /><br />
+    Also ${Author}
   </util:panel>
 </div>

@@ -29,13 +29,14 @@ public class Student {
     private Long NSHE;
 
     @NotNull
+    private String email;
+    
+    @NotNull
     @Size(min = 2)
     private String firstName;
-    
-    @Size(min = 2)
+
     private String middleName;
 
-    @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -44,7 +45,6 @@ public class Student {
     @Size(min = 2)
     private String major1;
 
-    @Size(min = 2)
     private String major2;
 
     @ManyToOne
@@ -55,8 +55,14 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
-    
+
     boolean hasReachedMilestone() {
-    	return false;
+        return false;
+    }
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("("+getNSHE().toString()+") "+getFirstName()+" "+getLastName());
+        return sb.toString();
     }
 }

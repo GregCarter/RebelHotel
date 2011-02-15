@@ -15,4 +15,12 @@ privileged aspect Employer_Roo_JavaBean {
         this.location = location;
     }
     
+    public String Employer.getName() {
+        return this.name;
+    }
+    
+    public void Employer.setName(String name) {
+        this.name = name;
+    }
+    
 }

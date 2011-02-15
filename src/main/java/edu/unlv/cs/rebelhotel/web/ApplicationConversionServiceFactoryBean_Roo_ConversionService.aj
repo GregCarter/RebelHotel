@@ -17,7 +17,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     Converter<UserAccount, String> ApplicationConversionServiceFactoryBean.getUserAccountConverter() {
         return new Converter<UserAccount, String>() {
             public String convert(UserAccount useraccount) {
-                return new StringBuilder().append(useraccount.getName()).append(" ").append(useraccount.getPassword()).toString();
+                return new StringBuilder().append(useraccount.getNSHE()).append(" ").append(useraccount.getPassword()).toString();
             }
         };
     }
@@ -26,14 +26,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new Converter<WorkEffort, String>() {
             public String convert(WorkEffort workeffort) {
                 return new StringBuilder().append(workeffort.getWorkPosition()).append(" ").append(workeffort.getComment()).append(" ").toString();
-            }
-        };
-    }
-    
-    Converter<WorkEffortDuration, String> ApplicationConversionServiceFactoryBean.getWorkEffortDurationConverter() {
-        return new Converter<WorkEffortDuration, String>() {
-            public String convert(WorkEffortDuration workeffortduration) {
-                return new StringBuilder().append(workeffortduration.getStartDate()).append(" ").append(workeffortduration.getEndDate()).append(" ").append(workeffortduration.getHours()).toString();
             }
         };
     }
@@ -59,7 +51,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getTermConverter());
         registry.addConverter(getUserAccountConverter());
         registry.addConverter(getWorkEffortConverter());
-        registry.addConverter(getWorkEffortDurationConverter());
         registry.addConverter(getWorkRequirementConverter());
         registry.addConverter(getWorkTemplateConverter());
     }

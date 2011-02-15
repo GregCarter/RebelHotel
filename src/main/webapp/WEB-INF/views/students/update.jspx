@@ -4,12 +4,13 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_Student" modelAttribute="student" path="/students" z="GBNOAl+i5dH6v0+VrL7CjJscAjc=">
         <field:input decimalMin="1000000000" field="NSHE" id="c_edu_unlv_cs_rebelhotel_domain_Student_NSHE" required="true" validationMessageCode="field_invalid_integer" z="ZpXcV5KrIIpW4g+njxclUSMdMdo="/>
+		<field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_Student_email" required="true" validationMessageCode="field_invalid_email" z="ioV8EHplcFpA42hpaHuZy3GoIMc="/>
         <field:input field="firstName" id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" min="2" required="true" z="ZfwFke0QaSpPBgRorUMR8NFmIWU="/>
-        <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" min="2" z="TR/g9AIaaZl6U+6WyFf504FKY7c="/>
-        <field:input field="lastName" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" min="2" z="IlfhnXlO+rtugVdnRYwnLBnvLho="/>
+        <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" z="BuRwgbxmRVgdC9lvISnajvdbTNc="/>
+        <field:input field="lastName" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" z="cLk7Jgc0hUpB99wzThzltRiBzcE="/>
         <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="9HM7Lw5aBP1exgSasdHm3BZhyM4="/>
         <field:input field="major1" id="c_edu_unlv_cs_rebelhotel_domain_Student_major1" min="2" z="e0h6NSXl8Y/9TFgHLz12S2bEEbc="/>
-        <field:input field="major2" id="c_edu_unlv_cs_rebelhotel_domain_Student_major2" min="2" z="cCPP1RXUpm+8dgY2rr4vBR/pRgI="/>
+        <field:input field="major2" id="c_edu_unlv_cs_rebelhotel_domain_Student_major2" z="XLzhDLoMRVhdGICs+aoOrxg3olo="/>
         <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
         <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
         <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>

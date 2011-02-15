@@ -3,7 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.ViewProgress;
 import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
@@ -17,90 +17,90 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 import org.springframework.transaction.annotation.Transactional;
 
-privileged aspect WorkEffortDuration_Roo_Entity {
+privileged aspect ViewProgress_Roo_Entity {
     
-    declare @type: WorkEffortDuration: @Entity;
+    declare @type: ViewProgress: @Entity;
     
     @PersistenceContext
-    transient EntityManager WorkEffortDuration.entityManager;
+    transient EntityManager ViewProgress.entityManager;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long WorkEffortDuration.id;
+    private Long ViewProgress.id;
     
     @Version
     @Column(name = "version")
-    private Integer WorkEffortDuration.version;
+    private Integer ViewProgress.version;
     
-    public Long WorkEffortDuration.getId() {
+    public Long ViewProgress.getId() {
         return this.id;
     }
     
-    public void WorkEffortDuration.setId(Long id) {
+    public void ViewProgress.setId(Long id) {
         this.id = id;
     }
     
-    public Integer WorkEffortDuration.getVersion() {
+    public Integer ViewProgress.getVersion() {
         return this.version;
     }
     
-    public void WorkEffortDuration.setVersion(Integer version) {
+    public void ViewProgress.setVersion(Integer version) {
         this.version = version;
     }
     
     @Transactional
-    public void WorkEffortDuration.persist() {
+    public void ViewProgress.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
     
     @Transactional
-    public void WorkEffortDuration.remove() {
+    public void ViewProgress.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            WorkEffortDuration attached = WorkEffortDuration.findWorkEffortDuration(this.id);
+            ViewProgress attached = ViewProgress.findViewProgress(this.id);
             this.entityManager.remove(attached);
         }
     }
     
     @Transactional
-    public void WorkEffortDuration.flush() {
+    public void ViewProgress.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
     
     @Transactional
-    public WorkEffortDuration WorkEffortDuration.merge() {
+    public ViewProgress ViewProgress.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
-        WorkEffortDuration merged = this.entityManager.merge(this);
+        ViewProgress merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }
     
-    public static final EntityManager WorkEffortDuration.entityManager() {
-        EntityManager em = new WorkEffortDuration().entityManager;
+    public static final EntityManager ViewProgress.entityManager() {
+        EntityManager em = new ViewProgress().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
-    public static long WorkEffortDuration.countWorkEffortDurations() {
-        return entityManager().createQuery("select count(o) from WorkEffortDuration o", Long.class).getSingleResult();
+    public static long ViewProgress.countViewProgresses() {
+        return entityManager().createQuery("select count(o) from ViewProgress o", Long.class).getSingleResult();
     }
     
-    public static List<WorkEffortDuration> WorkEffortDuration.findAllWorkEffortDurations() {
-        return entityManager().createQuery("select o from WorkEffortDuration o", WorkEffortDuration.class).getResultList();
+    public static List<ViewProgress> ViewProgress.findAllViewProgresses() {
+        return entityManager().createQuery("select o from ViewProgress o", ViewProgress.class).getResultList();
     }
     
-    public static WorkEffortDuration WorkEffortDuration.findWorkEffortDuration(Long id) {
+    public static ViewProgress ViewProgress.findViewProgress(Long id) {
         if (id == null) return null;
-        return entityManager().find(WorkEffortDuration.class, id);
+        return entityManager().find(ViewProgress.class, id);
     }
     
-    public static List<WorkEffortDuration> WorkEffortDuration.findWorkEffortDurationEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from WorkEffortDuration o", WorkEffortDuration.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    public static List<ViewProgress> ViewProgress.findViewProgressEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("select o from ViewProgress o", ViewProgress.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

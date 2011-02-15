@@ -5,7 +5,7 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
@@ -14,10 +14,8 @@ import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.ui.Model;
@@ -31,27 +29,6 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 privileged aspect WorkEffortController_Roo_Controller {
-    
-    @RequestMapping(method = RequestMethod.POST)
-    public String WorkEffortController.create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
-            return "workefforts/create";
-        }
-        workEffort.persist();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
-    }
-    
-    @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String WorkEffortController.createForm(Model model) {
-        model.addAttribute("workEffort", new WorkEffort());
-        List dependencies = new ArrayList();
-        if (Student.countStudents() == 0) {
-            dependencies.add(new String[]{"student", "students"});
-        }
-        model.addAttribute("dependencies", dependencies);
-        return "workefforts/create";
-    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
@@ -83,12 +60,6 @@ privileged aspect WorkEffortController_Roo_Controller {
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
     
-    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String WorkEffortController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workEffort", WorkEffort.findWorkEffort(id));
-        return "workefforts/update";
-    }
-    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         WorkEffort.findWorkEffort(id).remove();
@@ -114,9 +85,9 @@ privileged aspect WorkEffortController_Roo_Controller {
         return Student.findAllStudents();
     }
     
-    @ModelAttribute("workeffortdurations")
-    public Collection<WorkEffortDuration> WorkEffortController.populateWorkEffortDurations() {
-        return WorkEffortDuration.findAllWorkEffortDurations();
+    @ModelAttribute("workrequirements")
+    public Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
+        return WorkRequirement.findAllWorkRequirements();
     }
     
     @ModelAttribute("paystatuses")

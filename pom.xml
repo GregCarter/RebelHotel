@@ -533,6 +533,17 @@
                     </webAppConfig>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>selenium-maven-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <suite>src\main\webapp\selenium\test-suite.xhtml</suite>
+                    <browser>*firefox</browser>
+                    <results>${project.build.directory}/selenium.html</results>
+                    <startURL>http://localhost:4444/</startURL>
+                </configuration>
+            </plugin>
         </plugins>
 	</build>
 </project>

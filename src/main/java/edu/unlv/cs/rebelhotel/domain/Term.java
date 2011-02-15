@@ -17,4 +17,10 @@ public class Term {
 
     @Enumerated
     private Semester semester;
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getSemester()+" "+getTermYear());
+        return sb.toString();
+    }
 }

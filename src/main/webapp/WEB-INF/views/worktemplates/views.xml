@@ -10,6 +10,9 @@
 <definition extends="default" name="worktemplates/create">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/create.jspx"/>
     </definition>
+    <definition extends="default" name="worktemplates/createRequirement">
+        <put-attribute name="body" value="/WEB-INF/views/worktemplates/createRequirement.jspx"/>
+    </definition>
 <definition extends="default" name="worktemplates/update">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/update.jspx"/>
     </definition>

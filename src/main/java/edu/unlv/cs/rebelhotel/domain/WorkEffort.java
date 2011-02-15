@@ -15,6 +15,11 @@ import edu.unlv.cs.rebelhotel.domain.enums.VerificationType;
 import javax.persistence.Enumerated;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
+import java.util.Set;
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import java.util.HashSet;
+import javax.persistence.ManyToMany;
+import javax.persistence.CascadeType;
 
 @RooJavaBean
 @RooToString
@@ -47,8 +52,15 @@ public class WorkEffort {
     @Enumerated
     private PayStatus payStatus;
 
-    @ManyToOne
+    @Embedded
     private WorkEffortDuration duration;
 
-    private String major;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getWorkPosition()+" at "+getEmployer().getName()+" "+getDuration());
+        return sb.toString();
+    }
 }
