@@ -89,6 +89,8 @@ public class WorkEffortController {
         model.addAttribute("studentworkrequirements", workRequirements);
         model.addAttribute("dependencies", dependencies);
         model.addAttribute("sid", sid);
+        // TODO check if one is able to place the value of the student here without relying on the hidden form element
+        // RESULT apparently it cannot be done
         return "workefforts/createFromStudent";
     }
 	

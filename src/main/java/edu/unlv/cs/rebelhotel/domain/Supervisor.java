@@ -16,4 +16,10 @@ public class Supervisor {
     private String email;
 
     private String phone;
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getFirstName()+" "+getLastName());
+        return sb.toString();
+    }
 }

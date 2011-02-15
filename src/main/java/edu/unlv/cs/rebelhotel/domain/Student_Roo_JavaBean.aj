@@ -20,6 +20,14 @@ privileged aspect Student_Roo_JavaBean {
         this.NSHE = NSHE;
     }
     
+    public String Student.getEmail() {
+        return this.email;
+    }
+    
+    public void Student.setEmail(String email) {
+        this.email = email;
+    }
+    
     public String Student.getFirstName() {
         return this.firstName;
     }
