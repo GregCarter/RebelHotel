@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="workefforts/list">
+	<definition extends = "default" name = "workefforts.default">
+		<put-attribute name = "workeffort_menu" value = "/WEB-INF/views/workefforts/workEffortsMenu.jspx" cascade = "true" />
+	</definition>
+    <definition extends="workefforts.default" name="workefforts/list">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/list.jspx"/>
     </definition>
-<definition extends="default" name="workefforts/show">
+	<definition extends="workefforts.default" name="workefforts/show">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/show.jspx"/>
     </definition>
-<definition extends="default" name="workefforts/create">
+	<definition extends="workefforts.default" name="workefforts/create">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/create.jspx"/>
     </definition>
-    <definition extends="default" name="workefforts/createFromStudent">
+    <definition extends="workefforts.default" name="workefforts/createFromStudent">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/createForStudent.jspx"/>
     </definition>
-<definition extends="default" name="workefforts/update">
+	<definition extends="workefforts.default" name="workefforts/update">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/update.jspx"/>
     </definition>
-<definition extends="default" name="workefforts/findWorkEffortsByStudentEquals">
+	<definition extends="workefforts.default" name="workefforts/findWorkEffortsByStudentEquals">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/findWorkEffortsByStudentEquals.jspx"/>
     </definition>
 </tiles-definitions>

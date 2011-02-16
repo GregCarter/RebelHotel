@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-        <table id="menu" style="display:inline;width:100%;">
-		<td id="i_worktemplate_new">
-			<a title="Create Work Template" href="/RebelHotel/worktemplates?form">Create Work Template</a>
-		</td>
-		<td id="i_worktemplate_list">
-			<a title="Query Work Template" href="/RebelHotel/worktemplates?page=1&amp;size=10">Query Work Templates</a>
-		</td>
-		<td id="fi_worktemplate_nameequals">
-			<a title="Update Student" href="/RebelHotel/worktemplates?find=ByNameEquals&amp;form">Update Work Template</a>
-		</td>
-	</table><br/><br/>
+    <tiles:insertAttribute ignore="true" name="worktemplate_menu"/><br/><br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkTemplate" items="${worktemplates}" z="Cf2Dw9XK9FmCUamhyHoF/jCIKr8=">
         <table:table data="${worktemplates}" id="l_edu_unlv_cs_rebelhotel_domain_WorkTemplate" path="/worktemplates" z="Z9PybCtNRn3JarGUPh+bLLttuMs=">
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" property="name" z="+Vu00IufffrH5SnRmaIiZiE/f08="/>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <span class = "menu">
+	    <table id="t_workeffort_menu" style="display:inline; width:100%;">
+			<td id="c_workeffort_new">
+				<spring:message var = "workeffort_menu_create" code = "label_workeffort_menu_create" />
+				<a title="${workeffort_menu_create}" href="/RebelHotel/workefforts?form">${workeffort_menu_create}</a>
+			</td>
+			<td id="c_workeffort_list">
+				<spring:message var = "workeffort_menu_query" code = "label_workeffort_menu_query" />
+				<a title="${workeffort_menu_query}" href="/RebelHotel/workefforts?page=1&amp;size=10">${workeffort_menu_query}</a>
+			</td>
+			<td id="c_workeffort_studentequals">
+				<spring:message var = "workeffort_menu_find" code = "label_workeffort_menu_find" />
+				<a title="${workeffort_menu_find}" href="/RebelHotel/workefforts?find=ByStudentEquals&amp;form">${workeffort_menu_find}</a>
+			</td>
+		</table>
+	</span>
+</div>
