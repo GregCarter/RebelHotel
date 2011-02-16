@@ -3,13 +3,15 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_ViewProgress" items="${viewprogresses}" z="gQQUg4+S3YL8f8KP2bktqbT4xkY=">
+	<!-- 
         <table:table data="${viewprogresses}" id="l_edu_unlv_cs_rebelhotel_domain_ViewProgress" path="/viewprogresses" z="Ug6B2KHVkhS9Rbj4kb4hn04D22Y=">
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_NSHE" property="NSHE" z="P8weaZmZI2HctPPVvLQY/IHJzvQ="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_first" property="first" z="NQrG36ksHK0Po2TNR/F8vCP38pU="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_last" property="last" z="i4fP0lvV4yfzQCSkOvcqjpvcw9Y="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_middle" property="middle" z="iT7tP3+yAlsQDyCwgJaD4RqTWfI="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_email" property="email" z="1/kVYIuReyi58ExeKND+Zkdx6hI="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1" property="major1" z="Vx3Hk4vkPK1vkBCk+YD99jUqbDY="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_student" property="student" z="Fm09Ra89bc5g8na6LIfcroTLE5w="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1Milestone" property="major1Milestone" z="Cjyu/ivlULzB2wMy4cq8xsCeaOM="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2Milestone" property="major2Milestone" z="MNPr7A+CstqDx5StZb7aVrHubFE="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_approved_hours" property="major1_approved_hours" z="QH9nTlgel2etaQnAa9kjmIkFY5A="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2_approved_hours" property="major2_approved_hours" z="R7NdpSKjXovYgEAoklpCCinZLC4="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_remaining_hours" property="major1_remaining_hours" z="1UNF8KyKyHVMu/1xCFqxH837J/0="/>
         </table:table>
+     -->
     </page:list>
 </div>

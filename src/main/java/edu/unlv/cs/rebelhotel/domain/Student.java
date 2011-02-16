@@ -17,6 +17,7 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
+import javax.persistence.Embedded;
 
 @RooJavaBean
 @RooToString
@@ -27,6 +28,7 @@ public class Student {
 	private String userId;
 
     @NotNull
+    @Size(min = 2)
     private String email;
 
     @NotNull
@@ -35,6 +37,7 @@ public class Student {
 
     private String middleName;
 
+    @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -53,14 +56,22 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
+<<<<<<< HEAD
 
-    @OneToOne(optional = false)
-    private UserAccount userAccount;
-
-    boolean hasReachedMilestone() {
-        return false;
+    private Set<ViewProgress> milestone = new HashSet<ViewProgress>();
+    
+    public boolean hasReachedMilestone() {
+    	boolean reachedMilestone = true;
+    	while (reachedMilestone) {
+    		for (ViewProgress each : milestone) {
+    			if(each.getRemainingHours()!=0) {
+    				reachedMilestone = false;
+    			}
+    		}
+    	}
+    	return reachedMilestone;
     }
-
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(" + getUserId() + ")");
@@ -68,6 +79,19 @@ public class Student {
         if (getLastName() != null) {
         	sb.append(" "+getLastName());
         }
+        return sb.toString();
+    }
+}
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("(" + getUserId() + ")");
+        sb.append(" "+getFirstName());
+        if (getLastName() != null) {
+        	sb.append(" "+getLastName());
+        }
+        return sb.toString();
+    }
+}
         return sb.toString();
     }
 }

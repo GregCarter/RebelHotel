@@ -3,153 +3,25 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.lang.Integer;
-import java.lang.String;
 
 privileged aspect ViewProgress_Roo_JavaBean {
     
-    public Integer ViewProgress.getNSHE() {
-        return this.NSHE;
+    public WorkRequirement ViewProgress.getWorkRequirement() {
+        return this.workRequirement;
     }
     
-    public void ViewProgress.setNSHE(Integer NSHE) {
-        this.NSHE = NSHE;
+    public void ViewProgress.setWorkRequirement(WorkRequirement workRequirement) {
+        this.workRequirement = workRequirement;
     }
     
-    public String ViewProgress.getFirst() {
-        return this.first;
+    public Integer ViewProgress.getApprovedHours() {
+        return this.approvedHours;
     }
     
-    public void ViewProgress.setFirst(String first) {
-        this.first = first;
-    }
-    
-    public String ViewProgress.getLast() {
-        return this.last;
-    }
-    
-    public void ViewProgress.setLast(String last) {
-        this.last = last;
-    }
-    
-    public String ViewProgress.getMiddle() {
-        return this.middle;
-    }
-    
-    public void ViewProgress.setMiddle(String middle) {
-        this.middle = middle;
-    }
-    
-    public String ViewProgress.getEmail() {
-        return this.email;
-    }
-    
-    public void ViewProgress.setEmail(String email) {
-        this.email = email;
-    }
-    
-    public String ViewProgress.getMajor1() {
-        return this.major1;
-    }
-    
-    public void ViewProgress.setMajor1(String major1) {
-        this.major1 = major1;
-    }
-    
-    public String ViewProgress.getMajor2() {
-        return this.major2;
-    }
-    
-    public void ViewProgress.setMajor2(String major2) {
-        this.major2 = major2;
-    }
-    
-    public String ViewProgress.getAdmitTerm() {
-        return this.admitTerm;
-    }
-    
-    public void ViewProgress.setAdmitTerm(String admitTerm) {
-        this.admitTerm = admitTerm;
-    }
-    
-    public String ViewProgress.getExpectedGrad() {
-        return this.expectedGrad;
-    }
-    
-    public void ViewProgress.setExpectedGrad(String expectedGrad) {
-        this.expectedGrad = expectedGrad;
-    }
-    
-    public String ViewProgress.getMajor1Milestone() {
-        return this.major1Milestone;
-    }
-    
-    public void ViewProgress.setMajor1Milestone(String major1Milestone) {
-        this.major1Milestone = major1Milestone;
-    }
-    
-    public String ViewProgress.getMajor2Milestone() {
-        return this.major2Milestone;
-    }
-    
-    public void ViewProgress.setMajor2Milestone(String major2Milestone) {
-        this.major2Milestone = major2Milestone;
-    }
-    
-    public Integer ViewProgress.getMajor1_approved_hrs() {
-        return this.major1_approved_hrs;
-    }
-    
-    public void ViewProgress.setMajor1_approved_hrs(Integer major1_approved_hrs) {
-        this.major1_approved_hrs = major1_approved_hrs;
-    }
-    
-    public Integer ViewProgress.getMajor1_remaining_hrs() {
-        return this.major1_remaining_hrs;
-    }
-    
-    public void ViewProgress.setMajor1_remaining_hrs(Integer major1_remaining_hrs) {
-        this.major1_remaining_hrs = major1_remaining_hrs;
-    }
-    
-    public Integer ViewProgress.getMajor2_approved_hrs() {
-        return this.major2_approved_hrs;
-    }
-    
-    public void ViewProgress.setMajor2_approved_hrs(Integer major2_approved_hrs) {
-        this.major2_approved_hrs = major2_approved_hrs;
-    }
-    
-    public Integer ViewProgress.getMajor2_remaining_hrs() {
-        return this.major2_remaining_hrs;
-    }
-    
-    public void ViewProgress.setMajor2_remaining_hrs(Integer major2_remaining_hrs) {
-        this.major2_remaining_hrs = major2_remaining_hrs;
-    }
-    
-    public Integer ViewProgress.getTotal_hrs_approved() {
-        return this.total_hrs_approved;
-    }
-    
-    public void ViewProgress.setTotal_hrs_approved(Integer total_hrs_approved) {
-        this.total_hrs_approved = total_hrs_approved;
-    }
-    
-    public Integer ViewProgress.getTotal_hrs_remaining() {
-        return this.total_hrs_remaining;
-    }
-    
-    public void ViewProgress.setTotal_hrs_remaining(Integer total_hrs_remaining) {
-        this.total_hrs_remaining = total_hrs_remaining;
-    }
-    
-    public String ViewProgress.getGeneral_requirement() {
-        return this.general_requirement;
-    }
-    
-    public void ViewProgress.setGeneral_requirement(String general_requirement) {
-        this.general_requirement = general_requirement;
+    public void ViewProgress.setApprovedHours(Integer approvedHours) {
+        this.approvedHours = approvedHours;
     }
     
 }

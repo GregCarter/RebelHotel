@@ -4,8 +4,10 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Set;
 
 privileged aspect WorkRequirement_Roo_JavaBean {
     
@@ -31,6 +33,14 @@ privileged aspect WorkRequirement_Roo_JavaBean {
     
     public void WorkRequirement.setStudent(Student student) {
         this.student = student;
+    }
+    
+    public Set<WorkEffort> WorkRequirement.getWorkEffort() {
+        return this.workEffort;
+    }
+    
+    public void WorkRequirement.setWorkEffort(Set<WorkEffort> workEffort) {
+        this.workEffort = workEffort;
     }
     
 }
