@@ -28,4 +28,7 @@
 <definition extends="default" name="students/findStudentsByMajor2Equals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByMajor2Equals.jspx"/>
     </definition>
+<definition extends="default" name="students/findStudentsByUserAccount">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
+    </definition>
 </tiles-definitions>

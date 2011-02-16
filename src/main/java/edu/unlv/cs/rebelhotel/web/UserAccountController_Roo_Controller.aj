@@ -85,14 +85,14 @@ privileged aspect UserAccountController_Roo_Controller {
         return "redirect:/useraccounts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
-    @RequestMapping(params = { "find=ByNSHE", "form" }, method = RequestMethod.GET)
-    public String UserAccountController.findUserAccountsByNSHEForm(Model model) {
-        return "useraccounts/findUserAccountsByNSHE";
+    @RequestMapping(params = { "find=ByUserId", "form" }, method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByUserIdForm(Model model) {
+        return "useraccounts/findUserAccountsByUserId";
     }
     
-    @RequestMapping(params = "find=ByNSHE", method = RequestMethod.GET)
-    public String UserAccountController.findUserAccountsByNSHE(@RequestParam("NSHE") Long NSHE, Model model) {
-        model.addAttribute("useraccounts", UserAccount.findUserAccountsByNSHE(NSHE).getResultList());
+    @RequestMapping(params = "find=ByUserId", method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByUserId(@RequestParam("userId") String userId, Model model) {
+        model.addAttribute("useraccounts", UserAccount.findUserAccountsByUserId(userId).getResultList());
         return "useraccounts/list";
     }
     

@@ -12,6 +12,7 @@ import java.util.HashSet;
 import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.validation.constraints.DecimalMin;
@@ -19,18 +20,15 @@ import javax.validation.constraints.Digits;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findStudentsByNSHEEquals", "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals" })
+@RooEntity(finders = { "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals", "findStudentsByUserAccount" })
 public class Student {
-
-    @NotNull
-    @DecimalMin("1000000000")
-    @Digits(integer = 10, fraction = 0)
-    @Column(unique = true)
-    private Long NSHE;
+	@NotNull
+	@Column(unique = true)
+	private String userId;
 
     @NotNull
     private String email;
-    
+
     @NotNull
     @Size(min = 2)
     private String firstName;
@@ -56,13 +54,20 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
 
+    @OneToOne(optional = false)
+    private UserAccount userAccount;
+
     boolean hasReachedMilestone() {
         return false;
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("("+getNSHE().toString()+") "+getFirstName()+" "+getLastName());
+        sb.append("(" + getUserId() + ")");
+        sb.append(" "+getFirstName());
+        if (getLastName() != null) {
+        	sb.append(" "+getLastName());
+        }
         return sb.toString();
     }
 }

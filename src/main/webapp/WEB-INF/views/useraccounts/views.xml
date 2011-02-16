@@ -19,4 +19,7 @@
 <definition extends="default" name="useraccounts/findUserAccountsByNSHE">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/findUserAccountsByNSHE.jspx"/>
     </definition>
+<definition extends="default" name="useraccounts/findUserAccountsByUserId">
+        <put-attribute name="body" value="/WEB-INF/views/useraccounts/findUserAccountsByUserId.jspx"/>
+    </definition>
 </tiles-definitions>

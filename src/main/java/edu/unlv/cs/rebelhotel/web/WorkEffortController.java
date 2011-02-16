@@ -34,7 +34,7 @@ public class WorkEffortController {
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.POST)
     public String createStudent(@PathVariable("sid") Long sid, @Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-		if (result.hasErrors()) {
+		if (result.hasErrors() || (workEffort.getDuration().getStartDate().compareTo(workEffort.getDuration().getEndDate()) > 0)) {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
@@ -52,7 +52,7 @@ public class WorkEffortController {
 	
 	@RequestMapping(method = RequestMethod.POST)
     public String create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
+        if (result.hasErrors() || (workEffort.getDuration().getStartDate().compareTo(workEffort.getDuration().getEndDate()) > 0)) {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             return "workefforts/create";

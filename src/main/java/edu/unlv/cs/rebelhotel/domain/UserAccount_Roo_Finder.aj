@@ -4,17 +4,17 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import java.lang.Long;
+import java.lang.String;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 privileged aspect UserAccount_Roo_Finder {
     
-    public static TypedQuery<UserAccount> UserAccount.findUserAccountsByNSHE(Long NSHE) {
-        if (NSHE == null) throw new IllegalArgumentException("The NSHE argument is required");
+    public static TypedQuery<UserAccount> UserAccount.findUserAccountsByUserId(String userId) {
+        if (userId == null || userId.length() == 0) throw new IllegalArgumentException("The userId argument is required");
         EntityManager em = UserAccount.entityManager();
-        TypedQuery<UserAccount> q = em.createQuery("SELECT UserAccount FROM UserAccount AS useraccount WHERE useraccount.NSHE = :NSHE", UserAccount.class);
-        q.setParameter("NSHE", NSHE);
+        TypedQuery<UserAccount> q = em.createQuery("SELECT UserAccount FROM UserAccount AS useraccount WHERE useraccount.userId = :userId", UserAccount.class);
+        q.setParameter("userId", userId);
         return q;
     }
     

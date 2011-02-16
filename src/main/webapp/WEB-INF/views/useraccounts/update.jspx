@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_UserAccount" modelAttribute="userAccount" path="/useraccounts" z="qpptxtTqZWzmqJ94Jv4oyjZJje0=">
-		<field:input decimalMin="1000000000" field="NSHE" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_NSHE" required="true" validationMessageCode="field_invalid_integer" z="e4AixjQmErP6FXI3Qcw+PJH7Wbo="/>
+		<field:input field="userId" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userId" required="true" z="9q8pG/zVVHHMJ7w7+PPeHuX51uA="/>
         <field:input field="password" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" required="true" z="GdYdMthJw0wuVZ0k5B6mB7QEUS0="/>
         <field:select field="userGroup" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" items="${usergroups}" path="usergroups" z="sRIMSynGJSubX4xr8l1GwlZb0R4="/>
         <field:checkbox field="enabled" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" z="VmA3vpPhfsW+BCroMX1EyJX/uqs="/>

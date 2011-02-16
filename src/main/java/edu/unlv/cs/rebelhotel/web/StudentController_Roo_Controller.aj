@@ -5,6 +5,7 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
@@ -86,17 +87,6 @@ privileged aspect StudentController_Roo_Controller {
         return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
-    @RequestMapping(params = { "find=ByNSHEEquals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByNSHEEqualsForm(Model model) {
-        return "students/findStudentsByNSHEEquals";
-    }
-    
-    @RequestMapping(params = "find=ByNSHEEquals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByNSHEEquals(@RequestParam("NSHE") Long NSHE, Model model) {
-        model.addAttribute("students", Student.findStudentsByNSHEEquals(NSHE).getResultList());
-        return "students/list";
-    }
-    
     @RequestMapping(params = { "find=ByMajor1Equals", "form" }, method = RequestMethod.GET)
     public String StudentController.findStudentsByMajor1EqualsForm(Model model) {
         return "students/findStudentsByMajor1Equals";
@@ -141,9 +131,26 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
+    @RequestMapping(params = { "find=ByUserAccount", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByUserAccountForm(Model model) {
+        model.addAttribute("useraccounts", UserAccount.findAllUserAccounts());
+        return "students/findStudentsByUserAccount";
+    }
+    
+    @RequestMapping(params = "find=ByUserAccount", method = RequestMethod.GET)
+    public String StudentController.findStudentsByUserAccount(@RequestParam("userAccount") UserAccount userAccount, Model model) {
+        model.addAttribute("students", Student.findStudentsByUserAccount(userAccount).getResultList());
+        return "students/list";
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();
+    }
+    
+    @ModelAttribute("useraccounts")
+    public Collection<UserAccount> StudentController.populateUserAccounts() {
+        return UserAccount.findAllUserAccounts();
     }
     
     @ModelAttribute("workefforts")

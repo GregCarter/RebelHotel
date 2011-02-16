@@ -14,14 +14,6 @@ import org.springframework.format.FormatterRegistry;
 
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
     
-    Converter<UserAccount, String> ApplicationConversionServiceFactoryBean.getUserAccountConverter() {
-        return new Converter<UserAccount, String>() {
-            public String convert(UserAccount useraccount) {
-                return new StringBuilder().append(useraccount.getNSHE()).append(" ").append(useraccount.getPassword()).toString();
-            }
-        };
-    }
-    
     Converter<WorkEffort, String> ApplicationConversionServiceFactoryBean.getWorkEffortConverter() {
         return new Converter<WorkEffort, String>() {
             public String convert(WorkEffort workeffort) {
@@ -49,7 +41,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getStudentConverter());
         registry.addConverter(getTermConverter());
-        registry.addConverter(getUserAccountConverter());
         registry.addConverter(getWorkEffortConverter());
         registry.addConverter(getWorkRequirementConverter());
         registry.addConverter(getWorkTemplateConverter());

@@ -69,6 +69,14 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		};
 	}
 	
+	Converter<edu.unlv.cs.rebelhotel.domain.UserAccount, String> getUserAccountConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.UserAccount, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.UserAccount param) {
+				return param.toString();
+			}
+		};
+	}
+	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
@@ -80,6 +88,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		registry.addConverter(getSupervisorConverter());
 		registry.addConverter(getEmployerConverter());
 		registry.addConverter(getWorkEffortDurationConverter());
+		registry.addConverter(getUserAccountConverter());
 	}
 	
 }

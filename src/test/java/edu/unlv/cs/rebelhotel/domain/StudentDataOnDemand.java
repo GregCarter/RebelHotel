@@ -8,7 +8,7 @@ import edu.unlv.cs.rebelhotel.domain.Student;
 public class StudentDataOnDemand {
 	public Student getNewTransientStudent(int index) {
         edu.unlv.cs.rebelhotel.domain.Student obj = new edu.unlv.cs.rebelhotel.domain.Student();
-        obj.setNSHE(new Long(1000000000).longValue() + index);
+        obj.setUserId("userId" + index);
         obj.setFirstName("firstName_" + index);
         obj.setMiddleName("middleName_" + index);
         obj.setLastName("lastName_" + index);

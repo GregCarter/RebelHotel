@@ -4,20 +4,20 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import java.lang.Long;
 import java.lang.String;
 import java.util.Set;
 
 privileged aspect Student_Roo_JavaBean {
     
-    public Long Student.getNSHE() {
-        return this.NSHE;
+    public String Student.getUserId() {
+        return this.userId;
     }
     
-    public void Student.setNSHE(Long NSHE) {
-        this.NSHE = NSHE;
+    public void Student.setUserId(String userId) {
+        this.userId = userId;
     }
     
     public String Student.getEmail() {
@@ -98,6 +98,14 @@ privileged aspect Student_Roo_JavaBean {
     
     public void Student.setWorkEffort(Set<WorkEffort> workEffort) {
         this.workEffort = workEffort;
+    }
+    
+    public UserAccount Student.getUserAccount() {
+        return this.userAccount;
+    }
+    
+    public void Student.setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
     }
     
 }

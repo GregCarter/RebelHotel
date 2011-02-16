@@ -17,16 +17,14 @@ import javax.persistence.Transient;
 @Configurable("userAccount")
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findUserAccountsByNSHE" })
+@RooEntity(finders = { "findUserAccountsByUserId" })
 public class UserAccount {
 
-    private transient MessageDigestPasswordEncoder passwordEncoder;
-
     @NotNull
-    @DecimalMin("1000000000")
-    @Digits(integer = 10, fraction = 0)
     @Column(unique = true)
-    private Long NSHE;
+    private String userId;
+
+    private transient MessageDigestPasswordEncoder passwordEncoder;
 
     @NotNull
     private String password;
@@ -43,5 +41,12 @@ public class UserAccount {
 
     public void setPasswordEncoder(MessageDigestPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
+    }
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("UserId: ").append(getUserId()).append(", ");
+        sb.append("UserGroup: ").append(getUserGroup());
+        return sb.toString();
     }
 }

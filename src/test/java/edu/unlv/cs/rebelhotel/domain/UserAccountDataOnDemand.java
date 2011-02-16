@@ -8,7 +8,7 @@ public class UserAccountDataOnDemand {
         edu.unlv.cs.rebelhotel.domain.UserAccount obj = new edu.unlv.cs.rebelhotel.domain.UserAccount();
         obj.setPassword("password_" + index);
         obj.setPasswordEncoder(null);
-        obj.setNSHE(new Long(1000000000).longValue() + index);
+        obj.setUserId("userId" + index);
         obj.setUserGroup(null);
         obj.setEnabled(Boolean.TRUE);
         return obj;

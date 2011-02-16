@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 
 public class RequestInterceptor extends HandlerInterceptorAdapter {
@@ -23,36 +24,39 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		logger.debug("preHandle - begin");
+		logger.info("preHandle - begin");
 		if (userInformation.getStudent() == null) {
-			logger.debug("preHandle - The session held no student");
-			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			String username;
-			if (principal instanceof UserDetails) {
-				username = ((UserDetails) principal).getUsername();
+			if (SecurityContextHolder.getContext().getAuthentication() != null) {
+				logger.info("preHandle - The session held no student");
+				Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				String username;
+				if (principal instanceof UserDetails) {
+					username = ((UserDetails) principal).getUsername();
+				}
+				else {
+					username = principal.toString();
+				}
+				Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+				if (authorities.contains(UserGroup.ROLE_USER)) {
+					// All students should have the ROLE_USER role and should also have usernames consisting of 10  digit numbers
+					try {
+						UserAccount ua = UserAccount.findUserAccountsByUserId(username).getSingleResult();
+						Student student = Student.findStudentsByUserAccount(ua).getSingleResult();
+						userInformation.setStudent(student);
+					}
+					catch (org.springframework.dao.EmptyResultDataAccessException exception) {
+						logger.info("preHandle - A ROLE_USER UserAccount logged in, but no corresponding Student was found!");
+					}
+				}
 			}
 			else {
-				username = principal.toString();
-			}
-			Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-			if (authorities.contains(UserGroup.ROLE_USER)) {
-				// All students should have the ROLE_USER role and should also have usernames consisting of 10  digit numbers
-				try {
-					Student student = Student.findStudentsByNSHEEquals(Long.parseLong(username.trim())).getSingleResult();
-					userInformation.setStudent(student);
-				}
-				catch (NumberFormatException exception) {
-					logger.debug("preHandle - Error converting requested username to Long!");
-				}
-				catch (org.springframework.dao.EmptyResultDataAccessException exception) {
-					logger.debug("preHandle - A ROLE_USER UserAccount logged in, but no corresponding Student was found!");
-				}
+				logger.info("preHandle - SecurityContextHolder.getContext).getAuthentication() was null!");
 			}
 		}
 		else {
-			logger.debug("preHandle - The session student was set already; nothing to do");
+			logger.info("preHandle - The session student was set already; nothing to do");
 		}
-		logger.debug("preHandle - end");
+		logger.info("preHandle - end");
 		
 		return true;
 	}
