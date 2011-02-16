@@ -4,7 +4,6 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Component;
 
@@ -13,16 +12,6 @@ privileged aspect UserAccountDataOnDemand_Roo_DataOnDemand {
     declare @type: UserAccountDataOnDemand: @Component;
     
     private Random UserAccountDataOnDemand.rnd = new java.security.SecureRandom();
-    
-    private List<UserAccount> UserAccountDataOnDemand.data;
-    
-    public UserAccount UserAccountDataOnDemand.getSpecificUserAccount(int index) {
-        init();
-        if (index < 0) index = 0;
-        if (index > (data.size() - 1)) index = data.size() - 1;
-        UserAccount obj = data.get(index);
-        return UserAccount.findUserAccount(obj.getId());
-    }
     
     public UserAccount UserAccountDataOnDemand.getRandomUserAccount() {
         init();
