@@ -3,8 +3,8 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
-import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.ViewProgress;
+import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -84,9 +84,9 @@ privileged aspect ViewProgressController_Roo_Controller {
         return "redirect:/viewprogresses?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
-    @ModelAttribute("students")
-    public Collection<Student> ViewProgressController.populateStudents() {
-        return Student.findAllStudents();
+    @ModelAttribute("workrequirements")
+    public Collection<WorkRequirement> ViewProgressController.populateWorkRequirements() {
+        return WorkRequirement.findAllWorkRequirements();
     }
     
     String ViewProgressController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {

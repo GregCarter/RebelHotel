@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="students/list">
+	<definition extends = "default" name = "students.default">
+		<put-attribute name = "student_menu" value = "/WEB-INF/views/students/studentMenu.jspx" cascade = "true" />
+	</definition>
+    <definition extends="students.default" name="students/list">
         <put-attribute name="body" value="/WEB-INF/views/students/list.jspx"/>
     </definition>
-<definition extends="default" name="students/show">
+	<definition extends="students.default" name="students/show">
         <put-attribute name="body" value="/WEB-INF/views/students/show.jspx"/>
     </definition>
-<definition extends="default" name="students/create">
+	<definition extends="students.default" name="students/create">
         <put-attribute name="body" value="/WEB-INF/views/students/create.jspx"/>
     </definition>
-<definition extends="default" name="students/update">
+	<definition extends="students.default" name="students/update">
         <put-attribute name="body" value="/WEB-INF/views/students/update.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByNSHEEquals">
+	<definition extends="students.default" name="students/findStudentsByNSHEEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByMajor1Equals">
+	<definition extends="students.default" name="students/findStudentsByMajor1Equals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByMajor1Equals.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByFirstNameEquals">
+	<definition extends="students.default" name="students/findStudentsByFirstNameEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameEquals.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByFirstNameLike">
+	<definition extends="students.default" name="students/findStudentsByFirstNameLike">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameLike.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByMajor2Equals">
+	<definition extends="students.default" name="students/findStudentsByMajor2Equals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByMajor2Equals.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByUserAccount">
+	<definition extends="students.default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
     </definition>
 </tiles-definitions>

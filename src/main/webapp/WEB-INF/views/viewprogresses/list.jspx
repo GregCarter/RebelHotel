@@ -13,5 +13,9 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_remaining_hours" property="major1_remaining_hours" z="1UNF8KyKyHVMu/1xCFqxH837J/0="/>
         </table:table>
      -->
+    <table:table data="${viewprogresses}" id="l_edu_unlv_cs_rebelhotel_domain_ViewProgress" path="/viewprogresses" z="Ug6B2KHVkhS9Rbj4kb4hn04D22Y=">
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_workRequirement" property="workRequirement" z="h91MLLnUe9ocwZXu/zdm0eBZw4o="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_approvedHours" property="approvedHours" z="i1XYSaCa1YfUUnYtwHcwbuu1h9I="/>
+        </table:table>
     </page:list>
 </div>

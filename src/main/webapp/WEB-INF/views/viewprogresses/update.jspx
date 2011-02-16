@@ -12,21 +12,23 @@
         
         
         
-        <field:input field="major1Milestone" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1Milestone" min="2" required="true" z="jj675m6mI3Y0ZYGm0bZOFv7ZEuY="/>
-        <field:input field="major2Milestone" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2Milestone" min="2" required="true" z="9SQ5dpPg243DWWWmcOGskrDm22w="/>
         
         
         
         
         
         
-        <field:input field="general_requirement" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_general_requirement" min="2" required="true" z="pCS2jNh4AIfMP+ICVt4MFYBzuUw="/>
-    <field:input field="student" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_student" z="co3Mtoy5kpx57aLqV83hJoMsFTw="/>
-    <field:input field="major1_approved_hours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_approved_hours" validationMessageCode="field_invalid_integer" z="IeVBJwgmX5twanHjU3NW6vmTiwk="/>
-        <field:input field="major2_approved_hours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2_approved_hours" validationMessageCode="field_invalid_integer" z="YcFnp39SaTtBS9L8Ck1Q9Xl/t84="/>
-        <field:input field="major1_remaining_hours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major1_remaining_hours" validationMessageCode="field_invalid_integer" z="znuWbYfl1kziVuQB0lGxb9Pc628="/>
-        <field:input field="major2_remaining_hours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_major2_remaining_hours" validationMessageCode="field_invalid_integer" z="6tj4WmkUx4LTTn8Xf1lCuByfodI="/>
-        <field:input field="total_hours_approved" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_total_hours_approved" validationMessageCode="field_invalid_integer" z="UXPke0uLQDTx5UsE9qzlz0Ms9Lg="/>
-        <field:input field="total_hours_remaining" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_total_hours_remaining" validationMessageCode="field_invalid_integer" z="Guu9fBj23RXPNYOjxibY1hDIGcI="/>
+        
+        
+        
+    
+    
+        
+        
+        
+        
+        
+    <field:select field="workRequirement" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_workRequirement" itemValue="id" items="${workrequirements}" path="/workrequirements" z="+3IyY+Z1w88v/lEthG1vugjhP/o="/>
+        <field:input field="approvedHours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_approvedHours" validationMessageCode="field_invalid_integer" z="K4MUkPdRXk0i15hOEBsamRa9wXc="/>
     </form:update>
 </div>

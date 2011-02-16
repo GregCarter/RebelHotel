@@ -38,7 +38,7 @@ public class WorkEffortController {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
-            Set<WorkRequirement> workRequirements = student.getWorkRequirement();
+            Set<WorkRequirement> workRequirements = student.getWorkRequirements();
             model.addAttribute("studentworkrequirements", workRequirements);
             model.addAttribute("sid", sid);
             return "workefforts/createFromStudent";
@@ -85,7 +85,7 @@ public class WorkEffortController {
             dependencies.add(new String[]{"student", "students"});
         }
         Student student = Student.findStudent(sid);
-        Set<WorkRequirement> workRequirements = student.getWorkRequirement();
+        Set<WorkRequirement> workRequirements = student.getWorkRequirements();
         model.addAttribute("studentworkrequirements", workRequirements);
         model.addAttribute("dependencies", dependencies);
         model.addAttribute("sid", sid);

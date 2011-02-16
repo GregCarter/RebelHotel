@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:tiles = "http://tiles.apache.org/tags-tiles" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <table id="menu" style="display:inline;width:100%;">
-		<td id="i_student_new">
-			<a href="/RebelHotel/students?form" title="Create Student">Create Student</a>
-		</td>
-		<td id="i_student_list">
-			<a href="/RebelHotel/students?page=1&amp;size=10" title="Query Students">Query Students</a>
-		</td>
-	</table>
+    <tiles:insertAttribute name = "student_menu" ignore = "true" />
     <br/>
     <br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">

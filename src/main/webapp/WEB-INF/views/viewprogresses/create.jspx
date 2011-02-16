@@ -7,6 +7,8 @@
 	<util:panel id="viewprogress_form" title="${viewprogress_form_title}">
 
     </util:panel> -->
+    <field:select field="workRequirement" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_workRequirement" itemValue="id" items="${workrequirements}" path="/workrequirements" z="+3IyY+Z1w88v/lEthG1vugjhP/o="/>
+        <field:input field="approvedHours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_approvedHours" validationMessageCode="field_invalid_integer" z="K4MUkPdRXk0i15hOEBsamRa9wXc="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_ViewProgress" render="${not empty dependencies}" z="sDlOUwBMdCzLYZRFKFSbBIJI5CU="/>
 </div>

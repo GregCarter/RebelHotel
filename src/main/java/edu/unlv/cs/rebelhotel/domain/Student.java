@@ -37,7 +37,6 @@ public class Student {
 
     private String middleName;
 
-    @Size(min = 2)
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -56,9 +55,12 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
-<<<<<<< HEAD
 
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<ViewProgress> milestone = new HashSet<ViewProgress>();
+    
+    @OneToOne(optional = false)
+    private UserAccount userAccount;
     
     public boolean hasReachedMilestone() {
     	boolean reachedMilestone = true;
@@ -82,16 +84,4 @@ public class Student {
         return sb.toString();
     }
 }
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("(" + getUserId() + ")");
-        sb.append(" "+getFirstName());
-        if (getLastName() != null) {
-        	sb.append(" "+getLastName());
-        }
-        return sb.toString();
-    }
-}
-        return sb.toString();
-    }
-}
+

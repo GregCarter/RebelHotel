@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <span class = "menu">
+	    <table id="t_student_menu" style="display:inline; width:100%;">
+	    	<tr>
+				<td id="c_student_menu_new">
+					<spring:message var = "student_menu_create" code = "label_student_menu_create" />
+					<a href="/RebelHotel/students?form" title="${student_menu_create}">${student_menu_create}</a>
+				</td>
+				<td id="c_student_menu_list">
+					<spring:message var = "student_menu_query" code = "label_student_menu_query" />
+					<a href="/RebelHotel/students?page=1&amp;size=10" title="${student_menu_query}">${student_menu_query}</a>
+				</td>
+				<td id = "c_student_menu_useraccount">
+					<spring:message var = "student_menu_find" code = "label_student_menu_find" />
+					<a href = "/RebelHotel/students?find=ByUserAccount&amp;form" title = "${student_menu_find}">${student_menu_find}</a>
+				</td>
+			</tr>
+		</table>
+	</span>
+</div>

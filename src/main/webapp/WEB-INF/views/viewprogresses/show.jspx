@@ -16,5 +16,7 @@
         <field:display field="total_hours_remaining" id="s_edu_unlv_cs_rebelhotel_domain_ViewProgress_total_hours_remaining" object="${viewprogress}" z="/twoyDLqMI400YTbE3pg1pVwjOY="/>
      -->
     
+    <field:display field="workRequirement" id="s_edu_unlv_cs_rebelhotel_domain_ViewProgress_workRequirement" object="${viewprogress}" z="sprb9We7/HI6RXb7FQkwzznkU8Q="/>
+        <field:display field="approvedHours" id="s_edu_unlv_cs_rebelhotel_domain_ViewProgress_approvedHours" object="${viewprogress}" z="6Kzber5SeTzMy7+daGdgFKptpWQ="/>
     </page:show>
 </div>
