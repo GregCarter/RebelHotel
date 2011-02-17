@@ -54,5 +54,10 @@
         		<menu:item id="i_login" url="/login"/>
         	</menu:category>
         </security:authorize>
+        <security:authorize access = "hasRole('ROLE_USER')">
+        	<menu:category id = "c_student_personal">
+        		<menu:item id = "i_student_personal_work" url = "/workefforts?mywork" />
+        	</menu:category>
+        </security:authorize>
     </menu:menu>
 </div>

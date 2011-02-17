@@ -7,7 +7,6 @@
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 	<!-- Added for method security -->
-	<global-method-security access-decision-manager-ref = "methodAccessDecisionManager" secured-annotations = "enabled" pre-post-annotations = "enabled" jsr250-annotations = "enabled" />
 	
 	<beans:bean id = "methodAccessDecisionManager" class = "org.springframework.security.access.vote.AffirmativeBased">
 		<beans:property name = "decisionVoters">

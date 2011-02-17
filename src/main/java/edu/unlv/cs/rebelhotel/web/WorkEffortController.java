@@ -17,6 +17,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -113,6 +114,13 @@ public class WorkEffortController {
         addDateTimeFormatPatterns(model);
         return "workefforts/update";
     }
+	
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(params = "mywork", method = RequestMethod.GET)
+	public String listPersonalWork(Model model) {
+		model.addAttribute("str", "A list to contain your completed jobs");
+		return "workefforts/mywork";
+	}
 	
 	void addDateTimeFormatPatterns(Model model) {
         model.addAttribute("workEffortDuration_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
