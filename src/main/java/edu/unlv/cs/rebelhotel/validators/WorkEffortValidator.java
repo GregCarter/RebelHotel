@@ -6,20 +6,16 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
 
+// Make it a component so that Spring creates a bean of it that can be auto injected into instances that need it
 @Component
 public class WorkEffortValidator implements Validator {
+	//Auto wiring tells Spring to automatically inject this dependency based on the type of variable
 	@Autowired
 	private WorkEffortDurationValidator workEffortDurationValidator;
 	
+	// A mutator / setter method such as this is necessary for "set" based dependency injection
 	public void setWorkEffortDurationValidator(WorkEffortDurationValidator workEffortDurationValidator) {
-		if (workEffortDurationValidator == null) {
-			throw new IllegalArgumentException("The Validator parameter is required and must not be null");
-		}
-		if (!workEffortDurationValidator.supports(WorkEffortDuration.class)) {
-			throw new IllegalArgumentException("The given Validator must support the validation of WorkEffortDuration instances");
-		}
 		this.workEffortDurationValidator = workEffortDurationValidator;
 	}
 	
