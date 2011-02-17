@@ -11,14 +11,18 @@ import javax.validation.Valid;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
 import org.joda.time.format.DateTimeFormat;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 //import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +33,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/workefforts")
 @Controller
 public class WorkEffortController {
+	@Autowired
+	private WorkEffortValidator workEffortValidator;
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(workEffortValidator);
+	}
+	
+	public void setWorkEffortValidator(WorkEffortValidator workEffortValidator) {
+		this.workEffortValidator = workEffortValidator;
+	}
 	
 	// NOTE : the params string should not be equivalent to any of the fields in the form
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.POST)
     public String createStudent(@PathVariable("sid") Long sid, @Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-		if (result.hasErrors() || (workEffort.getDuration().getStartDate().compareTo(workEffort.getDuration().getEndDate()) > 0)) {
+		if (result.hasErrors()) {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
@@ -44,22 +59,20 @@ public class WorkEffortController {
             return "workefforts/createFromStudent";
         }
         workEffort.persist();
-        Set<WorkEffort> workEfforts = workEffort.getStudent().getWorkEffort();
-        workEfforts.add(workEffort);
+        workEffort.getStudent().addWorkEffort(workEffort);
         workEffort.getStudent().merge();
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
 	
 	@RequestMapping(method = RequestMethod.POST)
     public String create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors() || (workEffort.getDuration().getStartDate().compareTo(workEffort.getDuration().getEndDate()) > 0)) {
+        if (result.hasErrors()) {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             return "workefforts/create";
         }
         workEffort.persist();
-        Set<WorkEffort> workEfforts = workEffort.getStudent().getWorkEffort();
-        workEfforts.add(workEffort);
+        workEffort.getStudent().addWorkEffort(workEffort);
         workEffort.getStudent().merge();
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }

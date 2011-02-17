@@ -36,4 +36,8 @@ public class WorkEffortDuration {
         }
         return sb.toString();
     }
+    
+    public boolean isStartDateAfterEndDate() {
+    	return (startDate.compareTo(endDate) > 0);
+    }
 }
