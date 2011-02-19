@@ -9,17 +9,16 @@
             <menu:item id="i_term_new" messageCode="global_menu_new" url="/terms?form" z="wgiKkyRDO0HpHhgEDihRQzUhP3k="/>
         <menu:item id="i_term_list" messageCode="global_menu_list" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ev5ds/cpGL+OtBUv9Kd6x/Ioqak="/>
         </menu:category>
-    <menu:category id="c_workrequirement" z="BRAzcRCVcdWWTNOQXNpMuQUdr2k=">
+    	<menu:category id="c_workrequirement" z="BRAzcRCVcdWWTNOQXNpMuQUdr2k=">
             <menu:item id="i_workrequirement_new" messageCode="global_menu_new" url="/workrequirements?form" z="csM8in6vJFFUluBeqSNYi3aS52k="/>
-        <menu:item id="i_workrequirement_list" messageCode="global_menu_list" url="/workrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UAs5tAQfRUiBM8rRuURokH94WVA="/>
+        	<menu:item id="i_workrequirement_list" messageCode="global_menu_list" url="/workrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UAs5tAQfRUiBM8rRuURokH94WVA="/>
         </menu:category>
-    <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
-            
-        <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
-        <menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
+    	<menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
+        	<menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
+        	<menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
             <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
-            </menu:category>
-    <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
+        </menu:category>
+    	<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
 			<menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
             
@@ -28,27 +27,28 @@
             <menu:item id="fi_student_firstnamelike" messageCode="global_menu_find" url="/students?find=ByFirstNameLike&amp;form" z="zMuU5zjnZqrbyePUxbCrOqyTKgA="/>
             <menu:item id="fi_student_major2equals" messageCode="global_menu_find" url="/students?find=ByMajor2Equals&amp;form" z="SrCPiT1QhfHdsvIusNwfaeR4n3E="/>
             <menu:item id="fi_student_useraccount" messageCode="global_menu_find" url="/students?find=ByUserAccount&amp;form" z="WQH/3Oj4BQ/ZHLs96aj/9D/7aAI="/>
-            </menu:category>
-    <menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
-            <menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
-        <menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
-		
-        
-            <menu:item id="fi_useraccount_userid" messageCode="global_menu_find" url="/useraccounts?find=ByUserId&amp;form" z="Lyfp14MJ72W8c0ryI3/ak+xDci0="/>
-            </menu:category>
-    <menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
-            <menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>
-        <menu:item id="i_worktemplate_list" messageCode="global_menu_list" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/>
-        <menu:item id="fi_worktemplate_nameequals" messageCode="global_menu_find" url="/worktemplates?find=ByNameEquals&amp;form" z="l+ihaYjBnwP3bwyV6l1HhjMGlu0="/>  
-            </menu:category>
-        <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
-            <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
         </menu:category>
-    	<menu:category id="c_viewprogress" z="Et1uw+1VNaB3lc1xeva1YXC6heA=">
-            <menu:item id="i_viewprogress_new" messageCode="global_menu_new" url="/viewprogresses?form" z="H4jX4xjhJ6bhJzf4Jzgdo1KfGlM="/>
-        <menu:item id="i_viewprogress_list" messageCode="global_menu_list" url="/viewprogresses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fKHXp09Dtruh3CPRaLvkfusGjMc="/>
-        </menu:category>
-        </security:authorize>
+   		<menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
+           	<menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
+       		<menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
+           	<menu:item id="fi_useraccount_userid" messageCode="global_menu_find" url="/useraccounts?find=ByUserId&amp;form" z="Lyfp14MJ72W8c0ryI3/ak+xDci0="/>
+           </menu:category>
+   		<menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
+           	<menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>
+       		<menu:item id="i_worktemplate_list" messageCode="global_menu_list" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/>
+       		<menu:item id="fi_worktemplate_nameequals" messageCode="global_menu_find" url="/worktemplates?find=ByNameEquals&amp;form" z="l+ihaYjBnwP3bwyV6l1HhjMGlu0="/>  
+           </menu:category>
+       	<menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
+           	<menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
+       	</menu:category>
+   		<menu:category id="c_viewprogress" z="Et1uw+1VNaB3lc1xeva1YXC6heA=">
+           	<menu:item id="i_viewprogress_new" messageCode="global_menu_new" url="/viewprogresses?form" z="H4jX4xjhJ6bhJzf4Jzgdo1KfGlM="/>
+       		<menu:item id="i_viewprogress_list" messageCode="global_menu_list" url="/viewprogresses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="fKHXp09Dtruh3CPRaLvkfusGjMc="/>
+       	</menu:category>
+       	<menu:category id = "c_filehandling">
+       		<menu:item id = "i_fileupload" url = "/file?upload" />
+       	</menu:category>
+	</security:authorize>
         <security:authorize access="hasRole('ROLE_ANONYMOUS')">
         	<menu:category id="c_login">
         		<menu:item id="i_login" url="/login"/>
