@@ -4,7 +4,7 @@ public class DefaultStudentService implements StudentService{
 
 	public String foo() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 }

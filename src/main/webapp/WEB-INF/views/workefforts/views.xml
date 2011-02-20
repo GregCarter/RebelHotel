@@ -22,4 +22,7 @@
 	<definition extends="workefforts.default" name="workefforts/findWorkEffortsByStudentEquals">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/findWorkEffortsByStudentEquals.jspx"/>
     </definition>
+    <definition extends = "workefforts.default" name = "workefforts/mywork">
+    	<put-attribute name = "body" value = "/WEB-INF/views/workefforts/personalList.jspx" />
+    </definition>
 </tiles-definitions>

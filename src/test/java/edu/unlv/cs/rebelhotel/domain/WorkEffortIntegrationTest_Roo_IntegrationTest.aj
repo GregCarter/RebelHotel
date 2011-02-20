@@ -100,16 +100,4 @@ privileged aspect WorkEffortIntegrationTest_Roo_IntegrationTest {
         org.junit.Assert.assertNotNull("Expected 'WorkEffort' identifier to no longer be null", obj.getId());
     }
     
-    @Test
-    public void WorkEffortIntegrationTest.testRemove() {
-        edu.unlv.cs.rebelhotel.domain.WorkEffort obj = dod.getRandomWorkEffort();
-        org.junit.Assert.assertNotNull("Data on demand for 'WorkEffort' failed to initialize correctly", obj);
-        java.lang.Long id = obj.getId();
-        org.junit.Assert.assertNotNull("Data on demand for 'WorkEffort' failed to provide an identifier", id);
-        obj = edu.unlv.cs.rebelhotel.domain.WorkEffort.findWorkEffort(id);
-        obj.remove();
-        obj.flush();
-        org.junit.Assert.assertNull("Failed to remove 'WorkEffort' with identifier '" + id + "'", edu.unlv.cs.rebelhotel.domain.WorkEffort.findWorkEffort(id));
-    }
-    
 }

@@ -83,5 +83,9 @@ public class Student {
         }
         return sb.toString();
     }
+    
+    public void addWorkEffort(WorkEffort we) {
+    	workEffort.add(we);
+    }
 }
 
