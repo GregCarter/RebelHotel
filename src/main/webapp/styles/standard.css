@@ -12,18 +12,22 @@ body {
 }
 
 #header {
-	margin-bottom: 1em;
+	
+	margin-top: 1em;
+	margin-bottom: 5em;
+	border:2px solid #000000;
+	background-color: #C10202;
 }
 
 #wrapper {
 	width:800px;
-	min-width: 800px;
-	max-width: 800px;
+	min-width: 1024px;
+	max-width: 1024px;
 	margin-right: auto;
 	margin-left: auto;
 
 	/* fix max-width incompatibility in IE6 */
-	width:expression(document.body.clientWidth > 800? "800px": "auto" );
+	width:expression(document.body.clientWidth > 1024? "1024px": "auto" );
 	
 	overflow:hidden;
 	display:block;
@@ -94,7 +98,7 @@ body {
 	float:left;
 }
 
-#footer a:link {color: #7db223;}
+#footer a:link {color: #666666;}
 
 .quicklinks {
 	clear:both; 
@@ -105,7 +109,7 @@ body {
 }
 
 table.navigation {
-	border: 0px;
+	border: 10px;
 }
 
 label {
@@ -143,7 +147,7 @@ div .box {
 
 /* menu elements*/
 
-a.menu, a.menu:link, a.menu:visited {display:block; width:150px; height:25px;} 
+a.menu, a.menu:link, a.menu:visited {display:block; width:px; height:25px;} 
 	
 /* text styles */
 
@@ -188,6 +192,7 @@ a {
 a img {
 	border: 0 none;
 	vertical-align: middle;
+	horizontal-align: middle;
 }
 
 tr:nth-child(odd) {

@@ -13,20 +13,18 @@
             <menu:item id="i_workrequirement_new" messageCode="global_menu_new" url="/workrequirements?form" z="csM8in6vJFFUluBeqSNYi3aS52k="/>
         	<menu:item id="i_workrequirement_list" messageCode="global_menu_list" url="/workrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UAs5tAQfRUiBM8rRuURokH94WVA="/>
         </menu:category>
-<<<<<<< HEAD
     <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">        
         <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
         <menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
             <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
             </menu:category>
-                <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">        
+        <menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">        
         <menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
         <menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
-=======
+		</menu:category>   
     	<menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">
         	<menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
         	<menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
->>>>>>> a145fbb420bc7623a3df11b450eadc4fa9dac055
             <menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         </menu:category>
     	<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
