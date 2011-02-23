@@ -144,6 +144,17 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
+    @RequestMapping(params = { "find=ByUserIdEquals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByUserIdEqualsForm(Model model) {
+        return "students/findStudentsByUserIdEquals";
+    }
+    
+    @RequestMapping(params = "find=ByUserIdEquals", method = RequestMethod.GET)
+    public String StudentController.findStudentsByUserIdEquals(@RequestParam("userId") String userId, Model model) {
+        model.addAttribute("students", Student.findStudentsByUserIdEquals(userId).getResultList());
+        return "students/list";
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();

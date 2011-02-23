@@ -21,11 +21,12 @@ import javax.persistence.Embedded;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals", "findStudentsByUserAccount" })
+@RooEntity(finders = { "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals", "findStudentsByUserAccount", "findStudentsByUserIdEquals"})
 public class Student {
-	@NotNull
-	@Column(unique = true)
-	private String userId;
+
+    @NotNull
+    @Column(unique = true)
+    private String userId;
 
     @NotNull
     @Size(min = 2)
@@ -58,34 +59,33 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<ViewProgress> milestone = new HashSet<ViewProgress>();
-    
+
     @OneToOne(optional = false)
     private UserAccount userAccount;
-    
+
     public boolean hasReachedMilestone() {
-    	boolean reachedMilestone = true;
-    	while (reachedMilestone) {
-    		for (ViewProgress each : milestone) {
-    			if(each.getRemainingHours()!=0) {
-    				reachedMilestone = false;
-    			}
-    		}
-    	}
-    	return reachedMilestone;
+        boolean reachedMilestone = true;
+        while (reachedMilestone) {
+            for (ViewProgress each : milestone) {
+                if (each.getRemainingHours() != 0) {
+                    reachedMilestone = false;
+                }
+            }
+        }
+        return reachedMilestone;
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(" + getUserId() + ")");
-        sb.append(" "+getFirstName());
+        sb.append(" " + getFirstName());
         if (getLastName() != null) {
-        	sb.append(" "+getLastName());
+            sb.append(" " + getLastName());
         }
         return sb.toString();
     }
-    
+
     public void addWorkEffort(WorkEffort we) {
-    	workEffort.add(we);
+        workEffort.add(we);
     }
 }
-

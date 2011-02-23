@@ -18,6 +18,12 @@ public class Term {
     @Enumerated
     private Semester semester;
     
+    public Term(Integer termYear, Semester semester) {
+    	this.termYear = termYear;
+    	this.semester = semester;
+    }
+    
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getSemester()+" "+getTermYear());

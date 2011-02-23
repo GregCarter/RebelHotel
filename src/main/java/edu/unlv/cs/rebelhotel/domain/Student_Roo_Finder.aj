@@ -58,4 +58,12 @@ privileged aspect Student_Roo_Finder {
         return q;
     }
     
+    public static TypedQuery<Student> Student.findStudentsByUserIdEquals(String userId) {
+        if (userId == null || userId.length() == 0) throw new IllegalArgumentException("The userId argument is required");
+        EntityManager em = Student.entityManager();
+        TypedQuery<Student> q = em.createQuery("SELECT Student FROM Student AS student WHERE student.userId = :userId", Student.class);
+        q.setParameter("userId", userId);
+        return q;
+    }
+    
 }
