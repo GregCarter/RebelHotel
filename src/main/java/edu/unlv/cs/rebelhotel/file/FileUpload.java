@@ -2,6 +2,8 @@ package edu.unlv.cs.rebelhotel.file;
 
 import org.springframework.web.multipart.MultipartFile;
 import edu.unlv.cs.rebelhotel.file.DefaultParser;
+
+import java.io.IOException;
 import java.util.Set;
 import java.util.HashSet;
 import javax.servlet.ServletRequest;
@@ -14,7 +16,7 @@ public class FileUpload {
 	public FileUpload() {
 	}
 	
-	public Set<FileStudent> parse() {
+	public Set<FileStudent> parse() throws IOException {
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
 		parser.parse();
 		return fileStudents;

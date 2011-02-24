@@ -3,7 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.Major;
 import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
@@ -17,94 +17,90 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 import org.springframework.transaction.annotation.Transactional;
 
-privileged aspect Term_Roo_Entity {
+privileged aspect Major_Roo_Entity {
     
-    declare @type: Term: @Entity;
+    declare @type: Major: @Entity;
     
     @PersistenceContext
-    transient EntityManager Term.entityManager;
+    transient EntityManager Major.entityManager;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long Term.id;
+    private Long Major.id;
     
     @Version
     @Column(name = "version")
-    private Integer Term.version;
+    private Integer Major.version;
     
-    public Term.new() {
-        super();
-    }
-
-    public Long Term.getId() {
+    public Long Major.getId() {
         return this.id;
     }
     
-    public void Term.setId(Long id) {
+    public void Major.setId(Long id) {
         this.id = id;
     }
     
-    public Integer Term.getVersion() {
+    public Integer Major.getVersion() {
         return this.version;
     }
     
-    public void Term.setVersion(Integer version) {
+    public void Major.setVersion(Integer version) {
         this.version = version;
     }
     
     @Transactional
-    public void Term.persist() {
+    public void Major.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
     
     @Transactional
-    public void Term.remove() {
+    public void Major.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Term attached = Term.findTerm(this.id);
+            Major attached = Major.findMajor(this.id);
             this.entityManager.remove(attached);
         }
     }
     
     @Transactional
-    public void Term.flush() {
+    public void Major.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
     
     @Transactional
-    public Term Term.merge() {
+    public Major Major.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
-        Term merged = this.entityManager.merge(this);
+        Major merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }
     
-    public static final EntityManager Term.entityManager() {
-        EntityManager em = new Term().entityManager;
+    public static final EntityManager Major.entityManager() {
+        EntityManager em = new Major().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
-    public static long Term.countTerms() {
-        return entityManager().createQuery("select count(o) from Term o", Long.class).getSingleResult();
+    public static long Major.countMajors() {
+        return entityManager().createQuery("select count(o) from Major o", Long.class).getSingleResult();
     }
     
-    public static List<Term> Term.findAllTerms() {
-        return entityManager().createQuery("select o from Term o", Term.class).getResultList();
+    public static List<Major> Major.findAllMajors() {
+        return entityManager().createQuery("select o from Major o", Major.class).getResultList();
     }
     
-    public static Term Term.findTerm(Long id) {
+    public static Major Major.findMajor(Long id) {
         if (id == null) return null;
-        return entityManager().find(Term.class, id);
+        return entityManager().find(Major.class, id);
     }
     
-    public static List<Term> Term.findTermEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from Term o", Term.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    public static List<Major> Major.findMajorEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("select o from Major o", Major.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }
