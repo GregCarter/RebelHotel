@@ -6,7 +6,6 @@ package edu.unlv.cs.rebelhotel.web;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.ViewProgress;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
@@ -152,11 +151,6 @@ privileged aspect StudentController_Roo_Controller {
     @ModelAttribute("useraccounts")
     public Collection<UserAccount> StudentController.populateUserAccounts() {
         return UserAccount.findAllUserAccounts();
-    }
-    
-    @ModelAttribute("viewprogresses")
-    public Collection<ViewProgress> StudentController.populateViewProgresses() {
-        return ViewProgress.findAllViewProgresses();
     }
     
     @ModelAttribute("workefforts")

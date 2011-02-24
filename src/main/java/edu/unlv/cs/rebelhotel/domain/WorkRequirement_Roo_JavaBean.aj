@@ -27,6 +27,14 @@ privileged aspect WorkRequirement_Roo_JavaBean {
         this.hours = hours;
     }
     
+    public boolean WorkRequirement.isMilestone() {
+        return this.milestone;
+    }
+    
+    public void WorkRequirement.setMilestone(boolean milestone) {
+        this.milestone = milestone;
+    }
+    
     public Student WorkRequirement.getStudent() {
         return this.student;
     }

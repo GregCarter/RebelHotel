@@ -8,5 +8,6 @@
         <field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_student" itemValue="id" items="${students}" path="/students" z="Rnppbs4IsSjzUgvGptN9pyLr7JQ="/>
     <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="by/0Zf58pw+PC8o39bh+pS9JlR0="/>
     
+    <field:checkbox field="milestone" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" z="7jliZxBvMtzlPUkqvzSLUgUkMz4="/>
     </form:update>
 </div>

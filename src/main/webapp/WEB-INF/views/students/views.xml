@@ -34,4 +34,7 @@
 	<definition extends="students.default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
     </definition>
+    <definition extends = "students.default" name = "students/query">
+    	<put-attribute name = "body" value = "/WEB-INF/views/students/query.jspx" />
+    </definition>
 </tiles-definitions>

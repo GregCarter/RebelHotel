@@ -9,6 +9,7 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_student" property="student" z="UMBZM12lYzwbalc7LbUL6ihNeYg="/>
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" property="workEffort" z="loEPCDKlA5Y1PYkYKsCNAxIy/SM="/>
         
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" property="milestone" z="vIvVTcZ47O4WZ30gIACTwzuDG8k="/>
         </table:table>
     </page:list>
 </div>

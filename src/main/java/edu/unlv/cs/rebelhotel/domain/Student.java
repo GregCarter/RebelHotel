@@ -46,7 +46,12 @@ public class Student {
     private String major1;
 
     private String major2;
+    
+    private String major3;
 
+    @ManyToOne
+    private Term catalogTerm;
+    
     @ManyToOne
     private Term admitTerm;
 
@@ -55,24 +60,9 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<ViewProgress> milestone = new HashSet<ViewProgress>();
     
     @OneToOne(optional = false)
     private UserAccount userAccount;
-    
-    public boolean hasReachedMilestone() {
-    	boolean reachedMilestone = true;
-    	while (reachedMilestone) {
-    		for (ViewProgress each : milestone) {
-    			if(each.getRemainingHours()!=0) {
-    				reachedMilestone = false;
-    			}
-    		}
-    	}
-    	return reachedMilestone;
-    }
     
     public String toString() {
         StringBuilder sb = new StringBuilder();
