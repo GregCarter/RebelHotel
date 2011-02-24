@@ -3,7 +3,14 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="workeffort_menu"/><br/><br/>
-    Why hello there!<br />
-    <br />
-    The attribute seems to be "${str}"!
+    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkEffort" items="${workefforts}" z="hkWx40HfLYNyB8b9jVXEMIjurE8=">
+        <table:table data="${workefforts}" id="l_edu_unlv_cs_rebelhotel_domain_WorkEffort" path="/workefforts" z="9MJC5QGkhiyHT8TWwoEzHyyyIwM=" create = "false" update = "false" delete = "false">
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" property="student" z="2ckKbTYcvHBufdKizbRYXCIphms="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" property="workPosition" z="6+j5izdYgAfuXc4WLC1LEGStUVc="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" property="comment" z="Qrk3GmfXG/56zAfTevG/paWG21E="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" property="supervisor" z="S6KkC7EF7oeU0sEc1AFFRjqORSs="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" property="employer" z="4uSWB1sTeKX9EFEegu3xVtIsBtM="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verificationType" property="verificationType" z="MGQCkhfpM9QFk9e54ZiPu2wDW98="/>
+        </table:table>
+    </page:list>
 </div>

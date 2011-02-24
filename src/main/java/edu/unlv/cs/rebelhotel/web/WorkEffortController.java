@@ -5,12 +5,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import edu.unlv.cs.rebelhotel.service.UserInformation;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
 import org.joda.time.format.DateTimeFormat;
@@ -34,6 +36,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/workefforts")
 @Controller
 public class WorkEffortController {
+	@Autowired
+	private UserInformation userInformation;
+	
 	@Autowired
 	private WorkEffortValidator workEffortValidator;
 	
@@ -119,6 +124,9 @@ public class WorkEffortController {
 	@RequestMapping(params = "mywork", method = RequestMethod.GET)
 	public String listPersonalWork(Model model) {
 		model.addAttribute("str", "A list to contain your completed jobs");
+		Student student = userInformation.getStudent();
+		List<WorkEffort> workEfforts = WorkEffort.findWorkEffortsByStudentEquals(student).getResultList();
+		model.addAttribute("workefforts", workEfforts);
 		return "workefforts/mywork";
 	}
 	
