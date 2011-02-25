@@ -57,6 +57,10 @@ public class FileStudent {
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
 		for (Enumeration<Set<Line>> e = entries.elements(); e.hasMoreElements();){
 			e.nextElement();
+			for (Line each : ){
+				
+			}
+				
 		}
 		
 		return fileStudents;

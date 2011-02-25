@@ -34,10 +34,7 @@
 	<definition extends="students.default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByUserIdEquals">
-        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserIdEquals.jspx"/>
-    </definition>
-<definition extends="default" name="students/findStudentsByUserId">
-        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserId.jspx"/>
+    <definition extends = "students.default" name = "students/query">
+    	<put-attribute name = "body" value = "/WEB-INF/views/students/query.jspx" />
     </definition>
 </tiles-definitions>

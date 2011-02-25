@@ -22,6 +22,8 @@ public class WorkRequirement {
 
     private Integer hours;
 
+    private boolean milestone;
+    
     @ManyToOne
     private Student student;
     

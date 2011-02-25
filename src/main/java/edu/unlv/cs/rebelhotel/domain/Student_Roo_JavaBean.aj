@@ -5,7 +5,6 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.ViewProgress;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.lang.String;
@@ -77,6 +76,22 @@ privileged aspect Student_Roo_JavaBean {
         this.major2 = major2;
     }
     
+    public String Student.getMajor3() {
+        return this.major3;
+    }
+    
+    public void Student.setMajor3(String major3) {
+        this.major3 = major3;
+    }
+    
+    public Term Student.getCatalogTerm() {
+        return this.catalogTerm;
+    }
+    
+    public void Student.setCatalogTerm(Term catalogTerm) {
+        this.catalogTerm = catalogTerm;
+    }
+    
     public Term Student.getAdmitTerm() {
         return this.admitTerm;
     }
@@ -99,14 +114,6 @@ privileged aspect Student_Roo_JavaBean {
     
     public void Student.setWorkEffort(Set<WorkEffort> workEffort) {
         this.workEffort = workEffort;
-    }
-    
-    public Set<ViewProgress> Student.getMilestone() {
-        return this.milestone;
-    }
-    
-    public void Student.setMilestone(Set<ViewProgress> milestone) {
-        this.milestone = milestone;
     }
     
     public UserAccount Student.getUserAccount() {
