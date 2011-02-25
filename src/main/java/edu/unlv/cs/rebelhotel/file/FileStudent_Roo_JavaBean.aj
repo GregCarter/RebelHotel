@@ -49,12 +49,12 @@ privileged aspect FileStudent_Roo_JavaBean {
         this.email = email;
     }
     
-    public Set<String> FileStudent.getMajor() {
-        return this.major;
+    public Set<String> FileStudent.getMajors() {
+        return this.majors;
     }
     
-    public void FileStudent.setMajor(Set<String> major) {
-        this.major = major;
+    public void FileStudent.setMajors(Set<String> majors) {
+        this.majors = majors;
     }
     
     public Term FileStudent.getAdmitTerm() {

@@ -21,7 +21,7 @@ import javax.persistence.Embedded;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals", "findStudentsByUserAccount", "findStudentsByUserIdEquals"})
+@RooEntity(finders = {"findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByUserAccount", "findStudentsByUserIdEquals"})
 public class Student {
 
     @NotNull
@@ -41,17 +41,7 @@ public class Student {
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
-
-    @Size(min = 2)
-    private String major1;
-
-    private String major2;
-    
-    private String major3;
-
-    @ManyToOne
-    private Term catalogTerm;
+    private Set<Major> majors = new HashSet<Major>();
     
     @ManyToOne
     private Term admitTerm;
@@ -65,7 +55,7 @@ public class Student {
     @OneToOne(optional = false)
     private UserAccount userAccount;
 
-    public boolean hasReachedMilestone() {
+   /* public boolean hasReachedMilestone() {
         boolean reachedMilestone = true;
         while (reachedMilestone) {
             for (ViewProgress each : milestone) {
@@ -76,7 +66,8 @@ public class Student {
         }
         return reachedMilestone;
     }
-
+    */
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(" + getUserId() + ")");

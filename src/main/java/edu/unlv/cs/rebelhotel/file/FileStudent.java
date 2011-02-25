@@ -20,7 +20,7 @@ public class FileStudent {
 	private String middleName;
 	private String lastName;
 	private String email;
-	private Set<String> major = new HashSet<String>();
+	private Set<String> majors = new HashSet<String>();
 	private Term admitTerm;
 	private Term gradTerm;
 	
@@ -36,9 +36,14 @@ public class FileStudent {
 		
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
 		for (Enumeration<Set<Line>> student = table.elements(); student.hasMoreElements();){
+			FileStudent fileStudent = new FileStudent();
 			Set<Line> lines = student.nextElement();
+			
+			// There is probably a better way to do this,
+			// but I will leave it like this for now...
+			// NOTE: did not accommodate for "catalogTerm" because
+			// I am not sure if it should be in Major.java
 			for (Line line : lines){
-				FileStudent fileStudent = new FileStudent();
 				fileStudent.setStudentId(line.getStudentId());
 				fileStudent.setFirstName(line.getFirstName());
 				fileStudent.setMiddleName(line.getMiddleName());
@@ -64,7 +69,9 @@ public class FileStudent {
 				else if (line.getGradTermSemester().equals("SUMMER")){
 					fileStudent.setGradTerm(new Term(temp, Semester.SUMMER));
 				}
+				fileStudent.majors.add(line.getMajor());
 			}
+			fileStudents.add(fileStudent);
 		}
 		return fileStudents;
 	}

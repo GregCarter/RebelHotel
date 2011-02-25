@@ -14,8 +14,10 @@ import java.util.HashSet;
 import edu.unlv.cs.rebelhotel.file.FileStudent;
 import edu.unlv.cs.rebelhotel.file.FileUpload;
 import edu.unlv.cs.rebelhotel.file.StudentMapper;
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.enums.Departments;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 
 
@@ -35,9 +37,13 @@ public class DefaultStudentService implements StudentService{
 	public void upload() throws IllegalStateException, IOException{
 		file.transferTo(new File("/data/students.csv"));
 		fileStudents.addAll(upload.parse());
+		
+		for (FileStudent each : fileStudents) {
+			findOrReplace(each);
+		}
 	}
 	
-	public Student findOrReplace(FileStudent fileStudent) {
+	public void findOrReplace(FileStudent fileStudent) {
 		StudentMapper sm = new StudentMapper();
 		Student student = sm.findOrReplace(fileStudent.getStudentId());
 		student.setFirstName(fileStudent.getFirstName());
@@ -46,21 +52,21 @@ public class DefaultStudentService implements StudentService{
 		student.setUserId(fileStudent.getStudentId());
 		student.setEmail(fileStudent.getEmail());
 		
-		//for (String each : fileStudent.getMajor())
-		int temp = 1; // number of majors, which cannot exceed 2
-		Iterator<String> iter = fileStudent.getMajor().iterator();
-		while (iter.hasNext() && temp < 3){
-			if (temp == 1) {
-				student.setMajor1(iter.next().toString());
+		for (String each : fileStudent.getMajors()) {
+			Major major = new Major();
+			if (each == "FOOD_AND_BEVERAGE"){
+				major.setDepartment(Departments.FOOD_AND_BEVERAGE);
+			} else if (each == "HOTEL_MANAGEMENT") {
+				major.setDepartment(Departments.HOTEL_MANAGEMENT);
+			} else if (each == "TOURISM_AND_CONVENTION") {
+				major.setDepartment(Departments.TOURISM_AND_CONVENTION);
 			}
-			else if (temp == 2) {
-				student.setMajor2(iter.next().toString());
-			}
-			temp++;
+			major.setReachedMilestone(false);
+			major.setCatalogTerm(null); // probably create this based today's date
+			major.setWorkRequirements(null);
 		}
-		
 		student.setAdmitTerm(fileStudent.getAdmitTerm());
 		student.setGradTerm(fileStudent.getGradTerm());
-		return student;
+		student.persist();
 	}
 }

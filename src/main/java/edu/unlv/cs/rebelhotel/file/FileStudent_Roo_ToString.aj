@@ -14,7 +14,7 @@ privileged aspect FileStudent_Roo_ToString {
         sb.append("MiddleName: ").append(getMiddleName()).append(", ");
         sb.append("LastName: ").append(getLastName()).append(", ");
         sb.append("Email: ").append(getEmail()).append(", ");
-        sb.append("Major: ").append(getMajor() == null ? "null" : getMajor().size()).append(", ");
+        sb.append("Majors: ").append(getMajors() == null ? "null" : getMajors().size()).append(", ");
         sb.append("AdmitTerm: ").append(getAdmitTerm()).append(", ");
         sb.append("GradTerm: ").append(getGradTerm());
         return sb.toString();

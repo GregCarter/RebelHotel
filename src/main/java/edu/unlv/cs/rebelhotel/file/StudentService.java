@@ -7,5 +7,5 @@ import edu.unlv.cs.rebelhotel.domain.Student;
 
 public interface StudentService {
 	public void upload() throws IllegalStateException, IOException;
-	public Student findOrReplace(FileStudent fileStudent);
+	public void findOrReplace(FileStudent fileStudent);
 }

@@ -3,10 +3,10 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.lang.String;
 import java.util.Set;
 
@@ -52,44 +52,12 @@ privileged aspect Student_Roo_JavaBean {
         this.lastName = lastName;
     }
     
-    public Set<WorkRequirement> Student.getWorkRequirements() {
-        return this.workRequirements;
+    public Set<Major> Student.getMajors() {
+        return this.majors;
     }
     
-    public void Student.setWorkRequirements(Set<WorkRequirement> workRequirements) {
-        this.workRequirements = workRequirements;
-    }
-    
-    public String Student.getMajor1() {
-        return this.major1;
-    }
-    
-    public void Student.setMajor1(String major1) {
-        this.major1 = major1;
-    }
-    
-    public String Student.getMajor2() {
-        return this.major2;
-    }
-    
-    public void Student.setMajor2(String major2) {
-        this.major2 = major2;
-    }
-    
-    public String Student.getMajor3() {
-        return this.major3;
-    }
-    
-    public void Student.setMajor3(String major3) {
-        this.major3 = major3;
-    }
-    
-    public Term Student.getCatalogTerm() {
-        return this.catalogTerm;
-    }
-    
-    public void Student.setCatalogTerm(Term catalogTerm) {
-        this.catalogTerm = catalogTerm;
+    public void Student.setMajors(Set<Major> majors) {
+        this.majors = majors;
     }
     
     public Term Student.getAdmitTerm() {

@@ -18,15 +18,9 @@ public class DefaultParser implements Parser {
 	private Set<FileStudent> fileStudents = new HashSet<FileStudent>();
 	
 	public DefaultParser(){
-		// do some initialization...maybe something with the file?
 	}
 	
 	public Set<FileStudent> parse() throws IOException {
-		// do some actual parsing
-		// this is where you will have to create lines
-		// then you take the lines and convert them to a FileStudent
-		// somewhere around here, you extract the info
-		
 		// open the reader
 		// go through each line
 		CSVReader reader = new CSVReader(new FileReader("/data/students.csv"));
@@ -39,9 +33,8 @@ public class DefaultParser implements Parser {
 			String studentId = "studentId";	
 			// ideally, we want to use the other constructor,
 			// but for now we will be lazy and not initialize any values
-			Line line = new Line(nextLine[0],nextLine[1],nextLine[2],
-								nextLine[3],nextLine[4],nextLine[5],nextLine[6],
-								nextLine[7],nextLine[8],nextLine[9]);
+			// for future reference, all you do is nextLine[x],nextLine[x+1],...
+			Line line = new Line();
 			if (entries.contains(studentId)) {
 				tempLineSet = entries.get(studentId);
 			} else {
