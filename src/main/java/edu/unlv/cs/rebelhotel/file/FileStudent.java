@@ -27,42 +27,45 @@ public class FileStudent {
 	public FileStudent() {
 	}
 	
-	public Set<FileStudent> convert(Hashtable<String, Set<Line>> entries) {
+	public Set<FileStudent> convert(Hashtable<String, Set<Line>> table) {
 		// go through each key, and convert the lines into
 		// the student. so create a new fileStudent for each key->value
 		
-		/*		// I would have used a case/switch, but it does not work for
+		//I would have used a case/switch, but it does not work for
 		// string switch expressions.
-		temp = Integer.parseInt(fileStudent.getAdmitTermYear());
-		if (fileStudent.getAdmitTermSemester().equals("FALL")) {
-			student.setAdmitTerm(new Term(temp, Semester.FALL));
-		}
-		else if (fileStudent.getAdmitTermSemester().equals("SPRING")){
-			student.setAdmitTerm(new Term(temp, Semester.SPRING));
-		}
-		else if (fileStudent.getAdmitTermSemester().equals("SUMMER")){
-			student.setAdmitTerm(new Term(temp, Semester.SUMMER));
-		}
 		
-		temp = Integer.parseInt(fileStudent.getGradTermYear());
-		if (fileStudent.getGradTermSemester().equals("FALL")) {
-			student.setGradTerm(new Term(temp, Semester.FALL));
-		}
-		else if (fileStudent.getGradTermSemester().equals("SPRING")){
-			student.setGradTerm(new Term(temp, Semester.SPRING));
-		}
-		else if (fileStudent.getGradTermSemester().equals("SUMMER")){
-			student.setGradTerm(new Term(temp, Semester.SUMMER));
-		}*/
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
-		for (Enumeration<Set<Line>> e = entries.elements(); e.hasMoreElements();){
-			e.nextElement();
-			for (Line each : ){
+		for (Enumeration<Set<Line>> student = table.elements(); student.hasMoreElements();){
+			Set<Line> lines = student.nextElement();
+			for (Line line : lines){
+				FileStudent fileStudent = new FileStudent();
+				fileStudent.setStudentId(line.getStudentId());
+				fileStudent.setFirstName(line.getFirstName());
+				fileStudent.setMiddleName(line.getMiddleName());
+				fileStudent.setEmail(line.getEmail());
 				
+				Integer temp = Integer.parseInt(line.getAdmitTermYear());
+				if (line.getAdmitTermSemester().equals("FALL")) {
+					fileStudent.setAdmitTerm(new Term(temp, Semester.FALL));
+				}
+				else if (line.getAdmitTermSemester().equals("SPRING")){
+					fileStudent.setAdmitTerm(new Term(temp, Semester.SPRING));
+				}
+				else if (line.getAdmitTermSemester().equals("SUMMER")){
+					fileStudent.setAdmitTerm(new Term(temp, Semester.SUMMER));
+				}
+				temp = Integer.parseInt(line.getGradTermYear());
+				if (line.getGradTermSemester().equals("FALL")) {
+					fileStudent.setGradTerm(new Term(temp, Semester.FALL));
+				}
+				else if (line.getGradTermSemester().equals("SPRING")){
+					fileStudent.setGradTerm(new Term(temp, Semester.SPRING));
+				}
+				else if (line.getGradTermSemester().equals("SUMMER")){
+					fileStudent.setGradTerm(new Term(temp, Semester.SUMMER));
+				}
 			}
-				
 		}
-		
 		return fileStudents;
 	}
 }

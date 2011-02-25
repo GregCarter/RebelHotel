@@ -54,6 +54,12 @@
         </pluginRepository>
     </pluginRepositories>
 	<dependencies>
+		<!-- Maven dependency for opencsv -->
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.0</version>
+		</dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>

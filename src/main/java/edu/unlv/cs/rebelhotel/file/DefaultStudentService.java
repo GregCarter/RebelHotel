@@ -2,7 +2,11 @@ package edu.unlv.cs.rebelhotel.file;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.multipart.MultipartFile;
+
+import au.com.bytecode.opencsv.CSVWriter;
+
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,24 +18,22 @@ import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 
-@Async
+
 public class DefaultStudentService implements StudentService{
 	private FileUpload upload;
 	private Set<FileStudent> fileStudents = new HashSet<FileStudent>();
 	private MultipartFile file;
 	
 	public DefaultStudentService(){
-		
 	}
 	
 	public DefaultStudentService(MultipartFile file) {
 		this.file = file;
 	}
 
-	public void upload(){
-		/*File file;
-		MultipartFile mf;
-		mf.transferTo(file);*/
+	@Async
+	public void upload() throws IllegalStateException, IOException{
+		file.transferTo(new File("/data/students.csv"));
 		fileStudents.addAll(upload.parse());
 	}
 	
