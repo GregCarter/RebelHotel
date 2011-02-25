@@ -8,7 +8,7 @@
       <spring:message code="welcome_h3" arguments="${app_name}" />
     </h3>
     <p>
-      <spring:message code="welcome_text" />
+      <spring:message code="welcome_text" arguments="${app_name}" />
     </p>
   </util:panel>
 </div>
