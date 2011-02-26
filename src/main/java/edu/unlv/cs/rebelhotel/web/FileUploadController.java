@@ -19,13 +19,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @Controller
 public class FileUploadController {
 	@RequestMapping(params = "upload", method = RequestMethod.GET)
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN,'ROLE_SUPERUSER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUPERUSER')")
 	public String uploadForm(Model model){
 		return "file/upload";
 	}
 	
     @RequestMapping(params = "upload", method = RequestMethod.POST)
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN,'ROLE_SUPERUSER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUPERUSER')")
     public String uploadFormHandler(@RequestParam("file") MultipartFile file, Model model) throws IOException {
     	if (file.isEmpty()){
     		return "file/upload";
