@@ -12,16 +12,17 @@
         <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" z="BuRwgbxmRVgdC9lvISnajvdbTNc="/>
         <field:input field="lastName" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" z="cLk7Jgc0hUpB99wzThzltRiBzcE="/>
         
-        <field:input field="major1" id="c_edu_unlv_cs_rebelhotel_domain_Student_major1" min="2" z="e0h6NSXl8Y/9TFgHLz12S2bEEbc="/>
-        <field:input field="major2" id="c_edu_unlv_cs_rebelhotel_domain_Student_major2" z="XLzhDLoMRVhdGICs+aoOrxg3olo="/>
+        
+        
         <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
         <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
         <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
     	<field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" z="3LUtyqCBfzl9Rw/zN4w4nhC4UpU="/>
         
-    	<field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="9HM7Lw5aBP1exgSasdHm3BZhyM4="/>
+    	
         
-    <field:select field="catalogTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_catalogTerm" itemValue="id" items="${terms}" path="/terms" z="eV3HcLmEbelA20rVPBjT+F4GuFE="/>
-    <field:input field="major3" id="c_edu_unlv_cs_rebelhotel_domain_Student_major3" z="c2Uj0OlH7oxXQkFSntlvFMezjD0="/>
+    
+    
+    <field:select field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" itemValue="id" items="${majors}" multiple="true" path="/majors" z="sWOxVscTaEA2QKTOheDsubUSs/w="/>
     </form:update>
 </div>

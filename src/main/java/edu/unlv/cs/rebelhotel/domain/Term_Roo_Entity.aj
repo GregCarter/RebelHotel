@@ -33,10 +33,6 @@ privileged aspect Term_Roo_Entity {
     @Column(name = "version")
     private Integer Term.version;
     
-    public Term.new() {
-        super();
-    }
-
     public Long Term.getId() {
         return this.id;
     }

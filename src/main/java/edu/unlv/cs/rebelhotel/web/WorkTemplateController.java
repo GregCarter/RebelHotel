@@ -48,7 +48,8 @@ public class WorkTemplateController {
         Major major = new Major();
         Set<WorkRequirement> workRequirements = major.getWorkRequirements();
         workRequirements.add(workRequirement);
-        major.setWorkRequirements(workRequirements);
+        //major.setWorkRequirements(workRequirements);
+        major.persist();
         Set<Major> majors = student.getMajors();
         majors.add(major);
         

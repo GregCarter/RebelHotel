@@ -22,10 +22,10 @@
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
 			<menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
             
-            <menu:item id="fi_student_major1equals" messageCode="global_menu_find" url="/students?find=ByMajor1Equals&amp;form" z="dBTfHqRfqnovKNAxMUl9hIOxpWw="/>
+            
             <menu:item id="fi_student_firstnameequals" messageCode="global_menu_find" url="/students?find=ByFirstNameEquals&amp;form" z="tiqnk5ZkrISXofo2h/km4FL5ZPI="/>
             <menu:item id="fi_student_firstnamelike" messageCode="global_menu_find" url="/students?find=ByFirstNameLike&amp;form" z="zMuU5zjnZqrbyePUxbCrOqyTKgA="/>
-            <menu:item id="fi_student_major2equals" messageCode="global_menu_find" url="/students?find=ByMajor2Equals&amp;form" z="SrCPiT1QhfHdsvIusNwfaeR4n3E="/>
+            
             <menu:item id="fi_student_useraccount" messageCode="global_menu_find" url="/students?find=ByUserAccount&amp;form" z="WQH/3Oj4BQ/ZHLs96aj/9D/7aAI="/>
         <menu:item id="fi_student_useridequals" messageCode="global_menu_find" url="/students?find=ByUserIdEquals&amp;form" z="6PaT334t5NDBT8u8mxZeaKl7c6w="/>
             

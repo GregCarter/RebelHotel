@@ -1,8 +1,10 @@
 package edu.unlv.cs.rebelhotel.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -17,8 +19,8 @@ import edu.unlv.cs.rebelhotel.domain.enums.Departments;
 @RooEntity
 public class Major {
 	
-	@OneToOne
-	private Set<WorkRequirement> workRequirements;
+	@ManyToMany
+	private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
 	// QUESTION: are we making it a set because it will contain
 	// both general and major specific?
 	// ANSWER: 

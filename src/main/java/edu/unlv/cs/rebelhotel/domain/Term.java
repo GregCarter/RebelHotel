@@ -23,6 +23,8 @@ public class Term {
     	this.semester = semester;
     }
     
+    public Term() { // empty parameter constructor for compatibility in Term_Roo_Entity
+    }
     
     public String toString() {
         StringBuilder sb = new StringBuilder();
