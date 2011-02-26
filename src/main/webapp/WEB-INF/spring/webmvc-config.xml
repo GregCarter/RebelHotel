@@ -111,7 +111,7 @@
 	  <constructor-arg ref="taskExecutor" />
 	</bean>
 	  -->
-	<!-- <context:component-scan base-package="org/springframework/samples/task/basic/annotation"/> -->
+	<!--<context:component-scan base-package="org/springframework/samples/task/basic/annotation"/> -->
   	<task:annotation-driven executor="myExecutor"/>
 	<task:executor id="myExecutor" pool-size="5"/>
   

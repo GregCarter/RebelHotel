@@ -30,7 +30,7 @@ public class DefaultParser implements Parser {
 			Set<Line> tempLineSet;
 			// ideally, we want to grab the ID from the file, but
 			// for now we will just make one
-			String studentId = "studentId";	
+			String studentId = "studentId";	// this will be one of the nextLine elements
 			// ideally, we want to use the other constructor,
 			// but for now we will be lazy and not initialize any values
 			// for future reference, all you do is nextLine[x],nextLine[x+1],...

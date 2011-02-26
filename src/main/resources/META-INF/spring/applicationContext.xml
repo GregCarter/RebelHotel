@@ -80,11 +80,10 @@
     <bean class="edu.unlv.cs.rebelhotel.service.UserInformation" id="userInformation" scope="session">
         <aop:scoped-proxy/>
     </bean>
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="dataSource" ref="dataSource"/>
-    </bean>
-    
-    <bean id = "multipartResolver" class = "org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    	<property name = "maxUploadSize" value = "10485760" />
     </bean>
 </beans>

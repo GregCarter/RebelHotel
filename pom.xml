@@ -54,12 +54,12 @@
         </pluginRepository>
     </pluginRepositories>
 	<dependencies>
-		<!-- Maven dependency for opencsv -->
-		<dependency>
-			<groupId>net.sf.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>2.0</version>
-		</dependency>
+        <!-- Maven dependency for opencsv -->
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.0</version>
+        </dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
@@ -360,10 +360,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-        	<!-- Added this dependency manually for file upload support to resolve java.lang.ClassNotFoundException: org.apache.commons.io.output.DeferredFileOutputStream -->
-        	<groupId>commons-io</groupId>
-        	<artifactId>commons-io</artifactId>
-        	<version>2.0.1</version>
+            <!-- Added this dependency manually for file upload support to resolve java.lang.ClassNotFoundException: org.apache.commons.io.output.DeferredFileOutputStream -->
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
