@@ -5,14 +5,18 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.NotNull;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
+
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @RooJavaBean
 @RooToString
 @RooEntity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"semester", "termYear"})})
 public class Term {
 
-    @NotNull
+	@NotNull
     private Integer termYear;
 
     @Enumerated

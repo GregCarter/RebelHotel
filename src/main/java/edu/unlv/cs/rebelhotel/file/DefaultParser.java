@@ -20,10 +20,15 @@ public class DefaultParser implements Parser {
 	public DefaultParser(){
 	}
 	
+	/** 
+	 * Implements opencsv to parse a csv file
+	 * @return Set<FileStudent> a set of FileStudents created after parsing a document into Line(s)
+	 */
 	public Set<FileStudent> parse() throws IOException {
+		
 		// open the reader
 		// go through each line
-		CSVReader reader = new CSVReader(new FileReader("/data/students.csv"));
+		CSVReader reader = new CSVReader(new FileReader("students.txt"));
 		String [] nextLine;
 		while ((nextLine = reader.readNext()) != null) {
 	        // nextLine[] is an array of values from the line

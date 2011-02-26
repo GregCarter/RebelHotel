@@ -31,8 +31,7 @@ public class FileUploadController {
     		return "file/upload";
     	}
     	byte[] fileData = file.getBytes();
-    	file.transferTo(new File("./data/", file.getOriginalFilename()));
-    	DefaultStudentService defaultStudentService = new DefaultStudentService();
+    	DefaultStudentService defaultStudentService = new DefaultStudentService(file);
 		defaultStudentService.upload();
     	model.addAttribute("fileData", new String(fileData).toString());
     	return "file/show";

@@ -27,6 +27,7 @@ public class StudentController {
 		//.list();
 		search.add(Restrictions.like("firstName", "Sam%"));
 		List students = search.list();
+		session.close();
 		
 		model.addAttribute("str", "Here is a test string for you!");
 		model.addAttribute("students", students);
