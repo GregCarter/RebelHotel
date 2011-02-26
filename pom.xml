@@ -54,12 +54,12 @@
         </pluginRepository>
     </pluginRepositories>
 	<dependencies>
-		<!-- Maven dependency for opencsv -->
-		<dependency>
-			<groupId>net.sf.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>2.0</version>
-		</dependency>
+        <!-- Maven dependency for opencsv -->
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.0</version>
+        </dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
@@ -360,10 +360,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-        	<!-- Added this dependency manually for file upload support to resolve java.lang.ClassNotFoundException: org.apache.commons.io.output.DeferredFileOutputStream -->
-        	<groupId>commons-io</groupId>
-        	<artifactId>commons-io</artifactId>
-        	<version>2.0.1</version>
+            <!-- Added this dependency manually for file upload support to resolve java.lang.ClassNotFoundException: org.apache.commons.io.output.DeferredFileOutputStream -->
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -398,9 +398,9 @@
             <version>${spring-security.version}</version>
         </dependency>
     <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.13</version>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
         </dependency>
     </dependencies>
 	<build>

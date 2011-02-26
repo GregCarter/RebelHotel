@@ -3,11 +3,11 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -87,17 +87,6 @@ privileged aspect StudentController_Roo_Controller {
         return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
-    @RequestMapping(params = { "find=ByMajor1Equals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor1EqualsForm(Model model) {
-        return "students/findStudentsByMajor1Equals";
-    }
-    
-    @RequestMapping(params = "find=ByMajor1Equals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor1Equals(@RequestParam("major1") String major1, Model model) {
-        model.addAttribute("students", Student.findStudentsByMajor1Equals(major1).getResultList());
-        return "students/list";
-    }
-    
     @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
     public String StudentController.findStudentsByFirstNameEqualsForm(Model model) {
         return "students/findStudentsByFirstNameEquals";
@@ -117,17 +106,6 @@ privileged aspect StudentController_Roo_Controller {
     @RequestMapping(params = "find=ByFirstNameLike", method = RequestMethod.GET)
     public String StudentController.findStudentsByFirstNameLike(@RequestParam("firstName") String firstName, Model model) {
         model.addAttribute("students", Student.findStudentsByFirstNameLike(firstName).getResultList());
-        return "students/list";
-    }
-    
-    @RequestMapping(params = { "find=ByMajor2Equals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor2EqualsForm(Model model) {
-        return "students/findStudentsByMajor2Equals";
-    }
-    
-    @RequestMapping(params = "find=ByMajor2Equals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor2Equals(@RequestParam("major2") String major2, Model model) {
-        model.addAttribute("students", Student.findStudentsByMajor2Equals(major2).getResultList());
         return "students/list";
     }
     
@@ -154,6 +132,11 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
+    @ModelAttribute("majors")
+    public Collection<Major> StudentController.populateMajors() {
+        return Major.findAllMajors();
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();
@@ -167,11 +150,6 @@ privileged aspect StudentController_Roo_Controller {
     @ModelAttribute("workefforts")
     public Collection<WorkEffort> StudentController.populateWorkEfforts() {
         return WorkEffort.findAllWorkEfforts();
-    }
-    
-    @ModelAttribute("workrequirements")
-    public Collection<WorkRequirement> StudentController.populateWorkRequirements() {
-        return WorkRequirement.findAllWorkRequirements();
     }
     
     String StudentController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
