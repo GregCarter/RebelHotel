@@ -43,6 +43,11 @@ public class FileStudent {
 			// but I will leave it like this for now...
 			// NOTE: did not accommodate for "catalogTerm" because
 			// I am not sure if it should be in Major.java
+			
+			// NOTE: before you begin parsing the document into lines,
+			// remember it is likely that the first line will be a bunch
+			// of headers (names of the columns), so it would be best to 
+			// skip that line (deletion?) before jumping into this for loop...
 			for (Line line : lines){
 				fileStudent.setStudentId(line.getStudentId());
 				fileStudent.setFirstName(line.getFirstName());

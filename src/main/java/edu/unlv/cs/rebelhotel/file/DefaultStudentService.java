@@ -36,7 +36,7 @@ public class DefaultStudentService implements StudentService{
 
 	@Async
 	public void upload() throws IllegalStateException, IOException{
-		file.transferTo(new File("/data/students.csv"));
+		file.transferTo(new File("students.txt"));
 		fileStudents.addAll(upload.parse());
 		
 		for (FileStudent each : fileStudents) {

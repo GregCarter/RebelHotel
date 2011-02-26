@@ -4,8 +4,6 @@
 [INFO]    task-segment: [test]
 [INFO] ------------------------------------------------------------------------
 [INFO] [aspectj:compile {execution: default}]
-[WARNING] advice defined in org.springframework.mock.staticmock.AnnotationDrivenStaticEntityMockingControl has not been applied [Xlint:adviceDidNotMatch]
-[WARNING] advice defined in org.springframework.mock.staticmock.AbstractMethodMockingControl has not been applied [Xlint:adviceDidNotMatch]
 [INFO] [resources:resources {execution: default-resources}]
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 5 resources
@@ -24,21 +22,21 @@
  T E S T S
 -------------------------------------------------------
 Running edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.094 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.75 sec
 Running edu.unlv.cs.rebelhotel.domain.WorkTemplateIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.329 sec
-Running edu.unlv.cs.rebelhotel.domain.TermIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.187 sec
-Running edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.203 sec
-Running edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.579 sec
-Running edu.unlv.cs.rebelhotel.service.DefaultStudentServiceTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 sec
-Running edu.unlv.cs.rebelhotel.domain.WorkRequirementIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.25 sec
-Running edu.unlv.cs.rebelhotel.domain.UserAccountIntegrationTest
 Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.265 sec
+Running edu.unlv.cs.rebelhotel.domain.TermIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.172 sec
+Running edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 sec
+Running edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.516 sec
+Running edu.unlv.cs.rebelhotel.service.DefaultStudentServiceTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 sec
+Running edu.unlv.cs.rebelhotel.domain.WorkRequirementIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.172 sec
+Running edu.unlv.cs.rebelhotel.domain.UserAccountIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.203 sec
 
 Results :
 
@@ -47,7 +45,7 @@ Tests run: 64, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESSFUL
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 29 seconds
-[INFO] Finished at: Fri Feb 25 18:41:28 PST 2011
-[INFO] Final Memory: 34M/247M
+[INFO] Total time: 16 seconds
+[INFO] Finished at: Fri Feb 25 19:58:41 PST 2011
+[INFO] Final Memory: 25M/247M
 [INFO] ------------------------------------------------------------------------
