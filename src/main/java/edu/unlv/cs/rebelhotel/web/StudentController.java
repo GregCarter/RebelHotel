@@ -1,6 +1,8 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -19,9 +21,12 @@ public class StudentController {
 	public String query(Model model) {
 		Session session = (Session) Student.entityManager().unwrap(Session.class);
 		session.beginTransaction();
-		List students = session.createCriteria(Student.class)
-		.add(Restrictions.like("firstName", "Sam%"))
-		.list();
+		Criteria search = session.createCriteria(Student.class);
+		//List students = session.createCriteria(Student.class)
+		//.add(Restrictions.like("firstName", "Sam%"))
+		//.list();
+		search.add(Restrictions.like("firstName", "Sam%"));
+		List students = search.list();
 		
 		model.addAttribute("str", "Here is a test string for you!");
 		model.addAttribute("students", students);
