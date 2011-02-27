@@ -13,6 +13,7 @@ import javax.persistence.UniqueConstraint;
 @RooJavaBean
 @RooToString
 @RooEntity
+// NOTICE apparently some database reliant annotations such as this @Table will not be implemented when persistence is set to "update"
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"semester", "termYear"})})
 public class Term {
 
