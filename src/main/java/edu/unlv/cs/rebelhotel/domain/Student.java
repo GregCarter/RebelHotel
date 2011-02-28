@@ -13,15 +13,22 @@ import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.persistence.Embedded;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = {"findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByUserAccount", "findStudentsByUserIdEquals"})
+@RooEntity(finders = { "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByUserAccount", "findStudentsByUserIdEquals" })
 public class Student {
 
     @NotNull
@@ -42,7 +49,7 @@ public class Student {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Major> majors = new HashSet<Major>();
-    
+
     @ManyToOne
     private Term admitTerm;
 
@@ -52,28 +59,27 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
 
+    private Boolean codeOfConductSigned;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
+    private Date lastModified;
+
     @OneToOne(optional = false)
     private UserAccount userAccount;
-
-   /* public boolean hasReachedMilestone() {
-        boolean reachedMilestone = true;
-        while (reachedMilestone) {
-            for (ViewProgress each : milestone) {
-                if (each.getRemainingHours() != 0) {
-                    reachedMilestone = false;
-                }
-            }
-        }
-        return reachedMilestone;
-    }
-    */
     
+    @PreUpdate
+    @PrePersist
+    public void onUpdate() {
+    	lastModified = new Date();
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("(" + getUserId() + ")");
-        sb.append(" " + getFirstName());
-        if (getLastName() != null) {
-            sb.append(" " + getLastName());
+        sb.append("(" + userId + ")");
+        sb.append(" " + firstName);
+        if (lastName != null) {
+            sb.append(" " + lastName);
         }
         return sb.toString();
     }

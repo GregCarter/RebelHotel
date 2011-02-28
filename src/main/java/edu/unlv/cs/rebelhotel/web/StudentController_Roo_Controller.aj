@@ -31,6 +31,7 @@ privileged aspect StudentController_Roo_Controller {
     public String StudentController.create(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("student", student);
+            addDateTimeFormatPatterns(model);
             return "students/create";
         }
         student.persist();
@@ -40,11 +41,13 @@ privileged aspect StudentController_Roo_Controller {
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String StudentController.createForm(Model model) {
         model.addAttribute("student", new Student());
+        addDateTimeFormatPatterns(model);
         return "students/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String StudentController.show(@PathVariable("id") Long id, Model model) {
+        addDateTimeFormatPatterns(model);
         model.addAttribute("student", Student.findStudent(id));
         model.addAttribute("itemId", id);
         return "students/show";
@@ -60,6 +63,7 @@ privileged aspect StudentController_Roo_Controller {
         } else {
             model.addAttribute("students", Student.findAllStudents());
         }
+        addDateTimeFormatPatterns(model);
         return "students/list";
     }
     
@@ -67,6 +71,7 @@ privileged aspect StudentController_Roo_Controller {
     public String StudentController.update(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("student", student);
+            addDateTimeFormatPatterns(model);
             return "students/update";
         }
         student.merge();
@@ -76,6 +81,7 @@ privileged aspect StudentController_Roo_Controller {
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String StudentController.updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("student", Student.findStudent(id));
+        addDateTimeFormatPatterns(model);
         return "students/update";
     }
     

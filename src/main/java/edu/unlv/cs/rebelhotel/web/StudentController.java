@@ -5,8 +5,11 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.joda.time.format.DateTimeFormat;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
+
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/students")
 @Controller
 public class StudentController {
+	void addDateTimeFormatPatterns(Model model) {
+        model.addAttribute("student_lastmodified_date_format", DateTimeFormat.patternForStyle("SF", LocaleContextHolder.getLocale()));
+    }
+	
 	@RequestMapping(params = "query", method = RequestMethod.GET)
 	public String query(Model model) {
 		Session session = (Session) Student.entityManager().unwrap(Session.class);

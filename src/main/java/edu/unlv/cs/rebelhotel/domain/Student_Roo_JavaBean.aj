@@ -7,7 +7,9 @@ import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Date;
 import java.util.Set;
 
 privileged aspect Student_Roo_JavaBean {
@@ -82,6 +84,22 @@ privileged aspect Student_Roo_JavaBean {
     
     public void Student.setWorkEffort(Set<WorkEffort> workEffort) {
         this.workEffort = workEffort;
+    }
+    
+    public Boolean Student.getCodeOfConductSigned() {
+        return this.codeOfConductSigned;
+    }
+    
+    public void Student.setCodeOfConductSigned(Boolean codeOfConductSigned) {
+        this.codeOfConductSigned = codeOfConductSigned;
+    }
+    
+    public Date Student.getLastModified() {
+        return this.lastModified;
+    }
+    
+    public void Student.setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
     }
     
     public UserAccount Student.getUserAccount() {
