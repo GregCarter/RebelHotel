@@ -12,6 +12,10 @@ public class SpringApplicationContext implements ApplicationContextAware {
 		SpringApplicationContext.context = context;
 	}
 	
+	public static ApplicationContext getApplicationContext() {
+		return context;
+	}
+	
 	public static Object getBean(String name) {
 		return context.getBean(name);
 	}

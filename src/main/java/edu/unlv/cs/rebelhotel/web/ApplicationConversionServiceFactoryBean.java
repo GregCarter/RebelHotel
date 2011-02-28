@@ -89,6 +89,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		registry.addConverter(getEmployerConverter());
 		registry.addConverter(getWorkEffortDurationConverter());
 		registry.addConverter(getUserAccountConverter());
+		
 	}
 	
 }

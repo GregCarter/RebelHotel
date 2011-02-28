@@ -76,7 +76,6 @@
     		</list>
     	</property>
     </bean> -->
-    <bean class="edu.unlv.cs.rebelhotel.service.SpringApplicationContext" id="springApplicationContext"/>
     <bean class="edu.unlv.cs.rebelhotel.service.UserInformation" id="userInformation" scope="session">
         <aop:scoped-proxy/>
     </bean>
