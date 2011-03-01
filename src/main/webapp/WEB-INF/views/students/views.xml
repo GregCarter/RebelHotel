@@ -37,7 +37,10 @@
     <definition extends="students.default" name="students/query">
     	<put-attribute name="body" value="/WEB-INF/views/students/query.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByUserIdEquals">
+    <definition extends = "students.default" name = "students/queryList">
+    	<put-attribute name = "body" value = "/WEB-INF/views/students/queryList.jspx" />
+    </definition>
+	<definition extends="default" name="students/findStudentsByUserIdEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserIdEquals.jspx"/>
     </definition>
 </tiles-definitions>
