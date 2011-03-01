@@ -18,7 +18,9 @@ privileged aspect Line_Roo_ToString {
         sb.append("AdmitTermYear: ").append(getAdmitTermYear()).append(", ");
         sb.append("AdmitTermSemester: ").append(getAdmitTermSemester()).append(", ");
         sb.append("GradTermYear: ").append(getGradTermYear()).append(", ");
-        sb.append("GradTermSemester: ").append(getGradTermSemester());
+        sb.append("GradTermSemester: ").append(getGradTermSemester()).append(", ");
+        sb.append("RequirementTermYear: ").append(getRequirementTermYear()).append(", ");
+        sb.append("RequirementTermSemester: ").append(getRequirementTermSemester());
         return sb.toString();
     }
     

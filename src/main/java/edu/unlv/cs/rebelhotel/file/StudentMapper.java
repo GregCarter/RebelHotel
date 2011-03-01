@@ -8,10 +8,6 @@ public class StudentMapper {
 	
 	public Student findOrReplace(String studentId){
 		Student student;
-		
-		// are we guaranteed that we will always get one result
-		// back from this finder? right now I am assuming so
-		
 		student = Student.findStudentsByUserIdEquals(studentId).getSingleResult();
 		if (student == null) {
 			student = new Student();

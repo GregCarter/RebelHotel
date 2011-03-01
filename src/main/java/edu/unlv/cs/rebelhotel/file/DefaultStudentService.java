@@ -47,7 +47,7 @@ public class DefaultStudentService implements StudentService{
 	public void findOrReplace(FileStudent fileStudent) {
 		StudentMapper sm = new StudentMapper();
 		Student student = sm.findOrReplace(fileStudent.getStudentId());
-		student.setFirstName(fileStudent.getFirstName());
+		/*student.setFirstName(fileStudent.getFirstName());
 		student.setMiddleName(fileStudent.getMiddleName());
 		student.setLastName(fileStudent.getLastName());
 		student.setUserId(fileStudent.getStudentId());
@@ -67,7 +67,7 @@ public class DefaultStudentService implements StudentService{
 			major.setWorkRequirements(null);
 		}
 		student.setAdmitTerm(fileStudent.getAdmitTerm());
-		student.setGradTerm(fileStudent.getGradTerm());
+		student.setGradTerm(fileStudent.getGradTerm());*/
 		student.persist();
 	}
 }
