@@ -1,6 +1,8 @@
 package edu.unlv.cs.rebelhotel.file;
 
+import java.util.Collection;
 import java.util.Enumeration;
+import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -22,12 +24,12 @@ public class FileStudent {
 	private String email;
 	private Set<String> majors = new HashSet<String>();
 	private Term admitTerm;
-	private Term gradTerm;
+	private Term gradTerm; // are we going to put gradTerm in Majors?
 	
 	public FileStudent() {
 	}
 	
-	public Set<FileStudent> convert(Hashtable<String, Set<Line>> table) {
+	public Set<FileStudent> convert(Map<String, Set<Line>> entries) {
 		// go through each key, and convert the lines into
 		// the student. so create a new fileStudent for each key->value
 		
@@ -35,7 +37,8 @@ public class FileStudent {
 		// string switch expressions.
 		
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
-		for (Enumeration<Set<Line>> student = table.elements(); student.hasMoreElements();){
+		Collection<Set<Line>> student = entries.values();
+		for (student.hasMoreElements();){
 			FileStudent fileStudent = new FileStudent();
 			Set<Line> lines = student.nextElement();
 	
