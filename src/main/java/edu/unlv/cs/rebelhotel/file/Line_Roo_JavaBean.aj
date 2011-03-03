@@ -87,4 +87,20 @@ privileged aspect Line_Roo_JavaBean {
         this.gradTermSemester = gradTermSemester;
     }
     
+    public String Line.getRequirementTermYear() {
+        return this.requirementTermYear;
+    }
+    
+    public void Line.setRequirementTermYear(String requirementTermYear) {
+        this.requirementTermYear = requirementTermYear;
+    }
+    
+    public String Line.getRequirementTermSemester() {
+        return this.requirementTermSemester;
+    }
+    
+    public void Line.setRequirementTermSemester(String requirementTermSemester) {
+        this.requirementTermSemester = requirementTermSemester;
+    }
+    
 }

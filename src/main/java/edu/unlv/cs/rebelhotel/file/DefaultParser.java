@@ -21,21 +21,23 @@ public class DefaultParser implements Parser {
 	}
 	
 	/** 
-	 * Implements opencsv to parse a csv file
+	 * Implements opencsv to parse a csv file. This is where we do not
+	 * create any Lines for "recreation" majors
+	 * 
+	 * NOTE: before you begin parsing the document into lines,
+	 * remember it is likely that the first line will be a bunch
+	 * of headers (names of the columns), so it would be best to 
+	 * skip that line (deletion?) before jumping into this for loop...
+	 * 
 	 * @return Set<FileStudent> a set of FileStudents created after parsing a document into Line(s)
 	 */
 	public Set<FileStudent> parse() throws IOException {
-		
-		// open the reader
-		// go through each line
 		CSVReader reader = new CSVReader(new FileReader("students.txt"));
 		String [] nextLine;
 		while ((nextLine = reader.readNext()) != null) {
 	        // nextLine[] is an array of values from the line
 			Set<Line> tempLineSet;
-			// ideally, we want to grab the ID from the file, but
-			// for now we will just make one
-			String studentId = "studentId";	// this will be one of the nextLine elements
+			String studentId = "1000178965";
 			// ideally, we want to use the other constructor,
 			// but for now we will be lazy and not initialize any values
 			// for future reference, all you do is nextLine[x],nextLine[x+1],...
