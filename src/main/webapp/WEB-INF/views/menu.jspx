@@ -4,11 +4,11 @@
 	<jsp:output omit-xml-declaration="yes"/>
 
 <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-	<security:authorize access="hasRole('ROLE_ADMIN')">
+	<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')">
         <menu:category id="c_term" z="z3ly3A0HuvUfPkgN3H2XzNcWTlU=">
             <menu:item id="i_term_new" messageCode="global_menu_new" url="/terms?form" z="wgiKkyRDO0HpHhgEDihRQzUhP3k="/>
         	<menu:item id="i_term_list" messageCode="global_menu_list" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ev5ds/cpGL+OtBUv9Kd6x/Ioqak="/>
-        	<menu:item id="i_term_generate" url="/terms?generate" />
+        	<menu:item id="i_term_generate" url="/terms?generate"/>
         </menu:category>
     	<menu:category id="c_workrequirement" z="BRAzcRCVcdWWTNOQXNpMuQUdr2k=">
             <menu:item id="i_workrequirement_new" messageCode="global_menu_new" url="/workrequirements?form" z="csM8in6vJFFUluBeqSNYi3aS52k="/>
@@ -51,6 +51,10 @@
        	<menu:category id="c_filehandling">
        		<menu:item id="i_fileupload" url="/file?upload"/>
        	</menu:category>
+       	<menu:category id="c_major" z="8ZK5FH13E0cOw+AtqfDxEOXxVZ0=">
+            <menu:item id="i_major_new" messageCode="global_menu_new" url="/majors?form" z="KpZzLvh2tms2AxGE4Gj5T9302hY="/>
+        	<menu:item id="i_major_list" messageCode="global_menu_list" url="/majors?page=1&amp;size=${empty param.size ? 10 : param.size}" z="2KZkdM8qgb+fD1P0mlHdEOEbZH0="/>
+        </menu:category>
 	</security:authorize>
         <security:authorize access="hasRole('ROLE_ANONYMOUS')">
         	<menu:category id="c_login">

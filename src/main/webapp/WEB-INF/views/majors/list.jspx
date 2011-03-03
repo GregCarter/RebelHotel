@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Major" items="${majors}" z="fEdErY6US/7ksuLsbF/QzVTcyGg=">
+        <table:table data="${majors}" id="l_edu_unlv_cs_rebelhotel_domain_Major" path="/majors" z="vWIsPbs+OidqDJF5mI9dxWo+ZHQ=">
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_workRequirements" property="workRequirements" z="NsEhAlhvxYJC0dBMsyBPIyZu/Bg="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_reachedMilestone" property="reachedMilestone" z="kWru6OrCZUB5eiEkHllUX0WCE+E="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_department" property="department" z="ZOuHkLUThiEJPu/DElTbR8krmEI="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" property="catalogTerm" z="mqyehFU0GGspMvAtev5xVj+FVDY="/>
+        </table:table>
+    </page:list>
+</div>

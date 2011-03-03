@@ -3,6 +3,7 @@ package edu.unlv.cs.rebelhotel.form;
 import java.util.Date;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.enums.Departments;
 
 public class FormStudentQuery {
 	private boolean useUserId;
@@ -17,6 +18,12 @@ public class FormStudentQuery {
 	
 	private boolean useGradTerm;
 	private Term gradTerm;
+	
+	private boolean useMilestone;
+	private boolean hasMilestone;
+	
+	private boolean useMajor;
+	private Departments department;
 	
 	public boolean getUseUserId() {
 		return useUserId;
@@ -88,5 +95,41 @@ public class FormStudentQuery {
 	
 	public void setGradTerm(Term gradTerm) {
 		this.gradTerm = gradTerm;
+	}
+	
+	public boolean isStartDateAfterEndDate() {
+    	return (lastModifiedStart.compareTo(lastModifiedEnd) > 0);
+    }
+	
+	public boolean getHasMilestone() {
+		return hasMilestone;
+	}
+	
+	public void setHasMilestone(boolean hasMilestone) {
+		this.hasMilestone = hasMilestone;
+	}
+	
+	public boolean getUseMilestone() {
+		return useMilestone;
+	}
+	
+	public void setUseMilestone(boolean useMilestone) {
+		this.useMilestone = useMilestone;
+	}
+	
+	public boolean getUseMajor() {
+		return useMajor;
+	}
+	
+	public void setUseMajor(boolean useMajor) {
+		this.useMajor = useMajor;
+	}
+	
+	public Departments getDepartment() {
+		return department;
+	}
+	
+	public void setDepartment(Departments department) {
+		this.department = department;
 	}
 }
