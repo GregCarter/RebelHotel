@@ -1,19 +1,10 @@
 package edu.unlv.cs.rebelhotel.domain.enums;
 
-
 public enum Departments {
 
-    FOOD_AND_BEVERAGE, HOTEL_MANAGEMENT, TOURISM_AND_CONVENTION;
+    HOSPITALITY_MANAGEMENT, HOTEL_ADMINISTRATION_BEVERAGE_MANAGEMENT, FOOD_SERVICE_MANAGEMENT, LODGING_AND_RESORT_MANAGEMENT, MEETINGS_AND_EVENTS_MANAGEMENT,
+    CULINARY_ARTS_MANAGEMENT, CULINARY_ARTS_BEVERAGE_MANAGEMENT,
+    GAMING_MANAGEMENT,
+    RECREATION;
     
-    public String toString() {
-    	switch (this) {
-    		case FOOD_AND_BEVERAGE:
-    			return "Food and Beverage";
-    		case HOTEL_MANAGEMENT:
-    			return "Hotel Management";
-    		case TOURISM_AND_CONVENTION:
-    			return "Tourism and Convention";
-    	}
-    	return "";
-    }
 }
