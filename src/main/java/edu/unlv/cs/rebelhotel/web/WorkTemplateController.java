@@ -40,22 +40,17 @@ public class WorkTemplateController {
             return "worktemplates/createRequirement";
         }
         WorkTemplate workTemplate = formWorkRequirement.getWorkTemplate();
-        Student student = Student.findStudent(sid);
-        WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, student);
+        Major major = Major.findMajor(sid);
+        WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, major);
         workRequirement.persist();
         
         // NOTE: I am not sure if this is right.
-        Major major = new Major();
         Set<WorkRequirement> workRequirements = major.getWorkRequirements();
         workRequirements.add(workRequirement);
-        //major.setWorkRequirements(workRequirements);
-        major.persist();
-        Set<Major> majors = student.getMajors();
-        majors.add(major);
         
         //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
         //workRequirements.add(workRequirement);
-        student.merge();
+        major.merge();
         return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), request);
     }
 	

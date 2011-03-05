@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Major" object="${major}" path="/majors" z="MR5jiv5VIk8PjDGWbhV5rzAT+3E=">
+        <field:display field="workRequirements" id="s_edu_unlv_cs_rebelhotel_domain_Major_workRequirements" object="${major}" z="qhbnFQ+Lu/FRitaCBdyqSUjZ71Q="/>
+        <field:display field="reachedMilestone" id="s_edu_unlv_cs_rebelhotel_domain_Major_reachedMilestone" object="${major}" z="aopibIzwWMdbvX75dSUdUnnPeGE="/>
+        <field:display field="department" id="s_edu_unlv_cs_rebelhotel_domain_Major_department" object="${major}" z="ia7i8x7jFRvow7CkMql2cbQwQjI="/>
+        <field:display field="catalogTerm" id="s_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" object="${major}" z="Fa3cH++zOLW+AQ9nnxUdjAshT/A="/>
+    	<div class="quicklinks">
+        	<!-- For adding a work requirement from the major page -->
+        	<spring:url value="/resources/images/rh-blank.png" var="create_workrequirement_image_url"/>
+        	<spring:message code="create_workrequirement_label" var="workrequirement_title"/>
+        	<spring:url value="/worktemplates/${itemId}?requirement" var="create_workrequirement_url"/>
+        	<span>
+        	<a alt="${workrequirement_title}" href="${create_workrequirement_url}" title="${workrequirement_title}">
+        		<img alt="${workrequirement_title}" class="image" src="${create_workrequirement_image_url}" title="${workrequirement_title}"/>
+        	</a>
+        	</span>
+        </div>
+    </page:show>
+</div>

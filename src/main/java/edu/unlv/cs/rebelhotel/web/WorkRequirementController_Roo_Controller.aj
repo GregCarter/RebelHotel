@@ -3,7 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
-import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
@@ -85,9 +85,9 @@ privileged aspect WorkRequirementController_Roo_Controller {
         return "redirect:/workrequirements?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
-    @ModelAttribute("students")
-    public Collection<Student> WorkRequirementController.populateStudents() {
-        return Student.findAllStudents();
+    @ModelAttribute("majors")
+    public Collection<Major> WorkRequirementController.populateMajors() {
+        return Major.findAllMajors();
     }
     
     @ModelAttribute("workefforts")

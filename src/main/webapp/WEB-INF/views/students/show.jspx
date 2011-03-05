@@ -34,15 +34,6 @@
         		<img alt="${workeffort_title}" class="image" src="${create_workeffort_image_url}" title="${workeffort_title}"/>
         	</a>
         	</span>
-        	<!-- For adding a work requirement from the student page -->
-        	<spring:url value="/resources/images/rh-blank.png" var="create_workrequirement_image_url"/>
-        	<spring:message code="create_workrequirement_label" var="workrequirement_title"/>
-        	<spring:url value="/worktemplates/${itemId}?requirement" var="create_workrequirement_url"/>
-        	<span>
-        	<a alt="${workrequirement_title}" href="${create_workrequirement_url}" title="${workrequirement_title}">
-        		<img alt="${workrequirement_title}" class="image" src="${create_workrequirement_image_url}" title="${workrequirement_title}"/>
-        	</a>
-        	</span>
         </div>
     </page:show>
 </div>
