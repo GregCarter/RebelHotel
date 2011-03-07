@@ -93,51 +93,6 @@ privileged aspect StudentController_Roo_Controller {
         return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
-    @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByFirstNameEqualsForm(Model model) {
-        return "students/findStudentsByFirstNameEquals";
-    }
-    
-    @RequestMapping(params = "find=ByFirstNameEquals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByFirstNameEquals(@RequestParam("firstName") String firstName, Model model) {
-        model.addAttribute("students", Student.findStudentsByFirstNameEquals(firstName).getResultList());
-        return "students/list";
-    }
-    
-    @RequestMapping(params = { "find=ByFirstNameLike", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByFirstNameLikeForm(Model model) {
-        return "students/findStudentsByFirstNameLike";
-    }
-    
-    @RequestMapping(params = "find=ByFirstNameLike", method = RequestMethod.GET)
-    public String StudentController.findStudentsByFirstNameLike(@RequestParam("firstName") String firstName, Model model) {
-        model.addAttribute("students", Student.findStudentsByFirstNameLike(firstName).getResultList());
-        return "students/list";
-    }
-    
-    @RequestMapping(params = { "find=ByUserAccount", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByUserAccountForm(Model model) {
-        model.addAttribute("useraccounts", UserAccount.findAllUserAccounts());
-        return "students/findStudentsByUserAccount";
-    }
-    
-    @RequestMapping(params = "find=ByUserAccount", method = RequestMethod.GET)
-    public String StudentController.findStudentsByUserAccount(@RequestParam("userAccount") UserAccount userAccount, Model model) {
-        model.addAttribute("students", Student.findStudentsByUserAccount(userAccount).getResultList());
-        return "students/list";
-    }
-    
-    @RequestMapping(params = { "find=ByUserIdEquals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByUserIdEqualsForm(Model model) {
-        return "students/findStudentsByUserIdEquals";
-    }
-    
-    @RequestMapping(params = "find=ByUserIdEquals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByUserIdEquals(@RequestParam("userId") String userId, Model model) {
-        model.addAttribute("students", Student.findStudentsByUserIdEquals(userId).getResultList());
-        return "students/list";
-    }
-    
     @ModelAttribute("majors")
     public Collection<Major> StudentController.populateMajors() {
         return Major.findAllMajors();

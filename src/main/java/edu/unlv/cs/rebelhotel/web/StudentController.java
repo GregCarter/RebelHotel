@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@RooWebScaffold(path = "students", formBackingObject = Student.class)
+@RooWebScaffold(path = "students", formBackingObject = Student.class, exposeFinders=false)
 @RequestMapping("/students")
 @Controller
 public class StudentController {

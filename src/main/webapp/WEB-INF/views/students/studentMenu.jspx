@@ -12,7 +12,8 @@
 					</td>
 					<td id="c_student_menu_list">
 						<spring:message var = "student_menu_query" code = "label_student_menu_query" />
-						<a href="/RebelHotel/students?page=1&amp;size=10" title="${student_menu_query}">${student_menu_query}</a>
+						<!-- <a href="/RebelHotel/students?page=1&amp;size=10" title="${student_menu_query}">${student_menu_query}</a>-->
+						 <a href="/RebelHotel/students?query" title="${student_menu_query}">${student_menu_query}</a>
 					</td>
 					<td id = "c_student_menu_useraccount">
 						<spring:message var = "student_menu_find" code = "label_student_menu_find" />
