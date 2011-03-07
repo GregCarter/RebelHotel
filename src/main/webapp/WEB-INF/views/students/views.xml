@@ -4,22 +4,27 @@
 	<definition extends="default" name="students.default">
 		<put-attribute cascade="true" name="student_menu" value="/WEB-INF/views/students/studentMenu.jspx"/>
 	</definition>
+	
     <definition extends="students.default" name="students/list">
         <put-attribute name="body" value="/WEB-INF/views/students/list.jspx"/>
-
+        <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
+    
 	<definition extends="students.default" name="students/show">
         <put-attribute name="body" value="/WEB-INF/views/students/show.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
+    
 	<definition extends="students.default" name="students/create">
         <put-attribute name="body" value="/WEB-INF/views/students/create.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
+    
 	<definition extends="students.default" name="students/update">
         <put-attribute name="body" value="/WEB-INF/views/students/update.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
+    
 	<!-- <definition extends="students.default" name="students/findStudentsByNSHEEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
     </definition>
@@ -37,7 +42,7 @@
     </definition>
 	<definition extends="students.default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
-    </definition>-->
+    </definition> -->
     <definition extends="students.default" name="students/query">
     	<put-attribute name="body" value="/WEB-INF/views/students/query.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
