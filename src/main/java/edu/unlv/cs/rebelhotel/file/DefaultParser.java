@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultParser implements Parser {
 
-	@Autowired
 	public DefaultParser(){
 	}
 	

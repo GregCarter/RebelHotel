@@ -17,11 +17,11 @@ import edu.unlv.cs.rebelhotel.file.StudentService;
 @Controller
 @RequestMapping("/file")
 public class FileUploadController {
-	private final StudentService studentService;
+	//private final StudentService studentService;
 
-	@Autowired
-	public FileUploadController(StudentService studentService) {
-		this.studentService = studentService;
+	//@Autowired
+	public FileUploadController(/*StudentService studentService*/) {
+		//this.studentService = studentService;
 	}
 	
 	@RequestMapping(params = "upload", method = RequestMethod.GET)
@@ -38,9 +38,9 @@ public class FileUploadController {
 		}
 		byte[] file_data = multipart_file.getBytes();
 		
-		File file = File.createTempFile("students",".csv");
+	/*	File file = File.createTempFile("students",".csv");
 		multipart_file.transferTo(file);
-		studentService.upload(file);
+		studentService.upload(file);*/
 		
 		model.addAttribute("file_data", new String(file_data).toString());
 		return "file/show";
