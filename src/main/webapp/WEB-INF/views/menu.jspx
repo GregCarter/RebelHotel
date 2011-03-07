@@ -6,7 +6,10 @@
 <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
 	<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')">
 		 <menu:category id="c_main">
-			 <menu:item id="i_student_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" />
+			 <menu:item id="i_manage_students" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+			 <menu:item id="i_manage_terms" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+			 <menu:item id="i_manage_jobs" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+			 <menu:item id="i_fileupload" url="/file?upload"/>
 		 </menu:category>
          <menu:category id="c_term" z="z3ly3A0HuvUfPkgN3H2XzNcWTlU=">
             <menu:item id="i_term_new" messageCode="global_menu_new" url="/terms?form" z="wgiKkyRDO0HpHhgEDihRQzUhP3k="/>
@@ -19,7 +22,7 @@
         </menu:category>
     	<menu:category id="c_workeffort" z="WYps3kPwNi7SZ9zv+iJCHl5PAdY=">        
         	<menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
-        	<menu:item id="fi_workeffort_studentequals" messageCode="global_menu_find" url="/workefforts?find=ByStudentEquals&amp;form" z="8za1Dnjvw40hSmKytdjFrnDy0QI="/>
+        	
         	<menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         </menu:category>
     	<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
