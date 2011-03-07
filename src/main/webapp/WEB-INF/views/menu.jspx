@@ -5,7 +5,10 @@
 
 <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
 	<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')">
-        <menu:category id="c_term" z="z3ly3A0HuvUfPkgN3H2XzNcWTlU=">
+		 <menu:category id="c_main">
+			 <menu:item id="i_student_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" />
+		 </menu:category>
+         <menu:category id="c_term" z="z3ly3A0HuvUfPkgN3H2XzNcWTlU=">
             <menu:item id="i_term_new" messageCode="global_menu_new" url="/terms?form" z="wgiKkyRDO0HpHhgEDihRQzUhP3k="/>
         	<menu:item id="i_term_list" messageCode="global_menu_list" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ev5ds/cpGL+OtBUv9Kd6x/Ioqak="/>
         	<menu:item id="i_term_generate" url="/terms?generate"/>
@@ -22,15 +25,8 @@
     	<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
             <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
 			<menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
-            
-            
-            
-            
-            
-            
-        
-            
-            </menu:category>
+         
+        </menu:category>
    		<menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
            	<menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
        		<menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
