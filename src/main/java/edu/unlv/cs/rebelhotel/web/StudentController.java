@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.Departments;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
@@ -26,6 +27,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RooWebScaffold(path = "students", formBackingObject = Student.class)
 @RequestMapping("/students")
@@ -89,4 +91,49 @@ public class StudentController {
 		addQueryDateTimeFormatPatterns(model);
 		return "students/query";
 	}
+
+    @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
+    public String findStudentsByFirstNameEqualsForm(Model model) {
+        return "students/findStudentsByFirstNameEquals";
+    }
+    
+    @RequestMapping(params = "find=ByFirstNameEquals", method = RequestMethod.GET)
+    public String findStudentsByFirstNameEquals(@RequestParam("firstName") String firstName, Model model) {
+        model.addAttribute("students", Student.findStudentsByFirstNameEquals(firstName).getResultList());
+        return "students/list";
+    }
+    
+    @RequestMapping(params = { "find=ByFirstNameLike", "form" }, method = RequestMethod.GET)
+    public String findStudentsByFirstNameLikeForm(Model model) {
+        return "students/findStudentsByFirstNameLike";
+    }
+    
+    @RequestMapping(params = "find=ByFirstNameLike", method = RequestMethod.GET)
+    public String findStudentsByFirstNameLike(@RequestParam("firstName") String firstName, Model model) {
+        model.addAttribute("students", Student.findStudentsByFirstNameLike(firstName).getResultList());
+        return "students/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUserAccount", "form" }, method = RequestMethod.GET)
+    public String findStudentsByUserAccountForm(Model model) {
+        model.addAttribute("useraccounts", UserAccount.findAllUserAccounts());
+        return "students/findStudentsByUserAccount";
+    }
+    
+    @RequestMapping(params = "find=ByUserAccount", method = RequestMethod.GET)
+    public String findStudentsByUserAccount(@RequestParam("userAccount") UserAccount userAccount, Model model) {
+        model.addAttribute("students", Student.findStudentsByUserAccount(userAccount).getResultList());
+        return "students/list";
+    }
+    
+    @RequestMapping(params = { "find=ByUserIdEquals", "form" }, method = RequestMethod.GET)
+    public String findStudentsByUserIdEqualsForm(Model model) {
+        return "students/findStudentsByUserIdEquals";
+    }
+    
+    @RequestMapping(params = "find=ByUserIdEquals", method = RequestMethod.GET)
+    public String findStudentsByUserIdEquals(@RequestParam("userId") String userId, Model model) {
+        model.addAttribute("students", Student.findStudentsByUserIdEquals(userId).getResultList());
+        return "students/list";
+    }
 }

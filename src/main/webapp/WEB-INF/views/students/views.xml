@@ -16,7 +16,7 @@
 	<definition extends="students.default" name="students/update">
         <put-attribute name="body" value="/WEB-INF/views/students/update.jspx"/>
     </definition>
-	<definition extends="students.default" name="students/findStudentsByNSHEEquals">
+	<!-- <definition extends="students.default" name="students/findStudentsByNSHEEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
     </definition>
 	<definition extends="students.default" name="students/findStudentsByMajor1Equals">
@@ -33,14 +33,23 @@
     </definition>
 	<definition extends="students.default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
-    </definition>
+    </definition>-->
     <definition extends="students.default" name="students/query">
     	<put-attribute name="body" value="/WEB-INF/views/students/query.jspx"/>
     </definition>
-    <definition extends = "students.default" name = "students/queryList">
-    	<put-attribute name = "body" value = "/WEB-INF/views/students/queryList.jspx" />
+    <definition extends="students.default" name="students/queryList">
+    	<put-attribute name="body" value="/WEB-INF/views/students/queryList.jspx"/>
     </definition>
 	<definition extends="default" name="students/findStudentsByUserIdEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserIdEquals.jspx"/>
+    </definition>
+<definition extends="default" name="students/findStudentsByFirstNameEquals">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameEquals.jspx"/>
+    </definition>
+<definition extends="default" name="students/findStudentsByFirstNameLike">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameLike.jspx"/>
+    </definition>
+<definition extends="default" name="students/findStudentsByUserAccount">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
     </definition>
 </tiles-definitions>
