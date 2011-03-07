@@ -17,7 +17,7 @@ import edu.unlv.cs.rebelhotel.file.StudentService;
 @Controller
 @RequestMapping("/file")
 public class FileUploadController {
-	private final StudentService studentService;
+	private StudentService studentService;
 
 	@Autowired
 	public FileUploadController(StudentService studentService) {
