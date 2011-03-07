@@ -1,3 +1,33 @@
+Not-comprehensive change-log
+
+Various changes in this commit may have broken various integration tests and so on
+
+ - Recreated the MySQL database
+	As a result, all previous entries were lost
+ - Commented out JUnit being in "test" scope in POM.xml (causes build errors otherwise); consider moving JUnit tests to the /test directory instead, then revert this change ...
+
+Related fixes regarding majors becoming entities:
+	- Work requirements no longer reference Student and instead reference Major
+	- Student /show page updated accordingly
+	- Major /show page updated accordingly
+	- Executed Spring Roo command to generate the major controller and related scaffolding
+	- Added converter for Major to String
+	- WorkTemplateController.java modified so that work requirements can be added to majors instead of students properly
+	Later, it would make sense to add in the ability to add a major to a student in a similar fashion ...
+
+Related to issue #8:
+	- ROLE_USER (student) users should no longer see the horizontal menu bar
+	
+Security related:
+	- ROLE_SUPERUSER users should now be able to see the admin menu and other related menus
+	
+Student query related:
+	- Added ability to search by user id, catalog term (returns a student if any of the student's majors match that catalog term), graduation term, modification date, major, and milestone
+	- Student query validator updated accordingly
+	- A term validator was added in the process of updating the student query validator
+	- Currently there is no link going to the student query, go to RebelHotel/students?query to test it
+	
+	
 --
 Base user login is root/test
 No locations/methods are secured yet

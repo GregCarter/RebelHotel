@@ -4,5 +4,5 @@
     <jsp:output omit-xml-declaration="yes"/>
     File Data: <br />
     <br />
-    ${file_data}
+    ${fileData}
 </div>

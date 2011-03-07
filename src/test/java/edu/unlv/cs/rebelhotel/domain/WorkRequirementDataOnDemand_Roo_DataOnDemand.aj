@@ -20,7 +20,8 @@ privileged aspect WorkRequirementDataOnDemand_Roo_DataOnDemand {
         edu.unlv.cs.rebelhotel.domain.WorkRequirement obj = new edu.unlv.cs.rebelhotel.domain.WorkRequirement();
         obj.setName("name_" + index);
         obj.setHours(new Integer(index));
-        obj.setStudent(null);
+        obj.setMilestone(true);
+        obj.setMajor(null);
         return obj;
     }
     

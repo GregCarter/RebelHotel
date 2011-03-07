@@ -3,12 +3,11 @@
 
 package edu.unlv.cs.rebelhotel.web;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.ViewProgress;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -32,6 +31,7 @@ privileged aspect StudentController_Roo_Controller {
     public String StudentController.create(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("student", student);
+            addDateTimeFormatPatterns(model);
             return "students/create";
         }
         student.persist();
@@ -41,11 +41,13 @@ privileged aspect StudentController_Roo_Controller {
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String StudentController.createForm(Model model) {
         model.addAttribute("student", new Student());
+        addDateTimeFormatPatterns(model);
         return "students/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String StudentController.show(@PathVariable("id") Long id, Model model) {
+        addDateTimeFormatPatterns(model);
         model.addAttribute("student", Student.findStudent(id));
         model.addAttribute("itemId", id);
         return "students/show";
@@ -61,6 +63,7 @@ privileged aspect StudentController_Roo_Controller {
         } else {
             model.addAttribute("students", Student.findAllStudents());
         }
+        addDateTimeFormatPatterns(model);
         return "students/list";
     }
     
@@ -68,6 +71,7 @@ privileged aspect StudentController_Roo_Controller {
     public String StudentController.update(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("student", student);
+            addDateTimeFormatPatterns(model);
             return "students/update";
         }
         student.merge();
@@ -77,6 +81,7 @@ privileged aspect StudentController_Roo_Controller {
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String StudentController.updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("student", Student.findStudent(id));
+        addDateTimeFormatPatterns(model);
         return "students/update";
     }
     
@@ -86,17 +91,6 @@ privileged aspect StudentController_Roo_Controller {
         model.addAttribute("page", (page == null) ? "1" : page.toString());
         model.addAttribute("size", (size == null) ? "10" : size.toString());
         return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
-    }
-    
-    @RequestMapping(params = { "find=ByMajor1Equals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor1EqualsForm(Model model) {
-        return "students/findStudentsByMajor1Equals";
-    }
-    
-    @RequestMapping(params = "find=ByMajor1Equals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor1Equals(@RequestParam("major1") String major1, Model model) {
-        model.addAttribute("students", Student.findStudentsByMajor1Equals(major1).getResultList());
-        return "students/list";
     }
     
     @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
@@ -121,17 +115,6 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
-    @RequestMapping(params = { "find=ByMajor2Equals", "form" }, method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor2EqualsForm(Model model) {
-        return "students/findStudentsByMajor2Equals";
-    }
-    
-    @RequestMapping(params = "find=ByMajor2Equals", method = RequestMethod.GET)
-    public String StudentController.findStudentsByMajor2Equals(@RequestParam("major2") String major2, Model model) {
-        model.addAttribute("students", Student.findStudentsByMajor2Equals(major2).getResultList());
-        return "students/list";
-    }
-    
     @RequestMapping(params = { "find=ByUserAccount", "form" }, method = RequestMethod.GET)
     public String StudentController.findStudentsByUserAccountForm(Model model) {
         model.addAttribute("useraccounts", UserAccount.findAllUserAccounts());
@@ -144,6 +127,22 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
+    @RequestMapping(params = { "find=ByUserIdEquals", "form" }, method = RequestMethod.GET)
+    public String StudentController.findStudentsByUserIdEqualsForm(Model model) {
+        return "students/findStudentsByUserIdEquals";
+    }
+    
+    @RequestMapping(params = "find=ByUserIdEquals", method = RequestMethod.GET)
+    public String StudentController.findStudentsByUserIdEquals(@RequestParam("userId") String userId, Model model) {
+        model.addAttribute("students", Student.findStudentsByUserIdEquals(userId).getResultList());
+        return "students/list";
+    }
+    
+    @ModelAttribute("majors")
+    public Collection<Major> StudentController.populateMajors() {
+        return Major.findAllMajors();
+    }
+    
     @ModelAttribute("terms")
     public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();
@@ -154,19 +153,9 @@ privileged aspect StudentController_Roo_Controller {
         return UserAccount.findAllUserAccounts();
     }
     
-    @ModelAttribute("viewprogresses")
-    public Collection<ViewProgress> StudentController.populateViewProgresses() {
-        return ViewProgress.findAllViewProgresses();
-    }
-    
     @ModelAttribute("workefforts")
     public Collection<WorkEffort> StudentController.populateWorkEfforts() {
         return WorkEffort.findAllWorkEfforts();
-    }
-    
-    @ModelAttribute("workrequirements")
-    public Collection<WorkRequirement> StudentController.populateWorkRequirements() {
-        return WorkRequirement.findAllWorkRequirements();
     }
     
     String StudentController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {

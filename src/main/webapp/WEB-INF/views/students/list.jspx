@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:tiles = "http://tiles.apache.org/tags-tiles" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <tiles:insertAttribute name = "student_menu" ignore = "true" />
+    <tiles:insertAttribute ignore="true" name="student_menu"/>
     <br/>
     <br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
@@ -11,8 +11,8 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="DSzicBjGwxYL/2/kNsf10cNZTGI="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_workRequirements" property="workRequirements" z="91qvopvtsVig37rUZyWtBcBTmRA="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_email" property="email" z="v0BGqklSPHIPXq+NepLkZBAqQxo="/>
+        	<table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" property="majors" z="Ecda7DS1Cn6bKJSYGr68uCR7h8Y="/>
         </table:table>
     </page:list>
 </div>

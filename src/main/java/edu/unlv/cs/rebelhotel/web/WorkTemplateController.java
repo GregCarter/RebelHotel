@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
@@ -39,12 +40,17 @@ public class WorkTemplateController {
             return "worktemplates/createRequirement";
         }
         WorkTemplate workTemplate = formWorkRequirement.getWorkTemplate();
-        Student student = Student.findStudent(sid);
-        WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, student);
+        Major major = Major.findMajor(sid);
+        WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, major);
         workRequirement.persist();
-        Set<WorkRequirement> workRequirements = student.getWorkRequirements();
+        
+        // NOTE: I am not sure if this is right.
+        Set<WorkRequirement> workRequirements = major.getWorkRequirements();
         workRequirements.add(workRequirement);
-        student.merge();
+        
+        //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
+        //workRequirements.add(workRequirement);
+        major.merge();
         return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), request);
     }
 	

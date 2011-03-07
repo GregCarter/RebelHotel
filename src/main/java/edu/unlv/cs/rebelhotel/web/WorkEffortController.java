@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
@@ -59,8 +60,10 @@ public class WorkEffortController {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
-            Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-            model.addAttribute("studentworkrequirements", workRequirements);
+            //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
+            //model.addAttribute("studentworkrequirements", workRequirements);
+            Set<Major> majors = student.getMajors();
+            model.addAttribute("studentmajors", majors);
             model.addAttribute("sid", sid);
             return "workefforts/createFromStudent";
         }
@@ -104,8 +107,10 @@ public class WorkEffortController {
             dependencies.add(new String[]{"student", "students"});
         }
         Student student = Student.findStudent(sid);
-        Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-        model.addAttribute("studentworkrequirements", workRequirements);
+        //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
+        //model.addAttribute("studentworkrequirements", workRequirements);
+        Set<Major> majors = student.getMajors();
+        model.addAttribute("studentmajors", majors);
         model.addAttribute("dependencies", dependencies);
         model.addAttribute("sid", sid);
         // TODO check if one is able to place the value of the student here without relying on the hidden form element

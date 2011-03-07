@@ -22,18 +22,20 @@ public class WorkRequirement {
 
     private Integer hours;
 
-    @ManyToOne
-    private Student student;
+    private boolean milestone;
     
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy="workRequirements")
+    @ManyToOne
+    private Major major;
+    
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
     
     // A method to construct a work requirement from a work template
-    public static WorkRequirement fromWorkTemplate(WorkTemplate wt, Student student) {
+    public static WorkRequirement fromWorkTemplate(WorkTemplate wt, Major major) {
     	WorkRequirement wr = new WorkRequirement();
     	wr.setHours(wt.getHours());
     	wr.setName(wt.getName());
-    	wr.setStudent(student);
+    	wr.setMajor(major);
     	return wr;
     }
 }
