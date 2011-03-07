@@ -24,7 +24,6 @@ public class Line {
 	public Line(){}
 
 	public Line convert(List<String> tokens) {
-		// TODO Auto-generated method stub
 		Line line = new Line();
 		return line;
 	}
