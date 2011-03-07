@@ -76,9 +76,15 @@ public class StudentController {
 		}
 		
 		List<Student> students = studentQueryService.queryStudents(form);
+		String properties = studentQueryService.buildPropertiesString(form);
+		String labels = studentQueryService.buildLabelsString(form);
+		String maxLengths = studentQueryService.buildMaxLengthsString(form);
 		
 		model.addAttribute("str", "Here is a test string for you!");
 		model.addAttribute("students", students);
+		model.addAttribute("tempColumnProperties", properties);
+		model.addAttribute("tempColumnLabels", labels);
+		model.addAttribute("tempColumnMaxLengths", maxLengths);
 		return "students/queryList";
 	}
 	

@@ -87,4 +87,12 @@ public class Student {
     public void addWorkEffort(WorkEffort we) {
         workEffort.add(we);
     }
+    
+    public String getName() {
+    	String name = firstName;
+    	if (lastName != null) {
+    		name += " " + lastName;
+    	}
+    	return name;
+    }
 }

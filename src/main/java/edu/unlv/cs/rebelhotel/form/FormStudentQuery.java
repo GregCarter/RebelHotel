@@ -25,6 +25,15 @@ public class FormStudentQuery {
 	private boolean useMajor;
 	private Departments department;
 	
+	private boolean showUserId;
+	private boolean showEmail;
+	private boolean showName;
+	private boolean showAdmitTerm;
+	private boolean showGradTerm;
+	private boolean showCodeOfConductSigned;
+	private boolean showLastModified;
+	private boolean showUserAccount;
+	
 	public boolean getUseUserId() {
 		return useUserId;
 	}
@@ -131,5 +140,69 @@ public class FormStudentQuery {
 	
 	public void setDepartment(Departments department) {
 		this.department = department;
+	}
+	
+	public boolean getShowUserId() {
+		return showUserId;
+	}
+	
+	public void setShowUserId(boolean showUserId) {
+		this.showUserId = showUserId;
+	}
+	
+	public boolean getShowEmail() {
+		return showEmail;
+	}
+	
+	public void setShowEmail(boolean showEmail) {
+		this.showEmail = showEmail;
+	}
+	
+	public boolean getShowName() {
+		return showName;
+	}
+	
+	public void setShowName(boolean showName) {
+		this.showName = showName;
+	}
+	
+	public boolean getShowAdmitTerm() {
+		return showAdmitTerm;
+	}
+	
+	public void setShowAdmitTerm(boolean showAdmitTerm) {
+		this.showAdmitTerm = showAdmitTerm;
+	}
+	
+	public boolean getShowGradTerm() {
+		return showGradTerm;
+	}
+	
+	public void setShowGradTerm(boolean showGradTerm) {
+		this.showGradTerm = showGradTerm;
+	}
+	
+	public boolean getShowCodeOfConductSigned() {
+		return showCodeOfConductSigned;
+	}
+	
+	public void setShowCodeOfConductSigned(boolean showCodeOfConductSigned) {
+		this.showCodeOfConductSigned = showCodeOfConductSigned;
+	}
+	
+	public boolean getShowLastModified() {
+		return showLastModified;
+	}
+	
+	public void setShowLastModified(boolean showLastModified) {
+		this.showLastModified = showLastModified;
+	}
+	
+	public boolean getShowUserAccount() {
+		return showUserAccount;
+	}
+	
+	public void setShowUserAccount(boolean showUserAccount) {
+		this.showUserAccount = showUserAccount;
 	}
 }

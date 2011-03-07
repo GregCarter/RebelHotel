@@ -41,6 +41,36 @@
     			</td>
     		</tr>
     	</table>
+    	<table>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "showUserId" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showUserId" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showEmail" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showEmail" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showName" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showAdmitTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showAdmitTerm" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "showGradTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showGradTerm" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showCodeOfConductSigned" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showCodeOfConductSigned" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showLastModified" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showLastModified" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showUserAccount" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showUserAccount" />
+    			</td>
+    		</tr>
+    	</table>
     </form:create>
 <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" />
 </div>
