@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-	<definition extends = "default" name = "students.default">
-		<put-attribute name = "student_menu" value = "/WEB-INF/views/students/studentMenu.jspx" cascade = "true" />
+	<definition extends="default" name="students.default">
+		<put-attribute cascade="true" name="student_menu" value="/WEB-INF/views/students/studentMenu.jspx"/>
 	</definition>
     <definition extends="students.default" name="students/list">
         <put-attribute name="body" value="/WEB-INF/views/students/list.jspx"/>
@@ -33,5 +33,14 @@
     </definition>
 	<definition extends="students.default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
+    </definition>
+    <definition extends="students.default" name="students/query">
+    	<put-attribute name="body" value="/WEB-INF/views/students/query.jspx"/>
+    </definition>
+    <definition extends = "students.default" name = "students/queryList">
+    	<put-attribute name = "body" value = "/WEB-INF/views/students/queryList.jspx" />
+    </definition>
+	<definition extends="default" name="students/findStudentsByUserIdEquals">
+        <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserIdEquals.jspx"/>
     </definition>
 </tiles-definitions>

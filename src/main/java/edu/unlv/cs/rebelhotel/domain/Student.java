@@ -13,19 +13,27 @@ import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.persistence.Embedded;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findStudentsByMajor1Equals", "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByMajor2Equals", "findStudentsByUserAccount" })
+@RooEntity(finders = { "findStudentsByFirstNameEquals", "findStudentsByFirstNameLike", "findStudentsByUserAccount", "findStudentsByUserIdEquals" })
 public class Student {
-	@NotNull
-	@Column(unique = true)
-	private String userId;
+
+    @NotNull
+    @Column(unique = true)
+    private String userId;
 
     @NotNull
     @Size(min = 2)
@@ -40,12 +48,7 @@ public class Student {
     private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
-
-    @Size(min = 2)
-    private String major1;
-
-    private String major2;
+    private Set<Major> majors = new HashSet<Major>();
 
     @ManyToOne
     private Term admitTerm;
@@ -56,36 +59,32 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<ViewProgress> milestone = new HashSet<ViewProgress>();
+    private Boolean codeOfConductSigned;
     
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "S-")
+    private Date lastModified;
+
     @OneToOne(optional = false)
     private UserAccount userAccount;
     
-    public boolean hasReachedMilestone() {
-    	boolean reachedMilestone = true;
-    	while (reachedMilestone) {
-    		for (ViewProgress each : milestone) {
-    			if(each.getRemainingHours()!=0) {
-    				reachedMilestone = false;
-    			}
-    		}
-    	}
-    	return reachedMilestone;
+    @PreUpdate
+    @PrePersist
+    public void onUpdate() {
+    	lastModified = new Date();
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("(" + getUserId() + ")");
-        sb.append(" "+getFirstName());
-        if (getLastName() != null) {
-        	sb.append(" "+getLastName());
+        sb.append("(" + userId + ")");
+        sb.append(" " + firstName);
+        if (lastName != null) {
+            sb.append(" " + lastName);
         }
         return sb.toString();
     }
-    
+
     public void addWorkEffort(WorkEffort we) {
-    	workEffort.add(we);
+        workEffort.add(we);
     }
 }
-

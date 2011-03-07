@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    ${terms_num} newly created term(s)<br />
+    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Term" items="${terms}" z="XMW22bTdHXXPYIijVvlWkevjU0Y=">
+        <table:table data="${terms}" id="l_edu_unlv_cs_rebelhotel_domain_Term" path="/terms" z="VVlX5mM4J5jfzmDQwxjm2/ox7Z8=">
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Term_termYear" property="termYear" z="9IFfJw3e//xK6aZM+ZM27GjlkbA="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Term_semester" property="semester" z="YgBnbIrQDD+dV3nTHNtiQTbifx4="/>
+        </table:table>
+    </page:list>
+</div>

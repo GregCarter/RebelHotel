@@ -18,8 +18,8 @@ public class StudentDataOnDemand {
         obj.setFirstName("firstName_" + index);
         obj.setMiddleName("middleName_" + index);
         obj.setLastName("lastName_" + index);
-        obj.setMajor1("major1_" + index);
-        obj.setMajor2("major2_" + index);
+        //obj.setMajor1("major1_" + index);
+        //obj.setMajor2("major2_" + index);
         obj.setAdmitTerm(null);
         obj.setGradTerm(null);
         obj.setUserAccount(uadod.getSpecificUserAccount(index));

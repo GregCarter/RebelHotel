@@ -3,12 +3,13 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.ViewProgress;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Date;
 import java.util.Set;
 
 privileged aspect Student_Roo_JavaBean {
@@ -53,28 +54,12 @@ privileged aspect Student_Roo_JavaBean {
         this.lastName = lastName;
     }
     
-    public Set<WorkRequirement> Student.getWorkRequirements() {
-        return this.workRequirements;
+    public Set<Major> Student.getMajors() {
+        return this.majors;
     }
     
-    public void Student.setWorkRequirements(Set<WorkRequirement> workRequirements) {
-        this.workRequirements = workRequirements;
-    }
-    
-    public String Student.getMajor1() {
-        return this.major1;
-    }
-    
-    public void Student.setMajor1(String major1) {
-        this.major1 = major1;
-    }
-    
-    public String Student.getMajor2() {
-        return this.major2;
-    }
-    
-    public void Student.setMajor2(String major2) {
-        this.major2 = major2;
+    public void Student.setMajors(Set<Major> majors) {
+        this.majors = majors;
     }
     
     public Term Student.getAdmitTerm() {
@@ -101,12 +86,20 @@ privileged aspect Student_Roo_JavaBean {
         this.workEffort = workEffort;
     }
     
-    public Set<ViewProgress> Student.getMilestone() {
-        return this.milestone;
+    public Boolean Student.getCodeOfConductSigned() {
+        return this.codeOfConductSigned;
     }
     
-    public void Student.setMilestone(Set<ViewProgress> milestone) {
-        this.milestone = milestone;
+    public void Student.setCodeOfConductSigned(Boolean codeOfConductSigned) {
+        this.codeOfConductSigned = codeOfConductSigned;
+    }
+    
+    public Date Student.getLastModified() {
+        return this.lastModified;
+    }
+    
+    public void Student.setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
     }
     
     public UserAccount Student.getUserAccount() {

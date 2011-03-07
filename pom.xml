@@ -54,12 +54,25 @@
         </pluginRepository>
     </pluginRepositories>
 	<dependencies>
+        <!-- Maven dependency for opencsv -->
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <!-- Maven dependency for EasyMock (Testing) -->
+	    <dependency>
+      		<groupId>org.easymock</groupId>
+      		<artifactId>easymock</artifactId>
+      		<version>3.0</version>
+     		 <scope>test</scope>
+   		</dependency>
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
-            <scope>test</scope>
+            <!-- <scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -354,10 +367,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-        	<!-- Added this dependency manually for file upload support to resolve java.lang.ClassNotFoundException: org.apache.commons.io.output.DeferredFileOutputStream -->
-        	<groupId>commons-io</groupId>
-        	<artifactId>commons-io</artifactId>
-        	<version>2.0.1</version>
+            <!-- Added this dependency manually for file upload support to resolve java.lang.ClassNotFoundException: org.apache.commons.io.output.DeferredFileOutputStream -->
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
