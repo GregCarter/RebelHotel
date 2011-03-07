@@ -15,7 +15,7 @@ public class DefaultStudentServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		//mock = createMock(Collaborator.class);
-		instance = new DefaultStudentService();
+		//instance = new DefaultStudentService();
 	}
 
 	@After
