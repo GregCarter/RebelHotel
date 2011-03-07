@@ -1,5 +1,7 @@
 package edu.unlv.cs.rebelhotel.file;
 
+import java.util.List;
+
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 
@@ -20,4 +22,9 @@ public class Line {
 	private String requirementTermSemester;
 	
 	public Line(){}
+
+	public Line convert(List<String> tokens) {
+		Line line = new Line();
+		return line;
+	}
 }
