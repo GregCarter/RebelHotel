@@ -38,9 +38,9 @@ public class FileUploadController {
 		}
 		byte[] file_data = multipart_file.getBytes();
 		
-	/*	File file = File.createTempFile("students",".csv");
+		File file = File.createTempFile("students",".csv");
 		multipart_file.transferTo(file);
-		studentService.upload(file);*/
+		studentService.upload(file);
 		
 		model.addAttribute("file_data", new String(file_data).toString());
 		return "file/show";

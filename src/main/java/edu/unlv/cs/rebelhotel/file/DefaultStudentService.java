@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -39,7 +39,7 @@ public class DefaultStudentService implements StudentService{
 		List<List<String>> contents = Collections.emptyList();
 		try {
 			contents = lexer.tokenize(new FileReader(file));
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			LOG.error("Could not upload student file", e);
 		}
 		Set<FileStudent> fileStudents = parser.parse(contents);
@@ -53,27 +53,7 @@ public class DefaultStudentService implements StudentService{
 	public void findOrReplace(FileStudent fileStudent) {
 		StudentMapper sm = new StudentMapper();
 		Student student = sm.findOrReplace(fileStudent.getStudentId());
-		/*student.setFirstName(fileStudent.getFirstName());
-		student.setMiddleName(fileStudent.getMiddleName());
-		student.setLastName(fileStudent.getLastName());
-		student.setUserId(fileStudent.getStudentId());
-		student.setEmail(fileStudent.getEmail());
-		
-		for (String each : fileStudent.getMajors()) {
-			Major major = new Major();
-			if (each == "FOOD_AND_BEVERAGE"){
-				major.setDepartment(Departments.FOOD_AND_BEVERAGE);
-			} else if (each == "HOTEL_MANAGEMENT") {
-				major.setDepartment(Departments.HOTEL_MANAGEMENT);
-			} else if (each == "TOURISM_AND_CONVENTION") {
-				major.setDepartment(Departments.TOURISM_AND_CONVENTION);
-			}
-			major.setReachedMilestone(false);
-			major.setCatalogTerm(null); // probably create this based today's date
-			major.setWorkRequirements(null);
-		}
-		student.setAdmitTerm(fileStudent.getAdmitTerm());
-		student.setGradTerm(fileStudent.getGradTerm());*/
+		/*setting fields should go here*/
 		student.persist();
 	}
 }

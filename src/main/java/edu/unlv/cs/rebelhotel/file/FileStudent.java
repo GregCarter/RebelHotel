@@ -1,7 +1,7 @@
 package edu.unlv.cs.rebelhotel.file;
 
 import java.util.Collection;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 import edu.unlv.cs.rebelhotel.domain.Term;
@@ -24,7 +24,7 @@ public class FileStudent {
 	public FileStudent() {
 	}
 	
-	public Set<FileStudent> convert(Map<String, Set<Line>> entries) {
+	public Set<FileStudent> convert(Collection<List<Line>> student) {
 		// go through each key, and convert the lines into
 		// the student. so create a new fileStudent for each key->value
 
@@ -32,8 +32,7 @@ public class FileStudent {
 		// string switch expressions.
 		
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
-		Collection<Set<Line>> student = entries.values();
-		for (Set<Line> lines : student) {
+		for (List<Line> lines : student) {
 			FileStudent fileStudent = new FileStudent();
 			for (Line line : lines){
 				fileStudent.setStudentId(line.getStudentId());
