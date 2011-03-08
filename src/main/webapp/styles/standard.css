@@ -145,6 +145,11 @@ div .box {
 	margin-left:105px;
 }
 
+div .login {
+  width:350px;
+  padding-left:10px;	
+}
+
 /* menu elements*/
 
 a.menu, a.menu:link, a.menu:visited {display:block; width:px; height:25px;} 
@@ -235,7 +240,7 @@ table {
 	margin: 2px 0 0 0;
 	border: 1px solid #BBBBBB;
 	border-collapse: collapse;
-	width: 100%
+	width: 100%;
 }
 
 table table {
