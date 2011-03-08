@@ -6,6 +6,7 @@
     <br/>
     <br/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_form_FormStudentQuery" modelAttribute="formStudentQuery" path="/students?query" render="${empty dependencies}">
+    	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
     	<table>
     		<tr>
     			<td>

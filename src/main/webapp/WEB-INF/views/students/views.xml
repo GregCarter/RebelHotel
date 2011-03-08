@@ -25,6 +25,11 @@
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
     
+    <definition extends = "students.default" name = "students/queryCsv">
+    	<put-attribute name = "menu" value = "/WEB-INF/views/students/student_menu.jspx" />
+    	<put-attribute name = "body" value = "/WEB-INF/views/students/queryCsv.jspx" />
+    </definition>
+    
 	<!-- <definition extends="students.default" name="students/findStudentsByNSHEEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
     </definition>
@@ -54,13 +59,13 @@
 	<definition extends="default" name="students/findStudentsByUserIdEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserIdEquals.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByFirstNameEquals">
+	<definition extends="default" name="students/findStudentsByFirstNameEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameEquals.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByFirstNameLike">
+	<definition extends="default" name="students/findStudentsByFirstNameLike">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByFirstNameLike.jspx"/>
     </definition>
-<definition extends="default" name="students/findStudentsByUserAccount">
+	<definition extends="default" name="students/findStudentsByUserAccount">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserAccount.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>

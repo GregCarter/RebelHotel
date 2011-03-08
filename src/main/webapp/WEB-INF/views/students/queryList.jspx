@@ -1,11 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:tiles = "http://tiles.apache.org/tags-tiles" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles = "http://tiles.apache.org/tags-tiles" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute name = "student_menu" ignore = "true" />
     <br/>
     <br/>
-    TEST STRING: ${str}
+    <form:create id="fc_edu_unlv_cs_rebelhotel_form_FormStudentQuery" modelAttribute="formStudentQuery" path="/students?query" render="${empty dependencies}">
+    	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
+    	<table>
+    		<tr>
+    			<td>
+    				<field:checkbox field="useUserId" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useUserId" />
+					<field:input field="userId" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_userId" />
+    			</td>
+    			<td>
+    				<field:checkbox field="useCatalogTerm" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useCatalogTerm" />
+    				<field:input field="catalogTerm.termYear" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_catalogTerm_termYear" validationMessageCode="field_invalid_integer" />
+        			<field:select field="catalogTerm.semester" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_catalogTerm_semester" items="${query_semesters}" path="semesters" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field="useMilestone" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMilestone" />
+    				<field:checkbox field = "hasMilestone" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_hasMilestone" />
+    			</td>
+    			<td>
+    				<field:checkbox field="useGradTerm" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useGradTerm" />
+    				<field:input field="gradTerm.termYear" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_gradTerm_termYear" validationMessageCode="field_invalid_integer" />
+        			<field:select field="gradTerm.semester" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_gradTerm_semester" items="${query_semesters}" path="semesters" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field="useModified" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useModified" />
+    				<field:datetime dateTimePattern="${student_query_date_format}" field="lastModifiedStart" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastModifiedStart" />
+					<field:datetime dateTimePattern="${student_query_date_format}" field="lastModifiedEnd" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastModifiedEnd" />
+    			</td>
+    			<td>
+    				<field:checkbox field="useMajor" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMajor" />
+    				<field:select field="department" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_department" items="${departments}" path="departments" />
+    			</td>
+    		</tr>
+    	</table>
+    	<table>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "showUserId" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showUserId" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showEmail" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showEmail" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showName" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showAdmitTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showAdmitTerm" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "showGradTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showGradTerm" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showCodeOfConductSigned" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showCodeOfConductSigned" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showLastModified" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showLastModified" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showUserAccount" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showUserAccount" />
+    			</td>
+    		</tr>
+    	</table>
+    </form:create>
+	<form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" />
+    <br />
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
         <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="RFPbdXr7ZKuirMVeSh9ZJKfvMnk=">
             <c:set var = "columnProperties" value = "${tempColumnProperties}" scope = "request" />
@@ -18,5 +87,4 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_email" property="email" z="v0BGqklSPHIPXq+NepLkZBAqQxo="/>-->
         </table:table>
     </page:list>
-    Properties list: \"${columnProperties}\"
 </div>
