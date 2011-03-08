@@ -14,15 +14,16 @@
 			 <menu:item id="i_manage_worktemplates" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/> 
 		 </menu:category>
 	</security:authorize>
-        <security:authorize access="hasRole('ROLE_ANONYMOUS')">
-        	<menu:category id="c_login">
-        		<menu:item id="i_login" url="/login"/>
-        	</menu:category>
-        </security:authorize>
-        <security:authorize access="hasRole('ROLE_USER')">
+    	<security:authorize access="hasRole('ROLE_ANONYMOUS')">
+    	
+	    	<jsp:forward page="/login"/>
+	    	
+    	</security:authorize>
+    	
+    	<security:authorize access="hasRole('ROLE_USER')">
         	<menu:category id="c_student_personal">
         		<menu:item id="i_student_personal_work" url="/workefforts?mywork"/>
         	</menu:category>
-        </security:authorize>
+    	</security:authorize>
     </menu:menu>
 </div>
