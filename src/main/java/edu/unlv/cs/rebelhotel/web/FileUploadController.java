@@ -17,11 +17,11 @@ import edu.unlv.cs.rebelhotel.file.StudentService;
 @Controller
 @RequestMapping("/file")
 public class FileUploadController {
-	//private final StudentService studentService;
+	private StudentService studentService;
 
-	//@Autowired
-	public FileUploadController(/*StudentService studentService*/) {
-		//this.studentService = studentService;
+	@Autowired
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
 	}
 	
 	@RequestMapping(params = "upload", method = RequestMethod.GET)
