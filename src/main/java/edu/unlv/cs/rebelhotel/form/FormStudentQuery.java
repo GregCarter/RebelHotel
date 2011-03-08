@@ -34,6 +34,8 @@ public class FormStudentQuery {
 	private boolean showLastModified;
 	private boolean showUserAccount;
 	
+	private boolean outputCsv;
+	
 	public boolean getUseUserId() {
 		return useUserId;
 	}
@@ -204,5 +206,13 @@ public class FormStudentQuery {
 	
 	public void setShowUserAccount(boolean showUserAccount) {
 		this.showUserAccount = showUserAccount;
+	}
+	
+	public boolean getOutputCsv() {
+		return outputCsv;
+	}
+	
+	public void setOutputCsv(boolean outputCsv) {
+		this.outputCsv = outputCsv;
 	}
 }
