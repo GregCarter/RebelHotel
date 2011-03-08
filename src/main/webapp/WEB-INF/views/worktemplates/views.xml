@@ -3,21 +3,27 @@
 <tiles-definitions>
 	<definition extends = "default" name = "worktemplates.default">
 		<put-attribute name = "worktemplate_menu" value = "/WEB-INF/views/worktemplates/workTemplatesMenu.jspx" cascade = "true" />
+		<put-attribute name = "menu" value="/WEB-INF/views/worktemplates/work_templates_menu.jspx"/>
 	</definition>
     <definition extends="worktemplates.default" name="worktemplates/list">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/list.jspx"/>
+        <put-attribute name = "menu" value="/WEB-INF/views/worktemplates/work_templates_menu.jspx"/>
     </definition>
 	<definition extends="worktemplates.default" name="worktemplates/show">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/show.jspx"/>
+        <put-attribute name = "menu" value="/WEB-INF/views/worktemplates/work_templates_menu.jspx"/>
     </definition>
 	<definition extends="worktemplates.default" name="worktemplates/create">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/create.jspx"/>
+        <put-attribute name = "menu" value="/WEB-INF/views/worktemplates/work_templates_menu.jspx"/>
     </definition>
     <definition extends="worktemplates.default" name="worktemplates/createRequirement">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/createRequirement.jspx"/>
+        <put-attribute name = "menu" value="/WEB-INF/views/worktemplates/work_templates_menu.jspx"/>
     </definition>
 	<definition extends="worktemplates.default" name="worktemplates/update">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/update.jspx"/>
+        <put-attribute name = "menu" value="/WEB-INF/views/worktemplates/work_templates_menu.jspx"/>
     </definition>
 	<definition extends="worktemplates.default" name="worktemplates/findWorkTemplatesByNameEquals">
         <put-attribute name="body" value="/WEB-INF/views/worktemplates/findWorkTemplatesByNameEquals.jspx"/>
