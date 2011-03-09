@@ -1,18 +1,15 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
@@ -24,14 +21,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
 
 @RooWebScaffold(path = "workefforts", formBackingObject = WorkEffort.class, exposeFinders=false)
 @RequestMapping("/workefforts")
@@ -60,8 +54,6 @@ public class WorkEffortController {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
-            //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-            //model.addAttribute("studentworkrequirements", workRequirements);
             Set<Major> majors = student.getMajors();
             model.addAttribute("studentmajors", majors);
             model.addAttribute("sid", sid);
@@ -107,8 +99,6 @@ public class WorkEffortController {
             dependencies.add(new String[]{"student", "students"});
         }
         Student student = Student.findStudent(sid);
-        //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-        //model.addAttribute("studentworkrequirements", workRequirements);
         Set<Major> majors = student.getMajors();
         model.addAttribute("studentmajors", majors);
         model.addAttribute("dependencies", dependencies);

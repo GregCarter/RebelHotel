@@ -21,6 +21,16 @@
     		</tr>
     		<tr>
     			<td>
+    				<field:checkbox field = "useFirstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useFirstName" />
+					<field:input field = "firstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_firstName" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "useLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useLastName" />
+					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
     				<field:checkbox field="useMilestone" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMilestone" />
     				<field:checkbox field = "hasMilestone" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_hasMilestone" />
     			</td>

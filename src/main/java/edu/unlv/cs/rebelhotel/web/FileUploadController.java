@@ -1,9 +1,7 @@
 package edu.unlv.cs.rebelhotel.web;
 
-import java.io.File;
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import edu.unlv.cs.rebelhotel.file.StudentService;
 
 @Controller
 @RequestMapping("/file")

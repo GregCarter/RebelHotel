@@ -52,6 +52,26 @@ public class StudentQueryService {
 			search.createCriteria("majors")
 			.add(Restrictions.eq("reachedMilestone", formStudentQuery.getHasMilestone()));
 		}
+		if (formStudentQuery.getUseFirstName()) {
+			String firstName = formStudentQuery.getFirstName();
+			if (firstName.length() > 0) {
+				firstName = "%" + firstName + "%";
+			}
+			else {
+				firstName = "%";
+			}
+			search.add(Restrictions.like("firstName", firstName));
+		}
+		if (formStudentQuery.getUseLastName()) {
+			String lastName = formStudentQuery.getLastName();
+			if (lastName.length() > 0) {
+				lastName = "%" + lastName + "%";
+			}
+			else {
+				lastName = "%";
+			}
+			search.add(Restrictions.like("lastName", lastName));
+		}
 		List students;
 		
 		DetachedCriteria rootQuery = DetachedCriteria.forClass(Student.class);
