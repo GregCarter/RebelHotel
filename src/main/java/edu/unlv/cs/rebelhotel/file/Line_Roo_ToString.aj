@@ -10,17 +10,14 @@ privileged aspect Line_Roo_ToString {
     public String Line.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("StudentId: ").append(getStudentId()).append(", ");
+        sb.append("LastName: ").append(getLastName()).append(", ");
         sb.append("FirstName: ").append(getFirstName()).append(", ");
         sb.append("MiddleName: ").append(getMiddleName()).append(", ");
-        sb.append("LastName: ").append(getLastName()).append(", ");
         sb.append("Email: ").append(getEmail()).append(", ");
-        sb.append("Major: ").append(getMajor()).append(", ");
-        sb.append("AdmitTermYear: ").append(getAdmitTermYear()).append(", ");
-        sb.append("AdmitTermSemester: ").append(getAdmitTermSemester()).append(", ");
-        sb.append("GradTermYear: ").append(getGradTermYear()).append(", ");
-        sb.append("GradTermSemester: ").append(getGradTermSemester()).append(", ");
-        sb.append("RequirementTermYear: ").append(getRequirementTermYear()).append(", ");
-        sb.append("RequirementTermSemester: ").append(getRequirementTermSemester());
+        sb.append("Majors: ").append(getMajors() == null ? "null" : getMajors().size()).append(", ");
+        sb.append("AdmitTerm: ").append(getAdmitTerm()).append(", ");
+        sb.append("RequirementTerm: ").append(getRequirementTerm()).append(", ");
+        sb.append("GradTerm: ").append(getGradTerm());
         return sb.toString();
     }
     

@@ -24,9 +24,6 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 public class Major {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
-	// QUESTION: are we making it a set because it will contain
-	// both general and major specific?
-	// ANSWER: 
 	
 	private boolean reachedMilestone;
 	
