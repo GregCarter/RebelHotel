@@ -17,9 +17,7 @@ import java.lang.String;
 import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,16 +46,6 @@ privileged aspect WorkEffortController_Roo_Controller {
             model.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
         }
         return "workefforts/list";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT)
-    public String WorkEffortController.update(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
-            return "workefforts/update";
-        }
-        workEffort.merge();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
