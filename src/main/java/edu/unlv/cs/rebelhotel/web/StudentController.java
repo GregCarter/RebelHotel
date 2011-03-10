@@ -194,16 +194,14 @@ public class StudentController {
 			// code to generate CSV is called from here;
 			// then the contents are placed into the temp file below before sent to the user as a download
 			ServletContext servletContext = request.getSession().getServletContext();
-			String filename = "thisfile.txt"; // users will by default receive this file as the name to save as
-			String contents = "blah blah"; // the contents of the file in a string; alternatively use a byte array
+			String filename = "student query.csv"; // users will by default receive this file as the name to save as
+			String contents = studentQueryService.generateCsv(form, students, messageSource); // the contents of the file in a string; alternatively use a byte array
 			
 			int filesize = (int) contents.length();
 			
 			if (filesize > 0 ) {
-				String mimetype = servletContext.getMimeType(filename);
-				
 				response.setBufferSize(filesize);
-				response.setContentType(mimetype);
+				response.setContentType("text/cvs");
 				response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 				response.setHeader("Cache-Control", "no-cache");
 				response.setHeader("pragma", "no-cache");
