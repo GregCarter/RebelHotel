@@ -20,6 +20,7 @@ public class FileStudent {
 	private Set<String> majors = new HashSet<String>();
 	private Term admitTerm;
 	private Term gradTerm; // are we going to put gradTerm in Majors?
+	private Term requirementTerm;
 	
 	public FileStudent() {
 	}
@@ -36,10 +37,14 @@ public class FileStudent {
 			FileStudent fileStudent = new FileStudent();
 			for (Line line : lines){
 				fileStudent.setStudentId(line.getStudentId());
-				// do all the other ones...
-				// not sure what to do with term because you do not
-				// know how they will represent the terms...
-				// let alone which terms they will include
+				fileStudent.setFirstName(line.getFirstName());
+				fileStudent.setMiddleName(line.getMiddleName());
+				fileStudent.setLastName(line.getLastName());
+				fileStudent.setEmail(line.getEmail());
+				fileStudent.setMajors(line.getMajors());
+				fileStudent.setAdmitTerm(line.getAdmitTerm());
+				fileStudent.setRequirementTerm(line.getRequirementTerm());
+				fileStudent.setGradTerm(line.getGradTerm());
 			}
 			fileStudents.add(fileStudent);
 		}

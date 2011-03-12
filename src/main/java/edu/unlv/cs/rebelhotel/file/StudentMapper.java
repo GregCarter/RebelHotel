@@ -1,14 +1,23 @@
 package edu.unlv.cs.rebelhotel.file;
 
-import edu.unlv.cs.rebelhotel.domain.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import edu.unlv.cs.rebelhotel.domain.Student;
+import edu.unlv.cs.rebelhotel.service.WorkRequirementService;
+
+@Component
 public class StudentMapper {
-	public StudentMapper() {
+	WorkRequirementService workRequirementService;
+	
+	@Autowired
+	public StudentMapper(WorkRequirementService workRequirementService) {
+		this.workRequirementService = workRequirementService;
 	}
 	
-	public Student findOrReplace(String studentId){
+	public Student findOrReplace(FileStudent fileStudent){
 		Student student;
-		student = Student.findStudentsByUserIdEquals(studentId).getSingleResult();
+		student = Student.findStudentsByUserIdEquals(fileStudent.getStudentId()).getSingleResult();
 		if (student == null) {
 			student = new Student();
 		}

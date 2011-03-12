@@ -27,11 +27,13 @@ public class DefaultStudentService implements StudentService{
     private static final Logger LOG = LoggerFactory.getLogger(DefaultStudentService.class);
 	private Parser parser;
 	private Lexer lexer;
+	private StudentMapper studentMapper;
 	
 	@Autowired
-	public DefaultStudentService(Parser parser, Lexer lexer){
+	public DefaultStudentService(Parser parser, Lexer lexer, StudentMapper studentMapper){
 		this.parser = parser;
 		this.lexer = lexer;
+		this.studentMapper = studentMapper;
 	}
 	
 	@Async
@@ -44,16 +46,8 @@ public class DefaultStudentService implements StudentService{
 		}
 		Set<FileStudent> fileStudents = parser.parse(contents);
 		
-		
 		for (FileStudent each : fileStudents) {
-			findOrReplace(each);
+			studentMapper.findOrReplace(each);
 		}
-	}
-	
-	public void findOrReplace(FileStudent fileStudent) {
-		StudentMapper sm = new StudentMapper();
-		Student student = sm.findOrReplace(fileStudent.getStudentId());
-		/*setting fields should go here*/
-		student.persist();
 	}
 }

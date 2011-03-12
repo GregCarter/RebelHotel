@@ -62,7 +62,6 @@ public class Line {
 		} else {
 			throw new IllegalArgumentException("Invalid semester:" + semester);
 		}
-		
 		return term;
 	}
 	
