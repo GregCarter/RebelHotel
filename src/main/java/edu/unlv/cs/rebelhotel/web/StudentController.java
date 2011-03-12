@@ -1,9 +1,5 @@
 package edu.unlv.cs.rebelhotel.web;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -108,9 +104,6 @@ public class StudentController {
 		if (formStudentQuery.getShowUserAccount()) {
 			properties += ",userAccount";
 		}
-		/*if (properties.length() > 0) {
-			properties = properties.substring(1);
-		}*/
 		return properties;
 	}
 	
@@ -201,31 +194,21 @@ public class StudentController {
 			// code to generate CSV is called from here;
 			// then the contents are placed into the temp file below before sent to the user as a download
 			ServletContext servletContext = request.getSession().getServletContext();
-			String filename = "thisfile.txt";
+			String filename = "student query.csv"; // users will by default receive this file as the name to save as
+			String contents = studentQueryService.generateCsv(form, students, messageSource); // the contents of the file in a string; alternatively use a byte array
 			
-			File file = File.createTempFile("thisfile", ".txt");
-			String contents = "blah blah";
-			
-			FileOutputStream fileWrite = new FileOutputStream(file);
-			fileWrite.write(contents.getBytes());
-			fileWrite.close();
-			
-			int filesize = (int) file.length();
+			int filesize = (int) contents.length();
 			
 			if (filesize > 0 ) {
-				BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
-				String mimetype = servletContext.getMimeType(filename);
-				
 				response.setBufferSize(filesize);
-				response.setContentType(mimetype);
+				response.setContentType("text/cvs");
 				response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
 				response.setHeader("Cache-Control", "no-cache");
 				response.setHeader("pragma", "no-cache");
 				response.setDateHeader("Expires", 0);
 				response.setContentLength(filesize);
 				
-				FileCopyUtils.copy(in, response.getOutputStream());
-				in.close();
+				FileCopyUtils.copy(contents.getBytes(), response.getOutputStream());
 				
 				response.getOutputStream().flush();
 				response.getOutputStream().close();
@@ -238,7 +221,6 @@ public class StudentController {
 				pw.println("</html>");
 			}
 			
-			//model.addAttribute("formStudentQuery", form);
 			return null;
 		}
 	}

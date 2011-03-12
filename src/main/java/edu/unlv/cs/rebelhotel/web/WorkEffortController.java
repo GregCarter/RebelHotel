@@ -1,19 +1,19 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import edu.unlv.cs.rebelhotel.form.FormWorkEffortForStudent;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
+import edu.unlv.cs.rebelhotel.validators.WorkEffortForStudentValidator;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
 import org.joda.time.format.DateTimeFormat;
@@ -24,14 +24,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
 
 @RooWebScaffold(path = "workefforts", formBackingObject = WorkEffort.class, exposeFinders=false)
 @RequestMapping("/workefforts")
@@ -43,39 +38,53 @@ public class WorkEffortController {
 	@Autowired
 	private WorkEffortValidator workEffortValidator;
 	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.setValidator(workEffortValidator);
-	}
+	@Autowired
+	private WorkEffortForStudentValidator workEffortForStudentValidator;
 	
 	public void setWorkEffortValidator(WorkEffortValidator workEffortValidator) {
 		this.workEffortValidator = workEffortValidator;
 	}
 	
+	public void setWorkEffortForStudentValidator(WorkEffortForStudentValidator workEffortForStudentValidator) {
+		this.workEffortForStudentValidator = workEffortForStudentValidator;
+	}
+	
 	// NOTE : the params string should not be equivalent to any of the fields in the form
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.POST)
-    public String createStudent(@PathVariable("sid") Long sid, @Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
+    public String createStudent(@PathVariable("sid") Long sid, FormWorkEffortForStudent formWorkEffortForStudent, BindingResult result, Model model, HttpServletRequest request) {
+		workEffortForStudentValidator.validate(formWorkEffortForStudent, result);
 		if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
+            model.addAttribute("formWorkEffortForStudent", formWorkEffortForStudent);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
-            //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-            //model.addAttribute("studentworkrequirements", workRequirements);
             Set<Major> majors = student.getMajors();
             model.addAttribute("studentmajors", majors);
             model.addAttribute("sid", sid);
             return "workefforts/createFromStudent";
         }
-        workEffort.persist();
-        workEffort.getStudent().addWorkEffort(workEffort);
-        workEffort.getStudent().merge();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
+		WorkEffort workEffort = formWorkEffortForStudent.getWorkEffort();
+		Set<Major> majors = formWorkEffortForStudent.getMajors();
+		Set<WorkRequirement> workRequirements = new HashSet();
+		for (Major major : majors) {
+			Set<WorkRequirement> lwrs = major.getWorkRequirements();
+			for (WorkRequirement workRequirement : lwrs) {
+				workRequirements.add(workRequirement);
+			}
+		}
+		workEffort.setWorkRequirements(workRequirements);
+		workEffort.persist();
+		
+		Student student = workEffort.getStudent();
+		student.addWorkEffort(workEffort);
+		student.merge();
+        return "redirect:/workefforts/" + encodeUrlPathSegment(formWorkEffortForStudent.getWorkEffort().getId().toString(), request);
     }
 	
 	@RequestMapping(method = RequestMethod.POST)
-    public String create(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
+    public String create(WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
+        workEffortValidator.validate(workEffort, result);
+		if (result.hasErrors()) {
             model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             return "workefforts/create";
@@ -83,6 +92,17 @@ public class WorkEffortController {
         workEffort.persist();
         workEffort.getStudent().addWorkEffort(workEffort);
         workEffort.getStudent().merge();
+        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
+    }
+	
+	@RequestMapping(method = RequestMethod.PUT)
+    public String update(WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
+        workEffortValidator.validate(workEffort, result);
+		if (result.hasErrors()) {
+            model.addAttribute("workEffort", workEffort);
+            return "workefforts/update";
+        }
+        workEffort.merge();
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
 	
@@ -100,15 +120,13 @@ public class WorkEffortController {
 	
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.GET)
     public String createStudentForm(@PathVariable("sid") Long sid, Model model) {
-        model.addAttribute("workEffort", new WorkEffort());
+        model.addAttribute("formWorkEffortForStudent", new FormWorkEffortForStudent());
         addDateTimeFormatPatterns(model);
         List dependencies = new ArrayList();
         if (Student.countStudents() == 0) {
             dependencies.add(new String[]{"student", "students"});
         }
         Student student = Student.findStudent(sid);
-        //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-        //model.addAttribute("studentworkrequirements", workRequirements);
         Set<Major> majors = student.getMajors();
         model.addAttribute("studentmajors", majors);
         model.addAttribute("dependencies", dependencies);
