@@ -12,7 +12,7 @@
         <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_Student_email" min="2" required="true" validationMessageCode="field_invalid_email" z="NDEa4jJiTvMWRIHiuomeDmvp6Do="/>
         <field:select field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" itemValue="id" items="${majors}" multiple="true" path="/majors" z="sWOxVscTaEA2QKTOheDsubUSs/w="/>
         <field:checkbox field="codeOfConductSigned" id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" z="MEsITWHN00P2YXp8sh6JT1t/sNM="/>
-        <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" required="true" z="vIEXM6artIq1tJJloR0h3yafX48="/>
+        <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" z="3LUtyqCBfzl9Rw/zN4w4nhC4UpU="/>
         <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
         <field:input field="firstName" id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" min="2" required="true" z="ZfwFke0QaSpPBgRorUMR8NFmIWU="/>
         <field:datetime dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastModified" z="ZMHAHqf5H7JDKfwDjRGzVqXTmuY="/>

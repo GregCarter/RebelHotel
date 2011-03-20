@@ -46,10 +46,10 @@ public class Student {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Major> majors = new HashSet<Major>();
 
-    @ManyToOne
+    @ManyToOne(cascade= { CascadeType.PERSIST, CascadeType.MERGE } )
     private Term admitTerm;
 
-    @ManyToOne
+    @ManyToOne(cascade= { CascadeType.PERSIST, CascadeType.MERGE } )
     private Term gradTerm;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -61,7 +61,7 @@ public class Student {
     @DateTimeFormat(style = "S-")
     private Date lastModified;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.MERGE } )
     private UserAccount userAccount;
     
     @PreUpdate

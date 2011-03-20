@@ -18,5 +18,6 @@
         	</a>
         	</span>
         </div>
+    <field:display field="completed_work_requirements" id="s_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" object="${major}" z="hg2lu4VFKUCm8Q94U+oAqNz0UX4="/>
     </page:show>
 </div>

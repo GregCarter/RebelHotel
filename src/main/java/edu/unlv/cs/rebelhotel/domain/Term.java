@@ -37,7 +37,7 @@ public class Term {
         return sb.toString();
     }
 
-    public static Boolean doesExist(Semester semester, Integer termYear) {
+   /* public static Boolean doesExist(Semester semester, Integer termYear) {
         if (null == semester) {
             throw new IllegalArgumentException("Must specify a emester.");
         } else if (null == termYear || 0 == termYear) {
@@ -53,5 +53,5 @@ public class Term {
                 return false;
             }
         }
-    }
+    }*/
 }

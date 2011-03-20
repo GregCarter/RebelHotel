@@ -11,6 +11,7 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
 import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.file.enums.FileDepartments;
 
 @Component
 public class WorkRequirementService {
@@ -38,24 +39,61 @@ public class WorkRequirementService {
 					Major new_major = new Major();
 					Set<WorkRequirement> wr = new HashSet<WorkRequirement>();
 					
-					// change this later
+					// change this later: Go into the application
+					// and manually change the work template names to match
+					// the department names. Afterwards, change the
+					// string field in the worktemplate and workrequirements
+					// to a department enum...
 					WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), new_major); 
 					workRequirement.persist();
 					
 					wr.add(workRequirement);
 					new_major.setWorkRequirements(wr);
 					new_major.setCatalogTerm(requirementTerm);
-					
-					// change this later
-					new_major.setDepartment(Departments.GAMING_MANAGEMENT);
+					new_major.setDepartment(departmentMapper(majorName));
 					new_major.setReachedMilestone(false);
-					new_major.persist();
-					
+					new_major.persist();		
 					newMajors.add(new_major);
 				}
 			}
 		}
 		current_majors.addAll(newMajors);
 		return current_majors;
+	}
+	
+	private Departments departmentMapper(String major) {
+		if (major.equals(FileDepartments.CAMBSCM)) {
+			return Departments.CULINARY_ARTS_MANAGEMENT;
+		} else if (major.equals(FileDepartments.CAMPRE)) {
+			return Departments.CULINARY_ARTS_MANAGEMENT_PRE;
+		} else if (major.equals(FileDepartments.CBEVBSCM)) {
+			return Departments.CULINARY_ARTS_BEVERAGE_MANAGEMENT;
+		} else if (major.equals(FileDepartments.CBEVPRBSCM)) {
+			return Departments.CULINARY_ARTS_BEVERAGE_MANAGEMENT_PRE;
+		} else if (major.equals(FileDepartments.FDMBSHA)) {
+			return Departments.FOOD_SERVICE_MANAGEMENT;
+		} else if (major.equals(FileDepartments.FDMPRE)) {
+			return Departments.FOOD_SERVICE_MANAGEMENT_PRE;
+		} else if (major.equals(FileDepartments.GAMBSGM)) {
+			return Departments.GAMING_MANAGEMENT;
+		} else if (major.equals(FileDepartments.GAMPRE)) {
+			return Departments.GAMING_MANAGEMENT_PRE;
+		} else if (major.equals(FileDepartments.HBEVBSHA)) {
+			return Departments.HOTEL_ADMINISTRATION_BEVERAGE_MANAGEMENT;
+		} else if (major.equals(FileDepartments.HBEVPRBSHA)) {
+			return Departments.HOTEL_ADMINISTRATION_BEVERAGE_MANAGEMENT_PRE;
+		} else if (major.equals(FileDepartments.HOSSINBSMS)) {
+			return Departments.HOSPITALITY_MANAGEMENT;
+		} else if (major.equals(FileDepartments.LRMBSHA)) {
+			return Departments.LODGING_AND_RESORT_MANAGEMENT;
+		} else if (major.equals(FileDepartments.LRMPRE)) {
+			return Departments.LODGING_AND_RESORT_MANAGEMENT_PRE;
+		} else if (major.equals(FileDepartments.MEMBSHA)) {
+			return Departments.MEETINGS_AND_EVENTS_MANAGEMENT;
+		} else if (major.equals(FileDepartments.MEMPRE)) {
+			return Departments.MEETINGS_AND_EVENTS_MANAGEMENT_PRE;
+		} else {
+			throw new IllegalArgumentException("Invalid Major: " + major);
+		}
 	}
 }

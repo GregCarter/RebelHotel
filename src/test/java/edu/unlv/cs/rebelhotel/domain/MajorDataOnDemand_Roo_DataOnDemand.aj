@@ -26,6 +26,7 @@ privileged aspect MajorDataOnDemand_Roo_DataOnDemand {
         obj.setReachedMilestone(true);
         obj.setDepartment(edu.unlv.cs.rebelhotel.domain.enums.Departments.class.getEnumConstants()[0]);
         obj.setCatalogTerm(termDataOnDemand.getRandomTerm());
+        obj.setCompleted_work_requirements(false);
         return obj;
     }
     

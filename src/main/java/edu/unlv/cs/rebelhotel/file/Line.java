@@ -9,6 +9,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
+import edu.unlv.cs.rebelhotel.file.enums.FileDepartments;
 
 @RooJavaBean
 @RooToString
@@ -26,29 +27,50 @@ public class Line {
 	public Line convert(List<String> tokens){
 		Line line = new Line();
 		String[] field = (String[]) tokens.toArray();
-		line.setStudentId(field[0]);
-		line.setLastName(field[1]);
-		line.setFirstName(field[2]);
-		line.setMiddleName(field[3]);
-		line.setEmail(field[4]);
-
-		Set<String> majors = line.getMajors();
-		majors.add(field[5]);
-		line.setMajors(majors);
-
-		if (!field[6].equals(" ")) {
-			majors.add(field[6]);
+		
+		boolean shouldIgnore = shouldIgnore(field[5]);
+		if (shouldIgnore) {
+			return null;
+		} else {
+			line.setStudentId(field[0]);
+			line.setLastName(field[1]);
+			line.setFirstName(field[2]);
+			line.setMiddleName(field[3]);
+			line.setEmail(field[4]);
+	
+			Set<String> majors = line.getMajors();
+			
+			majors.add(field[5]);
 			line.setMajors(majors);
+	
+			shouldIgnore = shouldIgnore(field[6]);
+			if (!shouldIgnore) {
+				if (!field[6].equals(" ")) {
+					majors.add(field[6]);
+					line.setMajors(majors);
+				}
+			}
+	
+			line.setAdmitTerm(doMakeTerm(field[7]));
+			line.setRequirementTerm(doMakeTerm(field[8]));
+			line.setGradTerm(doMakeTerm(field[9]));
+	
+			return line;
 		}
-
-		line.setAdmitTerm(doMakeTerm(field[7]));
-		line.setRequirementTerm(doMakeTerm(field[8]));
-		line.setGradTerm(doMakeTerm(field[9]));
-
-		return line;
+	}
+	
+	private boolean shouldIgnore(String major) {
+		boolean ignore = (major.equals(FileDepartments.RECBS) 
+				|| major.equals(FileDepartments.RECMIN) 
+				|| major.equals(FileDepartments.RECPGMBS));
+		if (ignore) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public Term makeTerm(String yearAndTerm) {
+	private Term makeTerm(String yearAndTerm) {
 		char[] character = {0,0,0,0};
 		Integer termYear = null;
 		Semester semester = null;
@@ -68,15 +90,6 @@ public class Line {
 		} else {
 			throw new IllegalArgumentException("Invalid semester:" + semester);
 		}
-		
-		/*if (Term.doesExist(term.getSemester(), term.getTermYear())) {
-			term.merge();
-		} else {
-			term.persist();
-		}*/
-		
-		term.merge();
-		
 		return term;
 	}
 

@@ -9,14 +9,6 @@ import java.lang.String;
 
 privileged aspect UserAccount_Roo_JavaBean {
     
-    public String UserAccount.getEmail() {
-        return this.email;
-    }
-    
-    public void UserAccount.setEmail(String email) {
-        this.email = email;
-    }
-    
     public String UserAccount.getUserId() {
         return this.userId;
     }
@@ -27,6 +19,14 @@ privileged aspect UserAccount_Roo_JavaBean {
     
     public String UserAccount.getPassword() {
         return this.password;
+    }
+    
+    public String UserAccount.getEmail() {
+        return this.email;
+    }
+    
+    public void UserAccount.setEmail(String email) {
+        this.email = email;
     }
     
     public UserGroup UserAccount.getUserGroup() {

@@ -7,5 +7,6 @@
         <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_Major_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="UEB9fLuwsIXQjSYSqoDQk+6ThA4="/>
         <field:select field="catalogTerm" id="c_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" itemValue="id" items="${terms}" path="/terms" z="lrTyjeVuYuc8J17hqp/trmR04Zk="/>
         <field:select field="department" id="c_edu_unlv_cs_rebelhotel_domain_Major_department" items="${departmentses}" path="departmentses" z="zbeEgHOxN9nhInR4XAf7LcAVoZs="/>
+    <field:checkbox field="completed_work_requirements" id="c_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" z="sTX1jPhJrWq5LKP1gzKu6BEO3lE="/>
     </form:update>
 </div>

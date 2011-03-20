@@ -48,8 +48,6 @@ public class WorkTemplateController {
         Set<WorkRequirement> workRequirements = major.getWorkRequirements();
         workRequirements.add(workRequirement);
         
-        //Set<WorkRequirement> workRequirements = student.getWorkRequirements();
-        //workRequirements.add(workRequirement);
         major.merge();
         return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), request);
     }

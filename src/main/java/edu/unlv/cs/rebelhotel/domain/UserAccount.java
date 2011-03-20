@@ -17,7 +17,6 @@ import javax.persistence.EnumType;
 @RooEntity(finders = { "findUserAccountsByUserId" })
 public class UserAccount {
 
-	private String email;
     @NotNull
     @Column(unique = true)
     private String userId;
@@ -27,6 +26,10 @@ public class UserAccount {
     @NotNull
     private String password;
 
+    @NotNull
+    @Column(unique=true)
+    private String email = "default@email.com";
+    
     @Enumerated(EnumType.STRING)
     private UserGroup userGroup;
 

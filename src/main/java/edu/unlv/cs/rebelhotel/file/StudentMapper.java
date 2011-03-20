@@ -52,11 +52,11 @@ public class StudentMapper {
 		student_account.setUserGroup(UserGroup.ROLE_USER);
 		student_account.setEmail(fileStudent.getEmail());
 		
-		if (UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getResultList().size() > 0) {
-			student_account.merge();
+		/*if (UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getResultList().size() > 0) {
+			student_account = student_account.merge();
 		} else {
 			student_account.persist();
-		}
+		}*/
 		
 		student.setUserAccount(student_account);
 		return student;
