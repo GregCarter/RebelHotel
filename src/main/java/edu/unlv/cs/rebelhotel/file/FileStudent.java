@@ -1,7 +1,7 @@
 package edu.unlv.cs.rebelhotel.file;
 
 import java.util.Collection;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 import edu.unlv.cs.rebelhotel.domain.Term;
@@ -20,11 +20,9 @@ public class FileStudent {
 	private Set<String> majors = new HashSet<String>();
 	private Term admitTerm;
 	private Term gradTerm; // are we going to put gradTerm in Majors?
-	
-	public FileStudent() {
-	}
-	
-	public Set<FileStudent> convert(Map<String, Set<Line>> entries) {
+	private Term requirementTerm;
+
+	public Set<FileStudent> convert(Collection<List<Line>> student) {
 		// go through each key, and convert the lines into
 		// the student. so create a new fileStudent for each key->value
 
@@ -32,15 +30,18 @@ public class FileStudent {
 		// string switch expressions.
 		
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
-		Collection<Set<Line>> student = entries.values();
-		for (Set<Line> lines : student) {
+		for (List<Line> lines : student) {
 			FileStudent fileStudent = new FileStudent();
 			for (Line line : lines){
 				fileStudent.setStudentId(line.getStudentId());
-				// do all the other ones...
-				// not sure what to do with term because you do not
-				// know how they will represent the terms...
-				// let alone which terms they will include
+				fileStudent.setFirstName(line.getFirstName());
+				fileStudent.setMiddleName(line.getMiddleName());
+				fileStudent.setLastName(line.getLastName());
+				fileStudent.setEmail(line.getEmail());
+				fileStudent.setMajors(line.getMajors());
+				fileStudent.setAdmitTerm(line.getAdmitTerm());
+				fileStudent.setRequirementTerm(line.getRequirementTerm());
+				fileStudent.setGradTerm(line.getGradTerm());
 			}
 			fileStudents.add(fileStudent);
 		}

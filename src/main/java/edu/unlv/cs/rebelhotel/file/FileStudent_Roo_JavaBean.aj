@@ -73,4 +73,12 @@ privileged aspect FileStudent_Roo_JavaBean {
         this.gradTerm = gradTerm;
     }
     
+    public Term FileStudent.getRequirementTerm() {
+        return this.requirementTerm;
+    }
+    
+    public void FileStudent.setRequirementTerm(Term requirementTerm) {
+        this.requirementTerm = requirementTerm;
+    }
+    
 }
