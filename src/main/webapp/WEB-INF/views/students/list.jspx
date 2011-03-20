@@ -7,12 +7,16 @@
     <br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
         <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="RFPbdXr7ZKuirMVeSh9ZJKfvMnk=">
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" property="userId" z="uTlFwFgTXOUDXh2dVyz9K0Bp8mk="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="DSzicBjGwxYL/2/kNsf10cNZTGI="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
+            
+            
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
+             
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_email" property="email" z="v0BGqklSPHIPXq+NepLkZBAqQxo="/>
         	<table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" property="majors" z="Ecda7DS1Cn6bKJSYGr68uCR7h8Y="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" property="gradTerm" z="NXCJHi8hCaWP36aMvQLrYQIT6x8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" property="admitTerm" z="BUdDIBOqBFS9uGJzNcyq+qD/D/8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" property="codeOfConductSigned" z="HUCAYFz/64nj7NnTFM4sbVD6XYs="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
         </table:table>
     </page:list>
 </div>

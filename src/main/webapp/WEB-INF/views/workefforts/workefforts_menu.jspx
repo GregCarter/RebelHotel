@@ -9,6 +9,7 @@
 			<menu:item id="i_workeffort_list" messageCode="global_menu_list" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
         	<menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         	<menu:item id="i_workeffort_validate" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
+        	<menu:item id="i_workeffort_random_validation" url="/workefforts?random" z="?"/>
         	<menu:item id="i_main_menu" url="/"/>
         </menu:category>
     	        </security:authorize>

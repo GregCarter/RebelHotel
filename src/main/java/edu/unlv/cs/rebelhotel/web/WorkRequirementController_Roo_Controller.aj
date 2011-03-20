@@ -26,63 +26,66 @@ import org.springframework.web.util.WebUtils;
 privileged aspect WorkRequirementController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String WorkRequirementController.create(@Valid WorkRequirement workRequirement, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workRequirement", workRequirement);
+    public String WorkRequirementController.create(@Valid WorkRequirement workRequirement, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("workRequirement", workRequirement);
             return "workrequirements/create";
         }
+        uiModel.asMap().clear();
         workRequirement.persist();
-        return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), request);
+        return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String WorkRequirementController.createForm(Model model) {
-        model.addAttribute("workRequirement", new WorkRequirement());
+    public String WorkRequirementController.createForm(Model uiModel) {
+        uiModel.addAttribute("workRequirement", new WorkRequirement());
         return "workrequirements/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkRequirementController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workrequirement", WorkRequirement.findWorkRequirement(id));
-        model.addAttribute("itemId", id);
+    public String WorkRequirementController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("workrequirement", WorkRequirement.findWorkRequirement(id));
+        uiModel.addAttribute("itemId", id);
         return "workrequirements/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String WorkRequirementController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkRequirementController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("workrequirements", WorkRequirement.findWorkRequirementEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("workrequirements", WorkRequirement.findWorkRequirementEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) WorkRequirement.countWorkRequirements() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("workrequirements", WorkRequirement.findAllWorkRequirements());
+            uiModel.addAttribute("workrequirements", WorkRequirement.findAllWorkRequirements());
         }
         return "workrequirements/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String WorkRequirementController.update(@Valid WorkRequirement workRequirement, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workRequirement", workRequirement);
+    public String WorkRequirementController.update(@Valid WorkRequirement workRequirement, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("workRequirement", workRequirement);
             return "workrequirements/update";
         }
+        uiModel.asMap().clear();
         workRequirement.merge();
-        return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), request);
+        return "redirect:/workrequirements/" + encodeUrlPathSegment(workRequirement.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String WorkRequirementController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workRequirement", WorkRequirement.findWorkRequirement(id));
+    public String WorkRequirementController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("workRequirement", WorkRequirement.findWorkRequirement(id));
         return "workrequirements/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String WorkRequirementController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkRequirementController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         WorkRequirement.findWorkRequirement(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/workrequirements?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/workrequirements";
     }
     
     @ModelAttribute("majors")
@@ -91,12 +94,17 @@ privileged aspect WorkRequirementController_Roo_Controller {
     }
     
     @ModelAttribute("workefforts")
-    public Collection<WorkEffort> WorkRequirementController.populateWorkEfforts() {
+    public java.util.Collection<WorkEffort> WorkRequirementController.populateWorkEfforts() {
         return WorkEffort.findAllWorkEfforts();
     }
     
-    String WorkRequirementController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    @ModelAttribute("workrequirements")
+    public java.util.Collection<WorkRequirement> WorkRequirementController.populateWorkRequirements() {
+        return WorkRequirement.findAllWorkRequirements();
+    }
+    
+    String WorkRequirementController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

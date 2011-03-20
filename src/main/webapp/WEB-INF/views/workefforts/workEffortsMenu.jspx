@@ -11,11 +11,11 @@
 				</td>
 				<td id="c_workeffort_list">
 					<spring:message var = "workeffort_menu_query" code = "label_workeffort_menu_query" />
-					<a title="${workeffort_menu_query}" href="/RebelHotel/workefforts?page=1&amp;size=10">${workeffort_menu_query}</a>
+					<a title="${workeffort_menu_query}" href="/RebelHotel/workefforts?query">${workeffort_menu_query}</a>
 				</td>
-				<td id="c_workeffort_studentequals">
-					<spring:message var = "workeffort_menu_find" code = "label_workeffort_menu_find" />
-					<a title="${workeffort_menu_find}" href="/RebelHotel/workefforts?find=ByStudentEquals&amp;form">${workeffort_menu_find}</a>
+				<td id="c_workeffort_list">
+					<spring:message var = "workeffort_menu_list" code = "label_workeffort_menu_list" />
+					<a title="${workeffort_menu_list}" href="/RebelHotel/workefforts?page=1&amp;size=10">${workeffort_menu_list}</a>
 				</td>
 			</table>
 		</span>

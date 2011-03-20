@@ -2,7 +2,7 @@
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
   <spring:message code="security_login_title" var="title" />
-  <util:panel id="title" title="${title}">
+  
     <c:if test="${not empty param.login_error}">
       <div class="errors">
         <p>
@@ -12,14 +12,12 @@
         </p>
       </div>
     </c:if>
-    <c:if test="${empty param.login_error}">
-      <p>
-        <spring:message code="security_login_message" />
-      </p>
-    </c:if>
-    <spring:url value="/resources/j_spring_security_check" var="form_url" />
+    
+    <table>
+    <tr><td>
+	<spring:url value="/resources/j_spring_security_check" var="form_url" />
     <form name="f" action="${fn:escapeXml(form_url)}" method="POST">
-      <div>
+    <div>
         <label for="j_username">
           <spring:message code="security_login_form_name" />
         </label>
@@ -45,8 +43,7 @@
           </c:set>
           Spring.addDecoration(new Spring.ElementDecoration({elementId : "j_password", widgetType : "dijit.form.ValidationTextBox", widgetAttrs : {promptMessage: "${sec_pwd_msg}", required : true}})); 
         </script>
-      </div>
-      <br />
+      </div><br/>
       <div class="submit">
         <script type="text/javascript">Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));</script>
         <spring:message code="button_submit" var="submit_label" />
@@ -54,7 +51,14 @@
         <spring:message code="button_reset" var="reset_label" />
         <input id="reset" type="reset" value="${fn:escapeXml(reset_label)}" />
       </div>
-    </form>
-  </util:panel>
+    </form></td>
+    <td>
+      <div class="login">
+    	  <p><spring:message code="security_login_message1" /></p>
+    	  <p><spring:message code="security_login_message2" /></p>
+    	  <p><spring:message code="security_login_message3" /></p>
+      </div>   
+    </td>
+    </tr></table>
 </div>
 

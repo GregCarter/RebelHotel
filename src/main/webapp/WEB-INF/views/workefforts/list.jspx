@@ -2,15 +2,21 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <tiles:insertAttribute ignore="true" name="workeffort_menu"/><br/><br/>
+    <tiles:insertAttribute ignore="true" name="workeffort_menu"/>
+    <br/>
+    <br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkEffort" items="${workefforts}" z="hkWx40HfLYNyB8b9jVXEMIjurE8=">
         <table:table data="${workefforts}" id="l_edu_unlv_cs_rebelhotel_domain_WorkEffort" path="/workefforts" z="9MJC5QGkhiyHT8TWwoEzHyyyIwM=">
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" property="student" z="2ckKbTYcvHBufdKizbRYXCIphms="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" property="workPosition" z="6+j5izdYgAfuXc4WLC1LEGStUVc="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" property="comment" z="Qrk3GmfXG/56zAfTevG/paWG21E="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" property="supervisor" z="S6KkC7EF7oeU0sEc1AFFRjqORSs="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" property="employer" z="4uSWB1sTeKX9EFEegu3xVtIsBtM="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verificationType" property="verificationType" z="MGQCkhfpM9QFk9e54ZiPu2wDW98="/>
+            
+            
+            
+            
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" property="workRequirements" z="wnwU8mIDthUTEsJSGLSjtkc6hTY="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" property="payStatus" z="MZUHCUTT+eQK8kp9PpEKHxBAIJc="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" property="duration" z="i015q5XxuIrwtTOw2+Atqws8od4="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" property="verification" z="UAfAPITMsd/ZKlKteR6O1dKctN8="/>
         </table:table>
     </page:list>
 </div>

@@ -17,6 +17,7 @@ import javax.persistence.EnumType;
 @RooEntity(finders = { "findUserAccountsByUserId" })
 public class UserAccount {
 
+	private String email;
     @NotNull
     @Column(unique = true)
     private String userId;

@@ -10,6 +10,7 @@ privileged aspect Major_Roo_ToString {
     public String Major.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("WorkRequirements: ").append(getWorkRequirements() == null ? "null" : getWorkRequirements().size()).append(", ");
+        sb.append("ReachedMilestone: ").append(isReachedMilestone()).append(", ");
         sb.append("Department: ").append(getDepartment()).append(", ");
         sb.append("CatalogTerm: ").append(getCatalogTerm());
         return sb.toString();

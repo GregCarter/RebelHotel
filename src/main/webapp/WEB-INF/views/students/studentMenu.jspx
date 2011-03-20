@@ -15,9 +15,9 @@
 						<!-- <a href="/RebelHotel/students?page=1&amp;size=10" title="${student_menu_query}">${student_menu_query}</a>-->
 						 <a href="/RebelHotel/students?query" title="${student_menu_query}">${student_menu_query}</a>
 					</td>
-					<td id = "c_student_menu_useraccount">
-						<spring:message var = "student_menu_find" code = "label_student_menu_find" />
-						<a href = "/RebelHotel/students?find=ByUserAccount&amp;form" title = "${student_menu_find}">${student_menu_find}</a>
+					<td id = "c_student_menu_list">
+						<spring:message var = "student_menu_list" code = "label_student_menu_list" />
+						<a href = "/RebelHotel/students?page=1&amp;size=${empty param.size ? 10 : param.size}" title = "${student_menu_list}">${student_menu_list}</a>
 					</td>
 				</tr>
 			</table>

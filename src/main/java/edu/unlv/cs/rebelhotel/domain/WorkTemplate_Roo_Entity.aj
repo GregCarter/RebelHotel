@@ -73,6 +73,12 @@ privileged aspect WorkTemplate_Roo_Entity {
     }
     
     @Transactional
+    public void WorkTemplate.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public WorkTemplate WorkTemplate.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         WorkTemplate merged = this.entityManager.merge(this);

@@ -28,10 +28,10 @@ privileged aspect WorkEffortDataOnDemand_Roo_DataOnDemand {
         obj.setComment("comment_" + index);
         obj.setSupervisor(null);
         obj.setEmployer(null);
-        obj.setVerificationType(null);
-        obj.setValidation(null);
-        obj.setVerification(null);
-        obj.setPayStatus(null);
+        obj.setVerificationType(edu.unlv.cs.rebelhotel.domain.enums.VerificationType.class.getEnumConstants()[0]);
+        obj.setValidation(edu.unlv.cs.rebelhotel.domain.enums.Validation.class.getEnumConstants()[0]);
+        obj.setVerification(edu.unlv.cs.rebelhotel.domain.enums.Verification.class.getEnumConstants()[0]);
+        obj.setPayStatus(edu.unlv.cs.rebelhotel.domain.enums.PayStatus.class.getEnumConstants()[0]);
         obj.setDuration(null);
         return obj;
     }

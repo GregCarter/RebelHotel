@@ -18,7 +18,8 @@
     	<field:select field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" itemValue="id" items="${majors}" multiple="true" path="/majors" z="sWOxVscTaEA2QKTOheDsubUSs/w="/>
     	<!-- TODO needs to be removed before deployment -->
     	<field:datetime dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastModified" required="false" z="user-managed"/>
-    	<field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" z="3LUtyqCBfzl9Rw/zN4w4nhC4UpU="/>
+    	<!-- <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" required="true" z="vIEXM6artIq1tJJloR0h3yafX48="/> -->
+    <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" required="true" z="vIEXM6artIq1tJJloR0h3yafX48="/>
     </form:create>
 <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" z="MlPRzZP5Yzrt03hbToBbk+X+gaM="/>
 </div>

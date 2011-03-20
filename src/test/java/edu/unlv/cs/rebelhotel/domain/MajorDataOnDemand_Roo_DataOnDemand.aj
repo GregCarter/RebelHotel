@@ -4,8 +4,10 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
+import edu.unlv.cs.rebelhotel.domain.TermDataOnDemand;
 import java.util.List;
 import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect MajorDataOnDemand_Roo_DataOnDemand {
@@ -16,11 +18,14 @@ privileged aspect MajorDataOnDemand_Roo_DataOnDemand {
     
     private List<Major> MajorDataOnDemand.data;
     
+    @Autowired
+    private TermDataOnDemand MajorDataOnDemand.termDataOnDemand;
+    
     public Major MajorDataOnDemand.getNewTransientMajor(int index) {
         edu.unlv.cs.rebelhotel.domain.Major obj = new edu.unlv.cs.rebelhotel.domain.Major();
         obj.setReachedMilestone(true);
-        obj.setDepartment(null);
-        obj.setCatalogTerm(null);
+        obj.setDepartment(edu.unlv.cs.rebelhotel.domain.enums.Departments.class.getEnumConstants()[0]);
+        obj.setCatalogTerm(termDataOnDemand.getRandomTerm());
         return obj;
     }
     
