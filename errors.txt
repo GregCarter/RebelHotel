@@ -1,47 +1,38 @@
 [INFO] Scanning for projects...
-[INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building RebelHotel 0.1.0.BUILD-SNAPSHOT
+[INFO] Building RebelHotel
+[INFO]    task-segment: [test]
 [INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- aspectj-maven-plugin:1.0:compile (default) @ RebelHotel ---
-[WARNING] advice defined in org.springframework.mock.staticmock.AnnotationDrivenStaticEntityMockingControl has not been applied [Xlint:adviceDidNotMatch]
-[WARNING] advice defined in org.springframework.mock.staticmock.AbstractMethodMockingControl has not been applied [Xlint:adviceDidNotMatch]
-[INFO] 
-[INFO] --- maven-resources-plugin:2.4.2:resources (default-resources) @ RebelHotel ---
+[INFO] [aspectj:compile {execution: default}]
+[INFO] [resources:resources {execution: default-resources}]
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 5 resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:2.1:compile (default-compile) @ RebelHotel ---
+[INFO] [compiler:compile {execution: default-compile}]
 [INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- aspectj-maven-plugin:1.0:test-compile (default) @ RebelHotel ---
+[INFO] [aspectj:test-compile {execution: default}]
 [WARNING] advice defined in org.springframework.orm.jpa.aspectj.JpaExceptionTranslatorAspect has not been applied [Xlint:adviceDidNotMatch]
 [WARNING] advice defined in org.springframework.mock.staticmock.AnnotationDrivenStaticEntityMockingControl has not been applied [Xlint:adviceDidNotMatch]
 [WARNING] advice defined in org.springframework.mock.staticmock.AbstractMethodMockingControl has not been applied [Xlint:adviceDidNotMatch]
 [WARNING] advice defined in org.springframework.mock.staticmock.AbstractMethodMockingControl has not been applied [Xlint:adviceDidNotMatch]
 [WARNING] advice defined in org.springframework.scheduling.aspectj.AbstractAsyncExecutionAspect has not been applied [Xlint:adviceDidNotMatch]
-[INFO] 
-[INFO] --- maven-resources-plugin:2.4.2:testResources (default-testResources) @ RebelHotel ---
+[INFO] [resources:testResources {execution: default-testResources}]
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:2.1:testCompile (default-testCompile) @ RebelHotel ---
+[INFO] [compiler:testCompile {execution: default-testCompile}]
 [INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.5:test (default-test) @ RebelHotel ---
-[INFO] Surefire report directory: /Users/user/Documents/workspace-sts-2.6.0.SR1/RebelHotel/target/surefire-reports
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: C:\Documents and Settings\suzie\RebelHotel\RebelHotel\target\surefire-reports
 
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.52 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.391 sec
 Running edu.unlv.cs.rebelhotel.domain.WorkTemplateIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.341 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.734 sec
 Running edu.unlv.cs.rebelhotel.domain.TermIntegrationTest
-2011-03-20 00:22:07,621 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`major`, CONSTRAINT `FK62DB5B91ADDA483` FOREIGN KEY (`catalog_term`) REFERENCES `term` (`id`))
-2011-03-20 00:22:07,622 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
+2011-03-21 20:48:05,515 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`major`, CONSTRAINT `FK62DB5B91ADDA483` FOREIGN KEY (`catalog_term`) REFERENCES `term` (`id`))
+2011-03-21 20:48:05,531 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
 org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unlv.cs.rebelhotel.domain.Term#82]
 	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:96)
 	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
@@ -119,10 +110,10 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
 	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2692)
 	... 52 more
-Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.501 sec <<< FAILURE!
+Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.766 sec <<< FAILURE!
 Running edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest
-2011-03-20 00:22:13,442 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`work_effort_work_requirements`, CONSTRAINT `FK28B52BD9AE76830B` FOREIGN KEY (`work_requirements`) REFERENCES `work_requirement` (`id`))
-2011-03-20 00:22:13,442 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
+2011-03-21 20:48:08,625 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`work_effort_work_requirements`, CONSTRAINT `FK28B52BD9AE76830B` FOREIGN KEY (`work_requirements`) REFERENCES `work_requirement` (`id`))
+2011-03-21 20:48:08,625 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
 org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unlv.cs.rebelhotel.domain.WorkRequirement#72]
 	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:96)
 	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
@@ -136,7 +127,7 @@ org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unl
 	at org.hibernate.event.def.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:51)
 	at org.hibernate.impl.SessionImpl.flush(SessionImpl.java:1216)
 	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:795)
-	at sun.reflect.GeneratedMethodAccessor17.invoke(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor16.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
 	at java.lang.reflect.Method.invoke(Method.java:597)
 	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:240)
@@ -199,115 +190,32 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
 	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2692)
 	... 51 more
-Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.2 sec <<< FAILURE!
+Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.297 sec <<< FAILURE!
 Running edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest
-2011-03-20 00:22:15,679 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`work_effort_work_requirements`, CONSTRAINT `FK28B52BD9AE76830B` FOREIGN KEY (`work_requirements`) REFERENCES `work_requirement` (`id`))
-2011-03-20 00:22:15,679 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
-org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unlv.cs.rebelhotel.domain.WorkRequirement#72]
-	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:96)
-	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
-	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2710)
-	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2893)
-	at org.hibernate.action.EntityDeleteAction.execute(EntityDeleteAction.java:97)
-	at org.hibernate.engine.ActionQueue.execute(ActionQueue.java:273)
-	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:265)
-	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:189)
-	at org.hibernate.event.def.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:321)
-	at org.hibernate.event.def.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:51)
-	at org.hibernate.impl.SessionImpl.flush(SessionImpl.java:1216)
-	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:795)
-	at sun.reflect.GeneratedMethodAccessor17.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-	at java.lang.reflect.Method.invoke(Method.java:597)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:240)
-	at $Proxy45.flush(Unknown Source)
-	at edu.unlv.cs.rebelhotel.domain.Student_Roo_Entity.ajc$interMethod$edu_unlv_cs_rebelhotel_domain_Student_Roo_Entity$edu_unlv_cs_rebelhotel_domain_Student$flush(Student_Roo_Entity.aj:72)
-	at edu.unlv.cs.rebelhotel.domain.Student.flush(Student.java:1)
-	at edu.unlv.cs.rebelhotel.domain.Student_Roo_Entity.ajc$interMethodDispatch1$edu_unlv_cs_rebelhotel_domain_Student_Roo_Entity$edu_unlv_cs_rebelhotel_domain_Student$flush(Student_Roo_Entity.aj)
-	at edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest_Roo_IntegrationTest.ajc$interMethod$edu_unlv_cs_rebelhotel_domain_StudentIntegrationTest_Roo_IntegrationTest$edu_unlv_cs_rebelhotel_domain_StudentIntegrationTest$testRemove(StudentIntegrationTest_Roo_IntegrationTest.aj:111)
-	at edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest.testRemove(StudentIntegrationTest.java:1)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-	at java.lang.reflect.Method.invoke(Method.java:597)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:74)
-	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:82)
-	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:72)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:240)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
-	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:59)
-	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:115)
-	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:102)
-	at org.apache.maven.surefire.Surefire.run(Surefire.java:180)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-	at java.lang.reflect.Method.invoke(Method.java:597)
-	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:350)
-	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1021)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`work_effort_work_requirements`, CONSTRAINT `FK28B52BD9AE76830B` FOREIGN KEY (`work_requirements`) REFERENCES `work_requirement` (`id`))
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
-	at com.mysql.jdbc.Util.getInstance(Util.java:384)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1041)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2568)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2113)
-	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2409)
-	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2327)
-	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2312)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
-	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
-	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2692)
-	... 51 more
-Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.013 sec <<< FAILURE!
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.093 sec
 Running edu.unlv.cs.rebelhotel.domain.WorkRequirementIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.659 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.407 sec
 Running edu.unlv.cs.rebelhotel.domain.UserAccountIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.284 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2 sec
 
 Results :
 
 Tests in error: 
   testRemove(edu.unlv.cs.rebelhotel.domain.TermIntegrationTest)
   testRemove(edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest)
-  testRemove(edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest)
 
-Tests run: 63, Failures: 0, Errors: 3, Skipped: 0
+Tests run: 63, Failures: 0, Errors: 2, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
+[ERROR] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 39.619s
-[INFO] Finished at: Sun Mar 20 00:22:20 PDT 2011
-[INFO] Final Memory: 7M/81M
+[INFO] There are test failures.
+
+Please refer to C:\Documents and Settings\suzie\RebelHotel\RebelHotel\target\surefire-reports for the individual test results.
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.5:test (default-test) on project RebelHotel: There are test failures.
-[ERROR] 
-[ERROR] Please refer to /Users/user/Documents/workspace-sts-2.6.0.SR1/RebelHotel/target/surefire-reports for the individual test results.
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[INFO] For more information, run Maven with the -e switch
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1 minute 14 seconds
+[INFO] Finished at: Mon Mar 21 20:48:19 PDT 2011
+[INFO] Final Memory: 33M/247M
+[INFO] ------------------------------------------------------------------------

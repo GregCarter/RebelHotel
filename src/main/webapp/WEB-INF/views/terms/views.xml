@@ -24,4 +24,7 @@
 <definition extends="default" name="terms/findTermsBySemester">
         <put-attribute name="body" value="/WEB-INF/views/terms/findTermsBySemester.jspx"/>
     </definition>
+<definition extends="default" name="terms/findTermsBySemesterAndTermYearEquals">
+        <put-attribute name="body" value="/WEB-INF/views/terms/findTermsBySemesterAndTermYearEquals.jspx"/>
+    </definition>
 </tiles-definitions>

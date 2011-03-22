@@ -35,7 +35,7 @@ import javax.persistence.PreUpdate;
 @RooToString
 @RooEntity(finders = { "findWorkEffortsByStudentEquals" })
 public class WorkEffort {
-    private static final Logger LOG = LoggerFactory.getLogger("audit");
+    //private static final Logger LOG = LoggerFactory.getLogger("audit");
 	
     @NotNull
     @ManyToOne
@@ -75,7 +75,7 @@ public class WorkEffort {
         return sb.toString();
     }
     
-    @PreUpdate
+   /* @PreUpdate
     @PrePersist
     public void audit() {
     	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -93,5 +93,5 @@ public class WorkEffort {
 		String studentId = student.getUserId();
 		
 		LOG.info("User {} updated work effort {} for student {}.", new Object[]{username, this.toString(), studentId});
-    }
+    }*/
 }

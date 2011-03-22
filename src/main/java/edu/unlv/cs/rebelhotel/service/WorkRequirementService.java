@@ -48,14 +48,14 @@ public class WorkRequirementService {
 					// string field in the worktemplate and workrequirements
 					// to a department enum...
 					WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), new_major); 
-					workRequirement.persist();
+					workRequirement = workRequirement.merge();
 					
 					wr.add(workRequirement);
 					new_major.setWorkRequirements(wr);
 					new_major.setCatalogTerm(requirementTerm);
 					new_major.setDepartment(departmentMapper(majorName));
 					new_major.setReachedMilestone(false);
-					new_major.persist();		
+					//new_major.persist();		
 					newMajors.add(new_major);
 				}
 			}

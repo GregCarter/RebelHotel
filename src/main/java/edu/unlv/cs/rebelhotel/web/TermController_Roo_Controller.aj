@@ -97,6 +97,18 @@ privileged aspect TermController_Roo_Controller {
         return "terms/list";
     }
     
+    @RequestMapping(params = { "find=BySemesterAndTermYearEquals", "form" }, method = RequestMethod.GET)
+    public String TermController.findTermsBySemesterAndTermYearEqualsForm(Model model) {
+        model.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+        return "terms/findTermsBySemesterAndTermYearEquals";
+    }
+    
+    @RequestMapping(params = "find=BySemesterAndTermYearEquals", method = RequestMethod.GET)
+    public String TermController.findTermsBySemesterAndTermYearEquals(@RequestParam("semester") Semester semester, @RequestParam("termYear") Integer termYear, Model model) {
+        model.addAttribute("terms", Term.findTermsBySemesterAndTermYearEquals(semester, termYear).getResultList());
+        return "terms/list";
+    }
+    
     @ModelAttribute("semesters")
     public Collection<Semester> TermController.populateSemesters() {
         return Arrays.asList(Semester.class.getEnumConstants());

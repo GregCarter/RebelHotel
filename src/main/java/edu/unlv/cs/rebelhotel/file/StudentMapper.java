@@ -2,17 +2,10 @@ package edu.unlv.cs.rebelhotel.file;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import edu.unlv.cs.rebelhotel.domain.Student;
-
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.TypedQuery;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
@@ -56,12 +49,11 @@ public class StudentMapper {
 		student_account.setUserGroup(UserGroup.ROLE_USER);
 		student_account.setEmail(fileStudent.getEmail());
 		
-		/*if (UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getResultList().size() > 0) {
+		if (UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getResultList().size() > 0) {
 			student_account = student_account.merge();
 		} else {
 			student_account.persist();
-		}*/
-		
+		}
 		student.setUserAccount(student_account);
 		return student;
 	}

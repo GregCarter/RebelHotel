@@ -5,6 +5,7 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
+import java.lang.Integer;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -15,6 +16,16 @@ privileged aspect Term_Roo_Finder {
         EntityManager em = Term.entityManager();
         TypedQuery<Term> q = em.createQuery("SELECT Term FROM Term AS term WHERE term.semester = :semester", Term.class);
         q.setParameter("semester", semester);
+        return q;
+    }
+    
+    public static TypedQuery<Term> Term.findTermsBySemesterAndTermYearEquals(Semester semester, Integer termYear) {
+        if (semester == null) throw new IllegalArgumentException("The semester argument is required");
+        if (termYear == null) throw new IllegalArgumentException("The termYear argument is required");
+        EntityManager em = Term.entityManager();
+        TypedQuery<Term> q = em.createQuery("SELECT Term FROM Term AS term WHERE term.semester = :semester AND term.termYear = :termYear", Term.class);
+        q.setParameter("semester", semester);
+        q.setParameter("termYear", termYear);
         return q;
     }
     

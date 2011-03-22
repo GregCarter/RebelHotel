@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.TypedQuery;
+
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 
@@ -129,7 +131,14 @@ public class Line {
 		if (term.equals(" ")){
 			return null;
 		} else {
-			return makeTerm(term);
+			Term aterm = makeTerm(term);
+			TypedQuery<Term> q = Term.findTermsBySemesterAndTermYearEquals(aterm.getSemester(), aterm.getTermYear());
+            if (0 < q.getResultList().size()) {
+                aterm = aterm.merge();
+            } else {
+                aterm.persist();
+            }
+			return aterm;
 		}
 	}
 }
