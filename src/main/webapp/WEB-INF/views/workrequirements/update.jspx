@@ -5,10 +5,8 @@
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkRequirement" modelAttribute="workRequirement" path="/workrequirements" z="VeYulqlyNRZTDpwp3zgl/4E6wr0=">
         <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" required="true" z="0U8ALT9XerLWgnbJhumpQ0031+I="/>
         <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_hours" validationMessageCode="field_invalid_integer" z="Eoo0TuBN5MlPX4XbCcu4M3zEV4o="/>
-        
-    <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="by/0Zf58pw+PC8o39bh+pS9JlR0="/>
-    
-    <field:checkbox field="milestone" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" z="7jliZxBvMtzlPUkqvzSLUgUkMz4="/>
-    <field:select field="major" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_major" itemValue="id" items="${majors}" path="/majors" z="plMizdX6CQANpurn7mWG/0EDXAE="/>
+        <field:checkbox field="milestone" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" z="7jliZxBvMtzlPUkqvzSLUgUkMz4="/>
+        <field:select field="major" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_major" itemValue="id" items="${majors}" path="/majors" z="plMizdX6CQANpurn7mWG/0EDXAE="/>
+        <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="by/0Zf58pw+PC8o39bh+pS9JlR0="/>
     </form:update>
 </div>

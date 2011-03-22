@@ -47,7 +47,13 @@ public class DefaultStudentService implements StudentService{
 		Set<FileStudent> fileStudents = parser.parse(contents);
 		
 		for (FileStudent each : fileStudents) {
-			studentMapper.findOrReplace(each);
+			Student student = studentMapper.findOrReplace(each);
+			
+			if (Student.findStudentsByUserIdEquals(each.getStudentId()).getResultList().size() > 0) {
+				student.merge();
+			} else {
+				student.persist();
+			}
 		}
 	}
 }

@@ -3,22 +3,25 @@
 <tiles-definitions>
     <definition extends="default" name="terms/list">
         <put-attribute name="body" value="/WEB-INF/views/terms/list.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
 	<definition extends="default" name="terms/show">
         <put-attribute name="body" value="/WEB-INF/views/terms/show.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
 	<definition extends="default" name="terms/create">
         <put-attribute name="body" value="/WEB-INF/views/terms/create.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
 	<definition extends="default" name="terms/update">
         <put-attribute name="body" value="/WEB-INF/views/terms/update.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
-    <definition extends = "default" name = "terms/generate">
-    	<put-attribute name = "body" value = "/WEB-INF/views/terms/generatedTerms.jspx" />
-    	<put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx" />
+    <definition extends="default" name="terms/generate">
+    	<put-attribute name="body" value="/WEB-INF/views/terms/generatedTerms.jspx"/>
+    	<put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
+    </definition>
+<definition extends="default" name="terms/findTermsBySemester">
+        <put-attribute name="body" value="/WEB-INF/views/terms/findTermsBySemester.jspx"/>
     </definition>
 </tiles-definitions>

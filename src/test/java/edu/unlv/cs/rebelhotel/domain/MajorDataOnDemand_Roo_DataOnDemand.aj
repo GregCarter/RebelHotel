@@ -21,6 +21,7 @@ privileged aspect MajorDataOnDemand_Roo_DataOnDemand {
         obj.setReachedMilestone(true);
         obj.setDepartment(null);
         obj.setCatalogTerm(null);
+        obj.setCompleted_work_requirements(true);
         return obj;
     }
     

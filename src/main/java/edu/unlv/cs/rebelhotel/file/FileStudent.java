@@ -21,10 +21,7 @@ public class FileStudent {
 	private Term admitTerm;
 	private Term gradTerm; // are we going to put gradTerm in Majors?
 	private Term requirementTerm;
-	
-	public FileStudent() {
-	}
-	
+
 	public Set<FileStudent> convert(Collection<List<Line>> student) {
 		// go through each key, and convert the lines into
 		// the student. so create a new fileStudent for each key->value

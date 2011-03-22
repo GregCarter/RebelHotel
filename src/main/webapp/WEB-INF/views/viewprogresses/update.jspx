@@ -3,32 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_ViewProgress" modelAttribute="viewProgress" path="/viewprogresses" z="+Ktn4VahTjTb8DvcmB+s5pyWFYA=">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-        
-        
-        
-        
-        
-    <field:select field="workRequirement" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_workRequirement" itemValue="id" items="${workrequirements}" path="/workrequirements" z="+3IyY+Z1w88v/lEthG1vugjhP/o="/>
+        <field:select field="workRequirement" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_workRequirement" itemValue="id" items="${workrequirements}" path="/workrequirements" z="+3IyY+Z1w88v/lEthG1vugjhP/o="/>
         <field:input field="approvedHours" id="c_edu_unlv_cs_rebelhotel_domain_ViewProgress_approvedHours" validationMessageCode="field_invalid_integer" z="K4MUkPdRXk0i15hOEBsamRa9wXc="/>
     </form:update>
 </div>
