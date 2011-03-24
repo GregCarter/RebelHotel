@@ -27,23 +27,18 @@ public class Major {
 	@Enumerated
 	private Departments department;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToOne
     private Term catalogTerm;
 
 	private boolean completed_work_requirements = false;
 	
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        /*sb.append("WorkRequirements: ").append(getWorkRequirements() == null ? "null" : getWorkRequirements().size()).append(", ");
-        sb.append("ReachedMilestone: ").append(isReachedMilestone()).append(", ");*/
         Departments str = getDepartment();
         StringTokenizer st = new StringTokenizer(str.toString(),"_");
         while (st.hasMoreTokens()) {
         	sb.append(st.nextToken()).append(" ");
         }
-        //sb.append(", ");
-        /*sb.append("CatalogTerm: ").append(getCatalogTerm()).append(", ");
-        sb.append("Completed_work_requirements: ").append(isCompleted_work_requirements());*/
         return sb.toString();
     }
 	

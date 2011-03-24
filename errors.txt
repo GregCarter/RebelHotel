@@ -27,13 +27,13 @@
  T E S T S
 -------------------------------------------------------
 Running edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.391 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.406 sec
 Running edu.unlv.cs.rebelhotel.domain.WorkTemplateIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.734 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.453 sec
 Running edu.unlv.cs.rebelhotel.domain.TermIntegrationTest
-2011-03-21 20:48:05,515 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`major`, CONSTRAINT `FK62DB5B91ADDA483` FOREIGN KEY (`catalog_term`) REFERENCES `term` (`id`))
-2011-03-21 20:48:05,531 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
-org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unlv.cs.rebelhotel.domain.Term#82]
+2011-03-23 21:22:25,171 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`student`, CONSTRAINT `FK8FFE823B9287A6C7` FOREIGN KEY (`admit_term`) REFERENCES `term` (`id`))
+2011-03-23 21:22:25,171 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
+org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unlv.cs.rebelhotel.domain.Term#103]
 	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:96)
 	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
 	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2710)
@@ -89,7 +89,7 @@ org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unl
 	at java.lang.reflect.Method.invoke(Method.java:597)
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:350)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1021)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`major`, CONSTRAINT `FK62DB5B91ADDA483` FOREIGN KEY (`catalog_term`) REFERENCES `term` (`id`))
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`student`, CONSTRAINT `FK8FFE823B9287A6C7` FOREIGN KEY (`admit_term`) REFERENCES `term` (`id`))
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
@@ -110,10 +110,10 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
 	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2692)
 	... 52 more
-Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.766 sec <<< FAILURE!
+Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.641 sec <<< FAILURE!
 Running edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest
-2011-03-21 20:48:08,625 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`work_effort_work_requirements`, CONSTRAINT `FK28B52BD9AE76830B` FOREIGN KEY (`work_requirements`) REFERENCES `work_requirement` (`id`))
-2011-03-21 20:48:08,625 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
+2011-03-23 21:22:27,875 [main] ERROR org.hibernate.util.JDBCExceptionReporter - Cannot delete or update a parent row: a foreign key constraint fails (`rebelhotel`.`work_effort_work_requirements`, CONSTRAINT `FK28B52BD9AE76830B` FOREIGN KEY (`work_requirements`) REFERENCES `work_requirement` (`id`))
+2011-03-23 21:22:27,875 [main] ERROR org.hibernate.event.def.AbstractFlushingEventListener - Could not synchronize database state with session
 org.hibernate.exception.ConstraintViolationException: could not delete: [edu.unlv.cs.rebelhotel.domain.WorkRequirement#72]
 	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:96)
 	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
@@ -190,13 +190,13 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.apache.commons.dbcp.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:105)
 	at org.hibernate.persister.entity.AbstractEntityPersister.delete(AbstractEntityPersister.java:2692)
 	... 51 more
-Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.297 sec <<< FAILURE!
+Tests run: 9, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.047 sec <<< FAILURE!
 Running edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.093 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.531 sec
 Running edu.unlv.cs.rebelhotel.domain.WorkRequirementIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.407 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.984 sec
 Running edu.unlv.cs.rebelhotel.domain.UserAccountIntegrationTest
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2 sec
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.531 sec
 
 Results :
 
@@ -215,7 +215,7 @@ Please refer to C:\Documents and Settings\suzie\RebelHotel\RebelHotel\target\sur
 [INFO] ------------------------------------------------------------------------
 [INFO] For more information, run Maven with the -e switch
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 1 minute 14 seconds
-[INFO] Finished at: Mon Mar 21 20:48:19 PDT 2011
+[INFO] Total time: 38 seconds
+[INFO] Finished at: Wed Mar 23 21:22:36 PDT 2011
 [INFO] Final Memory: 33M/247M
 [INFO] ------------------------------------------------------------------------

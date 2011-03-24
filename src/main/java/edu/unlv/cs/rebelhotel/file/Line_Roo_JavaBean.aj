@@ -3,6 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.file;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import java.lang.String;
 import java.util.Set;
@@ -49,11 +50,11 @@ privileged aspect Line_Roo_JavaBean {
         this.email = email;
     }
     
-    public Set<String> Line.getMajors() {
+    public Set<Major> Line.getMajors() {
         return this.majors;
     }
     
-    public void Line.setMajors(Set<String> majors) {
+    public void Line.setMajors(Set<Major> majors) {
         this.majors = majors;
     }
     
@@ -63,14 +64,6 @@ privileged aspect Line_Roo_JavaBean {
     
     public void Line.setAdmitTerm(Term admitTerm) {
         this.admitTerm = admitTerm;
-    }
-    
-    public Term Line.getRequirementTerm() {
-        return this.requirementTerm;
-    }
-    
-    public void Line.setRequirementTerm(Term requirementTerm) {
-        this.requirementTerm = requirementTerm;
     }
     
     public Term Line.getGradTerm() {
