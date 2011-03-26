@@ -14,16 +14,24 @@ import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
 public class WorkRequirementService {
 	
 	public Set<Major> updateStudentInformation(Set<Major> current_majors, Set<Major> majors){
-		for (Major current : current_majors) {
+		if (0 == current_majors.size()) { // this means the student is new
 			for (Major each : majors) {
-				if (!current.getDepartment().equals(each.getDepartment())){
-					WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), each);
-					System.out.println(workRequirement);
-					workRequirement.persist();
-					each.getWorkRequirements().add(workRequirement);
-					current_majors.add(each);
-					System.out.println(each);
-					each.persist();
+				WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), each);
+				workRequirement.persist();
+				each.getWorkRequirements().add(workRequirement);
+				current_majors.add(each);
+				each.persist();
+			}
+		} else {
+			for (Major current : current_majors) {
+				for (Major each : majors) {
+					if (!current.getDepartment().equals(each.getDepartment())){
+						WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), each);
+						workRequirement.persist();
+						each.getWorkRequirements().add(workRequirement);
+						current_majors.add(each);
+						each.persist();
+					}
 				}
 			}
 		}

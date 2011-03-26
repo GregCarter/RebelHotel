@@ -5,7 +5,6 @@ import java.util.Random;
 public class RandomPasswordGenerator {
 	public String generateRandomPassword(){
 		Integer max_pass_length = 12;
-		Integer nextint = 179;
 		String charset = "12345ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&abcdefghijklmnopqrstuvwxyz67890";
 		Random random = new Random();
 		StringBuilder sb = new StringBuilder();
