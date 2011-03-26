@@ -14,10 +14,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
 import javax.persistence.Transient;
 
+
+
 @Configurable("userAccount")
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findUserAccountsByUserId" })
+@RooEntity(finders = { "findUserAccountsByUserId", "findUserAccountsByEmailLike" })
 public class UserAccount {
 
     @NotNull
@@ -29,6 +31,9 @@ public class UserAccount {
     @NotNull
     private String password;
 
+    @NotNull
+    private String email;
+
     @Enumerated(EnumType.STRING)
     private UserGroup userGroup;
 
@@ -38,15 +43,24 @@ public class UserAccount {
         String encoded = passwordEncoder.encodePassword(password, null);
         this.password = encoded;
     }
-
+    
     public void setPasswordEncoder(MessageDigestPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("UserId: ").append(getUserId()).append(", ");
         sb.append("UserGroup: ").append(getUserGroup());
         return sb.toString();
     }
+    
+    public String GeneratePassword() {
+		password = "tempPass";
+    	return password;
+    }
+	public Object getUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

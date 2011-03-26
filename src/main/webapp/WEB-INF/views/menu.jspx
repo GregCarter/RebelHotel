@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:security="http://www.springframework.org/security/tags" id="menu" version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
 	<jsp:output omit-xml-declaration="yes"/>
@@ -34,7 +34,8 @@
            	<menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
        		<menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
            	<menu:item id="fi_useraccount_userid" messageCode="global_menu_find" url="/useraccounts?find=ByUserId&amp;form" z="Lyfp14MJ72W8c0ryI3/ak+xDci0="/>
-           </menu:category>
+           <menu:item id="fi_useraccount_emaillike" messageCode="global_menu_find" url="/useraccounts?find=ByEmailLike&amp;form" z="N++bAQAvyCtrdxbdB+hVMqPWT6E="/>
+            </menu:category>
    		<menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
            	<menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>
        		<menu:item id="i_worktemplate_list" messageCode="global_menu_list" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/>

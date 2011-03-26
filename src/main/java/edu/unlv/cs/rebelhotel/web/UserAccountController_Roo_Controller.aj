@@ -96,6 +96,17 @@ privileged aspect UserAccountController_Roo_Controller {
         return "useraccounts/list";
     }
     
+    @RequestMapping(params = { "find=ByEmailLike", "form" }, method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByEmailLikeForm(Model model) {
+        return "useraccounts/findUserAccountsByEmailLike";
+    }
+    
+    @RequestMapping(params = "find=ByEmailLike", method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByEmailLike(@RequestParam("email") String email, Model model) {
+        model.addAttribute("useraccounts", UserAccount.findUserAccountsByEmailLike(email).getResultList());
+        return "useraccounts/list";
+    }
+    
     @ModelAttribute("usergroups")
     public Collection<UserGroup> UserAccountController.populateUserGroups() {
         return Arrays.asList(UserGroup.class.getEnumConstants());
