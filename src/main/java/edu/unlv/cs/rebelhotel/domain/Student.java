@@ -43,7 +43,7 @@ public class Student {
 
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private Set<Major> majors = new HashSet<Major>();
 
     @ManyToOne
@@ -52,7 +52,7 @@ public class Student {
     @ManyToOne
     private Term gradTerm;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
 
     private Boolean codeOfConductSigned;

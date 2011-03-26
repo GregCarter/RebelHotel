@@ -19,7 +19,7 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 @RooJavaBean
 @RooEntity
 public class Major {
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
 	
 	private boolean reachedMilestone;

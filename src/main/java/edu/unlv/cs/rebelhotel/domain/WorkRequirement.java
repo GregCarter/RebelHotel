@@ -26,7 +26,7 @@ public class WorkRequirement {
     @ManyToOne
     private Major major;
     
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
     
     // A method to construct a work requirement from a work template

@@ -66,7 +66,7 @@ public class WorkEffort {
     @Embedded
     private WorkEffortDuration duration;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
     
     public String toString() {
