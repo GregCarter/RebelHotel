@@ -43,7 +43,7 @@ public class Student {
 
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Set<Major> majors = new HashSet<Major>();
 
     @ManyToOne
@@ -52,7 +52,7 @@ public class Student {
     @ManyToOne
     private Term gradTerm;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
 
     private Boolean codeOfConductSigned;
@@ -61,7 +61,7 @@ public class Student {
     @DateTimeFormat(style = "S-")
     private Date lastModified;
 
-    @OneToOne(optional = false, cascade= { CascadeType.ALL } )
+    @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.REMOVE } )
     private UserAccount userAccount;
     
     @PreUpdate

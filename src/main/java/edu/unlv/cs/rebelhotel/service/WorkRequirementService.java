@@ -17,11 +17,13 @@ public class WorkRequirementService {
 		for (Major current : current_majors) {
 			for (Major each : majors) {
 				if (!current.getDepartment().equals(each.getDepartment())){
-					each.persist();
 					WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), each);
+					System.out.println(workRequirement);
 					workRequirement.persist();
 					each.getWorkRequirements().add(workRequirement);
 					current_majors.add(each);
+					System.out.println(each);
+					each.persist();
 				}
 			}
 		}

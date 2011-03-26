@@ -10,6 +10,7 @@ import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.service.WorkRequirementService;
+import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
 
 @Component
 public class StudentMapper {
@@ -38,22 +39,24 @@ public class StudentMapper {
 		student.setMajors(majors);
 		student.setCodeOfConductSigned(false);
 
+		RandomPasswordGenerator rpg = new RandomPasswordGenerator();
 		UserAccount student_account = new UserAccount();
-		student_account.setUserId(fileStudent.getStudentId());
-		student_account.setPassword("password");
-		student_account.setUserGroup(UserGroup.ROLE_USER);
-		student_account.setEmail(fileStudent.getEmail());
 		
 		if (UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getResultList().size() > 0) {
 			student_account = student_account.merge();
 		} else {
+			student_account.setUserId(fileStudent.getStudentId());
+			student_account.setPassword(rpg.generateRandomPassword());
+			student_account.setUserGroup(UserGroup.ROLE_USER);
+			student_account.setEmail(fileStudent.getEmail());
 			student_account.persist();
 		}
+		
 		student.setUserAccount(student_account);
 		return student;
 	}
 
-	public Student findStudent(FileStudent fileStudent) {
+	private Student findStudent(FileStudent fileStudent) {
 		TypedQuery<Student> q = Student.findStudentsByUserIdEquals(fileStudent.getStudentId());
 		List<Student> domainStudent = q.getResultList();
 		if (0 == domainStudent.size()) {
@@ -61,9 +64,10 @@ public class StudentMapper {
 		} else if (1 < domainStudent.size()){
 			throw new IllegalArgumentException("There exists multiple entries of ID: " + fileStudent.getStudentId());
 		} else {
-			Student[] astudent = null;
-			astudent = domainStudent.toArray(astudent);
-			return astudent[0];
+			Object [] anobject;
+			anobject = domainStudent.toArray();
+			Student astudent = (Student)anobject[0];
+			return astudent;
 		}
 	}
 }

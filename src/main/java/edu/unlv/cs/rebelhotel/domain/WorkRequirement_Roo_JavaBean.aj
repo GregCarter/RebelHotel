@@ -3,7 +3,6 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import java.lang.Integer;
 import java.lang.String;
@@ -33,14 +32,6 @@ privileged aspect WorkRequirement_Roo_JavaBean {
     
     public void WorkRequirement.setMilestone(boolean milestone) {
         this.milestone = milestone;
-    }
-    
-    public Major WorkRequirement.getMajor() {
-        return this.major;
-    }
-    
-    public void WorkRequirement.setMajor(Major major) {
-        this.major = major;
     }
     
     public Set<WorkEffort> WorkRequirement.getWorkEffort() {

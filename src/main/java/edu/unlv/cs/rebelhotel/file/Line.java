@@ -29,6 +29,7 @@ public class Line {
 	private Term gradTerm;
 
 	public Line convert(List<String> tokens){
+		System.out.println(tokens); 
 		Line line = new Line();
 		String[] field = (String[]) tokens.toArray();
 		line.setStudentId(field[0]);
@@ -64,9 +65,11 @@ public class Line {
 	}
 	
 	private boolean shouldIgnore(String major) {
-		boolean ignore = (major.equals(FileDepartments.RECBS) 
-				|| major.equals(FileDepartments.RECMIN) 
-				|| major.equals(FileDepartments.RECPGMBS));
+		boolean ignore = (major.equals(FileDepartments.RECBS.toString()) 
+				|| major.equals(FileDepartments.RECMIN.toString()) 
+				|| major.equals(FileDepartments.RECPGMBS.toString())
+				|| major.equals(FileDepartments.ENTMIN.toString())
+				|| major.equals(" "));
 		if (ignore) {
 			return true;
 		} else {
@@ -153,35 +156,35 @@ public class Line {
 	}
 	
 	private Departments departmentMapper(String major) {
-		if (major.equals(FileDepartments.CAMBSCM)) {
+		if (major.equals(FileDepartments.CAMBSCM.toString())) {
 			return Departments.CAMBSCM;
-		} else if (major.equals(FileDepartments.CAMPRE)) {
+		} else if (major.equals(FileDepartments.CAMPRE.toString())) {
 			return Departments.CAMPRE;
-		} else if (major.equals(FileDepartments.CBEVBSCM)) {
+		} else if (major.equals(FileDepartments.CBEVBSCM.toString())) {
 			return Departments.CBEVBSCM;
-		} else if (major.equals(FileDepartments.CBEVPRBSCM)) {
+		} else if (major.equals(FileDepartments.CBEVPRBSCM.toString())) {
 			return Departments.CBEVPRBSCM;
-		} else if (major.equals(FileDepartments.FDMBSHA)) {
+		} else if (major.equals(FileDepartments.FDMBSHA.toString())) {
 			return Departments.FDMBSHA;
-		} else if (major.equals(FileDepartments.FDMPRE)) {
+		} else if (major.equals(FileDepartments.FDMPRE.toString())) {
 			return Departments.FDMPRE;
-		} else if (major.equals(FileDepartments.GAMBSGM)) {
+		} else if (major.equals(FileDepartments.GAMBSGM.toString())) {
 			return Departments.GAMBSGM;
-		} else if (major.equals(FileDepartments.GAMPRE)) {
+		} else if (major.equals(FileDepartments.GAMPRE.toString())) {
 			return Departments.GAMPRE;
-		} else if (major.equals(FileDepartments.HBEVBSHA)) {
+		} else if (major.equals(FileDepartments.HBEVBSHA.toString())) {
 			return Departments.HBEVBSHA;
-		} else if (major.equals(FileDepartments.HBEVPRBSHA)) {
+		} else if (major.equals(FileDepartments.HBEVPRBSHA.toString())) {
 			return Departments.HBEVPRBSHA;
-		} else if (major.equals(FileDepartments.HOSSINBSMS)) {
+		} else if (major.equals(FileDepartments.HOSSINBSMS.toString())) {
 			return Departments.HOSSINBSMS;
-		} else if (major.equals(FileDepartments.LRMBSHA)) {
+		} else if (major.equals(FileDepartments.LRMBSHA.toString())) {
 			return Departments.LRMBSHA;
-		} else if (major.equals(FileDepartments.LRMPRE)) {
+		} else if (major.equals(FileDepartments.LRMPRE.toString())) {
 			return Departments.LRMPRE;
-		} else if (major.equals(FileDepartments.MEMBSHA)) {
+		} else if (major.equals(FileDepartments.MEMBSHA.toString())) {
 			return Departments.MEMBSHA;
-		} else if (major.equals(FileDepartments.MEMPRE)) {
+		} else if (major.equals(FileDepartments.MEMPRE.toString())) {
 			return Departments.MEMPRE;
 		} else {
 			throw new IllegalArgumentException("Invalid Major: " + major);
