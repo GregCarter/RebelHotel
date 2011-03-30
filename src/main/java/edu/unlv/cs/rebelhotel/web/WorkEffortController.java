@@ -59,6 +59,7 @@ public class WorkEffortController {
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
             Set<Major> majors = student.getMajors();
+            model.addAttribute("student", student);
             model.addAttribute("studentmajors", majors);
             model.addAttribute("sid", sid);
             return "workefforts/createFromStudent";
@@ -66,10 +67,12 @@ public class WorkEffortController {
 		WorkEffort workEffort = formWorkEffortForStudent.getWorkEffort();
 		Set<Major> majors = formWorkEffortForStudent.getMajors();
 		Set<WorkRequirement> workRequirements = new HashSet();
-		for (Major major : majors) {
-			Set<WorkRequirement> lwrs = major.getWorkRequirements();
-			for (WorkRequirement workRequirement : lwrs) {
-				workRequirements.add(workRequirement);
+		if (majors != null) {
+			for (Major major : majors) {
+				Set<WorkRequirement> lwrs = major.getWorkRequirements();
+				for (WorkRequirement workRequirement : lwrs) {
+					workRequirements.add(workRequirement);
+				}
 			}
 		}
 		workEffort.setWorkRequirements(workRequirements);
@@ -128,6 +131,7 @@ public class WorkEffortController {
         }
         Student student = Student.findStudent(sid);
         Set<Major> majors = student.getMajors();
+        model.addAttribute("student", student);
         model.addAttribute("studentmajors", majors);
         model.addAttribute("dependencies", dependencies);
         model.addAttribute("sid", sid);
