@@ -7,7 +7,6 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.NotNull;
-import edu.unlv.cs.rebelhotel.domain.Student;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
@@ -24,10 +23,10 @@ public class WorkRequirement {
 
     private boolean milestone;
     
-    @ManyToOne
-    private Major major;
+    /*@ManyToOne
+    private Major major;*/
     
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
     
     // A method to construct a work requirement from a work template
@@ -35,7 +34,7 @@ public class WorkRequirement {
     	WorkRequirement wr = new WorkRequirement();
     	wr.setHours(wt.getHours());
     	wr.setName(wt.getName());
-    	wr.setMajor(major);
+    	//wr.setMajor(major);
     	return wr;
     }
 }

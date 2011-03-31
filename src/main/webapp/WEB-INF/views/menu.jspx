@@ -6,16 +6,20 @@
 <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
 	<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')">
 		 <menu:category id="c_main">
-			 <menu:item id="i_manage_students" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-			 <menu:item id="i_manage_terms" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-			 <menu:item id="i_manage_jobs" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+			 <menu:item id="i_manage_students" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+			 <menu:item id="i_manage_terms" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+			 <menu:item id="i_manage_jobs" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
 			 <menu:item id="i_fileupload" url="/file?upload"/>
+			 <menu:item id="i_manage_accounts" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+	<!-- <menu:item id="i_manage_worktemplates" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/> -->
 		 </menu:category>
          <menu:category id="c_term" z="z3ly3A0HuvUfPkgN3H2XzNcWTlU=">
             <menu:item id="i_term_new" messageCode="global_menu_new" url="/terms?form" z="wgiKkyRDO0HpHhgEDihRQzUhP3k="/>
         	<menu:item id="i_term_list" messageCode="global_menu_list" url="/terms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ev5ds/cpGL+OtBUv9Kd6x/Ioqak="/>
         	<menu:item id="i_term_generate" url="/terms?generate"/>
-        </menu:category>
+        <menu:item id="fi_term_semester" messageCode="global_menu_find" url="/terms?find=BySemester&amp;form" z="N0dnziCmUVvr4CvPA/1i8qxFtV0="/>
+            <menu:item id="fi_term_semesterandtermyearequals" messageCode="global_menu_find" url="/terms?find=BySemesterAndTermYearEquals&amp;form" z="ZvutSn3UsA2jKyZo1S+8ibDjbpE="/>
+            </menu:category>
     	<menu:category id="c_workrequirement" z="BRAzcRCVcdWWTNOQXNpMuQUdr2k=">
             <menu:item id="i_workrequirement_new" messageCode="global_menu_new" url="/workrequirements?form" z="csM8in6vJFFUluBeqSNYi3aS52k="/>
         	<menu:item id="i_workrequirement_list" messageCode="global_menu_list" url="/workrequirements?page=1&amp;size=${empty param.size ? 10 : param.size}" z="UAs5tAQfRUiBM8rRuURokH94WVA="/>

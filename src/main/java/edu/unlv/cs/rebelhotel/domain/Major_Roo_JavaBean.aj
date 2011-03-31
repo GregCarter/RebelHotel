@@ -42,4 +42,12 @@ privileged aspect Major_Roo_JavaBean {
         this.catalogTerm = catalogTerm;
     }
     
+    public boolean Major.isCompleted_work_requirements() {
+        return this.completed_work_requirements;
+    }
+    
+    public void Major.setCompleted_work_requirements(boolean completed_work_requirements) {
+        this.completed_work_requirements = completed_work_requirements;
+    }
+    
 }

@@ -3,15 +3,19 @@
 <tiles-definitions>
     <definition extends="default" name="useraccounts/list">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/list.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/useraccounts/user_accounts_menu.jspx" />
     </definition>
 <definition extends="default" name="useraccounts/show">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/show.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/useraccounts/user_accounts_menu.jspx" />
     </definition>
 <definition extends="default" name="useraccounts/create">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/create.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/useraccounts/user_accounts_menu.jspx" />
     </definition>
 <definition extends="default" name="useraccounts/update">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/update.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/useraccounts/user_accounts_menu.jspx" />
     </definition>
 <definition extends="default" name="useraccounts/findUserAccountsByName">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/findUserAccountsByName.jspx"/>

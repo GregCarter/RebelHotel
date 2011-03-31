@@ -21,7 +21,6 @@ privileged aspect WorkRequirementDataOnDemand_Roo_DataOnDemand {
         obj.setName("name_" + index);
         obj.setHours(new Integer(index));
         obj.setMilestone(true);
-        obj.setMajor(null);
         return obj;
     }
     

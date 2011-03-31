@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:security="http://www.springframework.org/security/tags" id="menu" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>
+
+<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+	<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')">
+   		<menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
+           	<menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
+       		<menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
+           	<menu:item id="fi_useraccount_userid" messageCode="global_menu_find" url="/useraccounts?find=ByUserId&amp;form" z="Lyfp14MJ72W8c0ryI3/ak+xDci0="/>
+           	<menu:item id="i_main_menu" url="/" />
+        </menu:category>
+	</security:authorize>
+        <security:authorize access="hasRole('ROLE_ANONYMOUS')">
+        	<menu:category id="c_login">
+        		<menu:item id="i_login" url="/login"/>
+        	</menu:category>
+        </security:authorize>
+        <security:authorize access="hasRole('ROLE_USER')">
+        	<menu:category id="c_student_personal">
+        		<menu:item id="i_student_personal_work" url="/workefforts?mywork"/>
+        	</menu:category>
+        </security:authorize>
+    </menu:menu>
+</div>

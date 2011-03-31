@@ -73,6 +73,12 @@ privileged aspect ViewProgress_Roo_Entity {
     }
     
     @Transactional
+    public void ViewProgress.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public ViewProgress ViewProgress.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         ViewProgress merged = this.entityManager.merge(this);

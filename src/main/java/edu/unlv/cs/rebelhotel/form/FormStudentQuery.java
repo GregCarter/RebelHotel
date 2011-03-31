@@ -36,6 +36,12 @@ public class FormStudentQuery {
 	
 	private boolean outputCsv;
 	
+	private boolean useFirstName;
+	private String firstName;
+	
+	private boolean useLastName;
+	private String lastName;
+	
 	public boolean getUseUserId() {
 		return useUserId;
 	}
@@ -214,5 +220,37 @@ public class FormStudentQuery {
 	
 	public void setOutputCsv(boolean outputCsv) {
 		this.outputCsv = outputCsv;
+	}
+	
+	public boolean getUseFirstName() {
+		return useFirstName;
+	}
+	
+	public void setUseFirstName(boolean useFirstName) {
+		this.useFirstName = useFirstName;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public boolean getUseLastName() {
+		return useLastName;
+	}
+	
+	public void setUseLastName(boolean useLastName) {
+		this.useLastName = useLastName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 }

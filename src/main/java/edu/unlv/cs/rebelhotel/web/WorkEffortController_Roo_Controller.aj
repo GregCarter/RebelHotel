@@ -17,9 +17,7 @@ import java.lang.String;
 import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,41 +29,32 @@ import org.springframework.web.util.WebUtils;
 privileged aspect WorkEffortController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
-        model.addAttribute("itemId", id);
+    public String WorkEffortController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
+        uiModel.addAttribute("itemId", id);
         return "workefforts/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("workefforts", WorkEffort.findWorkEffortEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("workefforts", WorkEffort.findWorkEffortEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) WorkEffort.countWorkEfforts() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
+            uiModel.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
         }
         return "workefforts/list";
     }
     
-    @RequestMapping(method = RequestMethod.PUT)
-    public String WorkEffortController.update(@Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workEffort", workEffort);
-            return "workefforts/update";
-        }
-        workEffort.merge();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
-    }
-    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         WorkEffort.findWorkEffort(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/workefforts";
     }
     
     @ModelAttribute("students")
@@ -73,33 +62,38 @@ privileged aspect WorkEffortController_Roo_Controller {
         return Student.findAllStudents();
     }
     
+    @ModelAttribute("workefforts")
+    public java.util.Collection<WorkEffort> WorkEffortController.populateWorkEfforts() {
+        return WorkEffort.findAllWorkEfforts();
+    }
+    
     @ModelAttribute("workrequirements")
-    public Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
+    public java.util.Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
         return WorkRequirement.findAllWorkRequirements();
     }
     
     @ModelAttribute("paystatuses")
-    public Collection<PayStatus> WorkEffortController.populatePayStatuses() {
+    public java.util.Collection<PayStatus> WorkEffortController.populatePayStatuses() {
         return Arrays.asList(PayStatus.class.getEnumConstants());
     }
     
     @ModelAttribute("validations")
-    public Collection<Validation> WorkEffortController.populateValidations() {
+    public java.util.Collection<Validation> WorkEffortController.populateValidations() {
         return Arrays.asList(Validation.class.getEnumConstants());
     }
     
     @ModelAttribute("verifications")
-    public Collection<Verification> WorkEffortController.populateVerifications() {
+    public java.util.Collection<Verification> WorkEffortController.populateVerifications() {
         return Arrays.asList(Verification.class.getEnumConstants());
     }
     
     @ModelAttribute("verificationtypes")
-    public Collection<VerificationType> WorkEffortController.populateVerificationTypes() {
+    public java.util.Collection<VerificationType> WorkEffortController.populateVerificationTypes() {
         return Arrays.asList(VerificationType.class.getEnumConstants());
     }
     
-    String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

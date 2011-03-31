@@ -3,7 +3,10 @@
 
 package edu.unlv.cs.rebelhotel.file;
 
+import edu.unlv.cs.rebelhotel.domain.Major;
+import edu.unlv.cs.rebelhotel.domain.Term;
 import java.lang.String;
+import java.util.Set;
 
 privileged aspect Line_Roo_JavaBean {
     
@@ -13,6 +16,14 @@ privileged aspect Line_Roo_JavaBean {
     
     public void Line.setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+    
+    public String Line.getLastName() {
+        return this.lastName;
+    }
+    
+    public void Line.setLastName(String lastName) {
+        this.lastName = lastName;
     }
     
     public String Line.getFirstName() {
@@ -31,14 +42,6 @@ privileged aspect Line_Roo_JavaBean {
         this.middleName = middleName;
     }
     
-    public String Line.getLastName() {
-        return this.lastName;
-    }
-    
-    public void Line.setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    
     public String Line.getEmail() {
         return this.email;
     }
@@ -47,60 +50,28 @@ privileged aspect Line_Roo_JavaBean {
         this.email = email;
     }
     
-    public String Line.getMajor() {
-        return this.major;
+    public Set<Major> Line.getMajors() {
+        return this.majors;
     }
     
-    public void Line.setMajor(String major) {
-        this.major = major;
+    public void Line.setMajors(Set<Major> majors) {
+        this.majors = majors;
     }
     
-    public String Line.getAdmitTermYear() {
-        return this.admitTermYear;
+    public Term Line.getAdmitTerm() {
+        return this.admitTerm;
     }
     
-    public void Line.setAdmitTermYear(String admitTermYear) {
-        this.admitTermYear = admitTermYear;
+    public void Line.setAdmitTerm(Term admitTerm) {
+        this.admitTerm = admitTerm;
     }
     
-    public String Line.getAdmitTermSemester() {
-        return this.admitTermSemester;
+    public Term Line.getGradTerm() {
+        return this.gradTerm;
     }
     
-    public void Line.setAdmitTermSemester(String admitTermSemester) {
-        this.admitTermSemester = admitTermSemester;
-    }
-    
-    public String Line.getGradTermYear() {
-        return this.gradTermYear;
-    }
-    
-    public void Line.setGradTermYear(String gradTermYear) {
-        this.gradTermYear = gradTermYear;
-    }
-    
-    public String Line.getGradTermSemester() {
-        return this.gradTermSemester;
-    }
-    
-    public void Line.setGradTermSemester(String gradTermSemester) {
-        this.gradTermSemester = gradTermSemester;
-    }
-    
-    public String Line.getRequirementTermYear() {
-        return this.requirementTermYear;
-    }
-    
-    public void Line.setRequirementTermYear(String requirementTermYear) {
-        this.requirementTermYear = requirementTermYear;
-    }
-    
-    public String Line.getRequirementTermSemester() {
-        return this.requirementTermSemester;
-    }
-    
-    public void Line.setRequirementTermSemester(String requirementTermSemester) {
-        this.requirementTermSemester = requirementTermSemester;
+    public void Line.setGradTerm(Term gradTerm) {
+        this.gradTerm = gradTerm;
     }
     
 }

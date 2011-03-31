@@ -143,6 +143,14 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		};
 	}
 	
+	Converter<edu.unlv.cs.rebelhotel.domain.enums.UserGroup, String> getUserGroupConverter() {
+		return new Converter<edu.unlv.cs.rebelhotel.domain.enums.UserGroup, String>() {
+			public String convert(edu.unlv.cs.rebelhotel.domain.enums.UserGroup param) {
+				return messageSource.getMessage("label_"+param.getClass().getName().toLowerCase().replaceAll("\\.", "_")+"_"+param.name().toLowerCase(), null, LocaleContextHolder.getLocale());
+			}
+		};
+	}
+	
 	@Override
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
@@ -163,6 +171,7 @@ public class ApplicationConversionServiceFactoryBean extends FormattingConversio
 		registry.addConverter(getDepartmentsConverter());
 		registry.addConverter(getPayStatusConverter());
 		registry.addConverter(getVerificationConverter());
+		registry.addConverter(getUserGroupConverter());
 		
 	}
 	

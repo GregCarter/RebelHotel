@@ -25,72 +25,80 @@ import org.springframework.web.util.WebUtils;
 privileged aspect ViewProgressController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String ViewProgressController.create(@Valid ViewProgress viewProgress, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("viewProgress", viewProgress);
+    public String ViewProgressController.create(@Valid ViewProgress viewProgress, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("viewProgress", viewProgress);
             return "viewprogresses/create";
         }
+        uiModel.asMap().clear();
         viewProgress.persist();
-        return "redirect:/viewprogresses/" + encodeUrlPathSegment(viewProgress.getId().toString(), request);
+        return "redirect:/viewprogresses/" + encodeUrlPathSegment(viewProgress.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String ViewProgressController.createForm(Model model) {
-        model.addAttribute("viewProgress", new ViewProgress());
+    public String ViewProgressController.createForm(Model uiModel) {
+        uiModel.addAttribute("viewProgress", new ViewProgress());
         return "viewprogresses/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String ViewProgressController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("viewprogress", ViewProgress.findViewProgress(id));
-        model.addAttribute("itemId", id);
+    public String ViewProgressController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("viewprogress", ViewProgress.findViewProgress(id));
+        uiModel.addAttribute("itemId", id);
         return "viewprogresses/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String ViewProgressController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String ViewProgressController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("viewprogresses", ViewProgress.findViewProgressEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("viewprogresses", ViewProgress.findViewProgressEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) ViewProgress.countViewProgresses() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("viewprogresses", ViewProgress.findAllViewProgresses());
+            uiModel.addAttribute("viewprogresses", ViewProgress.findAllViewProgresses());
         }
         return "viewprogresses/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String ViewProgressController.update(@Valid ViewProgress viewProgress, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("viewProgress", viewProgress);
+    public String ViewProgressController.update(@Valid ViewProgress viewProgress, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("viewProgress", viewProgress);
             return "viewprogresses/update";
         }
+        uiModel.asMap().clear();
         viewProgress.merge();
-        return "redirect:/viewprogresses/" + encodeUrlPathSegment(viewProgress.getId().toString(), request);
+        return "redirect:/viewprogresses/" + encodeUrlPathSegment(viewProgress.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String ViewProgressController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("viewProgress", ViewProgress.findViewProgress(id));
+    public String ViewProgressController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("viewProgress", ViewProgress.findViewProgress(id));
         return "viewprogresses/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String ViewProgressController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String ViewProgressController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         ViewProgress.findViewProgress(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/viewprogresses?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/viewprogresses";
+    }
+    
+    @ModelAttribute("viewprogresses")
+    public Collection<ViewProgress> ViewProgressController.populateViewProgresses() {
+        return ViewProgress.findAllViewProgresses();
     }
     
     @ModelAttribute("workrequirements")
-    public Collection<WorkRequirement> ViewProgressController.populateWorkRequirements() {
+    public java.util.Collection<WorkRequirement> ViewProgressController.populateWorkRequirements() {
         return WorkRequirement.findAllWorkRequirements();
     }
     
-    String ViewProgressController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String ViewProgressController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }
