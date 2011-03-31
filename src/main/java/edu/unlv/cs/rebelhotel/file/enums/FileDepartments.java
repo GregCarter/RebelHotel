@@ -1,8 +1,11 @@
 package edu.unlv.cs.rebelhotel.file.enums;
 
+// FileDepartments HOSSINBSMS = new FileDepartments(true)
+// FileDepartments HOSBSHA = new FileDepartments()
 public enum FileDepartments {
 
     HOSSINBSMS, // HOSPITALITY_MANAGEMENT
+    HOSBSHA,
     ENTMIN, // Entertainment Management Minor
     HBEVBSHA, //HOTEL_ADMINISTRATION_BEVERAGE_MANAGEMENT, 
     HBEVPRBSHA,
@@ -18,7 +21,18 @@ public enum FileDepartments {
     CBEVPRBSCM,
     GAMBSGM, // GAMING_MANAGEMENT
     GAMPRE,
-    RECBS, // ignore
-    RECMIN, // ignore
-    RECPGMBS; // ignore
+    RECBS(true), // ignore
+    RECMIN(true), // ignore
+    RECPGMBS(true); // ignore
+    
+    private boolean ignorable = false;
+    private FileDepartments(boolean ignorable){
+    	this.ignorable = ignorable;
+    }
+    
+    private FileDepartments(){} 
+    
+    public boolean isIgnorable(){
+    	return this.ignorable;
+    }
 }

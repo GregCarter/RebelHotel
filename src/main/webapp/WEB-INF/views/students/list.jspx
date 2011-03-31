@@ -19,9 +19,11 @@
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
         
             
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" property="gradTerm" z="NXCJHi8hCaWP36aMvQLrYQIT6x8="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" property="admitTerm" z="BUdDIBOqBFS9uGJzNcyq+qD/D/8="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" property="codeOfConductSigned" z="HUCAYFz/64nj7NnTFM4sbVD6XYs="/>
+        
+            
+            
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" property="userId" z="uTlFwFgTXOUDXh2dVyz9K0Bp8mk="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
         </table:table>
     </page:list>
 </div>

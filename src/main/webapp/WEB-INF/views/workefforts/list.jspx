@@ -21,10 +21,14 @@
             
             
             
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" property="workRequirements" z="wnwU8mIDthUTEsJSGLSjtkc6hTY="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" property="payStatus" z="MZUHCUTT+eQK8kp9PpEKHxBAIJc="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" property="duration" z="i015q5XxuIrwtTOw2+Atqws8od4="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" property="verification" z="UAfAPITMsd/ZKlKteR6O1dKctN8="/>
+        
+            
+            
+            
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" property="comment" z="Qrk3GmfXG/56zAfTevG/paWG21E="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" property="supervisor" z="S6KkC7EF7oeU0sEc1AFFRjqORSs="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" property="employer" z="4uSWB1sTeKX9EFEegu3xVtIsBtM="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verificationType" property="verificationType" z="MGQCkhfpM9QFk9e54ZiPu2wDW98="/>
         </table:table>
     </page:list>
 </div>

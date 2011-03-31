@@ -46,7 +46,7 @@ public class Student {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Set<Major> majors = new HashSet<Major>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Term admitTerm;
 
     @ManyToOne

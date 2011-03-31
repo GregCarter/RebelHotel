@@ -73,12 +73,6 @@ privileged aspect Major_Roo_Entity {
     }
     
     @Transactional
-    public void Major.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
-    }
-    
-    @Transactional
     public Major Major.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Major merged = this.entityManager.merge(this);

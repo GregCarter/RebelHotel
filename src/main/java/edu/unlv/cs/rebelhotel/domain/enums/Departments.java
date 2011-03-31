@@ -19,6 +19,7 @@ public enum Departments {
     GAMING_MANAGEMENT_PRE;*/
 	
     HOSSINBSMS, // HOSPITALITY_MANAGEMENT
+    HOSBSHA,
     ENTMIN, // Entertainment Management Minor
     HBEVBSHA, //HOTEL_ADMINISTRATION_BEVERAGE_MANAGEMENT, 
     HBEVPRBSHA,
@@ -36,5 +37,6 @@ public enum Departments {
     GAMPRE,
     RECBS, // ignore
     RECMIN, // ignore
-    RECPGMBS; // ignore
+    RECPGMBS, // ignore
+    SLSMSSLS; // graduate: Dual Master of Science in Management Information Systems/Master of Science in Hotel Administration
 }

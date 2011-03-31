@@ -28,90 +28,82 @@ import org.springframework.web.util.WebUtils;
 privileged aspect MajorController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String MajorController.create(@Valid Major major, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("major", major);
+    public String MajorController.create(@Valid Major major, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("major", major);
             return "majors/create";
         }
-        uiModel.asMap().clear();
         major.persist();
-        return "redirect:/majors/" + encodeUrlPathSegment(major.getId().toString(), httpServletRequest);
+        return "redirect:/majors/" + encodeUrlPathSegment(major.getId().toString(), request);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String MajorController.createForm(Model uiModel) {
-        uiModel.addAttribute("major", new Major());
+    public String MajorController.createForm(Model model) {
+        model.addAttribute("major", new Major());
         return "majors/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String MajorController.show(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("major", Major.findMajor(id));
-        uiModel.addAttribute("itemId", id);
+    public String MajorController.show(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("major", Major.findMajor(id));
+        model.addAttribute("itemId", id);
         return "majors/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String MajorController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String MajorController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            uiModel.addAttribute("majors", Major.findMajorEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            model.addAttribute("majors", Major.findMajorEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) Major.countMajors() / sizeNo;
-            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("majors", Major.findAllMajors());
+            model.addAttribute("majors", Major.findAllMajors());
         }
         return "majors/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String MajorController.update(@Valid Major major, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("major", major);
+    public String MajorController.update(@Valid Major major, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("major", major);
             return "majors/update";
         }
-        uiModel.asMap().clear();
         major.merge();
-        return "redirect:/majors/" + encodeUrlPathSegment(major.getId().toString(), httpServletRequest);
+        return "redirect:/majors/" + encodeUrlPathSegment(major.getId().toString(), request);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String MajorController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("major", Major.findMajor(id));
+    public String MajorController.updateForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("major", Major.findMajor(id));
         return "majors/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String MajorController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String MajorController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         Major.findMajor(id).remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/majors";
-    }
-    
-    @ModelAttribute("majors")
-    public Collection<Major> MajorController.populateMajors() {
-        return Major.findAllMajors();
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/majors?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
     @ModelAttribute("terms")
-    public java.util.Collection<Term> MajorController.populateTerms() {
+    public Collection<Term> MajorController.populateTerms() {
         return Term.findAllTerms();
     }
     
     @ModelAttribute("workrequirements")
-    public java.util.Collection<WorkRequirement> MajorController.populateWorkRequirements() {
+    public Collection<WorkRequirement> MajorController.populateWorkRequirements() {
         return WorkRequirement.findAllWorkRequirements();
     }
     
     @ModelAttribute("departmentses")
-    public java.util.Collection<Departments> MajorController.populateDepartmentses() {
+    public Collection<Departments> MajorController.populateDepartmentses() {
         return Arrays.asList(Departments.class.getEnumConstants());
     }
     
-    String MajorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
-        String enc = httpServletRequest.getCharacterEncoding();
+    String MajorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
+        String enc = request.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

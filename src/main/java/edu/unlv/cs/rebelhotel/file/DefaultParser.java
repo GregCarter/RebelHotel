@@ -23,11 +23,9 @@ public class DefaultParser implements Parser {
 	public Set<FileStudent> parse(List<List<String>> contents) {
 		Map<String,List<Line>> entries = new HashMap<String,List<Line>>();
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
-		
-		Line newline = new Line();
-		
+
 		for (List<String> tokens : contents) {
-			newline = newline.convert(tokens);
+			Line newline = new Line(tokens);
 			String studentId = newline.getStudentId();
 			List<Line> tempLineSet;
 			if (entries.containsKey(studentId)) {

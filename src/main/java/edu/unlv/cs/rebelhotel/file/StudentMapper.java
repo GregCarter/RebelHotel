@@ -48,7 +48,7 @@ public class StudentMapper {
 			student_account.setUserId(fileStudent.getStudentId());
 			student_account.setPassword(rpg.generateRandomPassword());
 			student_account.setUserGroup(UserGroup.ROLE_USER);
-			student_account.setEmail(fileStudent.getEmail());
+			//student_account.setEmail(fileStudent.getEmail());
 			student_account.persist();
 		}
 		
