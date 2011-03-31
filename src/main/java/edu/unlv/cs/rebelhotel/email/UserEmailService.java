@@ -1,52 +1,42 @@
 package edu.unlv.cs.rebelhotel.email;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+
 
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 
 public class UserEmailService {
 	
-    private MailSender mailSender;
-    private SimpleMailMessage templateMessage;
-
-    public void setMailSender(MailSender mailSender) {
+    private JavaMailSender mailSender;
+    
+    public void setMailSender(JavaMailSender mailSender) {
         this.mailSender = mailSender;
-    }
-
-    public void setTemplateMessage(SimpleMailMessage templateMessage) {
-        this.templateMessage = templateMessage;
-    }
-
-    public void sendConfirmation(UserAccount user)
-    {
-        
-            // Do the business calculations...
-
-            // Call the collaborators to persist the order...
-
-            // Create a thread safe "copy" of the template message and customize it
-            SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
-            msg.setTo(user.getEmail());
-            msg.setText(
-            		"SampleString"
-            		/*
-                "Dear " + .getCustomer().getFirstName()
-                    + order.getCustomer().getLastName()
-                    + ", thank you for placing order. Your order number is "
-                    + order.getOrderNumber()
-                    */
-                    );
-            try{
-                this.mailSender.send(msg);
-            }
-            catch(MailException ex) {
-                // simply log it and go on...
-                System.err.println(ex.getMessage());            
-            }
-        }
 
     }
+
+    public void PrepareMsg(UserAccount user){
+    	MimeMessagePreparator mimeMessagePreparator = new MimeMessagePreparator(){
+
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+				helper.addTo(user.getEmail());
+				//helper.
+				// TODO Auto-generated method stub
+				
+				}
+			};
+		this.mailSender.send(mimeMessagePreparator );
+    	
+    }
+    
+}
 
  
