@@ -34,11 +34,7 @@ public class Major {
 	
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        Degree str = getDegree();
-        StringTokenizer st = new StringTokenizer(str.toString(),"_");
-        while (st.hasMoreTokens()) {
-        	sb.append(st.nextToken()).append(" ");
-        }
+        sb.append(getDegree()).append(", ");
         return sb.toString();
     }
 }

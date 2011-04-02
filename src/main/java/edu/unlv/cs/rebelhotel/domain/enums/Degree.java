@@ -2,6 +2,7 @@ package edu.unlv.cs.rebelhotel.domain.enums;
 
 public enum Degree {
 	HOSSINBSMS, // HOSPITALITY_MANAGEMENT
+	HOSSINBSHA,
 	HOSBSHA,
 	ENTMIN(true), // Entertainment Management Minor
 	HBEVBSHA, //HOTEL_ADMINISTRATION_BEVERAGE_MANAGEMENT, 

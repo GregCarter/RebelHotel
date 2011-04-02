@@ -26,9 +26,8 @@ public class UserAccount {
     @NotNull
     private String password;
 
-   /* @NotNull
-    @Column(unique=true)
-    private String email;*/
+    @NotNull
+    private String email;
     
     @Enumerated(EnumType.STRING)
     private UserGroup userGroup;
