@@ -22,12 +22,14 @@ public class UserEmailService {
 
     }
 
-    public void PrepareMsg(UserAccount user){
+    public void PrepareMsg(){
     	MimeMessagePreparator mimeMessagePreparator = new MimeMessagePreparator(){
 
-			public void prepare(MimeMessage mimeMessage) throws Exception {
-				MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
-				helper.addTo(user.getEmail());
+	public void prepare(MimeMessage mimeMessage) throws Exception {
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+		helper.setFrom("RebelHotel@unlv.edu");
+		helper.setTo("");
+				
 				//helper.
 				// TODO Auto-generated method stub
 				

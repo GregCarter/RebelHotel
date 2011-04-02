@@ -29,14 +29,10 @@ public class UserAccount {
     private String password;
 
     @NotNull
-<<<<<<< HEAD
-    private String email;
 
-=======
     @Column(unique=true)
     private String email = "default@email.com";
     
->>>>>>> e8aec94c8f3da9d5b486db2a01bdd79dd9e3683e
     @Enumerated(EnumType.STRING)
     private UserGroup userGroup;
 
