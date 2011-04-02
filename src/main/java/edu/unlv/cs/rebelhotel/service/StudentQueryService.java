@@ -70,6 +70,16 @@ public class StudentQueryService {
 			}
 			search.add(Restrictions.like("firstName", firstName));
 		}
+		if (formStudentQuery.getUseMiddleName()) {
+			String middleName = formStudentQuery.getMiddleName();
+			if (middleName.length() > 0) {
+				middleName = "%" + middleName + "%";
+			}
+			else {
+				middleName = "%";
+			}
+			search.add(Restrictions.like("middleName", middleName));
+		}
 		if (formStudentQuery.getUseLastName()) {
 			String lastName = formStudentQuery.getLastName();
 			if (lastName.length() > 0) {
@@ -101,9 +111,14 @@ public class StudentQueryService {
 		if (formStudentQuery.getShowEmail()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_email", null, LocaleContextHolder.getLocale());
 		}
-		if (formStudentQuery.getShowName()) {
-			// name is a "field" generated on the spot in the .jspx file
-			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_name", null, LocaleContextHolder.getLocale());
+		if (formStudentQuery.getShowFirstName()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_firstname", null, LocaleContextHolder.getLocale());
+		}
+		if (formStudentQuery.getShowMiddleName()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_middlename", null, LocaleContextHolder.getLocale());
+		}
+		if (formStudentQuery.getShowLastName()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_lastname", null, LocaleContextHolder.getLocale());
 		}
 		if (formStudentQuery.getShowAdmitTerm()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_admitterm", null, LocaleContextHolder.getLocale());
@@ -148,8 +163,14 @@ public class StudentQueryService {
 					entries.add("");
 				}
 			}
-			if (formStudentQuery.getShowName()) {
-				entries.add(student.getName());
+			if (formStudentQuery.getShowFirstName()) {
+				entries.add(student.getFirstName());
+			}
+			if (formStudentQuery.getShowMiddleName()) {
+				entries.add(student.getMiddleName());
+			}
+			if (formStudentQuery.getShowLastName()) {
+				entries.add(student.getLastName());
 			}
 			if (formStudentQuery.getShowAdmitTerm()) {
 				if (student.getAdmitTerm() != null) {

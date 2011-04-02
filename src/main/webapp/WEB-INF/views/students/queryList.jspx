@@ -25,8 +25,17 @@
 					<field:input field = "firstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_firstName" />
     			</td>
     			<td>
+    				<field:checkbox field = "useMiddleName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMiddleName" />
+					<field:input field = "middleName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_middleName" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
     				<field:checkbox field = "useLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useLastName" />
 					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
+    			</td>
+    			<td>
+    			
     			</td>
     		</tr>
     		<tr>
@@ -61,16 +70,13 @@
     				<field:checkbox field = "showEmail" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showEmail" />
     			</td>
     			<td>
-    				<field:checkbox field = "showName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showName" />
-    			</td>
-    			<td>
     				<field:checkbox field = "showAdmitTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showAdmitTerm" />
     			</td>
-    		</tr>
-    		<tr>
     			<td>
     				<field:checkbox field = "showGradTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showGradTerm" />
     			</td>
+    		</tr>
+    		<tr>
     			<td>
     				<field:checkbox field = "showCodeOfConductSigned" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showCodeOfConductSigned" />
     			</td>
@@ -79,6 +85,17 @@
     			</td>
     			<td>
     				<field:checkbox field = "showUserAccount" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showUserAccount" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showFirstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showFirstName" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "showMiddleName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showMiddleName" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showLastName" />
     			</td>
     		</tr>
     	</table>

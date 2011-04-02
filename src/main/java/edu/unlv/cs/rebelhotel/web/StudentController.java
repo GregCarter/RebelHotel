@@ -86,8 +86,14 @@ public class StudentController {
 		if (formStudentQuery.getShowEmail()) {
 			properties += ",email";
 		}
-		if (formStudentQuery.getShowName()) {
-			properties += ",name";
+		if (formStudentQuery.getShowFirstName()) {
+			properties += ",firstName";
+		}
+		if (formStudentQuery.getShowMiddleName()) {
+			properties += ",middleName";
+		}
+		if (formStudentQuery.getShowLastName()) {
+			properties += ",lastName";
 		}
 		if (formStudentQuery.getShowAdmitTerm()) {
 			properties += ",admitTerm";
@@ -115,9 +121,14 @@ public class StudentController {
 		if (formStudentQuery.getShowEmail()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_email", null, LocaleContextHolder.getLocale());
 		}
-		if (formStudentQuery.getShowName()) {
-			// name is a "field" generated on the spot in the .jspx file
-			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_name", null, LocaleContextHolder.getLocale());
+		if (formStudentQuery.getShowFirstName()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_firstname", null, LocaleContextHolder.getLocale());
+		}
+		if (formStudentQuery.getShowMiddleName()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_middlename", null, LocaleContextHolder.getLocale());
+		}
+		if (formStudentQuery.getShowLastName()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_lastname", null, LocaleContextHolder.getLocale());
 		}
 		if (formStudentQuery.getShowAdmitTerm()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_admitterm", null, LocaleContextHolder.getLocale());
@@ -146,7 +157,13 @@ public class StudentController {
 		if (formStudentQuery.getShowEmail()) {
 			properties += ",32";
 		}
-		if (formStudentQuery.getShowName()) {
+		if (formStudentQuery.getShowFirstName()) {
+			properties += ",64";
+		}
+		if (formStudentQuery.getShowMiddleName()) {
+			properties += ",64";
+		}
+		if (formStudentQuery.getShowLastName()) {
 			properties += ",64";
 		}
 		if (formStudentQuery.getShowAdmitTerm()) {
