@@ -1,8 +1,7 @@
 package edu.unlv.cs.rebelhotel.file;
 
-import edu.unlv.cs.rebelhotel.file.Line;
 import edu.unlv.cs.rebelhotel.file.FileStudent;
-
+import edu.unlv.cs.rebelhotel.file.Line;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class DefaultParser implements Parser {

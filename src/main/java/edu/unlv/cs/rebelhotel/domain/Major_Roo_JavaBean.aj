@@ -5,7 +5,7 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import java.util.Set;
 
 privileged aspect Major_Roo_JavaBean {
@@ -26,12 +26,12 @@ privileged aspect Major_Roo_JavaBean {
         this.reachedMilestone = reachedMilestone;
     }
     
-    public Departments Major.getDepartment() {
-        return this.department;
+    public Degree Major.getDegree() {
+        return this.degree;
     }
     
-    public void Major.setDepartment(Departments department) {
-        this.department = department;
+    public void Major.setDegree(Degree degree) {
+        this.degree = degree;
     }
     
     public Term Major.getCatalogTerm() {

@@ -16,7 +16,7 @@ import org.joda.time.format.DateTimeFormat;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
 import edu.unlv.cs.rebelhotel.service.StudentQueryService;
@@ -74,8 +74,8 @@ public class StudentController {
     }
 	
 	@ModelAttribute("departments")
-    public Collection<Departments> populateDepartments() {
-        return Arrays.asList(Departments.class.getEnumConstants());
+    public Collection<Degree> populateDepartments() {
+        return Arrays.asList(Degree.class.getEnumConstants());
     }
 	
 	public String buildPropertiesString(FormStudentQuery formStudentQuery) {

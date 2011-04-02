@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.Term;
 
@@ -25,7 +25,7 @@ public class Major {
 	private boolean reachedMilestone;
 	
 	@Enumerated
-	private Departments department;
+	private Degree degree;
 
 	@ManyToOne
     private Term catalogTerm;
@@ -34,7 +34,7 @@ public class Major {
 	
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        Departments str = getDepartment();
+        Degree str = getDegree();
         StringTokenizer st = new StringTokenizer(str.toString(),"_");
         while (st.hasMoreTokens()) {
         	sb.append(st.nextToken()).append(" ");

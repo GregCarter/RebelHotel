@@ -12,10 +12,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
-
-import edu.unlv.cs.rebelhotel.file.enums.FileDepartments;
 
 @RooJavaBean
 @RooToString
@@ -31,7 +29,7 @@ public class Line {
 	private Term admitTerm;
 	private Term gradTerm;
 
-	public Line (List<String> tokens){
+	public Line(List<String> tokens){
 		if (tokens.size() != EXPECTED_SIZE){
 			throw new InvalidLineException("Invalid number of elements.");
 		}
@@ -63,13 +61,13 @@ public class Line {
 	}
 	
 	private boolean shouldInclude(String major) {
-		FileDepartments department; 
+		Degree degree; 
 		try{
-			department = FileDepartments.valueOf(major);
+			degree = Degree.valueOf(major);
 		} catch(IllegalArgumentException e){
 			return false;
 		}
-		return !department.isIgnorable();
+		return !degree.isIgnorable();
 	}
 
 	private Term createOrFindTerm(String yearAndTerm) {
@@ -92,6 +90,7 @@ public class Line {
 			term = new Term();
 			term.setSemester(semester);
 			term.setTermYear(termYear);
+			term.persist();
 		}
 		return term;
 	}
@@ -124,8 +123,8 @@ public class Line {
 	
 	private Major makeMajor(String amajor, String aterm) {
 		Major major = new Major();
-		Departments department = Departments.valueOf(amajor);
-		major.setDepartment(department);
+		Degree degree = Degree.valueOf(amajor);
+		major.setDegree(degree);
 		Term term = createOrFindTerm(aterm);
 		major.setCatalogTerm(term);
 		major.setCompleted_work_requirements(false);

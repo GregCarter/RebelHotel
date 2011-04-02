@@ -25,7 +25,7 @@ public class WorkRequirementService {
 		} else {
 			for (Major current : current_majors) {
 				for (Major each : majors) {
-					if (!current.getDepartment().equals(each.getDepartment())){
+					if (!current.getDegree().equals(each.getDegree())){
 						WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(WorkTemplate.findWorkTemplatesByNameEquals("Gaming").getSingleResult(), each);
 						workRequirement.persist();
 						each.getWorkRequirements().add(workRequirement);

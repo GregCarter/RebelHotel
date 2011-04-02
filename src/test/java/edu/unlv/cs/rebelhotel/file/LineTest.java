@@ -13,13 +13,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/META-INF/spring/applicationContext.xml")
 @Transactional
 public class LineTest {
 	private static final String VALID_DATA = "1000011622,Holmes,Katherine,Marilyn,HOLMESK4@UNLV.NEVADA.EDU,HOSBSHA,2048, , , , ,2048, ";
+	
 	@Test(expected=InvalidLineException.class)
 	public void shouldFailIfGivenIncorrectSize() {
 		List<String> tokens = new ArrayList<String>();
@@ -41,8 +42,8 @@ public class LineTest {
 		Line instance = createValidLine();
 		List<Major> majors = new ArrayList<Major>(instance.getMajors());
 		Major major = majors.get(0);
-		Departments actualDepartment = major.getDepartment();
-		Departments expectedDepartment = Departments.HOSBSHA;
+		Degree actualDepartment = major.getDegree();
+		Degree expectedDepartment = Degree.HOSBSHA;
 		assertEquals("The first major department should be: ",expectedDepartment,actualDepartment);
 	}
 	
