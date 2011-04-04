@@ -26,15 +26,17 @@ public class DefaultParser implements Parser {
 
 		for (List<String> tokens : contents) {
 			Line newline = new Line(tokens);
-			String studentId = newline.getStudentId();
-			List<Line> tempLineSet;
-			if (entries.containsKey(studentId)) {
-				tempLineSet = entries.get(studentId);
-			} else {
-				tempLineSet = new ArrayList<Line>();
+			if (!newline.getMajors().isEmpty()) {
+				String studentId = newline.getStudentId();
+				List<Line> tempLineSet;
+				if (entries.containsKey(studentId)) {
+					tempLineSet = entries.get(studentId);
+				} else {
+					tempLineSet = new ArrayList<Line>();
+				}
+				tempLineSet.add(newline);
+				entries.put(studentId,tempLineSet);
 			}
-			tempLineSet.add(newline);
-			entries.put(studentId,tempLineSet);
 		}
 		FileStudent fs = new FileStudent();
 		fileStudents.addAll(fs.convert(entries.values()));

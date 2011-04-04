@@ -71,27 +71,9 @@ public class WorkEffort {
     
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getWorkPosition()+" at "+getEmployer().getName()+" "+getDuration());
+        sb.append("Position: ").append(getWorkPosition()).append("\n");
+        sb.append("At: ").append(getEmployer().getName()).append("\n");
+        sb.append("Duration: ").append(getDuration()).append("\n").append("\n");
         return sb.toString();
     }
-    
-   /* @PreUpdate
-    @PrePersist
-    public void audit() {
-    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    	boolean hasAuthentication = null != authentication;
-    	String username = "";
-		if (hasAuthentication) {
-			Object principal = authentication.getPrincipal();
-			if (principal instanceof UserDetails) {
-				username = ((UserDetails) principal).getUsername();
-			} else {
-				username = principal.toString();
-			}
-		}
-		
-		String studentId = student.getUserId();
-		
-		LOG.info("User {} updated work effort {} for student {}.", new Object[]{username, this.toString(), studentId});
-    }*/
 }

@@ -73,8 +73,8 @@ public class StudentController {
         return Arrays.asList(Semester.class.getEnumConstants());
     }
 	
-	@ModelAttribute("departments")
-    public Collection<Degree> populateDepartments() {
+	@ModelAttribute("degree")
+    public Collection<Degree> populateDegree() {
         return Arrays.asList(Degree.class.getEnumConstants());
     }
 	

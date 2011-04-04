@@ -5,10 +5,12 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -25,73 +27,78 @@ import org.springframework.web.util.WebUtils;
 privileged aspect WorkTemplateController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String WorkTemplateController.create(@Valid WorkTemplate workTemplate, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workTemplate", workTemplate);
+    public String WorkTemplateController.create(@Valid WorkTemplate workTemplate, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("workTemplate", workTemplate);
             return "worktemplates/create";
         }
+        uiModel.asMap().clear();
         workTemplate.persist();
-        return "redirect:/worktemplates/" + encodeUrlPathSegment(workTemplate.getId().toString(), request);
+        return "redirect:/worktemplates/" + encodeUrlPathSegment(workTemplate.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String WorkTemplateController.createForm(Model model) {
-        model.addAttribute("workTemplate", new WorkTemplate());
+    public String WorkTemplateController.createForm(Model uiModel) {
+        uiModel.addAttribute("workTemplate", new WorkTemplate());
         return "worktemplates/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkTemplateController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("worktemplate", WorkTemplate.findWorkTemplate(id));
-        model.addAttribute("itemId", id);
+    public String WorkTemplateController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("worktemplate", WorkTemplate.findWorkTemplate(id));
+        uiModel.addAttribute("itemId", id);
         return "worktemplates/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String WorkTemplateController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkTemplateController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("worktemplates", WorkTemplate.findWorkTemplateEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("worktemplates", WorkTemplate.findWorkTemplateEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) WorkTemplate.countWorkTemplates() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("worktemplates", WorkTemplate.findAllWorkTemplates());
+            uiModel.addAttribute("worktemplates", WorkTemplate.findAllWorkTemplates());
         }
         return "worktemplates/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String WorkTemplateController.update(@Valid WorkTemplate workTemplate, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("workTemplate", workTemplate);
+    public String WorkTemplateController.update(@Valid WorkTemplate workTemplate, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("workTemplate", workTemplate);
             return "worktemplates/update";
         }
+        uiModel.asMap().clear();
         workTemplate.merge();
-        return "redirect:/worktemplates/" + encodeUrlPathSegment(workTemplate.getId().toString(), request);
+        return "redirect:/worktemplates/" + encodeUrlPathSegment(workTemplate.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String WorkTemplateController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workTemplate", WorkTemplate.findWorkTemplate(id));
+    public String WorkTemplateController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("workTemplate", WorkTemplate.findWorkTemplate(id));
         return "worktemplates/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String WorkTemplateController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String WorkTemplateController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         WorkTemplate.findWorkTemplate(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/worktemplates?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/worktemplates";
     }
     
-    @RequestMapping(params = { "find=ByNameEquals", "form" }, method = RequestMethod.GET)
-    public String WorkTemplateController.findWorkTemplatesByNameEqualsForm(Model model) {
-        return "worktemplates/findWorkTemplatesByNameEquals";
+    @RequestMapping(params = { "find=ByDegreeAndTermEquals", "form" }, method = RequestMethod.GET)
+    public String WorkTemplateController.findWorkTemplatesByDegreeAndTermEqualsForm(Model uiModel) {
+        uiModel.addAttribute("degrees", java.util.Arrays.asList(Degree.class.getEnumConstants()));
+        uiModel.addAttribute("terms", Term.findAllTerms());
+        return "worktemplates/findWorkTemplatesByDegreeAndTermEquals";
     }
     
-    @RequestMapping(params = "find=ByNameEquals", method = RequestMethod.GET)
-    public String WorkTemplateController.findWorkTemplatesByNameEquals(@RequestParam("name") String name, Model model) {
-        model.addAttribute("worktemplates", WorkTemplate.findWorkTemplatesByNameEquals(name).getResultList());
+    @RequestMapping(params = "find=ByDegreeAndTermEquals", method = RequestMethod.GET)
+    public String WorkTemplateController.findWorkTemplatesByDegreeAndTermEquals(@RequestParam("degree") Degree degree, @RequestParam("term") Term term, Model uiModel) {
+        uiModel.addAttribute("worktemplates", WorkTemplate.findWorkTemplatesByDegreeAndTermEquals(degree, term).getResultList());
         return "worktemplates/list";
     }
     
@@ -100,8 +107,18 @@ privileged aspect WorkTemplateController_Roo_Controller {
         return Term.findAllTerms();
     }
     
-    String WorkTemplateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    @ModelAttribute("worktemplates")
+    public java.util.Collection<WorkTemplate> WorkTemplateController.populateWorkTemplates() {
+        return WorkTemplate.findAllWorkTemplates();
+    }
+    
+    @ModelAttribute("degrees")
+    public java.util.Collection<Degree> WorkTemplateController.populateDegrees() {
+        return Arrays.asList(Degree.class.getEnumConstants());
+    }
+    
+    String WorkTemplateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

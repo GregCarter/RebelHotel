@@ -11,6 +11,7 @@ import java.util.HashSet;
 import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -43,7 +44,7 @@ public class Student {
 
     private String lastName;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Set<Major> majors = new HashSet<Major>();
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -52,7 +53,7 @@ public class Student {
     @ManyToOne
     private Term gradTerm;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();
 
     private Boolean codeOfConductSigned;

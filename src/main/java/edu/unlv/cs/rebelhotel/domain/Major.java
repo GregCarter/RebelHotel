@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -19,7 +20,7 @@ import edu.unlv.cs.rebelhotel.domain.Term;
 @RooJavaBean
 @RooEntity
 public class Major {
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
 	
 	private boolean reachedMilestone;

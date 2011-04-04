@@ -73,6 +73,12 @@ privileged aspect Student_Roo_Entity {
     }
     
     @Transactional
+    public void Student.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public Student Student.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Student merged = this.entityManager.merge(this);

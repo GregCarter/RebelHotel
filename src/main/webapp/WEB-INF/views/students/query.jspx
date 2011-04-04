@@ -48,7 +48,7 @@
     			</td>
     			<td>
     				<field:checkbox field="useMajor" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMajor" />
-    				<field:select field="department" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_department" items="${departments}" path="departments" />
+    				<field:select field="degree" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_degree" items="${degree}" path="degree" />
     			</td>
     		</tr>
     	</table>

@@ -33,31 +33,39 @@ public class Line {
 		if (tokens.size() != EXPECTED_SIZE){
 			throw new InvalidLineException("Invalid number of elements.");
 		}
-		this.setStudentId(tokens.get(0));
-		this.setLastName(tokens.get(1));
-		this.setFirstName(tokens.get(2));
-		this.setMiddleName(tokens.get(3));
-		this.setEmail(tokens.get(4));
-
-		Set<Major> majors = this.getMajors();
-		Major major;
-		if (shouldInclude(tokens.get(5))) {
-			major = makeMajor(tokens.get(5),tokens.get(6));
-			majors.add(major);
-		}
-		if (shouldInclude(tokens.get(7))) {
-			major = makeMajor(tokens.get(7),tokens.get(8));
-			majors.add(major);
-		}
-		if (shouldInclude(tokens.get(9))) {
-			major = makeMajor(tokens.get(9),tokens.get(10));
-			majors.add(major);
-		}
+		if (hasValidMajors(tokens.get(5),tokens.get(7),tokens.get(9))) {
+			this.setStudentId(tokens.get(0));
+			this.setLastName(tokens.get(1));
+			this.setFirstName(tokens.get(2));
+			this.setMiddleName(tokens.get(3));
+			this.setEmail(tokens.get(4));
 	
-		this.setAdmitTerm(createOrFindTerm(tokens.get(11)));
-		if (!StringUtils.isBlank(tokens.get(12))){
-			this.setGradTerm(createOrFindTerm(tokens.get(12)));
+			Set<Major> majors = this.getMajors();
+			Major major;
+			if (shouldInclude(tokens.get(5))) {
+				major = makeMajor(tokens.get(5),tokens.get(6));
+				majors.add(major);
+			}
+			if (shouldInclude(tokens.get(7))) {
+				major = makeMajor(tokens.get(7),tokens.get(8));
+				majors.add(major);
+			}
+			if (shouldInclude(tokens.get(9))) {
+				major = makeMajor(tokens.get(9),tokens.get(10));
+				majors.add(major);
+			}
+		
+			this.setAdmitTerm(createOrFindTerm(tokens.get(11)));
+			if (!StringUtils.isBlank(tokens.get(12))){
+				this.setGradTerm(createOrFindTerm(tokens.get(12)));
+			}
 		}
+	}
+	
+	private boolean hasValidMajors(String major1, String major2, String major3) {
+		return shouldInclude(major1) 
+				|| shouldInclude(major2) 
+				|| shouldInclude(major3);
 	}
 	
 	private boolean shouldInclude(String major) {

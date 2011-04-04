@@ -4,11 +4,19 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import java.lang.Integer;
+import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
 import java.lang.String;
 import java.util.Set;
 
 privileged aspect WorkRequirement_Roo_JavaBean {
+    
+    public WorkTemplate WorkRequirement.getWorkTemplate() {
+        return this.workTemplate;
+    }
+    
+    public void WorkRequirement.setWorkTemplate(WorkTemplate workTemplate) {
+        this.workTemplate = workTemplate;
+    }
     
     public String WorkRequirement.getName() {
         return this.name;
@@ -16,14 +24,6 @@ privileged aspect WorkRequirement_Roo_JavaBean {
     
     public void WorkRequirement.setName(String name) {
         this.name = name;
-    }
-    
-    public Integer WorkRequirement.getHours() {
-        return this.hours;
-    }
-    
-    public void WorkRequirement.setHours(Integer hours) {
-        this.hours = hours;
     }
     
     public boolean WorkRequirement.isMilestone() {
