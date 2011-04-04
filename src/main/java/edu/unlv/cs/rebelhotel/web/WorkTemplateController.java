@@ -44,7 +44,6 @@ public class WorkTemplateController {
         WorkRequirement workRequirement = WorkRequirement.fromWorkTemplate(workTemplate, major);
         workRequirement.persist();
         
-        // NOTE: I am not sure if this is right.
         Set<WorkRequirement> workRequirements = major.getWorkRequirements();
         workRequirements.add(workRequirement);
         

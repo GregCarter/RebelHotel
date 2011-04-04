@@ -7,6 +7,7 @@
         <field:display field="password" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_password" object="${useraccount}" z="XSTmp7bMME+b1Kn/y5LlkuhQT7w="/>
         <field:display field="userGroup" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" object="${useraccount}" z="4vExJoAW/a+nF5Qspanxmh6RRtU="/>
         <field:display field="enabled" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" object="${useraccount}" z="BM0JEna7ZOR6pcLuvG6iMJzBxt0="/>
+    
     <field:display field="email" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_email" object="${useraccount}" z="B/glAxf7hl1imfcxPOe55tWRmCI="/>
     </page:show>
 </div>

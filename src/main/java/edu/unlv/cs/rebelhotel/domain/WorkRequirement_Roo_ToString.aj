@@ -9,8 +9,8 @@ privileged aspect WorkRequirement_Roo_ToString {
     
     public String WorkRequirement.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("WorkTemplate: ").append(getWorkTemplate()).append(", ");
         sb.append("Name: ").append(getName()).append(", ");
-        sb.append("Hours: ").append(getHours()).append(", ");
         sb.append("Milestone: ").append(isMilestone()).append(", ");
         sb.append("WorkEffort: ").append(getWorkEffort() == null ? "null" : getWorkEffort().size());
         return sb.toString();

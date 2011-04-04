@@ -1,12 +1,14 @@
 package edu.unlv.cs.rebelhotel.file;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.TypedQuery;
 import edu.unlv.cs.rebelhotel.domain.Major;
+import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.service.WorkRequirementService;
@@ -22,7 +24,7 @@ public class StudentMapper {
 	}
 
 	public Student findOrReplace(FileStudent fileStudent){
-		Student student = findStudent(fileStudent);
+		Student student = preexistingOrNewStudent(fileStudent);
 		student.setUserId(fileStudent.getStudentId());
 		student.setFirstName(fileStudent.getFirstName());
 		student.setLastName(fileStudent.getLastName());
@@ -39,35 +41,37 @@ public class StudentMapper {
 		student.setMajors(majors);
 		student.setCodeOfConductSigned(false);
 
-		RandomPasswordGenerator rpg = new RandomPasswordGenerator();
-		UserAccount student_account = new UserAccount();
+		UserAccount student_account = preexistingOrNewAccount(fileStudent);
+		student.setUserAccount(student_account);
 		
-		if (UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getResultList().size() > 0) {
-			student_account = student_account.merge();
-		} else {
+		return student;
+	}
+
+	private Student preexistingOrNewStudent(FileStudent fileStudent) {
+		Student student;
+		try {
+			student = Student.findStudentsByUserIdEquals(fileStudent.getStudentId()).getSingleResult();
+			return student;
+		} catch(EmptyResultDataAccessException e) {
+			student = new Student();
+		}
+		return student;
+	}
+	
+	private UserAccount preexistingOrNewAccount(FileStudent fileStudent) {
+		UserAccount student_account;
+		try {
+			student_account = UserAccount.findUserAccountsByUserId(fileStudent.getStudentId()).getSingleResult();
+			return student_account;
+		} catch(EmptyResultDataAccessException e) {
+			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
+			student_account = new UserAccount();
 			student_account.setUserId(fileStudent.getStudentId());
 			student_account.setPassword(rpg.generateRandomPassword());
 			student_account.setUserGroup(UserGroup.ROLE_USER);
 			student_account.setEmail(fileStudent.getEmail());
 			student_account.persist();
 		}
-		
-		student.setUserAccount(student_account);
-		return student;
-	}
-
-	private Student findStudent(FileStudent fileStudent) {
-		TypedQuery<Student> q = Student.findStudentsByUserIdEquals(fileStudent.getStudentId());
-		List<Student> domainStudent = q.getResultList();
-		if (0 == domainStudent.size()) {
-			return new Student();
-		} else if (1 < domainStudent.size()){
-			throw new IllegalArgumentException("There exists multiple entries of ID: " + fileStudent.getStudentId());
-		} else {
-			Object [] anobject;
-			anobject = domainStudent.toArray();
-			Student astudent = (Student)anobject[0];
-			return astudent;
-		}
+		return student_account;
 	}
 }

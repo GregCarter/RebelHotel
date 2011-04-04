@@ -21,6 +21,14 @@
             
             
             
+        
+            
+            
+            
+        
+            
+            
+            
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" property="workRequirements" z="wnwU8mIDthUTEsJSGLSjtkc6hTY="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" property="payStatus" z="MZUHCUTT+eQK8kp9PpEKHxBAIJc="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" property="duration" z="i015q5XxuIrwtTOw2+Atqws8od4="/>

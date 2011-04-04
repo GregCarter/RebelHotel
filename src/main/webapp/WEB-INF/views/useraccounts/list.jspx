@@ -8,7 +8,8 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" property="password" z="fGvd5xTYakOs7GHqM2oL2qWctNo="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" property="userGroup" z="ApnEsKzC/nwopnMpwPa/VYsGHsg="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" property="enabled" z="v67LmVv6c4GIR25ijiOiNDebP5Q="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" property="email" z="X5T0kQEQprhl8VaLl6LSbDEIC30="/>
+            
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" property="email" z="X5T0kQEQprhl8VaLl6LSbDEIC30="/>
         </table:table>
     </page:list>
 </div>

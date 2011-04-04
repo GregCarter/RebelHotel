@@ -23,8 +23,9 @@ privileged aspect WorkTemplateDataOnDemand_Roo_DataOnDemand {
     
     public WorkTemplate WorkTemplateDataOnDemand.getNewTransientWorkTemplate(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkTemplate obj = new edu.unlv.cs.rebelhotel.domain.WorkTemplate();
+        obj.setDegree(edu.unlv.cs.rebelhotel.domain.enums.Degree.class.getEnumConstants()[0]);
         obj.setName("name_" + index);
-        obj.setHours(new Integer(index));
+        obj.setTotalHoursNeeded(new Integer(index));
         obj.setTerm(termDataOnDemand.getRandomTerm());
         return obj;
     }

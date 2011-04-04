@@ -10,10 +10,10 @@
         <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" z="BuRwgbxmRVgdC9lvISnajvdbTNc="/>
         <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
         <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_Student_email" min="2" required="true" validationMessageCode="field_invalid_email" z="NDEa4jJiTvMWRIHiuomeDmvp6Do="/>
-        <field:select field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" itemValue="id" items="${majors}" multiple="true" path="/majors" z="sWOxVscTaEA2QKTOheDsubUSs/w="/>
+        <field:simple field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" messageCode="entity_reference_not_managed" messageCodeAttribute="Major" z="dURE8JYMy1L1IOAzCsINLp1WWws="/>
         <field:checkbox field="codeOfConductSigned" id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" z="MEsITWHN00P2YXp8sh6JT1t/sNM="/>
         <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" z="3LUtyqCBfzl9Rw/zN4w4nhC4UpU="/>
-        <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/>
+        <field:simple field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" messageCode="entity_reference_not_managed" messageCodeAttribute="Work Effort" z="B58jy23wuoHy9frp5p7hXVJy8oY="/>
         <field:input field="firstName" id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" min="2" required="true" z="ZfwFke0QaSpPBgRorUMR8NFmIWU="/>
         <field:datetime dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastModified" z="ZMHAHqf5H7JDKfwDjRGzVqXTmuY="/>
         <field:input field="userId" id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" required="true" z="Q+6uPHxy+J/BfpXNbnqjoUPl21g="/>

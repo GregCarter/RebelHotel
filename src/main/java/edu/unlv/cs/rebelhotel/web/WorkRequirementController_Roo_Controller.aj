@@ -5,6 +5,7 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -95,6 +96,11 @@ privileged aspect WorkRequirementController_Roo_Controller {
     @ModelAttribute("workrequirements")
     public java.util.Collection<WorkRequirement> WorkRequirementController.populateWorkRequirements() {
         return WorkRequirement.findAllWorkRequirements();
+    }
+    
+    @ModelAttribute("worktemplates")
+    public java.util.Collection<WorkTemplate> WorkRequirementController.populateWorkTemplates() {
+        return WorkTemplate.findAllWorkTemplates();
     }
     
     String WorkRequirementController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

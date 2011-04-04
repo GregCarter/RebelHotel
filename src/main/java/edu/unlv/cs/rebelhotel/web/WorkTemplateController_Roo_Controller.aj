@@ -5,10 +5,12 @@ package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -87,14 +89,16 @@ privileged aspect WorkTemplateController_Roo_Controller {
         return "redirect:/worktemplates";
     }
     
-    @RequestMapping(params = { "find=ByNameEquals", "form" }, method = RequestMethod.GET)
-    public String WorkTemplateController.findWorkTemplatesByNameEqualsForm(Model uiModel) {
-        return "worktemplates/findWorkTemplatesByNameEquals";
+    @RequestMapping(params = { "find=ByDegreeAndTermEquals", "form" }, method = RequestMethod.GET)
+    public String WorkTemplateController.findWorkTemplatesByDegreeAndTermEqualsForm(Model uiModel) {
+        uiModel.addAttribute("degrees", java.util.Arrays.asList(Degree.class.getEnumConstants()));
+        uiModel.addAttribute("terms", Term.findAllTerms());
+        return "worktemplates/findWorkTemplatesByDegreeAndTermEquals";
     }
     
-    @RequestMapping(params = "find=ByNameEquals", method = RequestMethod.GET)
-    public String WorkTemplateController.findWorkTemplatesByNameEquals(@RequestParam("name") String name, Model uiModel) {
-        uiModel.addAttribute("worktemplates", WorkTemplate.findWorkTemplatesByNameEquals(name).getResultList());
+    @RequestMapping(params = "find=ByDegreeAndTermEquals", method = RequestMethod.GET)
+    public String WorkTemplateController.findWorkTemplatesByDegreeAndTermEquals(@RequestParam("degree") Degree degree, @RequestParam("term") Term term, Model uiModel) {
+        uiModel.addAttribute("worktemplates", WorkTemplate.findWorkTemplatesByDegreeAndTermEquals(degree, term).getResultList());
         return "worktemplates/list";
     }
     
@@ -106,6 +110,11 @@ privileged aspect WorkTemplateController_Roo_Controller {
     @ModelAttribute("worktemplates")
     public java.util.Collection<WorkTemplate> WorkTemplateController.populateWorkTemplates() {
         return WorkTemplate.findAllWorkTemplates();
+    }
+    
+    @ModelAttribute("degrees")
+    public java.util.Collection<Degree> WorkTemplateController.populateDegrees() {
+        return Arrays.asList(Degree.class.getEnumConstants());
     }
     
     String WorkTemplateController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

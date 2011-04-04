@@ -6,7 +6,7 @@ package edu.unlv.cs.rebelhotel.web;
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -105,9 +105,9 @@ privileged aspect MajorController_Roo_Controller {
         return WorkRequirement.findAllWorkRequirements();
     }
     
-    @ModelAttribute("departmentses")
-    public java.util.Collection<Departments> MajorController.populateDepartmentses() {
-        return Arrays.asList(Departments.class.getEnumConstants());
+    @ModelAttribute("degrees")
+    public java.util.Collection<Degree> MajorController.populateDegrees() {
+        return Arrays.asList(Degree.class.getEnumConstants());
     }
     
     String MajorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
