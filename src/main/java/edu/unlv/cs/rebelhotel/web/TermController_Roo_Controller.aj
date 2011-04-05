@@ -26,104 +26,96 @@ import org.springframework.web.util.WebUtils;
 privileged aspect TermController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String TermController.create(@Valid Term term, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("term", term);
+    public String TermController.create(@Valid Term term, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("term", term);
             return "terms/create";
         }
-        uiModel.asMap().clear();
         term.persist();
-        return "redirect:/terms/" + encodeUrlPathSegment(term.getId().toString(), httpServletRequest);
+        return "redirect:/terms/" + encodeUrlPathSegment(term.getId().toString(), request);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String TermController.createForm(Model uiModel) {
-        uiModel.addAttribute("term", new Term());
+    public String TermController.createForm(Model model) {
+        model.addAttribute("term", new Term());
         return "terms/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String TermController.show(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("term", Term.findTerm(id));
-        uiModel.addAttribute("itemId", id);
+    public String TermController.show(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("term", Term.findTerm(id));
+        model.addAttribute("itemId", id);
         return "terms/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String TermController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String TermController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            uiModel.addAttribute("terms", Term.findTermEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            model.addAttribute("terms", Term.findTermEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) Term.countTerms() / sizeNo;
-            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("terms", Term.findAllTerms());
+            model.addAttribute("terms", Term.findAllTerms());
         }
         return "terms/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String TermController.update(@Valid Term term, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("term", term);
+    public String TermController.update(@Valid Term term, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("term", term);
             return "terms/update";
         }
-        uiModel.asMap().clear();
         term.merge();
-        return "redirect:/terms/" + encodeUrlPathSegment(term.getId().toString(), httpServletRequest);
+        return "redirect:/terms/" + encodeUrlPathSegment(term.getId().toString(), request);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String TermController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("term", Term.findTerm(id));
+    public String TermController.updateForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("term", Term.findTerm(id));
         return "terms/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String TermController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String TermController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         Term.findTerm(id).remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/terms";
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/terms?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
     @RequestMapping(params = { "find=BySemester", "form" }, method = RequestMethod.GET)
-    public String TermController.findTermsBySemesterForm(Model uiModel) {
-        uiModel.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+    public String TermController.findTermsBySemesterForm(Model model) {
+        model.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
         return "terms/findTermsBySemester";
     }
     
     @RequestMapping(params = "find=BySemester", method = RequestMethod.GET)
-    public String TermController.findTermsBySemester(@RequestParam("semester") Semester semester, Model uiModel) {
-        uiModel.addAttribute("terms", Term.findTermsBySemester(semester).getResultList());
+    public String TermController.findTermsBySemester(@RequestParam("semester") Semester semester, Model model) {
+        model.addAttribute("terms", Term.findTermsBySemester(semester).getResultList());
         return "terms/list";
     }
     
     @RequestMapping(params = { "find=BySemesterAndTermYearEquals", "form" }, method = RequestMethod.GET)
-    public String TermController.findTermsBySemesterAndTermYearEqualsForm(Model uiModel) {
-        uiModel.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
+    public String TermController.findTermsBySemesterAndTermYearEqualsForm(Model model) {
+        model.addAttribute("semesters", java.util.Arrays.asList(Semester.class.getEnumConstants()));
         return "terms/findTermsBySemesterAndTermYearEquals";
     }
     
     @RequestMapping(params = "find=BySemesterAndTermYearEquals", method = RequestMethod.GET)
-    public String TermController.findTermsBySemesterAndTermYearEquals(@RequestParam("semester") Semester semester, @RequestParam("termYear") Integer termYear, Model uiModel) {
-        uiModel.addAttribute("terms", Term.findTermsBySemesterAndTermYearEquals(semester, termYear).getResultList());
+    public String TermController.findTermsBySemesterAndTermYearEquals(@RequestParam("semester") Semester semester, @RequestParam("termYear") Integer termYear, Model model) {
+        model.addAttribute("terms", Term.findTermsBySemesterAndTermYearEquals(semester, termYear).getResultList());
         return "terms/list";
     }
     
-    @ModelAttribute("terms")
-    public Collection<Term> TermController.populateTerms() {
-        return Term.findAllTerms();
-    }
-    
     @ModelAttribute("semesters")
-    public java.util.Collection<Semester> TermController.populateSemesters() {
+    public Collection<Semester> TermController.populateSemesters() {
         return Arrays.asList(Semester.class.getEnumConstants());
     }
     
-    String TermController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
-        String enc = httpServletRequest.getCharacterEncoding();
+    String TermController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
+        String enc = request.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

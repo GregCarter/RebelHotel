@@ -4,11 +4,8 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
-import edu.unlv.cs.rebelhotel.domain.TermDataOnDemand;
-import edu.unlv.cs.rebelhotel.domain.UserAccountDataOnDemand;
 import java.util.List;
 import java.util.Random;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect StudentDataOnDemand_Roo_DataOnDemand {
@@ -18,12 +15,6 @@ privileged aspect StudentDataOnDemand_Roo_DataOnDemand {
     private Random StudentDataOnDemand.rnd = new java.security.SecureRandom();
     
     private List<Student> StudentDataOnDemand.data;
-    
-    @Autowired
-    private TermDataOnDemand StudentDataOnDemand.termDataOnDemand;
-    
-    @Autowired
-    private UserAccountDataOnDemand StudentDataOnDemand.userAccountDataOnDemand;
     
     public Student StudentDataOnDemand.getSpecificStudent(int index) {
         init();

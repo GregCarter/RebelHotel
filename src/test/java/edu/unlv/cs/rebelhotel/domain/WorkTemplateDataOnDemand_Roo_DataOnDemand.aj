@@ -3,11 +3,9 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.TermDataOnDemand;
 import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
 import java.util.List;
 import java.util.Random;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect WorkTemplateDataOnDemand_Roo_DataOnDemand {
@@ -18,15 +16,12 @@ privileged aspect WorkTemplateDataOnDemand_Roo_DataOnDemand {
     
     private List<WorkTemplate> WorkTemplateDataOnDemand.data;
     
-    @Autowired
-    private TermDataOnDemand WorkTemplateDataOnDemand.termDataOnDemand;
-    
     public WorkTemplate WorkTemplateDataOnDemand.getNewTransientWorkTemplate(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkTemplate obj = new edu.unlv.cs.rebelhotel.domain.WorkTemplate();
-        obj.setDegree(edu.unlv.cs.rebelhotel.domain.enums.Degree.class.getEnumConstants()[0]);
+        obj.setDegree(null);
         obj.setName("name_" + index);
         obj.setTotalHoursNeeded(new Integer(index));
-        obj.setTerm(termDataOnDemand.getRandomTerm());
+        obj.setTerm(null);
         return obj;
     }
     

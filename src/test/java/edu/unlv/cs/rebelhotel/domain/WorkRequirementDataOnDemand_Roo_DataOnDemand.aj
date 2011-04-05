@@ -4,10 +4,8 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import edu.unlv.cs.rebelhotel.domain.WorkTemplateDataOnDemand;
 import java.util.List;
 import java.util.Random;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect WorkRequirementDataOnDemand_Roo_DataOnDemand {
@@ -18,12 +16,9 @@ privileged aspect WorkRequirementDataOnDemand_Roo_DataOnDemand {
     
     private List<WorkRequirement> WorkRequirementDataOnDemand.data;
     
-    @Autowired
-    private WorkTemplateDataOnDemand WorkRequirementDataOnDemand.workTemplateDataOnDemand;
-    
     public WorkRequirement WorkRequirementDataOnDemand.getNewTransientWorkRequirement(int index) {
         edu.unlv.cs.rebelhotel.domain.WorkRequirement obj = new edu.unlv.cs.rebelhotel.domain.WorkRequirement();
-        obj.setWorkTemplate(workTemplateDataOnDemand.getRandomWorkTemplate());
+        obj.setWorkTemplate(null);
         obj.setName("name_" + index);
         obj.setMilestone(true);
         return obj;

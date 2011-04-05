@@ -29,32 +29,31 @@ import org.springframework.web.util.WebUtils;
 privileged aspect WorkEffortController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkEffortController.show(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
-        uiModel.addAttribute("itemId", id);
+    public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
+        model.addAttribute("itemId", id);
         return "workefforts/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            uiModel.addAttribute("workefforts", WorkEffort.findWorkEffortEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            model.addAttribute("workefforts", WorkEffort.findWorkEffortEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) WorkEffort.countWorkEfforts() / sizeNo;
-            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
+            model.addAttribute("workefforts", WorkEffort.findAllWorkEfforts());
         }
         return "workefforts/list";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String WorkEffortController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         WorkEffort.findWorkEffort(id).remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/workefforts";
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
     @ModelAttribute("students")
@@ -62,38 +61,33 @@ privileged aspect WorkEffortController_Roo_Controller {
         return Student.findAllStudents();
     }
     
-    @ModelAttribute("workefforts")
-    public java.util.Collection<WorkEffort> WorkEffortController.populateWorkEfforts() {
-        return WorkEffort.findAllWorkEfforts();
-    }
-    
     @ModelAttribute("workrequirements")
-    public java.util.Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
+    public Collection<WorkRequirement> WorkEffortController.populateWorkRequirements() {
         return WorkRequirement.findAllWorkRequirements();
     }
     
     @ModelAttribute("paystatuses")
-    public java.util.Collection<PayStatus> WorkEffortController.populatePayStatuses() {
+    public Collection<PayStatus> WorkEffortController.populatePayStatuses() {
         return Arrays.asList(PayStatus.class.getEnumConstants());
     }
     
     @ModelAttribute("validations")
-    public java.util.Collection<Validation> WorkEffortController.populateValidations() {
+    public Collection<Validation> WorkEffortController.populateValidations() {
         return Arrays.asList(Validation.class.getEnumConstants());
     }
     
     @ModelAttribute("verifications")
-    public java.util.Collection<Verification> WorkEffortController.populateVerifications() {
+    public Collection<Verification> WorkEffortController.populateVerifications() {
         return Arrays.asList(Verification.class.getEnumConstants());
     }
     
     @ModelAttribute("verificationtypes")
-    public java.util.Collection<VerificationType> WorkEffortController.populateVerificationTypes() {
+    public Collection<VerificationType> WorkEffortController.populateVerificationTypes() {
         return Arrays.asList(VerificationType.class.getEnumConstants());
     }
     
-    String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
-        String enc = httpServletRequest.getCharacterEncoding();
+    String WorkEffortController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
+        String enc = request.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

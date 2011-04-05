@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 @RooEntity(finders = { "findWorkTemplatesByDegreeAndTermEquals" })
 public class WorkTemplate {
 	
+	public static final Integer DEFAULT_TOTAL_HOURS_NEEDED = 500;
+
 	@Enumerated
 	private Degree degree;
 
@@ -25,6 +27,15 @@ public class WorkTemplate {
 
     @ManyToOne
     private Term term;
+    
+    public WorkTemplate(){}
+    
+    public WorkTemplate(Major major) {
+    	this.degree = major.getDegree();
+    	this.term = major.getCatalogTerm();
+    	this.name = "";
+    	this.totalHoursNeeded = DEFAULT_TOTAL_HOURS_NEEDED;
+    }
     
     public String toString() {
         StringBuilder sb = new StringBuilder();

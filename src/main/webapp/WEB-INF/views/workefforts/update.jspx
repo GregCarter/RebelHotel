@@ -5,17 +5,17 @@
     <tiles:insertAttribute ignore="true" name="workeffort_menu"/>
     <br/>
     <br/>
-    <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" versionField="Version" z="6dwshGflCY5ks2E3HZgXrnaP6xA=">
+    <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" z="cOz1/46+q+zTzhiB5uSOs47IMBA=">
         <field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" itemValue="id" items="${students}" path="/students" required="true" z="yTkhwm02NTixAW2YlgNkex9c7n4="/>
         <field:input field="workPosition" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" z="t6mrQRKmjvNXbHhaHXhvWk6puDE="/>
-        <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="WL5SIPCYEuGRJqo0wAW1yfp1s6M="/>
+        <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
+        <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
+        <field:input field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" z="wniekettublvFpBlLM6Wp9N/nMU="/>
+        <field:select field="verificationType" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verificationType" items="${verificationtypes}" path="verificationtypes" z="Kr/5QpSvA7DJVKYxvMEeGemJFiw="/>
+        <field:select field="validation" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_validation" items="${validations}" path="validations" z="vO3fjwp/J0bttFwf4Y2RRFqN9f0="/>
+        <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
         <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
         <field:input field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" z="MM3jIIulQ7CEKbExD4J+3qNDoUc="/>
-        <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
-        <field:select field="verificationType" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verificationType" items="${verificationtypes}" path="verificationtypes" z="Kr/5QpSvA7DJVKYxvMEeGemJFiw="/>
-        <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
-        <field:input field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" z="wniekettublvFpBlLM6Wp9N/nMU="/>
-        <field:input field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" z="wWjY86dJdaoxvFykkiGFNojDIE0="/>
-        <field:select field="validation" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_validation" items="${validations}" path="validations" z="vO3fjwp/J0bttFwf4Y2RRFqN9f0="/>
+        <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="WL5SIPCYEuGRJqo0wAW1yfp1s6M="/>
     </form:update>
 </div>

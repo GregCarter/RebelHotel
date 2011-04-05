@@ -7,6 +7,8 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.NotNull;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
+import edu.unlv.cs.rebelhotel.file.FileStudent;
+
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
@@ -34,6 +36,23 @@ public class UserAccount {
 
     private Boolean enabled = Boolean.TRUE;
 
+    public UserAccount() {
+    }
+    
+    public UserAccount(FileStudent fileStudent, String password) {
+    	this.userId = fileStudent.getStudentId();
+    	this.password = password;
+    	this.email = fileStudent.getEmail();
+    	this.userGroup = UserGroup.ROLE_USER;
+    }
+    
+    public UserAccount(Student student, String password) {
+    	this.userId = student.getUserId();
+    	this.password = password;
+    	this.email = student.getEmail();
+    	this.userGroup = UserGroup.ROLE_USER;
+    }
+    
     public void setPassword(String password) {
         String encoded = passwordEncoder.encodePassword(password, null);
         this.password = encoded;
