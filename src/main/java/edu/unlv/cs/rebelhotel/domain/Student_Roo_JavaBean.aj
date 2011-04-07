@@ -78,11 +78,11 @@ privileged aspect Student_Roo_JavaBean {
         this.gradTerm = gradTerm;
     }
     
-    public java.util.Set<WorkEffort> Student.getWorkEffort() {
+    public Set<WorkEffort> Student.getWorkEffort() {
         return this.workEffort;
     }
     
-    public void Student.setWorkEffort(java.util.Set<WorkEffort> workEffort) {
+    public void Student.setWorkEffort(Set<WorkEffort> workEffort) {
         this.workEffort = workEffort;
     }
     

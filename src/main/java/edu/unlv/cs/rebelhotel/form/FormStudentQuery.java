@@ -46,7 +46,7 @@ public class FormStudentQuery {
 	
 	private boolean useLastName;
 	private String lastName;
-	
+			
 	public boolean getUseUserId() {
 		return useUserId;
 	}

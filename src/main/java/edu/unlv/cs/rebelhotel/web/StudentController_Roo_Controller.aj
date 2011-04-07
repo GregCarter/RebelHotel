@@ -28,72 +28,69 @@ import org.springframework.web.util.WebUtils;
 privileged aspect StudentController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String StudentController.create(@Valid Student student, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("student", student);
-            addDateTimeFormatPatterns(uiModel);
+    public String StudentController.create(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("student", student);
+            addDateTimeFormatPatterns(model);
             return "students/create";
         }
-        uiModel.asMap().clear();
         student.persist();
-        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), httpServletRequest);
+        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String StudentController.createForm(Model uiModel) {
-        uiModel.addAttribute("student", new Student());
-        addDateTimeFormatPatterns(uiModel);
+    public String StudentController.createForm(Model model) {
+        model.addAttribute("student", new Student());
+        addDateTimeFormatPatterns(model);
         return "students/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String StudentController.show(@PathVariable("id") Long id, Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("student", Student.findStudent(id));
-        uiModel.addAttribute("itemId", id);
+    public String StudentController.show(@PathVariable("id") Long id, Model model) {
+        addDateTimeFormatPatterns(model);
+        model.addAttribute("student", Student.findStudent(id));
+        model.addAttribute("itemId", id);
         return "students/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String StudentController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String StudentController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            uiModel.addAttribute("students", Student.findStudentEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            model.addAttribute("students", Student.findStudentEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) Student.countStudents() / sizeNo;
-            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("students", Student.findAllStudents());
+            model.addAttribute("students", Student.findAllStudents());
         }
-        addDateTimeFormatPatterns(uiModel);
+        addDateTimeFormatPatterns(model);
         return "students/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String StudentController.update(@Valid Student student, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("student", student);
-            addDateTimeFormatPatterns(uiModel);
+    public String StudentController.update(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("student", student);
+            addDateTimeFormatPatterns(model);
             return "students/update";
         }
-        uiModel.asMap().clear();
         student.merge();
-        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), httpServletRequest);
+        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String StudentController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("student", Student.findStudent(id));
-        addDateTimeFormatPatterns(uiModel);
+    public String StudentController.updateForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("student", Student.findStudent(id));
+        addDateTimeFormatPatterns(model);
         return "students/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String StudentController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String StudentController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         Student.findStudent(id).remove();
-        uiModel.asMap().clear();
-        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
-        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/students";
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
     @ModelAttribute("majors")
@@ -101,28 +98,23 @@ privileged aspect StudentController_Roo_Controller {
         return Major.findAllMajors();
     }
     
-    @ModelAttribute("students")
-    public java.util.Collection<Student> StudentController.populateStudents() {
-        return Student.findAllStudents();
-    }
-    
     @ModelAttribute("terms")
-    public java.util.Collection<Term> StudentController.populateTerms() {
+    public Collection<Term> StudentController.populateTerms() {
         return Term.findAllTerms();
     }
     
     @ModelAttribute("useraccounts")
-    public java.util.Collection<UserAccount> StudentController.populateUserAccounts() {
+    public Collection<UserAccount> StudentController.populateUserAccounts() {
         return UserAccount.findAllUserAccounts();
     }
     
     @ModelAttribute("workefforts")
-    public java.util.Collection<WorkEffort> StudentController.populateWorkEfforts() {
+    public Collection<WorkEffort> StudentController.populateWorkEfforts() {
         return WorkEffort.findAllWorkEfforts();
     }
     
-    String StudentController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
-        String enc = httpServletRequest.getCharacterEncoding();
+    String StudentController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
+        String enc = request.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

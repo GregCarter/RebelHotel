@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.WebUtils;
 
 @RooWebScaffold(path = "students", formBackingObject = Student.class, exposeFinders=false)
 @RequestMapping("/students")
@@ -77,6 +78,41 @@ public class StudentController {
     public Collection<Degree> populateDegree() {
         return Arrays.asList(Degree.class.getEnumConstants());
     }
+	
+	public int getNumProperties(FormStudentQuery formStudentQuery) {
+		int num = 1;
+		if (formStudentQuery.getShowUserId()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowEmail()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowFirstName()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowMiddleName()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowLastName()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowAdmitTerm()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowGradTerm()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowCodeOfConductSigned()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowLastModified()) {
+			num = num + 1;
+		}
+		if (formStudentQuery.getShowUserAccount()) {
+			num = num + 1;
+		}
+		return num;
+	}
 	
 	public String buildPropertiesString(FormStudentQuery formStudentQuery) {
 		String properties = "id";
@@ -194,7 +230,15 @@ public class StudentController {
 			return "students/query";
 		}
 		
-		List<Student> students = studentQueryService.queryStudents(form);
+		String sorting = null;
+		for (int i = 0; i < getNumProperties(form)*2; i++) {
+			if (WebUtils.hasSubmitParameter(request, "sorting" + i + ".x")) {
+				sorting = "" + i;
+				model.addAttribute("sorting", sorting);
+			}
+		}
+		
+		List<Student> students = studentQueryService.queryStudents(form, sorting);
 		if (!form.getOutputCsv()) {
 			String properties = buildPropertiesString(form);
 			String labels = buildLabelsString(form);

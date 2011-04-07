@@ -11,7 +11,6 @@ privileged aspect WorkRequirement_Roo_ToString {
         StringBuilder sb = new StringBuilder();
         sb.append("WorkTemplate: ").append(getWorkTemplate()).append(", ");
         sb.append("Name: ").append(getName()).append(", ");
-        sb.append("Milestone: ").append(isMilestone()).append(", ");
         sb.append("WorkEffort: ").append(getWorkEffort() == null ? "null" : getWorkEffort().size());
         return sb.toString();
     }

@@ -10,7 +10,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ import edu.unlv.cs.rebelhotel.web.StudentController;
 
 @Service
 public class StudentQueryService {	
-	public List<Student> queryStudents(FormStudentQuery formStudentQuery) {
+	public List<Student> queryStudents(FormStudentQuery formStudentQuery, String sorting) {
 		DetachedCriteria search = DetachedCriteria.forClass(Student.class);
 		
 		if (formStudentQuery.getUseUserId()) {
@@ -90,11 +92,27 @@ public class StudentQueryService {
 			}
 			search.add(Restrictions.like("lastName", lastName));
 		}
+		
 		List students;
 		
 		DetachedCriteria rootQuery = DetachedCriteria.forClass(Student.class);
 		search.setProjection(Projections.distinct(Projections.projectionList().add(Projections.alias(Projections.property("id"), "id"))));
 		rootQuery.add(Subqueries.propertyIn("id", search));
+		
+		if (sorting != null) {
+			if (sorting != "") {
+				int sort_value = Integer.parseInt(sorting.trim());
+				String property = getPropertyFromIndex(formStudentQuery, sort_value);
+				if (sort_value % 2 == 0) {
+					rootQuery.addOrder(Order.asc(property));
+					
+				}
+				else {
+					rootQuery.addOrder(Order.desc(property));
+				}
+			}
+		}
+		
 		Session session = (Session) Student.entityManager().unwrap(Session.class);
 		session.beginTransaction();
 		students = rootQuery.getExecutableCriteria(session).list();
@@ -136,6 +154,77 @@ public class StudentQueryService {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_useraccount", null, LocaleContextHolder.getLocale());
 		}
 		return properties;
+	}
+	
+	public String getPropertyFromIndex(FormStudentQuery formStudentQuery, Integer index) {
+		index = index / 2;
+		Integer iterator = new Integer(0);
+		if (index == 0) {
+			return "id";
+		}
+		iterator = iterator + 1;
+		if (formStudentQuery.getShowUserId()) {
+			if (iterator == index) {
+				return "userId";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowEmail()) {
+			if (iterator == index) {
+				return "email";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowFirstName()) {
+			if (iterator == index) {
+				return "firstName";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowMiddleName()) {
+			if (iterator == index) {
+				return "middleName";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowLastName()) {
+			if (iterator == index) {
+				return "lastName";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowAdmitTerm()) {
+			if (iterator == index) {
+				return "admitTerm";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowGradTerm()) {
+			if (iterator == index) {
+				return "gradTerm";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowCodeOfConductSigned()) {
+			if (iterator == index) {
+				return "codeOfConductSigned";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowLastModified()) {
+			if (iterator == index) {
+				return "lastModified";
+			}
+			iterator = iterator + 1;
+		}
+		if (formStudentQuery.getShowUserAccount()) {
+			if (iterator == index) {
+				return "userAccount";
+			}
+			iterator = iterator + 1;
+		}
+		
+		return "invalid index"; // likely will want to throw an exception instead
 	}
 	
 	public String generateCsv(FormStudentQuery formStudentQuery, List<Student> students, MessageSource messageSource) throws IOException {
