@@ -221,7 +221,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value = "/listquery", method = RequestMethod.GET)
-	public String queryList(@Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String queryList(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		studentQueryValidator.validate(form, result); // rather than assigning the validator to the student controller (like with the work effort controller), it should only apply to this method
 		
 		if (result.hasErrors()) {
@@ -238,12 +238,26 @@ public class StudentController {
 			}
 		}
 		
-		List<Student> students = studentQueryService.queryStudents(form, sorting);
+		List<Object> queryResult;
+		if (page != null || size != null) {
+            int sizeNo = size == null ? 10 : size.intValue();
+            model.addAttribute("students", Student.findStudentEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            float nrOfPages = (float) Student.countStudents() / sizeNo;
+            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            queryResult = studentQueryService.queryStudentsLimited(form, sorting, page.intValue() - 1 * sizeNo, sizeNo);
+		}
+		else {
+			queryResult = studentQueryService.queryStudents(form, sorting);
+		}
+		Long resultCount = (Long) queryResult.get(0);
+		List<Student> students = (List<Student>) queryResult.get(1);
+		
 		if (!form.getOutputCsv()) {
 			String properties = buildPropertiesString(form);
 			String labels = buildLabelsString(form);
 			String maxLengths = buildMaxLengthsString(form);
 			
+			model.addAttribute("counted", resultCount);
 			model.addAttribute("formStudentQuery", form);
 			model.addAttribute("students", students);
 			model.addAttribute("tempColumnProperties", properties);
