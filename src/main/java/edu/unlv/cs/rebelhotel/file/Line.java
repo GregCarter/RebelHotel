@@ -12,13 +12,13 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Term;
-import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 
 @RooJavaBean
 @RooToString
 public class Line {
 	private static final int EXPECTED_SIZE = 13;
+	private static final String SPACE = " ";
 	private static final Logger LOG = Logger.getLogger(Line.class);
 	private String studentId;
 	private String lastName;
@@ -33,7 +33,7 @@ public class Line {
 		if (tokens.size() != EXPECTED_SIZE){
 			throw new InvalidLineException("Invalid number of elements.");
 		}
-		if (hasValidMajors(tokens.get(5),tokens.get(7),tokens.get(9))) {
+		if (hasAtLeastOneMajor(tokens.get(5))) {
 			this.setStudentId(tokens.get(0));
 			this.setLastName(tokens.get(1));
 			this.setFirstName(tokens.get(2));
@@ -62,20 +62,12 @@ public class Line {
 		}
 	}
 	
-	private boolean hasValidMajors(String major1, String major2, String major3) {
-		return shouldInclude(major1) 
-				|| shouldInclude(major2) 
-				|| shouldInclude(major3);
+	private boolean hasAtLeastOneMajor(String major1) {
+		return major1 == SPACE;
 	}
 	
 	private boolean shouldInclude(String major) {
-		Degree degree; 
-		try{
-			degree = Degree.valueOf(major);
-		} catch(IllegalArgumentException e){
-			return false;
-		}
-		return !degree.isIgnorable();
+		return major == SPACE;
 	}
 
 	private Term createOrFindTerm(String yearAndTerm) {
@@ -130,13 +122,8 @@ public class Line {
 	} 
 	
 	private Major makeMajor(String amajor, String aterm) {
-		Major major = new Major();
-		Degree degree = Degree.valueOf(amajor);
-		major.setDegree(degree);
 		Term term = createOrFindTerm(aterm);
-		major.setCatalogTerm(term);
-		major.setCompleted_work_requirements(false);
-		major.setReachedMilestone(false);
+		Major major = new Major(amajor,term);
 		return major;
 	}
 }

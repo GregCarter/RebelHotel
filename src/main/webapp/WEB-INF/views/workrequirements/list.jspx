@@ -23,7 +23,8 @@
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" property="name" z="Jts3b4B2mL21AoL7jassUkvSGQU="/>
             
         
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workTemplate" property="workTemplate" z="0kdtUAbmD1U04pjhXIR7p5u9aI0="/>
+        
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_catalogRequirement" property="catalogRequirement" z="2IGHW/9RGmD23kZQ0xRlLPMdZuo="/>
         </table:table>
     </page:list>
 </div>

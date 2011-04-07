@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.HashSet;
-import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -112,7 +111,6 @@ public class Student {
     	}
     	return name;
     }
-    
     
     public void updateMajors(Set<Major> newMajors){
     	if (isNewStudent()) {

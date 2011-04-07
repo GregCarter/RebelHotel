@@ -22,7 +22,8 @@
     <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" required="true" z="0U8ALT9XerLWgnbJhumpQ0031+I="/>
         
     
-    <field:select field="workTemplate" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workTemplate" itemValue="id" items="${worktemplates}" path="/worktemplates" z="fEhxOEqUtiWVSf3bJypLPU5UJLI="/>
+    
+    <field:select field="catalogRequirement" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_catalogRequirement" itemValue="id" items="${catalogrequirements}" path="/catalogrequirements" z="NlfLE5P/4yWTCeHjoSOdAflA+10="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_WorkRequirement" render="${not empty dependencies}" z="9IDbmf3rUaFb8zHQtoVFVbL5oNU="/>
 </div>

@@ -3,9 +3,10 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkRequirement" modelAttribute="workRequirement" path="/workrequirements" z="VeYulqlyNRZTDpwp3zgl/4E6wr0=">
-        <field:select field="workTemplate" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workTemplate" itemValue="id" items="${worktemplates}" path="/worktemplates" z="fEhxOEqUtiWVSf3bJypLPU5UJLI="/>
+        
         <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" required="true" z="0U8ALT9XerLWgnbJhumpQ0031+I="/>
         <field:checkbox field="milestone" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" z="7jliZxBvMtzlPUkqvzSLUgUkMz4="/>
         <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="by/0Zf58pw+PC8o39bh+pS9JlR0="/>
+    <field:select field="catalogRequirement" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_catalogRequirement" itemValue="id" items="${catalogrequirements}" path="/catalogrequirements" z="NlfLE5P/4yWTCeHjoSOdAflA+10="/>
     </form:update>
 </div>

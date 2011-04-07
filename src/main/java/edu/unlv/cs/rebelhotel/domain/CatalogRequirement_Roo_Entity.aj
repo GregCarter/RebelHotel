@@ -3,7 +3,7 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
-import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
+import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 import java.lang.Integer;
 import java.lang.Long;
 import java.util.List;
@@ -17,90 +17,90 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Version;
 import org.springframework.transaction.annotation.Transactional;
 
-privileged aspect WorkTemplate_Roo_Entity {
+privileged aspect CatalogRequirement_Roo_Entity {
     
-    declare @type: WorkTemplate: @Entity;
+    declare @type: CatalogRequirement: @Entity;
     
     @PersistenceContext
-    transient EntityManager WorkTemplate.entityManager;
+    transient EntityManager CatalogRequirement.entityManager;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long WorkTemplate.id;
+    private Long CatalogRequirement.id;
     
     @Version
     @Column(name = "version")
-    private Integer WorkTemplate.version;
+    private Integer CatalogRequirement.version;
     
-    public Long WorkTemplate.getId() {
+    public Long CatalogRequirement.getId() {
         return this.id;
     }
     
-    public void WorkTemplate.setId(Long id) {
+    public void CatalogRequirement.setId(Long id) {
         this.id = id;
     }
     
-    public Integer WorkTemplate.getVersion() {
+    public Integer CatalogRequirement.getVersion() {
         return this.version;
     }
     
-    public void WorkTemplate.setVersion(Integer version) {
+    public void CatalogRequirement.setVersion(Integer version) {
         this.version = version;
     }
     
     @Transactional
-    public void WorkTemplate.persist() {
+    public void CatalogRequirement.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
     
     @Transactional
-    public void WorkTemplate.remove() {
+    public void CatalogRequirement.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            WorkTemplate attached = WorkTemplate.findWorkTemplate(this.id);
+            CatalogRequirement attached = CatalogRequirement.findCatalogRequirement(this.id);
             this.entityManager.remove(attached);
         }
     }
     
     @Transactional
-    public void WorkTemplate.flush() {
+    public void CatalogRequirement.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
     
     @Transactional
-    public WorkTemplate WorkTemplate.merge() {
+    public CatalogRequirement CatalogRequirement.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
-        WorkTemplate merged = this.entityManager.merge(this);
+        CatalogRequirement merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }
     
-    public static final EntityManager WorkTemplate.entityManager() {
-        EntityManager em = new WorkTemplate().entityManager;
+    public static final EntityManager CatalogRequirement.entityManager() {
+        EntityManager em = new CatalogRequirement().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
-    public static long WorkTemplate.countWorkTemplates() {
-        return entityManager().createQuery("select count(o) from WorkTemplate o", Long.class).getSingleResult();
+    public static long CatalogRequirement.countCatalogRequirements() {
+        return entityManager().createQuery("select count(o) from CatalogRequirement o", Long.class).getSingleResult();
     }
     
-    public static List<WorkTemplate> WorkTemplate.findAllWorkTemplates() {
-        return entityManager().createQuery("select o from WorkTemplate o", WorkTemplate.class).getResultList();
+    public static List<CatalogRequirement> CatalogRequirement.findAllCatalogRequirements() {
+        return entityManager().createQuery("select o from CatalogRequirement o", CatalogRequirement.class).getResultList();
     }
     
-    public static WorkTemplate WorkTemplate.findWorkTemplate(Long id) {
+    public static CatalogRequirement CatalogRequirement.findCatalogRequirement(Long id) {
         if (id == null) return null;
-        return entityManager().find(WorkTemplate.class, id);
+        return entityManager().find(CatalogRequirement.class, id);
     }
     
-    public static List<WorkTemplate> WorkTemplate.findWorkTemplateEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from WorkTemplate o", WorkTemplate.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    public static List<CatalogRequirement> CatalogRequirement.findCatalogRequirementEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("select o from CatalogRequirement o", CatalogRequirement.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }
