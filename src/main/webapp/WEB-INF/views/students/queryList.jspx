@@ -5,8 +5,8 @@
     <tiles:insertAttribute name = "student_menu" ignore = "true" />
     <br/>
     <br/>
-    <spring:url value = "/students?query" var = "form_base_url" />
-    <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "post">
+    <spring:url value = "/students/listquery" var = "form_base_url" />
+    <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "get">
     	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
     	<table>
     		<tr>
@@ -125,11 +125,7 @@
 		    <c:set var="lengths" value="${fn:split(columnMaxLengths, ',')}" scope="request" />
 		
 		    <table>
-		      <spring:url value = "/students" var = "form_column_url">
-		      	<spring:param name = "query" />
-		      	<spring:param name = "ordered" />
-		      </spring:url>
-		      <sform:form action="${form_column_url}" commandName="formStudentQuery" method="post">
+		      <sform:form action="${form_base_url}" commandName="formStudentQuery" method="get">
 		      	<sform:hidden path = "useUserId" value = "${formStudentQuery.useUserId}" />
 		      	<sform:hidden path = "userId" value = "${formStudentQuery.userId}" />
 		      	<sform:hidden path = "useCatalogTerm" value = "${formStudentQuery.useCatalogTerm}" />
@@ -232,7 +228,7 @@
 		                  <spring:escapeBody javaScriptEscape="true">
 		                    <spring:message code="entity_delete_confirm" />
 		                  </spring:escapeBody>
-		                </c:set>
+		                </c:set>  
 		                <input alt="${fn:escapeXml(delete_label)}" class="image" src="${fn:escapeXml(delete_image_url)}" title="${fn:escapeXml(delete_label)}" type="image" value="${fn:escapeXml(delete_label)}" onclick="return confirm('${delete_confirm_msg}');" />
 		                <c:if test="${not empty param.page}">
 		                  <input name="page" type="hidden" value="${fn:escapeXml(param.page)}" />
@@ -267,6 +263,5 @@
 		      </tr>
 		    </table>
 	    </page:list>
-    <!-- </form:create>-->
 	<form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" />
 </div>

@@ -220,7 +220,7 @@ public class StudentController {
 		return properties;
 	}
 	
-	@RequestMapping(params = "query", method = RequestMethod.POST)
+	@RequestMapping(value = "/listquery", method = RequestMethod.GET)
 	public String queryList(@Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		studentQueryValidator.validate(form, result); // rather than assigning the validator to the student controller (like with the work effort controller), it should only apply to this method
 		
@@ -286,7 +286,7 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping(params = "query", method = RequestMethod.GET)
+	@RequestMapping(value = "/query", method = RequestMethod.GET)
 	public String query(Model model) {
 		FormStudentQuery fsq = new FormStudentQuery();
 		fsq.setLastModifiedStart(new Date());
