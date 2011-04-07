@@ -5,6 +5,9 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.NotNull;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.enums.Departments;
+
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 @RooJavaBean
@@ -12,8 +15,8 @@ import javax.persistence.ManyToOne;
 @RooEntity(finders = { "findWorkTemplatesByNameEquals" })
 public class WorkTemplate {
 
-    @NotNull
-    private String name;
+	@NotNull
+	private String name;
 
     private Integer hours;
 

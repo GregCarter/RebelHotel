@@ -99,21 +99,20 @@ privileged aspect UserAccountController_Roo_Controller {
         return "useraccounts/list";
     }
     
-<<<<<<< HEAD
-    @RequestMapping(params = { "find=ByEmailLike", "form" }, method = RequestMethod.GET)
-    public String UserAccountController.findUserAccountsByEmailLikeForm(Model model) {
-        return "useraccounts/findUserAccountsByEmailLike";
+    @RequestMapping(params = { "find=ByUserIdEquals", "form" }, method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByUserIdEqualsForm(Model uiModel) {
+        return "useraccounts/findUserAccountsByUserIdEquals";
     }
     
-    @RequestMapping(params = "find=ByEmailLike", method = RequestMethod.GET)
-    public String UserAccountController.findUserAccountsByEmailLike(@RequestParam("email") String email, Model model) {
-        model.addAttribute("useraccounts", UserAccount.findUserAccountsByEmailLike(email).getResultList());
+    @RequestMapping(params = "find=ByUserIdEquals", method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByUserIdEquals(@RequestParam("userId") String userId, Model uiModel) {
+        uiModel.addAttribute("useraccounts", UserAccount.findUserAccountsByUserId(userId).getResultList());
         return "useraccounts/list";
-=======
+    }
+    
     @ModelAttribute("useraccounts")
     public Collection<UserAccount> UserAccountController.populateUserAccounts() {
         return UserAccount.findAllUserAccounts();
->>>>>>> e8aec94c8f3da9d5b486db2a01bdd79dd9e3683e
     }
     
     @ModelAttribute("usergroups")

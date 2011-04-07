@@ -5,8 +5,10 @@
     <tiles:insertAttribute ignore="true" name="student_menu"/>
     <br/>
     <br/>
+    <h1>Listing All Students</h1>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
         <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="RFPbdXr7ZKuirMVeSh9ZJKfvMnk=">
+<<<<<<< HEAD
             
             
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="user-managed"/>
@@ -22,6 +24,15 @@
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" property="gradTerm" z="NXCJHi8hCaWP36aMvQLrYQIT6x8="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" property="admitTerm" z="BUdDIBOqBFS9uGJzNcyq+qD/D/8="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" property="codeOfConductSigned" z="HUCAYFz/64nj7NnTFM4sbVD6XYs="/>
+=======
+        	<table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" property="userId" z="?"/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_student_lastname" property="lastName" z=""/>     
+        	<table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" property="majors" maxLength="25" z="Ecda7DS1Cn6bKJSYGr68uCR7h8Y="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" property="gradTerm" maxLength="12" z="NXCJHi8hCaWP36aMvQLrYQIT6x8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" property="admitTerm" maxLength="12" z="BUdDIBOqBFS9uGJzNcyq+qD/D/8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" property="codeOfConductSigned" maxLength="5" z="HUCAYFz/64nj7NnTFM4sbVD6XYs="/>
+>>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
         </table:table>
     </page:list>
 </div>

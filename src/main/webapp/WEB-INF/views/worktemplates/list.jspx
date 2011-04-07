@@ -10,6 +10,7 @@
             
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" property="hours" z="1tXbhU1c5eCaRZmt0pPY7hk88oc="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_term" property="term" z="o1B4NjsU/RHO3pZSRumGdQ1gPqE="/>
+        
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" property="name" z="+Vu00IufffrH5SnRmaIiZiE/f08="/>
         </table:table>
     </page:list>

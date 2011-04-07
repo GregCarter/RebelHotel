@@ -147,6 +147,13 @@ public class WorkEffortController {
         return "workefforts/update";
     }
 	
+	/*@RequestMapping(value= "/{id}", params = "forstudent" , method=RequestMethod.GET)
+	public String randomValidation(@PathVariable("id") Long id, Model model) {
+	 
+		return "";
+	}*/
+	
+	
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(params = "mywork", method = RequestMethod.GET)
 	public String listPersonalWork(Model model) {

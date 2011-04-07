@@ -3,15 +3,12 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_WorkRequirement" modelAttribute="workRequirement" path="/workrequirements" render="${empty dependencies}" z="Y5GYfDtf44tuSSL/7+7WKRrAcFU=">
-        
         <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_hours" validationMessageCode="field_invalid_integer" z="Eoo0TuBN5MlPX4XbCcu4M3zEV4o="/>
-        
     <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="by/0Zf58pw+PC8o39bh+pS9JlR0="/>
-    
     <field:checkbox field="milestone" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" z="7jliZxBvMtzlPUkqvzSLUgUkMz4="/>
     
     
-    
+    <!-- <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" required="true" z="0U8ALT9XerLWgnbJhumpQ0031+I="/> -->
     <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" required="true" z="0U8ALT9XerLWgnbJhumpQ0031+I="/>
     
     

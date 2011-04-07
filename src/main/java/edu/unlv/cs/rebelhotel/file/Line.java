@@ -25,11 +25,12 @@ public class Line {
 	private String middleName;
 	private String email;
 	private Set<Major> majors = new HashSet<Major>();
+
 	private Term admitTerm;
 	private Term gradTerm;
 
 	public Line convert(List<String> tokens){
-		System.out.println(tokens); 
+
 		Line line = new Line();
 		String[] field = (String[]) tokens.toArray();
 		line.setStudentId(field[0]);
@@ -37,6 +38,7 @@ public class Line {
 		line.setFirstName(field[2]);
 		line.setMiddleName(field[3]);
 		line.setEmail(field[4]);
+
 
 		Set<Major> majors = line.getMajors();
 		Major major;
@@ -76,12 +78,11 @@ public class Line {
 			return false;
 		}
 	}
-
+	
 	private Term makeTerm(String yearAndTerm) {
 		char[] character = {0,0,0,0};
 		Integer termYear = null;
 		Semester semester = null;
-
 		yearAndTerm.getChars(0,4,character,0);
 		termYear = convertToYear(character[0], character[1], character[2]);
 		semester = convertToSemester(character[3]);
@@ -97,6 +98,15 @@ public class Line {
 		} else {
 			throw new IllegalArgumentException("Invalid semester:" + semester);
 		}
+
+		/*if (Term.doesExist(term.getSemester(), term.getTermYear())) {
+			term.merge();
+		} else {
+			term.persist();
+		}*/
+		
+		term.merge();
+		
 		return term;
 	}
 

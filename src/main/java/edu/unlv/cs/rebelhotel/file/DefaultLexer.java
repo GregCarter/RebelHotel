@@ -16,6 +16,8 @@ public class DefaultLexer implements Lexer{
 		List<List<String>> lines = new ArrayList<List<String>>();
 		CSVReader csvreader = new CSVReader(reader, ',', '"', 1);
 
+
+
 		
 		String [] nextLine;
 		nextLine = csvreader.readNext();

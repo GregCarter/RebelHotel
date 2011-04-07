@@ -32,8 +32,8 @@ public class Student {
     private String userId;
 
     @NotNull
-    @Size(min = 2)
-    private String email;
+    @Size(min = 5)
+    private String email = "default";
 
     @NotNull
     @Size(min = 2)

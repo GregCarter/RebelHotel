@@ -1,6 +1,7 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -12,16 +13,20 @@ import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
 
 
-
-@Configurable("userAccount")
+@RequestMapping()
+@Configurable("UserAccount")
 @RooJavaBean
 @RooToString
-@RooEntity(finders = { "findUserAccountsByUserId", "findUserAccountsByEmailLike" })
+
+@RooEntity
+(finders = { "findUserAccountsByUserId", "findUserAccountsByEmailLike", "findUserAccountsByUserIdEquals" })
+
 public class UserAccount {
 
     @NotNull
     @Column(unique = true)
     private String userId;
+
 
     private transient MessageDigestPasswordEncoder passwordEncoder;
 
@@ -29,7 +34,6 @@ public class UserAccount {
     private String password;
 
     @NotNull
-
     @Column(unique=true)
     private String email = "default@email.com";
     
@@ -58,8 +62,5 @@ public class UserAccount {
 		password = "tempPass";
     	return password;
     }
-	public Object getUser() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

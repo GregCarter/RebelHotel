@@ -13,10 +13,10 @@
 					<spring:message var = "worktemplate_menu_query" code = "label_worktemplate_menu_query" />
 					<a title="${worktemplate_menu_query}" href="/RebelHotel/worktemplates?page=1&amp;size=10">${worktemplate_menu_query}</a>
 				</td>
-				<td id="c_worktemplate_studentequals">
+				<!-- <td id="c_worktemplate_studentequals">
 					<spring:message var = "worktemplate_menu_find" code = "label_worktemplate_menu_find" />
 					<a title="${worktemplate_menu_find}" href="/RebelHotel/worktemplates?find=ByNameEquals&amp;form">${worktemplate_menu_find}</a>
-				</td>
+				</td> -->
 			</table>
 		</span>
 	</security:authorize>

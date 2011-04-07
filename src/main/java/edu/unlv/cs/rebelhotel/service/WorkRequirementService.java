@@ -3,6 +3,9 @@ package edu.unlv.cs.rebelhotel.service;
 
 import org.springframework.stereotype.Component;
 
+
+import java.util.HashSet;
+//import java.util.List;
 import java.util.Set;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
@@ -37,4 +40,5 @@ public class WorkRequirementService {
 		}
 		return current_majors;
 	}
+
 }

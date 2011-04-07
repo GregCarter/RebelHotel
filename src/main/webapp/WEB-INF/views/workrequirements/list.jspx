@@ -4,13 +4,9 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkRequirement" items="${workrequirements}" z="QCeDt4KibFrmJLhIYd0UJERwiW4=">
         <table:table data="${workrequirements}" id="l_edu_unlv_cs_rebelhotel_domain_WorkRequirement" path="/workrequirements" z="3l9oZy9DvIJT6Y0XSnmVv6zzel4=">
-            
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_hours" property="hours" z="UMlQ0/+gfF8A7URivcIzg7MSaZ0="/>
-            
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workEffort" property="workEffort" z="loEPCDKlA5Y1PYkYKsCNAxIy/SM="/>
-        
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_milestone" property="milestone" z="vIvVTcZ47O4WZ30gIACTwzuDG8k="/>
-        
         
         
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" property="name" z="Jts3b4B2mL21AoL7jassUkvSGQU="/>

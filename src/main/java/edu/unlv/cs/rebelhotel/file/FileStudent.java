@@ -23,6 +23,7 @@ public class FileStudent {
 	private Term admitTerm;
 	private Term gradTerm; // are we going to put gradTerm in Majors?
 
+
 	public Set<FileStudent> convert(Collection<List<Line>> student) {
 		Set<FileStudent> fileStudents = new HashSet<FileStudent>();
 		for (List<Line> lines : student) {

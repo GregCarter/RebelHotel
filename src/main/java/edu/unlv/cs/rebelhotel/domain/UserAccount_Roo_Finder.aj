@@ -32,5 +32,4 @@ privileged aspect UserAccount_Roo_Finder {
         q.setParameter("email", email);
         return q;
     }
-    
 }

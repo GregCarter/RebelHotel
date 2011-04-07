@@ -21,12 +21,17 @@
 [INFO] [compiler:testCompile {execution: default-testCompile}]
 [INFO] Nothing to compile - all classes are up to date
 [INFO] [surefire:test {execution: default-test}]
+<<<<<<< HEAD
 [INFO] Surefire report directory: /home/suziee/Documents/workspace-sts-2.6.0.SR1/RebelHotel/target/surefire-reports
+=======
+[INFO] Surefire report directory: F:\Documents and Settings\Alan_Workstation\workspace\RebelHotel\target\surefire-reports
+>>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
 
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest
+<<<<<<< HEAD
 Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.723 sec
 Running edu.unlv.cs.rebelhotel.domain.WorkTemplateIntegrationTest
 Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.578 sec
@@ -197,20 +202,48 @@ Running edu.unlv.cs.rebelhotel.domain.WorkRequirementIntegrationTest
 Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.181 sec
 Running edu.unlv.cs.rebelhotel.domain.UserAccountIntegrationTest
 Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.632 sec
+=======
+Tests run: 9, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 5.578 sec <<< FAILURE!
+Running edu.unlv.cs.rebelhotel.domain.WorkTemplateIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 sec
+Running edu.unlv.cs.rebelhotel.domain.TermIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 sec
+Running edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.172 sec
+Running edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.485 sec
+Running edu.unlv.cs.rebelhotel.domain.WorkRequirementIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 sec
+Running edu.unlv.cs.rebelhotel.domain.UserAccountIntegrationTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.187 sec
+>>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
 
 Results :
 
 Tests in error: 
+<<<<<<< HEAD
   testRemove(edu.unlv.cs.rebelhotel.domain.MajorIntegrationTest)
   testRemove(edu.unlv.cs.rebelhotel.domain.StudentIntegrationTest)
 
 Tests run: 63, Failures: 0, Errors: 2, Skipped: 0
+=======
+  testFlush(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+  testMerge(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+  testPersist(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+  testCountWorkEfforts(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+  testFindWorkEffort(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+  testFindAllWorkEfforts(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+  testFindWorkEffortEntries(edu.unlv.cs.rebelhotel.domain.WorkEffortIntegrationTest)
+
+Tests run: 63, Failures: 0, Errors: 7, Skipped: 0
+>>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
 
 [INFO] ------------------------------------------------------------------------
 [ERROR] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] There are test failures.
 
+<<<<<<< HEAD
 Please refer to /home/suziee/Documents/workspace-sts-2.6.0.SR1/RebelHotel/target/surefire-reports for the individual test results.
 [INFO] ------------------------------------------------------------------------
 [INFO] For more information, run Maven with the -e switch
@@ -218,4 +251,13 @@ Please refer to /home/suziee/Documents/workspace-sts-2.6.0.SR1/RebelHotel/target
 [INFO] Total time: 40 seconds
 [INFO] Finished at: Sat Mar 26 13:03:04 PDT 2011
 [INFO] Final Memory: 26M/62M
+=======
+Please refer to F:\Documents and Settings\Alan_Workstation\workspace\RebelHotel\target\surefire-reports for the individual test results.
+[INFO] ------------------------------------------------------------------------
+[INFO] For more information, run Maven with the -e switch
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 16 seconds
+[INFO] Finished at: Wed Mar 16 22:54:18 PDT 2011
+[INFO] Final Memory: 32M/247M
+>>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
 [INFO] ------------------------------------------------------------------------

@@ -29,6 +29,8 @@ public class Major {
 
 	@ManyToOne
     private Term catalogTerm;
+	
+
 
 	private boolean completed_work_requirements = false;
 	
