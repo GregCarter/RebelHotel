@@ -257,6 +257,7 @@ public class StudentController {
 			String labels = buildLabelsString(form);
 			String maxLengths = buildMaxLengthsString(form);
 			
+			model.addAttribute("urly", request.getRequestURL().toString() + "?" + request.getQueryString());
 			model.addAttribute("counted", resultCount);
 			model.addAttribute("formStudentQuery", form);
 			model.addAttribute("students", students);

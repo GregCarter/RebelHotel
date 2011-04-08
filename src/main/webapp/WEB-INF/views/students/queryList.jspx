@@ -6,6 +6,7 @@
     <br/>
     <br/>
     ${counted} results returned
+    URL IS : ${urly}
     <spring:url value = "/students/listquery" var = "form_base_url" />
     <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "get">
     	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
