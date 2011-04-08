@@ -16,6 +16,7 @@ import org.joda.time.format.DateTimeFormat;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
 import edu.unlv.cs.rebelhotel.service.StudentQueryService;
@@ -243,7 +244,7 @@ public class StudentController {
             model.addAttribute("students", Student.findStudentEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) Student.countStudents() / sizeNo;
             model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
-            queryResult = studentQueryService.queryStudentsLimited(form, sorting, page.intValue() - 1 * sizeNo, sizeNo);
+            queryResult = studentQueryService.queryStudentsLimited(form, sorting, (page.intValue() - 1) * sizeNo, sizeNo);
 		}
 		else {
 			queryResult = studentQueryService.queryStudents(form, sorting);
@@ -256,7 +257,27 @@ public class StudentController {
 			String labels = buildLabelsString(form);
 			String maxLengths = buildMaxLengthsString(form);
 			
-			model.addAttribute("urly", request.getRequestURL().toString() + "?" + request.getQueryString());
+			/* Code to remove "page" and "size" parameters from the query string
+			since otherwise the pagination that uses queryString would add those two parameters to the URL
+			each time a different page size is selected */
+			String queryString = request.getQueryString();
+			String queryStringArray[] = queryString.split("&");
+			for (int i = 0; i < queryStringArray.length; i++) {
+				String check;
+				if ((check = queryStringArray[i].split("=")[0]).equals("size") || check.equals("page")) {
+					queryStringArray[i] = "";
+				}
+			}
+			queryString = "";
+			for (int i = 0; i < queryStringArray.length; i++) {
+				if (queryStringArray[i] != "") {
+					if (!queryString.equals("")) {
+						queryString += "&amp;";
+					}
+					queryString += queryStringArray[i];
+				}
+			}
+			model.addAttribute("queryString", queryString);
 			model.addAttribute("counted", resultCount);
 			model.addAttribute("formStudentQuery", form);
 			model.addAttribute("students", students);

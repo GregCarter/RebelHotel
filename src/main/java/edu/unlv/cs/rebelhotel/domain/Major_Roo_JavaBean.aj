@@ -4,9 +4,10 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
-import java.util.Set;
+import java.lang.String;
 
-privileged aspect Major_Roo_JavaBean {    
+privileged aspect Major_Roo_JavaBean {
+    
     public boolean Major.isReachedMilestone() {
         return this.reachedMilestone;
     }
@@ -19,7 +20,7 @@ privileged aspect Major_Roo_JavaBean {
         return this.degreeCode;
     }
     
-    public void Major.setDegreCode(String degreeCode) {
+    public void Major.setDegreeCode(String degreeCode) {
         this.degreeCode = degreeCode;
     }
     

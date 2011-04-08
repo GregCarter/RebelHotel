@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
-import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -89,7 +88,6 @@ privileged aspect MajorController_Roo_Controller {
     public Collection<Term> MajorController.populateTerms() {
         return Term.findAllTerms();
     }
-    
     
     String MajorController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
         String enc = request.getCharacterEncoding();

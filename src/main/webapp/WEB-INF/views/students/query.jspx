@@ -58,7 +58,7 @@
     			</td>
     			<td>
     				<field:checkbox field="useMajor" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMajor" />
-    				<field:select field="degree" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_degree" items="${degree}" path="degree" />
+    				<field:select field="degreeCode" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_degreeCode" items="${degree}" path="degreeCode" />
     			</td>
     		</tr>
     	</table>
@@ -100,7 +100,8 @@
     			</td>
     		</tr>
     	</table>
-    	<input type = "submit" value = "Submit query" />
+    	<input type ="hidden" name = "page" value = "1" />
+    	<input type = "submit" value = "Submit Query" />
     </sform:form>
 <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" />
 </div>

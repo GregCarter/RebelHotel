@@ -71,7 +71,6 @@ public class Student {
     private UserAccount userAccount;
     
     @PreUpdate
-    @PrePersist
     public void onUpdate() {
     	lastModified = new Date();
     }
@@ -79,6 +78,7 @@ public class Student {
     // THIS IS FOR THE STUDENT CREATE FORM
     @PrePersist
     public void initUserAccount(){
+    	lastModified = new Date();
     	TypedQuery<UserAccount> findUserAccountsByUserId = UserAccount.findUserAccountsByUserId(getUserId());
     	try {
     		UserAccount userAccount = findUserAccountsByUserId.getSingleResult();
@@ -86,6 +86,7 @@ public class Student {
     	} catch(EmptyResultDataAccessException e) {
     		RandomPasswordGenerator rpg = new RandomPasswordGenerator();
     		UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
+    		userAccount.persist();
     		setUserAccount(userAccount);
     	}
     }

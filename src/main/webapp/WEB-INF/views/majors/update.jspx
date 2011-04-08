@@ -3,10 +3,11 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_Major" modelAttribute="major" path="/majors" z="HXqZJUL9Huvv3eDikiP7KKgLo/s=">
-        <field:simple field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_Major_workRequirements" messageCode="entity_reference_not_managed" messageCodeAttribute="Work Requirement" z="jc8GK9wDgV1f66Do5N98rs22DyQ="/>
+        
         <field:checkbox field="reachedMilestone" id="c_edu_unlv_cs_rebelhotel_domain_Major_reachedMilestone" z="bu4iCSmnMX8F2S83eopoiWp2gqw="/>
-        <field:select field="degree" id="c_edu_unlv_cs_rebelhotel_domain_Major_degree" items="${degrees}" path="degrees" z="W3yjkZoxchS6wtgqMGbw5wI6Cfc="/>
+        
         <field:select field="catalogTerm" id="c_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" itemValue="id" items="${terms}" path="/terms" z="lrTyjeVuYuc8J17hqp/trmR04Zk="/>
         <field:checkbox field="completed_work_requirements" id="c_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" z="sTX1jPhJrWq5LKP1gzKu6BEO3lE="/>
+    <field:input field="degreeCode" id="c_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" required="true" z="LrEUQ7pLt7e0xD/4MLmY7/F6DAE="/>
     </form:update>
 </div>
