@@ -23,13 +23,10 @@ import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 
 import java.util.Set;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
+import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 
 import java.util.HashSet;
 import javax.persistence.ManyToMany;
-import javax.persistence.CascadeType;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 
 @RooJavaBean
 @RooToString
@@ -67,7 +64,7 @@ public class WorkEffort {
     private WorkEffortDuration duration;
 
     @ManyToMany
-    private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
+    private Set<CatalogRequirement> catalogRequirements = new HashSet<CatalogRequirement>();
     
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
-import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/META-INF/spring/applicationContext.xml")
@@ -35,16 +34,6 @@ public class LineTest {
 		int actualMajorSize = instance.getMajors().size();
 		int expectedMajorSize = 0;
 		assertEquals("The major size should be empty if there are no valid majors.", expectedMajorSize,actualMajorSize);
-	}
-	
-	@Test
-	public void validLineShouldHaveCorrectDepartment(){
-		Line instance = createValidLine();
-		List<Major> majors = new ArrayList<Major>(instance.getMajors());
-		Major major = majors.get(0);
-		Degree actualDepartment = major.getDegree();
-		Degree expectedDepartment = Degree.HOSBSHA;
-		assertEquals("The first major department should be: ",expectedDepartment,actualDepartment);
 	}
 	
 	private Line createValidLine() {

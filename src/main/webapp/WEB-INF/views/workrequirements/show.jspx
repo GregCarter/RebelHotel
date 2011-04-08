@@ -22,6 +22,7 @@
     <field:display field="name" id="s_edu_unlv_cs_rebelhotel_domain_WorkRequirement_name" object="${workrequirement}" z="feuhf3mc4A4eMXjMxC74gHnTV4w="/>
         
     
-    <field:display field="workTemplate" id="s_edu_unlv_cs_rebelhotel_domain_WorkRequirement_workTemplate" object="${workrequirement}" z="RnIaBd65LUYUDykcXvEdT9kXEjA="/>
+    
+    <field:display field="catalogRequirement" id="s_edu_unlv_cs_rebelhotel_domain_WorkRequirement_catalogRequirement" object="${workrequirement}" z="LGbSIiwo4M5V8bCe/+A+iABwRe0="/>
     </page:show>
 </div>

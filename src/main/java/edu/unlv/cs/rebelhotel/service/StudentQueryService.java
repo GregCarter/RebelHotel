@@ -56,7 +56,7 @@ public class StudentQueryService {
 		// a student with a specific major with the milestone set
 		if (formStudentQuery.getUseMajor()) {
 			DetachedCriteria majorSearch = search.createCriteria("majors");
-			majorSearch.add(Restrictions.eq("degree", formStudentQuery.getDegree()));
+			majorSearch.add(Restrictions.eq("degree", formStudentQuery.getDegreeCode()));
 			if (formStudentQuery.getUseMilestone()) {
 				majorSearch.add(Restrictions.eq("reachedMilestone", formStudentQuery.getHasMilestone()));
 			}

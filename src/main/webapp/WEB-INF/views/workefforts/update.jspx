@@ -16,6 +16,6 @@
         <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
         <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
         <field:input field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" z="MM3jIIulQ7CEKbExD4J+3qNDoUc="/>
-        <field:select field="workRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workRequirements" itemValue="id" items="${workrequirements}" multiple="true" path="/workrequirements" z="WL5SIPCYEuGRJqo0wAW1yfp1s6M="/>
+    <field:select field="catalogRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_catalogRequirements" itemValue="id" items="${catalogrequirements}" multiple="true" path="/catalogrequirements" z="wg4QYQgUBQSBmnQA9y+BOAHZjtg="/>
     </form:update>
 </div>

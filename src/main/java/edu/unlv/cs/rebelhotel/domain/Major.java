@@ -1,41 +1,38 @@
 package edu.unlv.cs.rebelhotel.domain;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 
-import edu.unlv.cs.rebelhotel.domain.enums.Degree;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.Term;
 
 @RooJavaBean
 @RooEntity
 public class Major {
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<WorkRequirement> workRequirements = new HashSet<WorkRequirement>();
-	
 	private boolean reachedMilestone;
 	
-	@Enumerated
-	private Degree degree;
+	@NotNull
+	private String degreeCode;
 
 	@ManyToOne
     private Term catalogTerm;
 
+	@Deprecated
 	private boolean completed_work_requirements = false;
+	
+	public Major(){}
+	
+	public Major(String degreeCode, Term catalogTerm) {
+		this.degreeCode = degreeCode;
+		this.catalogTerm = catalogTerm;
+		this.reachedMilestone = false;
+	}
 	
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getDegree()).append(", ");
+        sb.append(getDegreeCode()).append(", ");
         return sb.toString();
     }
 }
