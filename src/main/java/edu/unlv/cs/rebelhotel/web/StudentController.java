@@ -252,7 +252,7 @@ public class StudentController {
 		Long resultCount = (Long) queryResult.get(0);
 		List<Student> students = (List<Student>) queryResult.get(1);
 		
-		if (!form.getOutputCsv()) {
+		if (!form.getOutputCsv() && !WebUtils.hasSubmitParameter(request, "downloadExcel")) {
 			String properties = buildPropertiesString(form);
 			String labels = buildLabelsString(form);
 			String maxLengths = buildMaxLengthsString(form);
@@ -277,6 +277,7 @@ public class StudentController {
 					queryString += queryStringArray[i];
 				}
 			}
+			model.addAttribute("sortId", sorting);
 			model.addAttribute("queryString", queryString);
 			model.addAttribute("counted", resultCount);
 			model.addAttribute("formStudentQuery", form);

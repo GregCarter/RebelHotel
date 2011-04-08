@@ -100,7 +100,17 @@
     			</td>
     		</tr>
     	</table>
+    	<c:if test = "${not empty param.page}">
+     		<input type = "hidden" name = "page" value = "${param.page}" />
+     	</c:if>
+     	<c:if test = "${not empty param.size}">
+     		<input type = "hidden" name = "size" value = "${param.size}" />
+     	</c:if>
+     	<c:if test = "${not empty sortId}">
+     		<input type = "hidden" name = "sorting${sortId}.x" value = "0" />
+     	</c:if>
     	<input type = "submit" />
+    	<input type = "submit" name = "downloadExcel" value = "Download Excel results" />
     </sform:form>
 	    <br />
 	    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
@@ -121,7 +131,7 @@
 		      <c:set var="delete" value="true" />
 		    </c:if>
 	        
-	        <c:set var="typeName" value="${fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1]}" />
+	        <c:set var="typeName" value="Student" />
 		    <c:set var="lengths" value="${fn:split(columnMaxLengths, ',')}" scope="request" />
 		
 		    <table>
@@ -172,8 +182,10 @@
 			          <c:forTokens items="${columnLabels}" delims="," var="columnHeading">
 			            <th>
 			              <c:out value="${columnHeading}" />
-			              <input type = "image" src = "${ascending_image}" alt = "sort ascending" name = "sorting${properties_index * 2}"  />
-			              <input type = "image" src = "${descending_image}" alt = "sort descending" name = "sorting${properties_index * 2 + 1}" />
+			              <span class = "sortButtons">
+			              	<input type = "image" src = "${ascending_image}" alt = "sort ascending" name = "sorting${properties_index * 2}"  />
+			              	<input type = "image" src = "${descending_image}" alt = "sort descending" name = "sorting${properties_index * 2 + 1}" />
+			              </span>
 			              <c:set var = "properties_index" value = "${properties_index + 1}" />
 			            </th>
 			          </c:forTokens>
