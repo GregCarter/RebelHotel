@@ -8,10 +8,18 @@
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_WorkTemplate" items="${worktemplates}" z="Cf2Dw9XK9FmCUamhyHoF/jCIKr8=">
         <table:table data="${worktemplates}" id="l_edu_unlv_cs_rebelhotel_domain_WorkTemplate" path="/worktemplates" z="Z9PybCtNRn3JarGUPh+bLLttuMs=">
             
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" property="hours" z="1tXbhU1c5eCaRZmt0pPY7hk88oc="/>
+            
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_term" property="term" z="o1B4NjsU/RHO3pZSRumGdQ1gPqE="/>
         
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" property="name" z="+Vu00IufffrH5SnRmaIiZiE/f08="/>
+        
+        
+        
+        
+        
+        
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_totalHoursNeeded" property="totalHoursNeeded" z="u9uEgjF5u1pJ+SGjcUFKCp7U5ic="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_degree" property="degree" z="VhyTxbHmydX70kxfEdUnfKKl0q8="/>
         </table:table>
     </page:list>
 </div>

@@ -25,7 +25,7 @@ privileged aspect Student_Roo_Finder {
         if (firstName.charAt(0) != '%') {
             firstName = "%" + firstName;
         }
-        if (firstName.charAt(firstName.length() - 1) != '%') {
+        if (firstName.charAt(firstName.length() -1) != '%') {
             firstName = firstName + "%";
         }
         EntityManager em = Student.entityManager();

@@ -19,7 +19,7 @@ privileged aspect TermDataOnDemand_Roo_DataOnDemand {
     public Term TermDataOnDemand.getNewTransientTerm(int index) {
         edu.unlv.cs.rebelhotel.domain.Term obj = new edu.unlv.cs.rebelhotel.domain.Term();
         obj.setTermYear(new Integer(index));
-        obj.setSemester(edu.unlv.cs.rebelhotel.domain.enums.Semester.class.getEnumConstants()[0]);
+        obj.setSemester(null);
         return obj;
     }
     

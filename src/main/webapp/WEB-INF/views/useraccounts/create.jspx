@@ -10,9 +10,13 @@
 <<<<<<< HEAD
 	    
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 >>>>>>> e8aec94c8f3da9d5b486db2a01bdd79dd9e3683e
+=======
+    
+>>>>>>> d9fb636d3ed3720fe32e2d456464901c3894f889
     <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" required="true" validationMessageCode="field_invalid_email" z="Tmzn/MVFDMgzmvP57HSeqAmM1Yg="/>
 =======
    		<field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" validationMessageCode="field_invalid_email" z="ELZlRHVlymyZbev5uh+AAUeUH48="/>

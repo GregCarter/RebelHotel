@@ -7,23 +7,23 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 
-import edu.unlv.cs.rebelhotel.domain.enums.Departments;
-
 import javax.validation.constraints.NotNull;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+
+//import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
+
 @RooJavaBean
 @RooToString
 @RooEntity
 public class WorkRequirement {
-
 	@NotNull
 	private String name;
-
-    private Integer hours;
+	
+	@ManyToOne
+	private WorkTemplate workTemplate;
+	
+    //private Integer hours;
 
     private boolean milestone;
     
@@ -36,9 +36,12 @@ public class WorkRequirement {
     // A method to construct a work requirement from a work template
     public static WorkRequirement fromWorkTemplate(WorkTemplate wt, Major major) {
     	WorkRequirement wr = new WorkRequirement();
-    	wr.setHours(wt.getHours());
+    	//wr.setHours(wt.getTotalHoursNeeded());
+    	wr.setWorkTemplate(wt);
     	wr.setName(wt.getName());
+    	wr.setMilestone(false);
     	//wr.setMajor(major);
     	return wr;
     }
 }
+

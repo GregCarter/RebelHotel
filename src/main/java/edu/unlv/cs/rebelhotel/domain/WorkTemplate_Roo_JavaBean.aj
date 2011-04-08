@@ -4,10 +4,19 @@
 package edu.unlv.cs.rebelhotel.domain;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import java.lang.Integer;
 import java.lang.String;
 
 privileged aspect WorkTemplate_Roo_JavaBean {
+    
+    public Degree WorkTemplate.getDegree() {
+        return this.degree;
+    }
+    
+    public void WorkTemplate.setDegree(Degree degree) {
+        this.degree = degree;
+    }
     
     public String WorkTemplate.getName() {
         return this.name;
@@ -17,12 +26,12 @@ privileged aspect WorkTemplate_Roo_JavaBean {
         this.name = name;
     }
     
-    public Integer WorkTemplate.getHours() {
-        return this.hours;
+    public Integer WorkTemplate.getTotalHoursNeeded() {
+        return this.totalHoursNeeded;
     }
     
-    public void WorkTemplate.setHours(Integer hours) {
-        this.hours = hours;
+    public void WorkTemplate.setTotalHoursNeeded(Integer totalHoursNeeded) {
+        this.totalHoursNeeded = totalHoursNeeded;
     }
     
     public Term WorkTemplate.getTerm() {

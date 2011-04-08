@@ -73,12 +73,6 @@ privileged aspect Term_Roo_Entity {
     }
     
     @Transactional
-    public void Term.clear() {
-        if (this.entityManager == null) this.entityManager = entityManager();
-        this.entityManager.clear();
-    }
-    
-    @Transactional
     public Term Term.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Term merged = this.entityManager.merge(this);

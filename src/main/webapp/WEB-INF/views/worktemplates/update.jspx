@@ -5,16 +5,16 @@
     <tiles:insertAttribute ignore="true" name="worktemplate_menu"/>
     <br/>
     <br/>
-    <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkTemplate" modelAttribute="workTemplate" path="/worktemplates" versionField="Version" z="kK19m9MIzzWmfuFjCDrD+RgM+Wk=">
-<<<<<<< HEAD
+
+    <form:update id="fu_edu_unlv_cs_rebelhotel_domain_WorkTemplate" modelAttribute="workTemplate" path="/worktemplates" z="bGXIzIGjWzFaprN6fx/Fi+wROj8=">
+        <field:select field="degree" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_degree" items="${degrees}" path="degrees" z="3XBtrJINXhvXrXVAMvjgus4NbQg="/>
         <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" required="true" z="iMa0Zk/GbVptfiKdSXs0wa0+nrY="/>
-        <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" validationMessageCode="field_invalid_integer" z="6yPhlp92NXEDdE4FtuTYgwstmKk="/>
+        <field:input field="totalHoursNeeded" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_totalHoursNeeded" validationMessageCode="field_invalid_integer" z="ZPlQlCgseXPMn4OHv3gUKbHF+ek="/>
         <field:select field="term" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_term" itemValue="id" items="${terms}" path="/terms" z="If9T3m9NVD6RBYWLP0gWVT+LXpc="/>
-=======
         <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" validationMessageCode="field_invalid_integer" z="6yPhlp92NXEDdE4FtuTYgwstmKk="/>
-        <field:select field="term" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_term" itemValue="id" items="${terms}" path="/terms" z="If9T3m9NVD6RBYWLP0gWVT+LXpc="/>
+       
     
     <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" required="true" z="iMa0Zk/GbVptfiKdSXs0wa0+nrY="/>
->>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
+
     </form:update>
 </div>

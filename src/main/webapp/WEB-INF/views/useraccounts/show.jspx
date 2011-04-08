@@ -8,9 +8,13 @@
         <field:display field="userGroup" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" object="${useraccount}" z="4vExJoAW/a+nF5Qspanxmh6RRtU="/>
         <field:display field="enabled" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" object="${useraccount}" z="BM0JEna7ZOR6pcLuvG6iMJzBxt0="/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
 >>>>>>> e8aec94c8f3da9d5b486db2a01bdd79dd9e3683e
+=======
+    
+>>>>>>> d9fb636d3ed3720fe32e2d456464901c3894f889
     <field:display field="email" id="s_edu_unlv_cs_rebelhotel_domain_UserAccount_email" object="${useraccount}" z="B/glAxf7hl1imfcxPOe55tWRmCI="/>
     </page:show>
 </div>

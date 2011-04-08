@@ -7,10 +7,18 @@
     <br/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_WorkTemplate" modelAttribute="workTemplate" path="/worktemplates" render="${empty dependencies}" z="jBnf9ZtfX9ifOVEt8Ea2ANye328=">
         
-        <field:input field="hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_hours" validationMessageCode="field_invalid_integer" z="6yPhlp92NXEDdE4FtuTYgwstmKk="/>
+        
         <field:select field="term" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_term" itemValue="id" items="${terms}" path="/terms" z="If9T3m9NVD6RBYWLP0gWVT+LXpc="/>
     
     <field:input field="name" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_name" required="true" z="iMa0Zk/GbVptfiKdSXs0wa0+nrY="/>
+    
+    
+    
+    
+    
+    
+    <field:input field="totalHoursNeeded" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_totalHoursNeeded" validationMessageCode="field_invalid_integer" z="ZPlQlCgseXPMn4OHv3gUKbHF+ek="/>
+    <field:select field="degree" id="c_edu_unlv_cs_rebelhotel_domain_WorkTemplate_degree" items="${degrees}" path="degrees" z="3XBtrJINXhvXrXVAMvjgus4NbQg="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_WorkTemplate" render="${not empty dependencies}" z="kUyxdgv4x4W73xU75eMR+0vMivA="/>
 </div>
