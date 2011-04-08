@@ -2,6 +2,7 @@ package edu.unlv.cs.rebelhotel.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -18,6 +19,9 @@ import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
+import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
+import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
+import edu.unlv.cs.rebelhotel.form.FormStudent;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
 import edu.unlv.cs.rebelhotel.service.StudentQueryService;
 import edu.unlv.cs.rebelhotel.validators.StudentQueryValidator;
@@ -31,12 +35,14 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
-@RooWebScaffold(path = "students", formBackingObject = Student.class, exposeFinders=false)
+@RooWebScaffold(path = "students", formBackingObject = Student.class, exposeFinders=false, update = false, create = false)
 @RequestMapping("/students")
 @Controller
 public class StudentController {
@@ -331,6 +337,54 @@ public class StudentController {
 		addQueryDateTimeFormatPatterns(model);
 		return "students/query";
 	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+    public String create(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("formStudent", formStudent);
+            addDateTimeFormatPatterns(model);
+            return "students/create";
+        }
+        
+        // the order of this is pretty strict
+        Student student = new Student();
+        student.setUserId(formStudent.getUserId());
+        UserAccount userAccount = new UserAccount(student, (new RandomPasswordGenerator()).generateRandomPassword(), formStudent.getEmail());
+        userAccount.setUserGroup(UserGroup.ROLE_STUDENT);
+        userAccount.setEnabled(true);
+        userAccount.persist();
+        student.setUserAccount(userAccount);
+        student.copyFromFormStudent(formStudent);
+        student.persist();
+        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
+    }
+    
+    @RequestMapping(params = "form", method = RequestMethod.GET)
+    public String createForm(Model model) {
+        model.addAttribute("formStudent", new FormStudent());
+        addDateTimeFormatPatterns(model);
+        return "students/create";
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    public String update(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            model.addAttribute("formStudent", formStudent);
+            addDateTimeFormatPatterns(model);
+            return "students/update";
+        }
+        Student student = Student.findStudent(formStudent.getId());
+        student.copyFromFormStudent(formStudent);
+        student.merge();
+        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
+    }
+    
+    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
+    public String updateForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("formStudent", FormStudent.createFromStudent(Student.findStudent(id)));
+        addDateTimeFormatPatterns(model);
+        return "students/update";
+    }
 
     @RequestMapping(params = { "find=ByFirstNameEquals", "form" }, method = RequestMethod.GET)
     public String findStudentsByFirstNameEqualsForm(Model model) {
@@ -375,5 +429,17 @@ public class StudentController {
     public String findStudentsByUserIdEquals(@RequestParam("userId") String userId, Model model) {
         model.addAttribute("students", Student.findStudentsByUserIdEquals(userId).getResultList());
         return "students/list";
+    }
+    
+    String encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
+        String enc = request.getCharacterEncoding();
+        if (enc == null) {
+            enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
+        }
+        try {
+            pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
+        }
+        catch (UnsupportedEncodingException uee) {}
+        return pathSegment;
     }
 }

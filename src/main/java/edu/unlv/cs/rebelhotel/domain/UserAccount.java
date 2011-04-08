@@ -46,10 +46,10 @@ public class UserAccount {
     	this.userGroup = UserGroup.ROLE_USER;
     }
     
-    public UserAccount(Student student, String password) {
+    public UserAccount(Student student, String password, String email) {
     	this.userId = student.getUserId();
     	this.password = password;
-    	this.email = student.getEmail();
+    	this.email = email;
     	this.userGroup = UserGroup.ROLE_USER;
     }
     
