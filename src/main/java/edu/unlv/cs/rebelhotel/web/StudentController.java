@@ -21,6 +21,8 @@ import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
+import edu.unlv.cs.rebelhotel.domain.enums.Validation;
+import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
 import edu.unlv.cs.rebelhotel.form.FormStudent;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
@@ -74,6 +76,8 @@ public class StudentController {
 	
 	void addQueryDateTimeFormatPatterns(Model model) {
         model.addAttribute("student_query_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        model.addAttribute("workEffortDuration_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        model.addAttribute("workEffortDuration_enddate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
     }
 	
 	@ModelAttribute("query_semesters")
@@ -84,6 +88,16 @@ public class StudentController {
 	@ModelAttribute("degree")
     public Collection<Degree> populateDegree() {
         return Arrays.asList(Degree.class.getEnumConstants());
+    }
+	
+	@ModelAttribute("validations")
+    public Collection<Validation> populateValidations() {
+        return Arrays.asList(Validation.class.getEnumConstants());
+    }
+	
+	@ModelAttribute("verifications")
+    public Collection<Verification> populateVerifications() {
+        return Arrays.asList(Verification.class.getEnumConstants());
     }
 	
 	public int getNumProperties(FormStudentQuery formStudentQuery) {
