@@ -17,5 +17,6 @@
         <field:display field="codeOfConductSigned" id="s_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" object="${student}" z="bdzExXPCeUL8sy6mD7XFCvADpVM="/>
         <field:display date="true" dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastModified" object="${student}" z="i9OrOmdzt+/d35aZGKjTY5giRJU="/>
         <field:display field="userAccount" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
+    <field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Student_totalHours" object="${student}" z="253t29gZfyePeWfdUb8PGkJnkvU="/>
     </page:show>
 </div>

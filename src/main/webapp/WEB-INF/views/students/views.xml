@@ -51,6 +51,14 @@
     	<put-attribute name="body" value="/WEB-INF/views/students/queryList.jspx"/>
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
+    <definition extends="students.default" name="students/testQuery">
+    	<put-attribute name="body" value="/WEB-INF/views/students/testQuery.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
+    </definition>
+    <definition extends="students.default" name="students/testQueryList">
+    	<put-attribute name="body" value="/WEB-INF/views/students/testQueryList.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
+    </definition>
 	<definition extends="default" name="students/findStudentsByUserIdEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByUserIdEquals.jspx"/>
     </definition>

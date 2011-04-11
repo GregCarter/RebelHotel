@@ -67,6 +67,8 @@ public class Student {
     @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.REMOVE } )
     private UserAccount userAccount;
     
+    @Transient private Long totalHours;
+    
     @PreUpdate
     public void onUpdate() {
     	lastModified = new Date();
