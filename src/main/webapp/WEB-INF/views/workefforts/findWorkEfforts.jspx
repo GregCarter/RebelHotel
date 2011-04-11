@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
+	xmlns:form="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"><jsp:directive.page
+	contentType="text/html;charset=UTF-8" /> <jsp:output
+	omit-xml-declaration="yes" /> <form:create
+	id="fc_edu_unlv_cs_rebelhotel_form_FormWorkEffort"
+	modelAttribute="formworkeffortquery" path="/workefforts?query"
+	render="${empty dependencies}" z="Uf7OgrlFmtWkcuJmcJOSqG30iWM=">
+
+	<table>
+		<th>Search Work Efforts By...</th>
+		<tr>
+			<td><field:input field="userId"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_NSHE" z="" /></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><field:input field="studentFirstName"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_studentFirstName"
+				z="" /></td>
+			<td><field:input field="studentMiddleName"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_studentMiddleName"
+				z="" /></td>
+			<td><field:input field="studentLastName"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_studentLastName"
+				z="" /></td>
+		</tr>
+		<tr>
+			<td><field:input field="employerName"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerName" z="" /></td>
+
+			<td><field:input field="employerLocation"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerLocation"
+				z="" /></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><field:select field="validation"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_validation"
+				items="${validations}" path="validations" z="" /> <field:checkbox
+				field="validationSelected"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useValidation" /></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><field:datetime
+				dateTimePattern="${workEffortDuration_startdate_date_format}"
+				field="startDate"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_startDate" z="" />
+			</td>
+			<td><field:datetime
+				dateTimePattern="${workEffortDuration_enddate_date_format}"
+				field="endDate"
+				id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_endDate" z="" /></td>
+			<td></td>
+
+		</tr>
+	</table>
+	
+</form:create>  
+
+</div>
+
+
+
+
+
+
+
+
+
