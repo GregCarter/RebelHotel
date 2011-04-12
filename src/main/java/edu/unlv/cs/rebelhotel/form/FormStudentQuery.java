@@ -43,6 +43,7 @@ public class FormStudentQuery {
 	private boolean showCodeOfConductSigned;
 	private boolean showLastModified;
 	private boolean showUserAccount;
+	private boolean showMatchedHours;
 	
 	private boolean outputCsv;
 	
@@ -409,5 +410,13 @@ public class FormStudentQuery {
 	
 	public void setHoursHigh(Integer hoursHigh) {
 		this.hoursHigh = hoursHigh;
+	}
+	
+	public boolean getShowMatchedHours() {
+		return showMatchedHours;
+	}
+	
+	public void setShowMatchedHours(boolean showMatchedHours) {
+		this.showMatchedHours = showMatchedHours;
 	}
 }

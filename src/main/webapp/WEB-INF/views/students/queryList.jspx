@@ -98,6 +98,9 @@
     			<td>
     				<field:checkbox field = "showLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showLastName" />
     			</td>
+    			<td>
+    				<field:checkbox field = "showMatchedHours" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showMatchedHours" />
+    			</td>
     		</tr>
     	</table>
     	<table>
@@ -206,6 +209,7 @@
 		      	<sform:hidden path = "showFirstName" value = "${formStudentQuery.showFirstName}" />
 		      	<sform:hidden path = "showMiddleName" value = "${formStudentQuery.showMiddleName}" />
 		      	<sform:hidden path = "showLastName" value = "${formStudentQuery.showLastName}" />
+		      	<sform:hidden path = "showMatchedHours" value = "${formStudentQuery.showMatchedHours}" />
 		      	
 		      	<sform:hidden path = "employerName" value = "${formStudentQuery.employerName}" />
 		      	<sform:hidden path = "employerLocation" value = "${formStudentQuery.employerLocation}" />

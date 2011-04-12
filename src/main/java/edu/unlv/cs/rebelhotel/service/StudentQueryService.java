@@ -205,24 +205,70 @@ public class StudentQueryService {
 		
 		// this is so grossly inefficient that it should be replaced with an HQL query or a "totalHours" property should be stored on students
 		// left in for now because it has the correct functionality
-		{
+		if (formStudentQuery.getUseHours()) {
 			DetachedCriteria weiq = DetachedCriteria.forClass(Student.class, "iq")
 			.createAlias("workEffort", "we")
 			.setProjection(Projections.projectionList()
 					.add(Projections.sum("we.duration.hours")))
-					.add(Restrictions.eq("we.verification", Verification.ACCEPTED))
 					.add(Restrictions.eqProperty("iq.id", "oq.id"));
+			if (formStudentQuery.getValidationSelected()) {
+				weiq.add(Restrictions.eq("we.validation", formStudentQuery.getValidation()));
+			}
+			if (formStudentQuery.getVerificationSelected()) {
+				weiq.add(Restrictions.eq("we.verification", formStudentQuery.getVerification()));
+			}
 			
-			//DetachedCriteria weoq = DetachedCriteria.forClass(Student.class, "oq")
 			search.createAlias("workEffort", "owe")
 			.setProjection(Projections.projectionList()
 					.add(Projections.sum("owe.duration.hours").as("totalHours"))
 					.add(Projections.groupProperty("id"))
 					.add(Projections.property("id")))
-			.add(Restrictions.eq("owe.verification", Verification.ACCEPTED))
-			.add(Subqueries.lt(new Long(100), weiq))
-			.add(Subqueries.gt(new Long(600), weiq))
-			.setResultTransformer(Transformers.aliasToBean(Student.class));
+			.setResultTransformer(Transformers.aliasToBean(Student.class)); // this will have no visual effect due to "search" being a subquery
+			if (formStudentQuery.getValidationSelected()) {
+				search.add(Restrictions.eq("owe.validation", formStudentQuery.getValidation()));
+			}
+			if (formStudentQuery.getVerificationSelected()) {
+				search.add(Restrictions.eq("owe.verification", formStudentQuery.getVerification()));
+			}
+			if (formStudentQuery.getHoursLow() != null) {
+				search.add(Subqueries.le(new Long(formStudentQuery.getHoursLow()), weiq));
+			}
+			if (formStudentQuery.getHoursHigh() != null) {
+				search.add(Subqueries.ge(new Long(formStudentQuery.getHoursHigh()), weiq));
+			}
+			if (formStudentQuery.getEmployerName() != "") {
+				search.add(Restrictions.like("owe.employer.name", "%" + formStudentQuery.getEmployerName() + "%"));
+			}
+			if (formStudentQuery.getEmployerLocation() != "") {
+				search.add(Restrictions.like("owe.employer.location", "%" + formStudentQuery.getEmployerLocation() + "%"));
+			}
+			if (formStudentQuery.getWorkEffortStartDate() != null) {
+				search.add(Restrictions.ge("owe.duration.startDate", formStudentQuery.getWorkEffortStartDate()));
+			}
+			if (formStudentQuery.getWorkEffortEndDate() != null) {
+				search.add(Restrictions.le("owe.duration.endDate", formStudentQuery.getWorkEffortEndDate()));
+			}
+		}
+		else {
+			DetachedCriteria lq = search.createCriteria("workEffort");
+			if (formStudentQuery.getVerificationSelected()) {
+				lq.add(Restrictions.eq("verification", formStudentQuery.getVerification()));
+			}
+			if (formStudentQuery.getValidationSelected()) {
+				lq.add(Restrictions.eq("validation", formStudentQuery.getValidation()));
+			}
+			if (formStudentQuery.getEmployerName() != "") {
+				lq.add(Restrictions.like("owe.employer.name", "%" + formStudentQuery.getEmployerName() + "%"));
+			}
+			if (formStudentQuery.getEmployerLocation() != "") {
+				lq.add(Restrictions.like("owe.employer.location", "%" + formStudentQuery.getEmployerLocation() + "%"));
+			}
+			if (formStudentQuery.getWorkEffortStartDate() != null) {
+				lq.add(Restrictions.ge("owe.duration.startDate", formStudentQuery.getWorkEffortStartDate()));
+			}
+			if (formStudentQuery.getWorkEffortEndDate() != null) {
+				lq.add(Restrictions.le("owe.duration.endDate", formStudentQuery.getWorkEffortEndDate()));
+			}
 		}
 		
 		List students;
@@ -456,6 +502,9 @@ public class StudentQueryService {
 		}
 		if (formStudentQuery.getShowUserAccount()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_useraccount", null, LocaleContextHolder.getLocale());
+		}
+		if (formStudentQuery.getShowMatchedHours()) {
+			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_totalhours", null, LocaleContextHolder.getLocale());
 		}
 		return properties;
 	}

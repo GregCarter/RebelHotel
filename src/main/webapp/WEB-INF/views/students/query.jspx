@@ -98,6 +98,9 @@
     			<td>
     				<field:checkbox field = "showLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showLastName" />
     			</td>
+    			<td>
+    				<field:checkbox field = "showMatchedHours" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showMatchedHours" />
+    			</td>
     		</tr>
     	</table>
     	<table>
