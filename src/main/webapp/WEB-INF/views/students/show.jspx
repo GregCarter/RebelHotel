@@ -19,5 +19,6 @@
         <field:display field="userAccount" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
     
     <field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Student_totalHours" object="${student}" z="253t29gZfyePeWfdUb8PGkJnkvU="/>
+    <field:display field="gradMajor" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradMajor" object="${student}" z="+/l8r2rk7sRVYM+5vKr+EkHxQ+s="/>
     </page:show>
 </div>

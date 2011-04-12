@@ -132,9 +132,6 @@ public class StudentController {
 		if (formStudentQuery.getShowUserAccount()) {
 			num = num + 1;
 		}
-		if (formStudentQuery.getShowMatchedHours()) {
-			num = num + 1;
-		}
 		return num;
 	}
 	
@@ -169,9 +166,6 @@ public class StudentController {
 		}
 		if (formStudentQuery.getShowUserAccount()) {
 			properties += ",userAccount";
-		}
-		if (formStudentQuery.getShowMatchedHours()) {
-			properties += ",totalHours";
 		}
 		return properties;
 	}
@@ -208,9 +202,6 @@ public class StudentController {
 		if (formStudentQuery.getShowUserAccount()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_useraccount", null, LocaleContextHolder.getLocale());
 		}
-		if (formStudentQuery.getShowMatchedHours()) {
-			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_totalhours", null, LocaleContextHolder.getLocale());
-		}
 		return properties;
 	}
 	
@@ -246,9 +237,6 @@ public class StudentController {
 		}
 		if (formStudentQuery.getShowUserAccount()) {
 			properties += ",16";
-		}
-		if (formStudentQuery.getShowMatchedHours()) {
-			properties += ",5";
 		}
 		return properties;
 	}

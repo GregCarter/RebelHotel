@@ -294,9 +294,21 @@ public class StudentQueryService {
 			}
 		}
 		
-		Session session = (Session) Student.entityManager().unwrap(Session.class);
+		DetachedCriteria hoursQuery = DetachedCriteria.forClass(Student.class);
+		hoursQuery.add(Subqueries.propertyIn("id", rootQuery));
+		
+		/*Session session = (Session) Student.entityManager().unwrap(Session.class);
 		session.beginTransaction();
 		Criteria query = rootQuery.getExecutableCriteria(session);
+		query.setFirstResult(start);
+		query.setMaxResults(size);
+		students = query.list();
+		Long count = (Long) countQuery.getExecutableCriteria(session).list().get(0);
+		session.close();*/
+		
+		Session session = (Session) Student.entityManager().unwrap(Session.class);
+		session.beginTransaction();
+		Criteria query = hoursQuery.getExecutableCriteria(session);
 		query.setFirstResult(start);
 		query.setMaxResults(size);
 		students = query.list();
@@ -502,9 +514,6 @@ public class StudentQueryService {
 		}
 		if (formStudentQuery.getShowUserAccount()) {
 			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_useraccount", null, LocaleContextHolder.getLocale());
-		}
-		if (formStudentQuery.getShowMatchedHours()) {
-			properties += "," + messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_totalhours", null, LocaleContextHolder.getLocale());
 		}
 		return properties;
 	}
