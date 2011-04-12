@@ -67,17 +67,11 @@ public class Student {
     @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.REMOVE } )
     private UserAccount userAccount;
     
-    @Transient
-    transient private Long totalHours;
+    private Long totalHours;
     
     @PreUpdate
-    public void onUpdate() {
-    	lastModified = new Date();
-    }
-    
-    // THIS IS FOR THE STUDENT CREATE FORM
     @PrePersist
-    public void initUserAccount(){
+    public void onUpdate() {
     	lastModified = new Date();
     }
 
