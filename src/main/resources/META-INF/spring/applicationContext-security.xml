@@ -34,10 +34,9 @@
         <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
         <intercept-url pattern="/resources/**" access="permitAll" />
-        <!--<intercept-url pattern="/" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_ADMIN','ROLE_SUPERUSER')" />
+        <intercept-url pattern="/" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_ADMIN','ROLE_SUPERUSER')" />
         <intercept-url pattern="/login" access="permitAll"/>
-        <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SUPERUSER')" />-->
-        <intercept-url pattern="/**" access = "permitAll" />
+        <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SUPERUSER')" />
     </http>
 	
 	<!-- For now, the default implementation is (attempted to be) rebuilt here just in case it needs to be changed later -->
