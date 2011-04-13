@@ -41,14 +41,14 @@ public class UserAccount {
     
     public UserAccount(FileStudent fileStudent, String password) {
     	this.userId = fileStudent.getStudentId();
-    	this.password = password;
+    	setPassword(password);
     	this.email = fileStudent.getEmail();
     	this.userGroup = UserGroup.ROLE_USER;
     }
     
     public UserAccount(Student student, String password, String email) {
     	this.userId = student.getUserId();
-    	this.password = password;
+    	setPassword(password);
     	this.email = email;
     	this.userGroup = UserGroup.ROLE_USER;
     }
