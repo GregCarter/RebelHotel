@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
 
 // simple voter test/experiment
@@ -38,15 +39,21 @@ public class ViewWorkEffortVoter implements AccessDecisionVoter {
 		Collection<GrantedAuthority> authorities = authentication.getAuthorities();
 		
 		// users more powerful than students can view any work efforts
-		if (authorities.contains("ROLE_USER") || authorities.contains("ROLE_ADMIN") || authorities.contains("ROLE_SUPERUSER")) {
-			result = ACCESS_GRANTED;
+		for (GrantedAuthority authority : authorities) {
+			if (authority.getAuthority().equals("ROLE_USER") || authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_SUPERUSER")) {
+				result = ACCESS_GRANTED;
+				break;
+			}
 		}
-		else { // students themselves can only view their own work efforts
+		if (result == ACCESS_ABSTAIN) { // students themselves can only view their own work efforts
 			if (userInformation.getStudent() != null) {
 				Student accessor = userInformation.getStudent();
 				MethodInvocation mi = (MethodInvocation) object;
 				Long id = (Long) mi.getArguments()[0];
 				WorkEffort we = WorkEffort.findWorkEffort(id);
+				if (we == null) {
+					return ACCESS_ABSTAIN;
+				}
 				Student owner = we.getStudent();
 				if (accessor.getId().equals(owner.getId())) {
 					result = ACCESS_GRANTED;
