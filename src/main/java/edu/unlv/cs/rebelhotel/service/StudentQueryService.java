@@ -24,6 +24,7 @@ import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import au.com.bytecode.opencsv.CSVWriter;
@@ -36,6 +37,7 @@ import edu.unlv.cs.rebelhotel.web.StudentController;
 
 @Service
 public class StudentQueryService {	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER'")
 	public List<Object> queryStudents(FormStudentQuery formStudentQuery, String sorting) {
 DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		
@@ -221,6 +223,7 @@ DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		return resultList;
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER'")
 	public List<Object> queryStudentsLimited(FormStudentQuery formStudentQuery, String sorting, Integer start, Integer size) {
 		DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		
@@ -408,6 +411,7 @@ DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		return resultList;
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER'")
 	public String buildLabelsString(FormStudentQuery formStudentQuery, MessageSource messageSource) {
 		String properties = messageSource.getMessage("label_edu_unlv_cs_rebelhotel_domain_student_id", null, LocaleContextHolder.getLocale());
 		if (formStudentQuery.getShowUserId()) {
@@ -443,6 +447,7 @@ DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		return properties;
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER'")
 	public String getPropertyFromIndex(FormStudentQuery formStudentQuery, Integer index) {
 		index = index / 2;
 		Integer iterator = new Integer(0);
@@ -514,6 +519,7 @@ DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		return "invalid index"; // likely will want to throw an exception instead
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER'")
 	public String generateCsv(FormStudentQuery formStudentQuery, List<Student> students, MessageSource messageSource) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		CSVWriter writer = new CSVWriter(new OutputStreamWriter(baos), ',');

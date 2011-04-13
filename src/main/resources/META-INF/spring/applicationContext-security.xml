@@ -19,24 +19,29 @@
 						<beans:bean class = "org.springframework.security.access.expression.method.ExpressionBasedPreInvocationAdvice" />
 					</beans:constructor-arg>
 				</beans:bean>
+				
+				<beans:bean class = "edu.unlv.cs.rebelhotel.voters.ViewWorkEffortVoter" />
 			</beans:list>
 		</beans:property>
 	</beans:bean>
 	
 	
 	<!-- HTTP security configurations -->
-    <http auto-config="true" use-expressions="true" access-decision-manager-ref = "httpAccessDecisionManager">
+    <http auto-config="true" use-expressions="true" access-decision-manager-ref = "httpAccessDecisionManager" path-type="regex">
     	<form-login login-processing-url="/resources/j_spring_security_check" login-page="/login" authentication-failure-url="/login?login_error=t"/>
         <logout logout-url="/resources/j_spring_security_logout"/>
         
         <!-- Configure these elements to secure URIs in your application -->
-        <intercept-url pattern = "/useraccounts/**" access = "hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/member/**" access="isAuthenticated()" />
-        <intercept-url pattern="/resources/**" access="permitAll" />
-        <intercept-url pattern="/" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_ADMIN','ROLE_SUPERUSER')" />
+        <!--<intercept-url pattern = "/useraccounts/**" access = "hasRole('ROLE_ADMIN')" />-->
+        <!--<intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/member/**" access="isAuthenticated()" />-->
+        <intercept-url pattern="/resources/.*" access="permitAll" />
+        <!-- students will be able to view their work list and view work efforts individually in detail -->
+        <intercept-url pattern = "/workefforts/mywork" access = "hasAnyRole('ROLE_STUDENT', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER')" />
+        <intercept-url pattern = "/workefforts/[0-9]+" access = "hasAnyRole('ROLE_STUDENT', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER')" />
+        <intercept-url pattern="/" access="hasAnyRole('ROLE_ANONYMOUS', 'ROLE_STUDENT', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER')" />
         <intercept-url pattern="/login" access="permitAll"/>
-        <intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SUPERUSER')" />
+        <intercept-url pattern="/.*" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPERUSER')" />
     </http>
 	
 	<!-- For now, the default implementation is (attempted to be) rebuilt here just in case it needs to be changed later -->

@@ -3,8 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute name = "student_menu" ignore = "true" />
-    <br/>
-    <br/>
     <spring:url value = "/students/listquery" var = "form_base_url" />
     <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "get">
     	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
@@ -162,12 +160,37 @@
 		      <c:set var="typeIdFieldName" value="id" />
 		    </c:if>
 		
+			<c:if test="${empty create}">
+		      <c:choose>
+		        <c:when test = "${not empty create_access}">
+		      	  <c:set var = "create" value = "${create_access}" />
+		      	</c:when>
+		        <c:otherwise>
+		      	  <c:set var="create" value="false" />
+		        </c:otherwise>
+		      </c:choose>
+		    </c:if>
+		
 		    <c:if test="${empty update}">
-		      <c:set var="update" value="true" />
+		      <c:choose>
+		        <c:when test = "${not empty update_access}">
+		      	  <c:set var = "update" value = "${update_access}" />
+		      	</c:when>
+		        <c:otherwise>
+		      	  <c:set var="update" value="false" />
+		        </c:otherwise>
+		      </c:choose>
 		    </c:if>
 		
 		    <c:if test="${empty delete}">
-		      <c:set var="delete" value="true" />
+		      <c:choose>
+		        <c:when test = "${not empty delete_access}">
+		      	  <c:set var = "delete" value = "${delete_access}" />
+		      	</c:when>
+		        <c:otherwise>
+		      	  <c:set var="delete" value="false" />
+		        </c:otherwise>
+		      </c:choose>
 		    </c:if>
 	        
 	        <c:set var = "path" value = "/students" />
@@ -317,7 +340,7 @@
 		      </c:forEach>
 		      <tr class="footer">
 		        <td colspan="10">
-		          <c:if test="${empty create or create}">
+		          <c:if test="${create}">
 		            <span class="new">
 		              <spring:url value="/${path}" var="create_url">
 		                <spring:param name="form" />

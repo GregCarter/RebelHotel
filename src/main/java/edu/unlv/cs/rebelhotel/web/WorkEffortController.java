@@ -19,6 +19,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,6 +47,15 @@ public class WorkEffortController {
 	
 	public void setWorkEffortForStudentValidator(WorkEffortForStudentValidator workEffortForStudentValidator) {
 		this.workEffortForStudentValidator = workEffortForStudentValidator;
+	}
+	
+	@PreAuthorize("hasRole('ROLE_STUDENT')")
+	@RequestMapping(value = "/mywork", method = RequestMethod.GET)
+	public String listPersonalWork(Model model) {
+		Student student = userInformation.getStudent();
+		List<WorkEffort> workEfforts = WorkEffort.findWorkEffortsByStudentEquals(student).getResultList();
+		model.addAttribute("workefforts", workEfforts);
+		return "workefforts/mywork";
 	}
 	
 	// NOTE : the params string should not be equivalent to any of the fields in the form
@@ -146,15 +156,13 @@ public class WorkEffortController {
         return "workefforts/update";
     }
 	
-	@PreAuthorize("hasRole('ROLE_USER')")
-	@RequestMapping(params = "mywork", method = RequestMethod.GET)
-	public String listPersonalWork(Model model) {
-		model.addAttribute("str", "A list to contain your completed jobs");
-		Student student = userInformation.getStudent();
-		List<WorkEffort> workEfforts = WorkEffort.findWorkEffortsByStudentEquals(student).getResultList();
-		model.addAttribute("workefforts", workEfforts);
-		return "workefforts/mywork";
-	}
+	@Secured("VIEW_WORK_EFFORT") // custom voter will check this request
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String show(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
+        model.addAttribute("itemId", id);
+        return "workefforts/show";
+    }
 	
 	void addDateTimeFormatPatterns(Model model) {
         model.addAttribute("workEffortDuration_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));

@@ -11,7 +11,6 @@
 			 <menu:item id="i_manage_jobs" url="/workefforts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="WQqdpJpCu9io5O2NJD9cOLDm7tU="/>
 			 <menu:item id="i_fileupload" url="/file?upload"/>
 			 <menu:item id="i_manage_accounts" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
-			 <menu:item id="i_manage_worktemplates" url="/worktemplates?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MGGtaSE2g/nOxu1RdzgEpNmfLt4="/> 
 		 </menu:category>
 	</security:authorize>
     	<security:authorize access="hasRole('ROLE_ANONYMOUS')">
@@ -20,9 +19,9 @@
 	    	
     	</security:authorize>
     	
-    	<security:authorize access="hasRole('ROLE_USER')">
+    	<security:authorize access="hasRole('ROLE_STUDENT')">
         	<menu:category id="c_student_personal">
-        		<menu:item id="i_student_personal_work" url="/workefforts?mywork"/>
+        		<menu:item id="i_student_personal_work" url="/workefforts/mywork"/>
         	</menu:category>
     	</security:authorize>
     </menu:menu>

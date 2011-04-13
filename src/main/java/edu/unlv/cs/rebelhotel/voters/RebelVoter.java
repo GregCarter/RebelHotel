@@ -1,4 +1,4 @@
-package edu.unlv.cs.rebelhotel.service;
+package edu.unlv.cs.rebelhotel.voters;
 
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;

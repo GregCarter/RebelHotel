@@ -3,8 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="student_menu"/>
-    <br/>
-    <br/>
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
         <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="user-managed">
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" property="userId" z="uTlFwFgTXOUDXh2dVyz9K0Bp8mk="/>

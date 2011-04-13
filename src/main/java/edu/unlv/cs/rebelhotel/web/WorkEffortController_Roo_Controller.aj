@@ -28,13 +28,6 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect WorkEffortController_Roo_Controller {
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String WorkEffortController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("workeffort", WorkEffort.findWorkEffort(id));
-        model.addAttribute("itemId", id);
-        return "workefforts/show";
-    }
-    
     @RequestMapping(method = RequestMethod.GET)
     public String WorkEffortController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         if (page != null || size != null) {

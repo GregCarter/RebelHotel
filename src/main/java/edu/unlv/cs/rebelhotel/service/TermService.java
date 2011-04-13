@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
@@ -13,6 +14,7 @@ import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 
 @Service
 public class TermService {
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	public List<Term> generateCurrentTerms() {
 		List<Term> result = new LinkedList<Term>();
 		

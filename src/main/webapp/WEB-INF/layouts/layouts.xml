@@ -9,11 +9,13 @@
     <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
     <put-attribute name="menu" value="/WEB-INF/views/custom_menu.jspx" />
     <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
+    <put-attribute name = "security_params" value = "/WEB-INF/views/security_params.jspx" />
   </definition>
 
   <definition name="public" template="/WEB-INF/layouts/default.jspx">
     <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
     <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
+    <put-attribute name = "security_params" value = "/WEB-INF/views/security_params.jspx" />
   </definition>
 
 </tiles-definitions>

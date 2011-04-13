@@ -3,9 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="student_menu"/>
-    <br/>
-    <br/>
-    <page:show create="false" id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" update="false" z="Hq2HpAuJ7+iA3ccpoyy9CKDUE38=">
+    <page:show create="false" id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" z="user-managed">
         <field:display field="userId" id="s_edu_unlv_cs_rebelhotel_domain_Student_userId" object="${student}" z="LZIvQBCfN6MZTqMoCVgKqr+ccDg="/>
         <field:display field="firstName" id="s_edu_unlv_cs_rebelhotel_domain_Student_firstName" object="${student}" z="0mteuHH5jh4oX0nAbq2YkApp37c="/>
         <field:display field="middleName" id="s_edu_unlv_cs_rebelhotel_domain_Student_middleName" object="${student}" z="swWBz8PPXJ0GLK8nOkvs+ysHRfM="/>
@@ -17,8 +15,19 @@
         <field:display field="codeOfConductSigned" id="s_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" object="${student}" z="bdzExXPCeUL8sy6mD7XFCvADpVM="/>
         <field:display date="true" dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastModified" object="${student}" z="i9OrOmdzt+/d35aZGKjTY5giRJU="/>
         <field:display field="userAccount" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
+    	
     
-    <field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Student_totalHours" object="${student}" z="253t29gZfyePeWfdUb8PGkJnkvU="/>
+    	<div class="quicklinks">
+        	<!-- For creating a work effort from the student page -->
+        	<spring:url value="/resources/images/rh-pick.png" var="create_workeffort_image_url"/>
+        	<spring:message code="create_workeffort_label" var="workeffort_title"/>
+        	<spring:url value="/workefforts/${itemId}?forstudent" var="create_workeffort_url"/>
+        	<span>
+        	<a alt="${workeffort_title}" href="${create_workeffort_url}" title="${workeffort_title}">
+        		<img alt="${workeffort_title}" class="image" src="${create_workeffort_image_url}" title="${workeffort_title}"/>
+        	</a>
+        	</span>
+        </div>
     
     </page:show>
 </div>

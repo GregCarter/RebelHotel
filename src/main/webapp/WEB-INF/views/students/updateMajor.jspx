@@ -3,8 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="student_menu"/>
-    <br/>
-    <br/>
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_FormStudentMajor" modelAttribute="formStudentMajor" path="/students?major" z="GBNOAl+i5dH6v0+VrL7CjJscAjc=">
         <field:select field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" itemValue="id" items="${majors}" path="/majors" multiple = "true" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
     </form:update>
