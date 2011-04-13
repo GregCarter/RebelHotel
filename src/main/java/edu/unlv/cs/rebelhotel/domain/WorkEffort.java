@@ -168,6 +168,7 @@ public class WorkEffort {
         	}
         	
         	if (cr == null) {
+        		session.close();
         		return; // if no applicable catalog requirement was found then exit now
         	}
         	
@@ -289,6 +290,7 @@ public class WorkEffort {
         	}
         	
         	if (cr == null) {
+        		session.close();
         		return; // if no applicable catalog requirement was found then exit now
         	}
         	
@@ -379,6 +381,7 @@ public class WorkEffort {
         	}
         	
         	if (cr == null) {
+        		session.close();
         		return; // if no applicable catalog requirement was found then exit now
         	}
         	

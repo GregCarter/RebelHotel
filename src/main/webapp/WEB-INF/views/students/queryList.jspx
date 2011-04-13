@@ -36,7 +36,9 @@
 					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
     			</td>
     			<td>
-    			
+    				<field:checkbox field = "studentUseHours" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentUseHours" />
+    				<field:input field = "studentHoursLow" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentHoursLow" />
+    				<field:input field = "studentHoursHigh" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentHoursHigh" />
     			</td>
     		</tr>
     		<tr>
@@ -103,40 +105,38 @@
     	<table>
 			<th colspan = "2">Search Work Efforts By...</th>
 			<tr>
-				<td><field:input field="employerName"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerName" z="" /></td>
-		
-				<td><field:input field="employerLocation"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerLocation"
-					z="" /></td>
-			</tr>
-			<tr>
-				<td><field:select field="validation"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_validation"
-					items="${validations}" path="validations" z="" /> <field:checkbox
-					field="validationSelected"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useValidation" /></td>
-				<td><field:select field="verification"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_verification"
-					items="${verifications}" path="verifications" z="" /> <field:checkbox
-					field="verificationSelected"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useVerification" /></td>
-			</tr>
-			<tr>
-				<td><field:datetime
-					dateTimePattern="${workEffortDuration_startdate_date_format}"
-					field="workEffortStartDate"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_startDate" z="" />
+				<td>
+					<field:input field="employerName" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerName" />
 				</td>
-				<td><field:datetime
-					dateTimePattern="${workEffortDuration_enddate_date_format}"
-					field="workEffortEndDate"
-					id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_endDate" z="" /></td>
+		
+				<td>
+					<field:input field="employerLocation" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerLocation" />
+				</td>
 			</tr>
 			<tr>
-				<td><field:input field="hoursLow" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursLow" validationMessageCode="field_invalid_integer" />
-				<field:input field="hoursHigh" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursHigh" validationMessageCode="field_invalid_integer" />
-				<field:checkbox field="useHours" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useHours" /></td>
+				<td>
+					<field:select field="validation" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_validation" items="${validations}" path="validations" />
+					<field:checkbox field="validationSelected" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useValidation" />
+				</td>
+				<td>
+					<field:select field="verification" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_verification" items="${verifications}" path="verifications" />
+					<field:checkbox field="verificationSelected" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useVerification" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:datetime dateTimePattern="${workEffortDuration_startdate_date_format}" field="workEffortStartDate" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_startDate" />
+				</td>
+				<td>
+					<field:datetime dateTimePattern="${workEffortDuration_enddate_date_format}" field="workEffortEndDate" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_endDate" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:input field="hoursLow" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursLow" validationMessageCode="field_invalid_integer" />
+					<field:input field="hoursHigh" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursHigh" validationMessageCode="field_invalid_integer" />
+					<field:checkbox field="useHours" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useHours" />
+				</td>
 			</tr>
 		</table>
     	<c:if test = "${not empty param.page}">
@@ -170,6 +170,7 @@
 		      <c:set var="delete" value="true" />
 		    </c:if>
 	        
+	        <c:set var = "path" value = "/students" />
 	        <c:set var="typeName" value="Student" />
 		    <c:set var="lengths" value="${fn:split(columnMaxLengths, ',')}" scope="request" />
 		
@@ -206,6 +207,9 @@
 		      	<sform:hidden path = "showFirstName" value = "${formStudentQuery.showFirstName}" />
 		      	<sform:hidden path = "showMiddleName" value = "${formStudentQuery.showMiddleName}" />
 		      	<sform:hidden path = "showLastName" value = "${formStudentQuery.showLastName}" />
+		      	<sform:hidden path = "studentUseHours" value = "${formStudentQuery.studentUseHours}" />
+		      	<sform:hidden path = "studentHoursLow" value = "${formStudentQuery.studentHoursLow}" />
+		      	<sform:hidden path = "studentHoursHigh" value = "${formStudentQuery.studentHoursHigh}" />
 		      	
 		      	<sform:hidden path = "employerName" value = "${formStudentQuery.employerName}" />
 		      	<sform:hidden path = "employerLocation" value = "${formStudentQuery.employerLocation}" />

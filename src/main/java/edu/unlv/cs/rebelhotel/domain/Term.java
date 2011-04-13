@@ -50,7 +50,7 @@ public class Term {
 		}
 		Term rhs = (Term) obj;
 		return new EqualsBuilder()
-				.append(this, rhs)
+				//.append(this, rhs) // ... infinite loop ?
 				.append(semester, rhs.semester)
 				.append(termYear, rhs.termYear)
 				.isEquals();
