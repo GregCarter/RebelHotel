@@ -71,14 +71,6 @@ privileged aspect Student_Roo_JavaBean {
         this.gradTerm = gradTerm;
     }
     
-    public Major Student.getGradMajor() {
-        return this.gradMajor;
-    }
-    
-    public void Student.setGradMajor(Major gradMajor) {
-        this.gradMajor = gradMajor;
-    }
-    
     public Set<WorkEffort> Student.getWorkEffort() {
         return this.workEffort;
     }

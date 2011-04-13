@@ -18,6 +18,8 @@ public class Major {
 
 	@ManyToOne
     private Term catalogTerm;
+	
+	private Long totalHours; // calculated progress toward completion is stored here
 
 	@Deprecated
 	private boolean completed_work_requirements = false;

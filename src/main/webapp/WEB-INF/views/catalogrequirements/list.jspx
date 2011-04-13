@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_CatalogRequirement" items="${catalogrequirements}" z="2yPXLm6QWU4y4UZDg2zBrOvfqqk=">
+        <table:table data="${catalogrequirements}" id="l_edu_unlv_cs_rebelhotel_domain_CatalogRequirement" path="/catalogrequirements" z="MEKDiAwyWP1qGXkOTZz+TJOMlPE=">
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_degreeCodePrefix" property="degreeCodePrefix" z="/KpdjCpEO93BFMZDEsiG3kbx3n8="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_startTerm" property="startTerm" z="It8PKTrI7bQG/9GEBI8j0LJJeR4="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_endTerm" property="endTerm" z="LFio8GdeFjCOzYdXyn2vM7TAcZE="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_totalHoursNeeded" property="totalHoursNeeded" z="6j2pSJrKvEpE0pPe67HkYqRkJYo="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_totalRelatedHoursNeeded" property="totalRelatedHoursNeeded" z="m300TjpYkJw9pU8xZCdLdT2xj7M="/>
+        </table:table>
+    </page:list>
+</div>

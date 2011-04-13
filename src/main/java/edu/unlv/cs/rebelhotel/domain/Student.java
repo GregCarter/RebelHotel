@@ -54,9 +54,6 @@ public class Student {
 
     @ManyToOne
     private Term gradTerm;
-    
-    @OneToOne
-    private Major gradMajor;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<WorkEffort> workEffort = new HashSet<WorkEffort>();

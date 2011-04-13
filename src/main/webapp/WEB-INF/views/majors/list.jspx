@@ -11,6 +11,7 @@
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" property="completed_work_requirements" z="P4TsrCooGcXMUWvQtNYs6v2LPNo="/>
         
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" property="degreeCode" z="kDDCTtIrK1bCDtDRRMOTMoV9TAE="/>
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_totalHours" property="totalHours" z="VP7luK0pp+h0fucDR9ua6XWqscA="/>
         </table:table>
     </page:list>
 </div>

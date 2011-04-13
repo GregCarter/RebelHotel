@@ -25,6 +25,7 @@ import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
 import edu.unlv.cs.rebelhotel.form.FormStudent;
+import edu.unlv.cs.rebelhotel.form.FormStudentMajor;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
 import edu.unlv.cs.rebelhotel.service.StudentQueryService;
 import edu.unlv.cs.rebelhotel.validators.StudentQueryValidator;
@@ -495,6 +496,29 @@ public class StudentController {
         addDateTimeFormatPatterns(model);
         return "students/create";
     }
+    
+    /**********************************************
+     * Remove later; added as a temporary means of adding majors to students
+     **********************************************/
+    @RequestMapping(value = "/{id}", params = "major", method = RequestMethod.GET)
+    public String createMajor(@PathVariable("id") Long id, Model model) {
+    	model.addAttribute("formStudentMajor", FormStudentMajor.createFromStudent(Student.findStudent(id)));
+    	return "students/updateMajor";
+    }
+    
+    @RequestMapping(params = "major", method = RequestMethod.PUT)
+    public String updateMajor(@Valid FormStudentMajor fsm, BindingResult result, Model model, HttpServletRequest request) {
+    	if (result.hasErrors()) {
+    		model.addAttribute("formStudentMajor", fsm);
+    		return "students/updateMajor";
+    	}
+    	Student student = Student.findStudent(fsm.getId());
+    	student.setMajors(fsm.getMajors());
+    	student.merge();
+    	return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
+    }
+    /************************************************
+     ************************************************/
     
     @RequestMapping(method = RequestMethod.PUT)
     public String update(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {

@@ -21,5 +21,6 @@
     <field:display field="completed_work_requirements" id="s_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" object="${major}" z="hg2lu4VFKUCm8Q94U+oAqNz0UX4="/>
     
     <field:display field="degreeCode" id="s_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" object="${major}" z="1OTiDhvovx5468UbDcFyrHkvi6k="/>
+    <field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Major_totalHours" object="${major}" z="K7ENRyZSTuXrY2sAJIj+YzCZUKo="/>
     </page:show>
 </div>

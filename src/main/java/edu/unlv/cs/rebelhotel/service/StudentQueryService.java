@@ -294,21 +294,9 @@ public class StudentQueryService {
 			}
 		}
 		
-		DetachedCriteria hoursQuery = DetachedCriteria.forClass(Student.class);
-		hoursQuery.add(Subqueries.propertyIn("id", rootQuery));
-		
-		/*Session session = (Session) Student.entityManager().unwrap(Session.class);
-		session.beginTransaction();
-		Criteria query = rootQuery.getExecutableCriteria(session);
-		query.setFirstResult(start);
-		query.setMaxResults(size);
-		students = query.list();
-		Long count = (Long) countQuery.getExecutableCriteria(session).list().get(0);
-		session.close();*/
-		
 		Session session = (Session) Student.entityManager().unwrap(Session.class);
 		session.beginTransaction();
-		Criteria query = hoursQuery.getExecutableCriteria(session);
+		Criteria query = rootQuery.getExecutableCriteria(session);
 		query.setFirstResult(start);
 		query.setMaxResults(size);
 		students = query.list();

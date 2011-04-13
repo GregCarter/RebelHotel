@@ -25,6 +25,10 @@
         <put-attribute name="menu" value="/WEB-INF/views/students/student_menu.jspx" />
     </definition>
     
+    <definition extends = "students.default" name = "students/updateMajor">
+    	<put-attribute name = "body" value = "/WEB-INF/views/students/updateMajor.jspx" />
+    	<put-attribute name = "menu" value = "/WEB-INF/views/students/student_menu.jspx" />
+    </definition>
 	<!-- <definition extends="students.default" name="students/findStudentsByNSHEEquals">
         <put-attribute name="body" value="/WEB-INF/views/students/findStudentsByNSHEEquals.jspx"/>
     </definition>
