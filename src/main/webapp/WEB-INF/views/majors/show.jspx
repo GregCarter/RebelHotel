@@ -3,25 +3,11 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Major" object="${major}" path="/majors" z="MR5jiv5VIk8PjDGWbhV5rzAT+3E=">
-        
         <field:display field="reachedMilestone" id="s_edu_unlv_cs_rebelhotel_domain_Major_reachedMilestone" object="${major}" z="aopibIzwWMdbvX75dSUdUnnPeGE="/>
-        
         <field:display field="catalogTerm" id="s_edu_unlv_cs_rebelhotel_domain_Major_catalogTerm" object="${major}" z="Fa3cH++zOLW+AQ9nnxUdjAshT/A="/>
-    	<div class="quicklinks">
-        	<!-- For adding a work requirement from the major page -->
-        	<spring:url value="/resources/images/rh-blank.png" var="create_workrequirement_image_url"/>
-        	<spring:message code="create_workrequirement_label" var="workrequirement_title"/>
-        	<spring:url value="/worktemplates/${itemId}?requirement" var="create_workrequirement_url"/>
-        	<span>
-        	<a alt="${workrequirement_title}" href="${create_workrequirement_url}" title="${workrequirement_title}">
-        		<img alt="${workrequirement_title}" class="image" src="${create_workrequirement_image_url}" title="${workrequirement_title}"/>
-        	</a>
-        	</span>
-        </div>
-    <field:display field="completed_work_requirements" id="s_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" object="${major}" z="hg2lu4VFKUCm8Q94U+oAqNz0UX4="/>
-    
-    <field:display field="degreeCode" id="s_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" object="${major}" z="1OTiDhvovx5468UbDcFyrHkvi6k="/>
-    <field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Major_totalHours" object="${major}" z="K7ENRyZSTuXrY2sAJIj+YzCZUKo="/>
-    <field:display field="student" id="s_edu_unlv_cs_rebelhotel_domain_Major_student" object="${major}" z="H27ptDq6z+Zc9OgXpbziK3trp84="/>
+    	<field:display field="completed_work_requirements" id="s_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" object="${major}" z="hg2lu4VFKUCm8Q94U+oAqNz0UX4="/>
+    	<field:display field="degreeCode" id="s_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" object="${major}" z="1OTiDhvovx5468UbDcFyrHkvi6k="/>
+    	<field:display field="totalHours" id="s_edu_unlv_cs_rebelhotel_domain_Major_totalHours" object="${major}" z="K7ENRyZSTuXrY2sAJIj+YzCZUKo="/>
+    	<field:display field="student" id="s_edu_unlv_cs_rebelhotel_domain_Major_student" object="${major}" z="H27ptDq6z+Zc9OgXpbziK3trp84="/>
     </page:show>
 </div>

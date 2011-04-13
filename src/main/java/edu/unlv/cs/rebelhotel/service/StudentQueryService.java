@@ -37,7 +37,7 @@ import edu.unlv.cs.rebelhotel.web.StudentController;
 @Service
 public class StudentQueryService {	
 	public List<Object> queryStudents(FormStudentQuery formStudentQuery, String sorting) {
-		DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
+DetachedCriteria search = DetachedCriteria.forClass(Student.class, "oq");
 		
 		if (formStudentQuery.getUseUserId()) {
 			search.add(Restrictions.eq("userId", formStudentQuery.getUserId()));
@@ -54,21 +54,36 @@ public class StudentQueryService {
 			search.createCriteria("gradTerm")
 			.add(Example.create(formStudentQuery.getGradTerm()));
 		}
-		// If searching by major and milestone, find a major row entry that matches both
-		// ie, a student with a major that has the milestone set
-		// if searching by either a major or a milestone, then the restriction is lessened
-		// ie, finding a student with at least one major that has a milestone, rather than
-		// a student with a specific major with the milestone set
-		if (formStudentQuery.getUseMajor()) {
+		if (formStudentQuery.getUseMajor() || formStudentQuery.getUseMilestone() || formStudentQuery.getStudentUseHours()) {
 			DetachedCriteria majorSearch = search.createCriteria("majors");
-			majorSearch.add(Restrictions.eq("degreeCode", formStudentQuery.getDegreeCode()));
-			if (formStudentQuery.getUseMilestone()) {
-				majorSearch.add(Restrictions.eq("reachedMilestone", formStudentQuery.getHasMilestone()));
+			if (formStudentQuery.getStudentUseHours()) {
+				DetachedCriteria weiq = DetachedCriteria.forClass(Student.class, "iq")
+				.createAlias("majors", "major")
+				.setProjection(Projections.projectionList()
+						.add(Projections.max("major.totalHours")))
+						.add(Restrictions.eqProperty("iq.id", "oq.id"));
+				if (formStudentQuery.getUseMajor()) {
+					weiq.add(Restrictions.eq("major.degreeCode", formStudentQuery.getDegreeCode()));
+				}
+				if (formStudentQuery.getUseMilestone()) {
+					weiq.add(Restrictions.eq("major.reachedMilestone", formStudentQuery.getHasMilestone()));
+				}
+				
+				if (formStudentQuery.getStudentHoursLow() != null) {
+					majorSearch.add(Subqueries.le(new Long(formStudentQuery.getStudentHoursLow()), weiq));
+				}
+				if (formStudentQuery.getStudentHoursHigh() != null) {
+					majorSearch.add(Subqueries.ge(new Long(formStudentQuery.getStudentHoursHigh()), weiq));
+				}
 			}
-		}
-		else if (formStudentQuery.getUseMilestone()) {
-			search.createCriteria("majors")
-			.add(Restrictions.eq("reachedMilestone", formStudentQuery.getHasMilestone()));
+			else {
+				if (formStudentQuery.getUseMajor()) {
+					majorSearch.add(Restrictions.eq("major.degreeCode", formStudentQuery.getDegreeCode()));
+				}
+				if (formStudentQuery.getUseMilestone()) {
+					majorSearch.add(Restrictions.eq("major.reachedMilestone", formStudentQuery.getHasMilestone()));
+				}
+			}
 		}
 		if (formStudentQuery.getUseFirstName()) {
 			String firstName = formStudentQuery.getFirstName();
@@ -99,6 +114,74 @@ public class StudentQueryService {
 				lastName = "%";
 			}
 			search.add(Restrictions.like("lastName", lastName));
+		}
+		
+		// this is so grossly inefficient that it should be replaced with an HQL query or a "totalHours" property should be stored on students
+		// left in for now because it has the correct functionality
+		if (formStudentQuery.getUseHours()) {
+			DetachedCriteria weiq = DetachedCriteria.forClass(Student.class, "iq")
+			.createAlias("workEffort", "we")
+			.setProjection(Projections.projectionList()
+					.add(Projections.sum("we.duration.hours")))
+					.add(Restrictions.eqProperty("iq.id", "oq.id"));
+			if (formStudentQuery.getValidationSelected()) {
+				weiq.add(Restrictions.eq("we.validation", formStudentQuery.getValidation()));
+			}
+			if (formStudentQuery.getVerificationSelected()) {
+				weiq.add(Restrictions.eq("we.verification", formStudentQuery.getVerification()));
+			}
+			
+			search.createAlias("workEffort", "owe")
+			.setProjection(Projections.projectionList()
+					.add(Projections.sum("owe.duration.hours").as("totalHours"))
+					.add(Projections.groupProperty("id"))
+					.add(Projections.property("id")))
+			.setResultTransformer(Transformers.aliasToBean(Student.class)); // this will have no visual effect due to "search" being a subquery
+			if (formStudentQuery.getValidationSelected()) {
+				search.add(Restrictions.eq("owe.validation", formStudentQuery.getValidation()));
+			}
+			if (formStudentQuery.getVerificationSelected()) {
+				search.add(Restrictions.eq("owe.verification", formStudentQuery.getVerification()));
+			}
+			if (formStudentQuery.getHoursLow() != null) {
+				search.add(Subqueries.le(new Long(formStudentQuery.getHoursLow()), weiq));
+			}
+			if (formStudentQuery.getHoursHigh() != null) {
+				search.add(Subqueries.ge(new Long(formStudentQuery.getHoursHigh()), weiq));
+			}
+			if (formStudentQuery.getEmployerName() != "") {
+				search.add(Restrictions.like("owe.employer.name", "%" + formStudentQuery.getEmployerName() + "%"));
+			}
+			if (formStudentQuery.getEmployerLocation() != "") {
+				search.add(Restrictions.like("owe.employer.location", "%" + formStudentQuery.getEmployerLocation() + "%"));
+			}
+			if (formStudentQuery.getWorkEffortStartDate() != null) {
+				search.add(Restrictions.ge("owe.duration.startDate", formStudentQuery.getWorkEffortStartDate()));
+			}
+			if (formStudentQuery.getWorkEffortEndDate() != null) {
+				search.add(Restrictions.le("owe.duration.endDate", formStudentQuery.getWorkEffortEndDate()));
+			}
+		}
+		else {
+			DetachedCriteria lq = search.createCriteria("workEffort");
+			if (formStudentQuery.getVerificationSelected()) {
+				lq.add(Restrictions.eq("verification", formStudentQuery.getVerification()));
+			}
+			if (formStudentQuery.getValidationSelected()) {
+				lq.add(Restrictions.eq("validation", formStudentQuery.getValidation()));
+			}
+			if (formStudentQuery.getEmployerName() != "") {
+				lq.add(Restrictions.like("owe.employer.name", "%" + formStudentQuery.getEmployerName() + "%"));
+			}
+			if (formStudentQuery.getEmployerLocation() != "") {
+				lq.add(Restrictions.like("owe.employer.location", "%" + formStudentQuery.getEmployerLocation() + "%"));
+			}
+			if (formStudentQuery.getWorkEffortStartDate() != null) {
+				lq.add(Restrictions.ge("owe.duration.startDate", formStudentQuery.getWorkEffortStartDate()));
+			}
+			if (formStudentQuery.getWorkEffortEndDate() != null) {
+				lq.add(Restrictions.le("owe.duration.endDate", formStudentQuery.getWorkEffortEndDate()));
+			}
 		}
 		
 		List students;
