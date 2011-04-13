@@ -30,19 +30,17 @@
         	<menu:item id="i_workeffort_new" messageCode="global_menu_new" url="/workefforts?form" z="dvadJbbt0m1m8IYnQwC5Nfv3NQs="/>
         </menu:category>
     	<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
-            <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
+            
 			<menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
          
-        </menu:category>
+        
+            </menu:category>
    		<menu:category id="c_useraccount" z="Yb8cyPB5AwOfYXCcrEpGXNT9C+k=">
            	<menu:item id="i_useraccount_new" messageCode="global_menu_new" url="/useraccounts?form" z="dm6iErpLQmgISoPCTS3yLiH8XFA="/>
        		<menu:item id="i_useraccount_list" messageCode="global_menu_list" url="/useraccounts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nijRCp2PPYuD2D3D7hljcdDK4vs="/>
            	<menu:item id="fi_useraccount_userid" messageCode="global_menu_find" url="/useraccounts?find=ByUserId&amp;form" z="Lyfp14MJ72W8c0ryI3/ak+xDci0="/>
-<<<<<<< HEAD
-           <menu:item id="fi_useraccount_emaillike" messageCode="global_menu_find" url="/useraccounts?find=ByEmailLike&amp;form" z="N++bAQAvyCtrdxbdB+hVMqPWT6E="/>
-=======
-           <menu:item id="fi_useraccount_useridequals" messageCode="global_menu_find" url="/useraccounts?find=ByUserIdEquals&amp;form" z="0+2Z/hAuuLLaGCIvOYVNYchmFnw="/>
->>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
+            <menu:item id="fi_useraccount_emaillike" messageCode="global_menu_find" url="/useraccounts?find=ByEmailLike&amp;form" z="N++bAQAvyCtrdxbdB+hVMqPWT6E="/>
+            <menu:item id="fi_useraccount_useridequals" messageCode="global_menu_find" url="/useraccounts?find=ByUserIdEquals&amp;form" z="0+2Z/hAuuLLaGCIvOYVNYchmFnw="/>
             </menu:category>
    		<menu:category id="c_worktemplate" z="6KPiRf5UVbR/ArLJBSoOhBpwQRY=">
            	<menu:item id="i_worktemplate_new" messageCode="global_menu_new" url="/worktemplates?form" z="PqYl9bxMIa4QRzgVSB4DnT8UAsY="/>

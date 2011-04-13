@@ -3,7 +3,6 @@ package edu.unlv.cs.rebelhotel.form;
 import java.util.Date;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
-import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 
 public class FormStudentQuery {
 	private boolean useUserId;
@@ -23,11 +22,13 @@ public class FormStudentQuery {
 	private boolean hasMilestone;
 	
 	private boolean useMajor;
-	private Degree degree;
+	private String degreeCode;
 	
 	private boolean showUserId;
 	private boolean showEmail;
-	private boolean showName;
+	private boolean showFirstName;
+	private boolean showMiddleName;
+	private boolean showLastName;
 	private boolean showAdmitTerm;
 	private boolean showGradTerm;
 	private boolean showCodeOfConductSigned;
@@ -39,9 +40,12 @@ public class FormStudentQuery {
 	private boolean useFirstName;
 	private String firstName;
 	
+	private boolean useMiddleName;
+	private String middleName;
+	
 	private boolean useLastName;
 	private String lastName;
-	
+			
 	public boolean getUseUserId() {
 		return useUserId;
 	}
@@ -142,12 +146,12 @@ public class FormStudentQuery {
 		this.useMajor = useMajor;
 	}
 	
-	public Degree getDegree() {
-		return degree;
+	public String getDegreeCode() {
+		return degreeCode;
 	}
 	
-	public void setDegree(Degree degree) {
-		this.degree = degree;
+	public void setDegree(String degreeCode) {
+		this.degreeCode = degreeCode;
 	}
 	
 	public boolean getShowUserId() {
@@ -166,12 +170,28 @@ public class FormStudentQuery {
 		this.showEmail = showEmail;
 	}
 	
-	public boolean getShowName() {
-		return showName;
+	public boolean getShowFirstName() {
+		return showFirstName;
 	}
 	
-	public void setShowName(boolean showName) {
-		this.showName = showName;
+	public void setShowFirstName(boolean showFirstName) {
+		this.showFirstName = showFirstName;
+	}
+	
+	public boolean getShowMiddleName() {
+		return showMiddleName;
+	}
+	
+	public void setShowMiddleName(boolean showMiddleName) {
+		this.showMiddleName = showMiddleName;
+	}
+	
+	public boolean getShowLastName() {
+		return showLastName;
+	}
+	
+	public void setShowLastName(boolean showLastName) {
+		this.showLastName = showLastName;
 	}
 	
 	public boolean getShowAdmitTerm() {
@@ -236,6 +256,22 @@ public class FormStudentQuery {
 	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	
+	public boolean getUseMiddleName() {
+		return useMiddleName;
+	}
+	
+	public void setUseMiddleName(boolean useMiddleName) {
+		this.useMiddleName = useMiddleName;
+	}
+	
+	public String getMiddleName() {
+		return middleName;
+	}
+	
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 	
 	public boolean getUseLastName() {

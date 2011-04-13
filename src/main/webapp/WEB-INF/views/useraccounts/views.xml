@@ -25,7 +25,11 @@
     </definition>
 <definition extends="default" name="useraccounts/findUserAccountsByUserId">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/findUserAccountsByUserId.jspx"/>
-    </definition><definition extends="default" name="useraccounts/findUserAccountsByEmailLike">
+    </definition>
+    <definition extends="default" name="useraccounts/findUserAccountsByEmailLike">
         <put-attribute name="body" value="/WEB-INF/views/useraccounts/findUserAccountsByEmailLike.jspx"/>
+    </definition>
+<definition extends="default" name="useraccounts/findUserAccountsByUserIdEquals">
+        <put-attribute name="body" value="/WEB-INF/views/useraccounts/findUserAccountsByUserIdEquals.jspx"/>
     </definition>
 </tiles-definitions>

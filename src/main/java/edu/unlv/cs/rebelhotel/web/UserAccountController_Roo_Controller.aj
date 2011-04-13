@@ -25,16 +25,6 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect UserAccountController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST)
-    public String UserAccountController.create(@Valid UserAccount userAccount, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("userAccount", userAccount);
-            return "useraccounts/create";
-        }
-        userAccount.persist();
-        return "redirect:/useraccounts/" + encodeUrlPathSegment(userAccount.getId().toString(), request);
-    }
-    
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String UserAccountController.createForm(Model model) {
         model.addAttribute("userAccount", new UserAccount());
@@ -96,20 +86,26 @@ privileged aspect UserAccountController_Roo_Controller {
         return "useraccounts/list";
     }
     
+    @RequestMapping(params = { "find=ByEmailLike", "form" }, method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByEmailLikeForm(Model model) {
+        return "useraccounts/findUserAccountsByEmailLike";
+    }
+    
+    @RequestMapping(params = "find=ByEmailLike", method = RequestMethod.GET)
+    public String UserAccountController.findUserAccountsByEmailLike(@RequestParam("email") String email, Model model) {
+        model.addAttribute("useraccounts", UserAccount.findUserAccountsByEmailLike(email).getResultList());
+        return "useraccounts/list";
+    }
+    
     @RequestMapping(params = { "find=ByUserIdEquals", "form" }, method = RequestMethod.GET)
-    public String UserAccountController.findUserAccountsByUserIdEqualsForm(Model uiModel) {
+    public String UserAccountController.findUserAccountsByUserIdEqualsForm(Model model) {
         return "useraccounts/findUserAccountsByUserIdEquals";
     }
     
     @RequestMapping(params = "find=ByUserIdEquals", method = RequestMethod.GET)
-    public String UserAccountController.findUserAccountsByUserIdEquals(@RequestParam("userId") String userId, Model uiModel) {
-        uiModel.addAttribute("useraccounts", UserAccount.findUserAccountsByUserId(userId).getResultList());
+    public String UserAccountController.findUserAccountsByUserIdEquals(@RequestParam("userId") String userId, Model model) {
+        model.addAttribute("useraccounts", UserAccount.findUserAccountsByUserIdEquals(userId).getResultList());
         return "useraccounts/list";
-    }
-    
-    @ModelAttribute("useraccounts")
-    public Collection<UserAccount> UserAccountController.populateUserAccounts() {
-        return UserAccount.findAllUserAccounts();
     }
     
     @ModelAttribute("usergroups")

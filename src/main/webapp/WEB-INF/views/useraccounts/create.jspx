@@ -7,20 +7,7 @@
         <field:input field="password" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" required="true" z="GdYdMthJw0wuVZ0k5B6mB7QEUS0="/>
         <field:select field="userGroup" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" items="${usergroups}" path="usergroups" z="sRIMSynGJSubX4xr8l1GwlZb0R4="/>
         <field:checkbox field="enabled" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" z="VmA3vpPhfsW+BCroMX1EyJX/uqs="/>
-<<<<<<< HEAD
-	    
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-=======
->>>>>>> e8aec94c8f3da9d5b486db2a01bdd79dd9e3683e
-=======
-    
->>>>>>> d9fb636d3ed3720fe32e2d456464901c3894f889
-    <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" required="true" validationMessageCode="field_invalid_email" z="Tmzn/MVFDMgzmvP57HSeqAmM1Yg="/>
-=======
-   		<field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" validationMessageCode="field_invalid_email" z="ELZlRHVlymyZbev5uh+AAUeUH48="/>
->>>>>>> fd316a303ae64e0f708724e968d961e35cf0a670
+   		<field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" required="true" validationMessageCode="field_invalid_email" z="Tmzn/MVFDMgzmvP57HSeqAmM1Yg="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_UserAccount" render="${not empty dependencies}" z="DYvglhP4gnRSBRB0yBr5fTNycYY="/>
 </div>

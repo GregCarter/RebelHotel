@@ -3,11 +3,11 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 import edu.unlv.cs.rebelhotel.domain.Employer;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Supervisor;
 import edu.unlv.cs.rebelhotel.domain.WorkEffortDuration;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.domain.enums.PayStatus;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
@@ -97,12 +97,12 @@ privileged aspect WorkEffort_Roo_JavaBean {
         this.duration = duration;
     }
     
-    public Set<WorkRequirement> WorkEffort.getWorkRequirements() {
-        return this.workRequirements;
+    public Set<CatalogRequirement> WorkEffort.getCatalogRequirements() {
+        return this.catalogRequirements;
     }
     
-    public void WorkEffort.setWorkRequirements(Set<WorkRequirement> workRequirements) {
-        this.workRequirements = workRequirements;
+    public void WorkEffort.setCatalogRequirements(Set<CatalogRequirement> catalogRequirements) {
+        this.catalogRequirements = catalogRequirements;
     }
     
 }

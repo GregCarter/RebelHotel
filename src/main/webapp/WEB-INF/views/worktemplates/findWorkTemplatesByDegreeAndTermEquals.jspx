@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <form:find finderName="ByDegreeAndTermEquals" id="ff_edu_unlv_cs_rebelhotel_domain_WorkTemplate" path="/worktemplates" z="iUnBC9c7zUj22yI09SSAr9KxEQI=">
-        <field:select disableFormBinding="true" field="degree" id="f_edu_unlv_cs_rebelhotel_domain_WorkTemplate_degree" items="${degrees}" path="/degrees" z="6ZglZUakJfcbUwV3hKz7G6dSN2U="/>
-        <field:select disableFormBinding="true" field="term" id="f_edu_unlv_cs_rebelhotel_domain_WorkTemplate_term" itemValue="id" items="${terms}" path="/terms" z="q70uvFVnKKyj8xyYnUx/4Am/jxw="/>
-    </form:find>
-</div>

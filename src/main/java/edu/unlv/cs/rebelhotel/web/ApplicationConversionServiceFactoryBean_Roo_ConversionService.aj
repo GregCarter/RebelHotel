@@ -4,8 +4,6 @@
 package edu.unlv.cs.rebelhotel.web;
 
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
-import edu.unlv.cs.rebelhotel.domain.WorkTemplate;
 import java.lang.String;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
@@ -20,29 +18,11 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    org.springframework.core.convert.converter.Converter<WorkRequirement, String> ApplicationConversionServiceFactoryBean.getWorkRequirementConverter() {
-        return new org.springframework.core.convert.converter.Converter<WorkRequirement, String>() {
-            public String convert(WorkRequirement workrequirement) {
-                return new StringBuilder().append(workrequirement.getName()).toString();
-            }
-        };
-    }
-    
-    org.springframework.core.convert.converter.Converter<WorkTemplate, String> ApplicationConversionServiceFactoryBean.getWorkTemplateConverter() {
-        return new org.springframework.core.convert.converter.Converter<WorkTemplate, String>() {
-            public String convert(WorkTemplate worktemplate) {
-                return new StringBuilder().append(worktemplate.getName()).append(" ").append(worktemplate.getTotalHoursNeeded()).toString();
-            }
-        };
-    }
-    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getStudentConverter());
         registry.addConverter(getTermConverter());
         registry.addConverter(getUserAccountConverter());
         registry.addConverter(getWorkEffortConverter());
-        registry.addConverter(getWorkRequirementConverter());
-        registry.addConverter(getWorkTemplateConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

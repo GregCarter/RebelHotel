@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.HashSet;
-import javax.persistence.ManyToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,6 +20,7 @@ import javax.persistence.TypedQuery;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
+import edu.unlv.cs.rebelhotel.form.FormStudent;
 
 import java.util.Date;
 import javax.persistence.Temporal;
@@ -39,6 +39,7 @@ public class Student {
     private String userId;
 
     @NotNull
+
     @Size(min = 5)
     private String email = "default";
 
@@ -80,15 +81,6 @@ public class Student {
     @PrePersist
     public void initUserAccount(){
     	lastModified = new Date();
-    	TypedQuery<UserAccount> findUserAccountsByUserId = UserAccount.findUserAccountsByUserId(getUserId());
-    	try {
-    		UserAccount userAccount = findUserAccountsByUserId.getSingleResult();
-    		setUserAccount(userAccount);
-    	} catch(EmptyResultDataAccessException e) {
-    		RandomPasswordGenerator rpg = new RandomPasswordGenerator();
-    		UserAccount userAccount = new UserAccount(this,rpg.generateRandomPassword());
-    		setUserAccount(userAccount);
-    	}
     }
 
     public String toString() {
@@ -112,7 +104,6 @@ public class Student {
     	}
     	return name;
     }
-    
     
     public void updateMajors(Set<Major> newMajors){
     	if (isNewStudent()) {
@@ -151,4 +142,24 @@ public class Student {
 	public boolean isNewStudent() {
 		return this.majors.isEmpty();
 	}
+    
+    public String getEmail() {
+    	return userAccount.getEmail();
+    }
+    
+    public void setEmail(String email) {
+    	userAccount.setEmail(email);
+    	userAccount.merge();
+    }
+    
+    public void copyFromFormStudent(FormStudent formStudent) {
+    	setUserId(formStudent.getUserId());
+    	setEmail(formStudent.getEmail());
+    	setFirstName(formStudent.getFirstName());
+    	setMiddleName(formStudent.getMiddleName());
+    	setLastName(formStudent.getLastName());
+    	setAdmitTerm(formStudent.getAdmitTerm());
+    	setGradTerm(formStudent.getGradTerm());
+    	setCodeOfConductSigned(formStudent.getCodeOfConductSigned());
+    }
 }

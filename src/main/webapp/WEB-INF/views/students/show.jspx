@@ -1,39 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="student_menu"/>
     <br/>
     <br/>
-    <page:show id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" z="cZYC67PoW5MiFCVNBuWterMhIjU=">
-        
-        <field:display field="email" id="s_edu_unlv_cs_rebelhotel_domain_Student_email" object="${student}" z="84uvF/wX0jjo8jeqZBO6pLjBjnc="/>
+    <page:show create="false" id="ps_edu_unlv_cs_rebelhotel_domain_Student" object="${student}" path="/students" update="false" z="Hq2HpAuJ7+iA3ccpoyy9CKDUE38=">
+        <field:display field="userId" id="s_edu_unlv_cs_rebelhotel_domain_Student_userId" object="${student}" z="LZIvQBCfN6MZTqMoCVgKqr+ccDg="/>
         <field:display field="firstName" id="s_edu_unlv_cs_rebelhotel_domain_Student_firstName" object="${student}" z="0mteuHH5jh4oX0nAbq2YkApp37c="/>
         <field:display field="middleName" id="s_edu_unlv_cs_rebelhotel_domain_Student_middleName" object="${student}" z="swWBz8PPXJ0GLK8nOkvs+ysHRfM="/>
         <field:display field="lastName" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastName" object="${student}" z="MV/3u5u5Y//qbKb5pE4p3PXgbDY="/>
-		<field:display field="userAccount" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
-		<field:display field="userId" id="s_edu_unlv_cs_rebelhotel_domain_Student_userId" object="${student}" z="LZIvQBCfN6MZTqMoCVgKqr+ccDg="/>
-       	<br/>
-		<br/>
-		
-        
+        <field:display field="majors" id="s_edu_unlv_cs_rebelhotel_domain_Student_majors" object="${student}" z="e2EMdvNlgUpZB8J/T+lLcsRqPDg="/>
         <field:display field="admitTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" object="${student}" z="6tJ5tkyGsDQH3mlfM1wmlzichRU="/>
         <field:display field="gradTerm" id="s_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" object="${student}" z="GVBUTuxqCefJz3zKqOn+kmB04SU="/>
         <field:display field="workEffort" id="s_edu_unlv_cs_rebelhotel_domain_Student_workEffort" object="${student}" z="3B3iTKWLOZDjBTNHxFpZlQNkpbc="/>
-    	<field:display field="codeOfConductSigned" id="s_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" object="${student}" z="bdzExXPCeUL8sy6mD7XFCvADpVM="/>
-        <field:display field="majors" id="s_edu_unlv_cs_rebelhotel_domain_Student_majors" object="${student}" z="e2EMdvNlgUpZB8J/T+lLcsRqPDg="/>
-    	<field:display date="true" dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastModified" object="${student}" z="i9OrOmdzt+/d35aZGKjTY5giRJU="/>
-        
-        <div class="quicklinks">
-        	<!-- For creating a work effort from the student page -->
-        	<spring:url value="/resources/images/rh-pick.png" var="create_workeffort_image_url"/>
-        	<spring:message code="create_workeffort_label" var="workeffort_title"/>
-        	<spring:url value="/workefforts/${itemId}?forstudent" var="create_workeffort_url"/>
-        	<span>
-        	<a alt="${workeffort_title}" href="${create_workeffort_url}" title="${workeffort_title}">
-        		<img alt="${workeffort_title}" class="image" src="${create_workeffort_image_url}" title="${workeffort_title}"/>
-        	</a>
-        	</span>
-        </div>
+        <field:display field="codeOfConductSigned" id="s_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" object="${student}" z="bdzExXPCeUL8sy6mD7XFCvADpVM="/>
+        <field:display date="true" dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="s_edu_unlv_cs_rebelhotel_domain_Student_lastModified" object="${student}" z="i9OrOmdzt+/d35aZGKjTY5giRJU="/>
+        <field:display field="userAccount" id="s_edu_unlv_cs_rebelhotel_domain_Student_userAccount" object="${student}" z="C7f59YScd+k6Iy5qzVpdyqcQt7k="/>
+    <field:display field="email" id="s_edu_unlv_cs_rebelhotel_domain_Student_email" object="${student}" z="84uvF/wX0jjo8jeqZBO6pLjBjnc="/>
     </page:show>
 </div>

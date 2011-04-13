@@ -8,42 +8,18 @@ import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
 import java.util.Collection;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriUtils;
-import org.springframework.web.util.WebUtils;
 
 privileged aspect StudentController_Roo_Controller {
-    
-    @RequestMapping(method = RequestMethod.POST)
-    public String StudentController.create(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("student", student);
-            addDateTimeFormatPatterns(model);
-            return "students/create";
-        }
-        student.persist();
-        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
-    }
-    
-    @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String StudentController.createForm(Model model) {
-        model.addAttribute("student", new Student());
-        addDateTimeFormatPatterns(model);
-        return "students/create";
-    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String StudentController.show(@PathVariable("id") Long id, Model model) {
@@ -65,24 +41,6 @@ privileged aspect StudentController_Roo_Controller {
         }
         addDateTimeFormatPatterns(model);
         return "students/list";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT)
-    public String StudentController.update(@Valid Student student, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("student", student);
-            addDateTimeFormatPatterns(model);
-            return "students/update";
-        }
-        student.merge();
-        return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
-    }
-    
-    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String StudentController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("student", Student.findStudent(id));
-        addDateTimeFormatPatterns(model);
-        return "students/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -111,18 +69,6 @@ privileged aspect StudentController_Roo_Controller {
     @ModelAttribute("workefforts")
     public Collection<WorkEffort> StudentController.populateWorkEfforts() {
         return WorkEffort.findAllWorkEfforts();
-    }
-    
-    String StudentController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
-        if (enc == null) {
-            enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
-        }
-        try {
-            pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        }
-        catch (UnsupportedEncodingException uee) {}
-        return pathSegment;
     }
     
 }

@@ -422,3 +422,7 @@ fieldset th {
 	color: #FF0000;
 	background: #fff;
 }
+
+.sortButtons {
+	float: right;
+}

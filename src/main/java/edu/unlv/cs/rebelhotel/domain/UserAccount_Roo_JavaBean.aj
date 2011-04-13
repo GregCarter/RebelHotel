@@ -17,6 +17,10 @@ privileged aspect UserAccount_Roo_JavaBean {
         this.userId = userId;
     }
     
+    public String UserAccount.getPassword() {
+        return this.password;
+    }
+    
     public String UserAccount.getEmail() {
         return this.email;
     }
@@ -25,10 +29,6 @@ privileged aspect UserAccount_Roo_JavaBean {
         this.email = email;
     }
     
-    public String UserAccount.getPassword() {
-        return this.password;
-    }
-      
     public UserGroup UserAccount.getUserGroup() {
         return this.userGroup;
     }

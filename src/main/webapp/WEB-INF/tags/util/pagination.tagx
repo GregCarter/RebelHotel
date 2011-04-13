@@ -5,6 +5,7 @@
   <jsp:directive.attribute name="page" type="java.lang.Integer" required="false" description="The current page (not required, defaults to 1)" />
   <jsp:directive.attribute name="size" type="java.lang.Integer" required="false" description="The number of records per page (not required, defaults to 10)" />
   <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
+  <jsp:directive.attribute name = "queryString" type = "java.lang.String" required = "false" description = "If provided, will suffix the string after the page/size params in the URL" />
 
   <c:if test="${empty render or render}">
 
@@ -29,6 +30,9 @@
             <spring:param name="page" value="1" />
             <spring:param name="size" value="${i}" />
           </spring:url>
+          <c:if test = "${queryString != null}">
+          	<c:set var = "sizeUrl" value = "${sizeUrl}&amp;${queryString}" />
+          </c:if>
           <a href="${sizeUrl}">${i}</a>
         </c:otherwise>
       </c:choose>
@@ -41,6 +45,9 @@
         <spring:param name="page" value="1" />
         <spring:param name="size" value="${size}" />
       </spring:url>
+      <c:if test = "${queryString != null}">
+      	<c:set var = "first" value = "${first}&amp;${queryString}" />
+      </c:if>
       <spring:url value="/resources/images/resultset_first.png" var="first_image_url" />
       <spring:message code="list_first" var="first_label" />
       <a class="image" href="${first}" title="${first_label}">
@@ -52,6 +59,9 @@
         <spring:param name="page" value="${page - 1}" />
         <spring:param name="size" value="${size}" />
       </spring:url>
+      <c:if test = "${queryString != null}">
+      	<c:set var = "previous" value = "${previous}&amp;${queryString}" />
+      </c:if>
       <spring:url value="/resources/images/resultset_previous.png" var="previous_image_url" />
       <spring:message code="list_previous" var="previous_label" />
       <a class="image" href="${previous}" title="${previous_label}">
@@ -66,6 +76,9 @@
         <spring:param name="page" value="${page + 1}" />
         <spring:param name="size" value="${size}" />
       </spring:url>
+      <c:if test = "${queryString != null}">
+      	<c:set var = "next" value = "${next}&amp;${queryString}" />
+      </c:if>
       <spring:url value="/resources/images/resultset_next.png" var="next_image_url" />
       <spring:message code="list_next" var="next_label" />
       <a class="image" href="${next}" title="${next_label}">
@@ -77,6 +90,9 @@
         <spring:param name="page" value="${maxPages}" />
         <spring:param name="size" value="${size}" />
       </spring:url>
+      <c:if test = "${queryString != null}">
+      	<c:set var = "last" value = "${last}&amp;${queryString}" />
+      </c:if>
       <spring:url value="/resources/images/resultset_last.png" var="last_image_url" />
       <spring:message code="list_last" var="last_label" />
       <a class="image" href="${last}" title="${last_label}">

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles = "http://tiles.apache.org/tags-tiles" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles = "http://tiles.apache.org/tags-tiles" xmlns:sform="http://www.springframework.org/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute name = "student_menu" ignore = "true" />
     <br/>
     <br/>
-    <form:create id="fc_edu_unlv_cs_rebelhotel_form_FormStudentQuery" modelAttribute="formStudentQuery" path="/students?query" render="${empty dependencies}">
+    <spring:url value = "/students/listquery" var = "form_base_url" />
+    <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "get">
     	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
     	<table>
     		<tr>
@@ -25,8 +26,17 @@
 					<field:input field = "firstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_firstName" />
     			</td>
     			<td>
+    				<field:checkbox field = "useMiddleName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMiddleName" />
+					<field:input field = "middleName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_middleName" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
     				<field:checkbox field = "useLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useLastName" />
 					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
+    			</td>
+    			<td>
+    			
     			</td>
     		</tr>
     		<tr>
@@ -48,7 +58,7 @@
     			</td>
     			<td>
     				<field:checkbox field="useMajor" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_useMajor" />
-    				<field:select field="department" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_department" items="${departments}" path="departments" />
+    				<field:select field="degreeCode" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_degreeCode" items="${degree}" path="degreeCode" />
     			</td>
     		</tr>
     	</table>
@@ -61,16 +71,13 @@
     				<field:checkbox field = "showEmail" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showEmail" />
     			</td>
     			<td>
-    				<field:checkbox field = "showName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showName" />
-    			</td>
-    			<td>
     				<field:checkbox field = "showAdmitTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showAdmitTerm" />
     			</td>
-    		</tr>
-    		<tr>
     			<td>
     				<field:checkbox field = "showGradTerm" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showGradTerm" />
     			</td>
+    		</tr>
+    		<tr>
     			<td>
     				<field:checkbox field = "showCodeOfConductSigned" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showCodeOfConductSigned" />
     			</td>
@@ -80,21 +87,199 @@
     			<td>
     				<field:checkbox field = "showUserAccount" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showUserAccount" />
     			</td>
+    			<td>
+    				<field:checkbox field = "showFirstName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showFirstName" />
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				<field:checkbox field = "showMiddleName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showMiddleName" />
+    			</td>
+    			<td>
+    				<field:checkbox field = "showLastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_showLastName" />
+    			</td>
     		</tr>
     	</table>
-    </form:create>
+    	<c:if test = "${not empty param.page}">
+     		<input type = "hidden" name = "page" value = "${param.page}" />
+     	</c:if>
+     	<c:if test = "${not empty param.size}">
+     		<input type = "hidden" name = "size" value = "${param.size}" />
+     	</c:if>
+     	<c:if test = "${not empty sortId}">
+     		<input type = "hidden" name = "sorting${sortId}.x" value = "0" />
+     	</c:if>
+    	<input type = "submit" />
+    	<input type = "submit" name = "downloadExcel" value = "Download Excel results" />
+    </sform:form>
+	    <br />
+	    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
+	    	<c:set var = "data" value = "${students}" />
+	    	<c:set var = "columnProperties" value = "${tempColumnProperties}" scope = "request" />
+	        <c:set var = "columnLabels" value = "${tempColumnLabels}" scope = "request" />
+	        <c:set var = "columnMaxLengths" value = "${tempColumnMaxLengths}" scope = "request" />
+	        
+	        <c:if test="${empty typeIdFieldName}">
+		      <c:set var="typeIdFieldName" value="id" />
+		    </c:if>
+		
+		    <c:if test="${empty update}">
+		      <c:set var="update" value="true" />
+		    </c:if>
+		
+		    <c:if test="${empty delete}">
+		      <c:set var="delete" value="true" />
+		    </c:if>
+	        
+	        <c:set var="typeName" value="Student" />
+		    <c:set var="lengths" value="${fn:split(columnMaxLengths, ',')}" scope="request" />
+		
+		    <table>
+		      <sform:form action="${form_base_url}" commandName="formStudentQuery" method="get">
+		      	<sform:hidden path = "useUserId" value = "${formStudentQuery.useUserId}" />
+		      	<sform:hidden path = "userId" value = "${formStudentQuery.userId}" />
+		      	<sform:hidden path = "useCatalogTerm" value = "${formStudentQuery.useCatalogTerm}" />
+		      	<sform:hidden path = "catalogTerm.termYear" value = "${formStudentQuery.catalogTerm.termYear}" />
+		      	<sform:hidden path = "catalogTerm.semester" value = "${formStudentQuery.catalogTerm.semester}" />
+		      	<sform:hidden path = "useFirstName" value = "${formStudentQuery.useFirstName}" />
+		      	<sform:hidden path = "firstName" value = "${formStudentQuery.firstName}" />
+		      	<sform:hidden path = "useMiddleName" value = "${formStudentQuery.useMiddleName}" />
+		      	<sform:hidden path = "middleName" value = "${formStudentQuery.middleName}" />
+		      	<sform:hidden path = "useLastName" value = "${formStudentQuery.useLastName}" />
+		      	<sform:hidden path = "lastName" value = "${formStudentQuery.lastName}" />
+		      	<sform:hidden path = "useMilestone" value = "${formStudentQuery.useMilestone}" />
+		      	<sform:hidden path = "hasMilestone" value = "${formStudentQuery.hasMilestone}" />
+		      	<sform:hidden path = "useGradTerm" value = "${formStudentQuery.useGradTerm}" />
+		      	<sform:hidden path = "gradTerm.termYear" value = "${formStudentQuery.gradTerm.termYear}" />
+		      	<sform:hidden path = "gradTerm.semester" value = "${formStudentQuery.gradTerm.semester}" />
+		      	<sform:hidden path = "useModified" value = "${formStudentQuery.useModified}" />
+		      	<sform:hidden path = "lastModifiedStart" value = "${formStudentQuery.lastModifiedStart}" />
+		      	<sform:hidden path = "lastModifiedEnd" value = "${formStudentQuery.lastModifiedEnd}" />
+		      	<sform:hidden path = "useMajor" value = "${formStudentQuery.useMajor}" />
+		      	<sform:hidden path = "degreeCode" value = "${formStudentQuery.degreeCode}" />
+		      	<sform:hidden path = "showUserId" value = "${formStudentQuery.showUserId}" />
+		      	<sform:hidden path = "showEmail" value = "${formStudentQuery.showEmail}" />
+		      	<sform:hidden path = "showAdmitTerm" value = "${formStudentQuery.showAdmitTerm}" />
+		      	<sform:hidden path = "showGradTerm" value = "${formStudentQuery.showGradTerm}" />
+		      	<sform:hidden path = "showCodeOfConductSigned" value = "${formStudentQuery.showCodeOfConductSigned}" />
+		      	<sform:hidden path = "showLastModified" value = "${formStudentQuery.showLastModified}" />
+		      	<sform:hidden path = "showUserAccount" value = "${formStudentQuery.showUserAccount}" />
+		      	<sform:hidden path = "showFirstName" value = "${formStudentQuery.showFirstName}" />
+		      	<sform:hidden path = "showMiddleName" value = "${formStudentQuery.showMiddleName}" />
+		      	<sform:hidden path = "showLastName" value = "${formStudentQuery.showLastName}" />
+		      	<c:if test = "${not empty param.page}">
+		      		<input type = "hidden" name = "page" value = "${param.page}" />
+		      	</c:if>
+		      	<c:if test = "${not empty param.size}">
+		      		<input type = "hidden" name = "size" value = "${param.size}" />
+		      	</c:if>
+		      	
+		      	<spring:url var = "ascending_image" value = "/resources/images/arrow_up.png" />
+		      	<spring:url var = "descending_image" value = "/resources/images/arrow_down.png" />
+		      	<c:set var = "properties_index" value = "${0}" />
+			      <thead>
+			        <tr>
+			          <c:forTokens items="${columnLabels}" delims="," var="columnHeading">
+			            <th>
+			              <c:out value="${columnHeading}" />
+			              <span class = "sortButtons">
+			              	<input type = "image" src = "${ascending_image}" alt = "sort ascending" name = "sorting${properties_index * 2}"  />
+			              	<input type = "image" src = "${descending_image}" alt = "sort descending" name = "sorting${properties_index * 2 + 1}" />
+			              </span>
+			              <c:set var = "properties_index" value = "${properties_index + 1}" />
+			            </th>
+			          </c:forTokens>
+			          <th></th>
+			          <c:if test="${update}">
+			            <th></th>
+			          </c:if>
+			          <c:if test="${delete}">
+			            <th></th>
+			          </c:if>
+			        </tr>
+			      </thead>
+		      </sform:form>
+		      
+		      <c:forEach items="${data}" var="item">
+		        <tr>
+		          <c:forTokens items="${columnProperties}" delims="," var="column" varStatus="num">
+		            <c:set var="columnMaxLength" value="${lengths[num.count-1]}" scope="request" />
+		            <td>
+		              <c:choose>
+		                <c:when test="${columnMaxLength lt 0}">
+		                  <spring:eval expression="item[column]" />
+		                </c:when>
+		                <c:otherwise>
+		                  <spring:eval expression="item[column]" var="colTxt" />
+		                  <c:out value="${fn:substring(colTxt, 0, columnMaxLength)}" />
+		                </c:otherwise>
+		              </c:choose>
+		            </td>
+		          </c:forTokens>
+		          <td>
+		            <spring:url value="${path}/${item[typeIdFieldName]}" var="show_form_url" />
+		            <spring:url value="/resources/images/show.png" var="show_image_url" />
+		            <spring:message arguments="${typeName}" code="entity_show" var="show_label" />
+		            <a href="${fn:escapeXml(show_form_url)}" alt="${fn:escapeXml(show_label)}" title="${fn:escapeXml(show_label)}">
+		              <img alt="${fn:escapeXml(show_label)}" class="image" src="${fn:escapeXml(show_image_url)}" title="${fn:escapeXml(show_label)}" />
+		            </a>
+		          </td>
+		          <c:if test="${update}">
+		            <td>
+		              <spring:url value="${path}/${item[typeIdFieldName]}" var="update_form_url">
+		                <spring:param name="form" />
+		              </spring:url>
+		              <spring:url value="/resources/images/update.png" var="update_image_url" />
+		              <spring:message arguments="${typeName}" code="entity_update" var="update_label" />
+		              <a href="${fn:escapeXml(update_form_url)}" alt="${fn:escapeXml(update_label)}" title="${fn:escapeXml(update_label)}">
+		                <img alt="${fn:escapeXml(update_label)}" class="image" src="${fn:escapeXml(update_image_url)}" title="${fn:escapeXml(update_label)}" />
+		              </a>
+		            </td>
+		          </c:if>
+		          <c:if test="${delete}">
+		            <td>
+		              <spring:url value="${path}/${item[typeIdFieldName]}" var="delete_form_url" />
+		              <spring:url value="/resources/images/delete.png" var="delete_image_url" />
+		              <sform:form action="${fn:escapeXml(delete_form_url)}" method="DELETE">
+		                <spring:message arguments="${typeName}" code="entity_delete" var="delete_label" />
+		                <c:set var="delete_confirm_msg">
+		                  <spring:escapeBody javaScriptEscape="true">
+		                    <spring:message code="entity_delete_confirm" />
+		                  </spring:escapeBody>
+		                </c:set>  
+		                <input alt="${fn:escapeXml(delete_label)}" class="image" src="${fn:escapeXml(delete_image_url)}" title="${fn:escapeXml(delete_label)}" type="image" value="${fn:escapeXml(delete_label)}" onclick="return confirm('${delete_confirm_msg}');" />
+		                <c:if test="${not empty param.page}">
+		                  <input name="page" type="hidden" value="${fn:escapeXml(param.page)}" />
+		                </c:if>
+		                <c:if test="${not empty param.size}">
+		                  <input name="size" type="hidden" value="${fn:escapeXml(param.size)}" />
+		                </c:if>
+		              </sform:form>
+		            </td>
+		          </c:if>
+		        </tr>
+		      </c:forEach>
+		      <tr class="footer">
+		        <td colspan="10">
+		          <c:if test="${empty create or create}">
+		            <span class="new">
+		              <spring:url value="/${path}" var="create_url">
+		                <spring:param name="form" />
+		              </spring:url>
+		              <a href="${fn:escapeXml(create_url)}">
+		                <spring:url value="/resources/images/add.png" var="create_img_url" />
+		                <spring:message arguments="${typeName}" code="global_menu_new" var="add_message" />
+		                <img alt="${fn:escapeXml(add_message)}" src="${fn:escapeXml(create_img_url)}" title="${fn:escapeXml(add_message)}" />
+		              </a>
+		            </span>
+		            <c:out value=" " />
+		          </c:if>
+		          <c:if test="${not empty maxPages}">
+		            <util:pagination maxPages="${maxPages}" page="${param.page}" size="${param.size}" queryString = "${queryString}" />
+		          </c:if>
+		        </td>
+		      </tr>
+		    </table>
+	    </page:list>
 	<form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" />
-    <br />
-    <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
-        <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="RFPbdXr7ZKuirMVeSh9ZJKfvMnk=">
-            <c:set var = "columnProperties" value = "${tempColumnProperties}" scope = "request" />
-            <c:set var = "columnLabels" value = "${tempColumnLabels}" scope = "request" />
-            <c:set var = "columnMaxLengths" value = "${tempColumnMaxLengths}" scope = "request" />
-            <!--<table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" property="userId" z="uTlFwFgTXOUDXh2dVyz9K0Bp8mk="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" property="firstName" z="DSzicBjGwxYL/2/kNsf10cNZTGI="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
-            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_email" property="email" z="v0BGqklSPHIPXq+NepLkZBAqQxo="/>-->
-        </table:table>
-    </page:list>
 </div>

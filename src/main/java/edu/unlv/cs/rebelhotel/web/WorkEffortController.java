@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.domain.WorkRequirement;
 import edu.unlv.cs.rebelhotel.form.FormWorkEffortForStudent;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortForStudentValidator;
@@ -65,7 +64,7 @@ public class WorkEffortController {
             return "workefforts/createFromStudent";
         }
 		WorkEffort workEffort = formWorkEffortForStudent.getWorkEffort();
-		Set<Major> majors = formWorkEffortForStudent.getMajors();
+		/*Set<Major> majors = formWorkEffortForStudent.getMajors();
 		Set<WorkRequirement> workRequirements = new HashSet();
 		if (majors != null) {
 			for (Major major : majors) {
@@ -74,8 +73,8 @@ public class WorkEffortController {
 					workRequirements.add(workRequirement);
 				}
 			}
-		}
-		workEffort.setWorkRequirements(workRequirements);
+		}*
+		workEffort.setWorkRequirements(workRequirements);*/
 		workEffort.persist();
 		
 		Student student = workEffort.getStudent();

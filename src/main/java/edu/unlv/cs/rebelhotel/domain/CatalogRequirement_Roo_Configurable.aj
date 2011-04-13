@@ -5,8 +5,8 @@ package edu.unlv.cs.rebelhotel.domain;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect WorkRequirement_Roo_Configurable {
+privileged aspect CatalogRequirement_Roo_Configurable {
     
-    declare @type: WorkRequirement: @Configurable;
+    declare @type: CatalogRequirement: @Configurable;
     
 }

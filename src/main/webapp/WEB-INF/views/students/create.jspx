@@ -5,25 +5,17 @@
     <tiles:insertAttribute ignore="true" name="student_menu"/>
     <br/>
     <br/>
-    <form:create id="fc_edu_unlv_cs_rebelhotel_domain_Student" modelAttribute="student" path="/students" render="${empty dependencies}" z="+PQ5T4tJs0ArIv1PS5oDINVj6go=">
-	    <field:input field="userId" id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" label="NSHE" required="true" z="Q+6uPHxy+J/BfpXNbnqjoUPl21g="/>
-        <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_Student_email" min="5" required="true" validationMessageCode="field_invalid_email" z="RJ8BLJGdUEq9HahrScbqwXOvAfI="/>
+       <form:create id="fc_edu_unlv_cs_rebelhotel_domain_FormStudent" modelAttribute="formStudent" path="/students" render="${empty dependencies}" z="+PQ5T4tJs0ArIv1PS5oDINVj6go=">
+	    <field:input field="userId" id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" required="true" z="Q+6uPHxy+J/BfpXNbnqjoUPl21g="/>
+	    <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_Student_email" required="true" validationMessageCode="field_invalid_email" z="Tmzn/MVFDMgzmvP57HSeqAmM1Yg="/>
         <field:input field="firstName" id="c_edu_unlv_cs_rebelhotel_domain_Student_firstName" min="2" required="true" z="ZfwFke0QaSpPBgRorUMR8NFmIWU="/>
         <field:input field="middleName" id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" z="BuRwgbxmRVgdC9lvISnajvdbTNc="/>
         <field:input field="lastName" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" z="cLk7Jgc0hUpB99wzThzltRiBzcE="/>
         <field:select field="admitTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" itemValue="id" items="${terms}" path="/terms" z="+QqDVPDlRIwBJg9uS56fRV+0UgQ="/>
         <field:select field="gradTerm" id="c_edu_unlv_cs_rebelhotel_domain_Student_gradTerm" itemValue="id" items="${terms}" path="/terms" z="hkCK5XP5bEC8PqbKO/PWTXgPodk="/>
-<<<<<<< HEAD
-        <!-- <field:select field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" itemValue="id" items="${workefforts}" multiple="true" path="/workefforts" z="eFfB8SN/IhoYKLaCb2tgPxaxP+g="/> -->
-=======
+
         <field:simple field="workEffort" id="c_edu_unlv_cs_rebelhotel_domain_Student_workEffort" messageCode="entity_reference_not_managed" messageCodeAttribute="Work Effort" z="B58jy23wuoHy9frp5p7hXVJy8oY="/>
->>>>>>> d9fb636d3ed3720fe32e2d456464901c3894f889
 		<field:checkbox field="codeOfConductSigned" id="c_edu_unlv_cs_rebelhotel_domain_Student_codeOfConductSigned" z="MEsITWHN00P2YXp8sh6JT1t/sNM="/>
-    	<field:simple field="majors" id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" messageCode="entity_reference_not_managed" messageCodeAttribute="Major" z="dURE8JYMy1L1IOAzCsINLp1WWws="/>
-    	<!-- TODO needs to be removed before deployment -->
-    	<field:datetime dateTimePattern="${student_lastmodified_date_format}" field="lastModified" id="c_edu_unlv_cs_rebelhotel_domain_Student_lastModified" required="false" z="user-managed"/>
-    	<!-- <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" required="true" z="vIEXM6artIq1tJJloR0h3yafX48="/> -->
-    <field:select field="userAccount" id="c_edu_unlv_cs_rebelhotel_domain_Student_userAccount" itemValue="id" items="${useraccounts}" path="/useraccounts" z="3LUtyqCBfzl9Rw/zN4w4nhC4UpU="/>
     </form:create>
 <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_Student" render="${not empty dependencies}" z="MlPRzZP5Yzrt03hbToBbk+X+gaM="/>
 </div>
