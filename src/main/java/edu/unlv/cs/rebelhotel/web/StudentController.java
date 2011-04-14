@@ -26,7 +26,6 @@ import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
-import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
 import edu.unlv.cs.rebelhotel.form.FormStudent;
 import edu.unlv.cs.rebelhotel.form.FormStudentMajor;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
@@ -375,10 +374,21 @@ public class StudentController {
         // the order of this is pretty strict
         Student student = new Student();
         student.setUserId(formStudent.getUserId());
-        UserAccount userAccount = UserAccount.fromStudent(student, (new RandomPasswordGenerator()).generateRandomPassword(), formStudent.getEmail());
-        userAccount.setUserGroup(UserGroup.ROLE_STUDENT);
-        userAccount.setEnabled(true);
-        userAccount.persist();
+        
+        // attempts to find a user account with matching user id first; this may not be desirable
+        // likely will want an error message if the found user account is assigned to a different user for some reason
+        UserAccount userAccount;
+        try {
+        	userAccount = UserAccount.findUserAccountsByUserId(student.getUserId()).getSingleResult();
+        	userAccount.setEmail(formStudent.getEmail()); // updates email
+        }
+        catch (org.springframework.dao.EmptyResultDataAccessException exception) {
+        	userAccount = UserAccount.fromStudent(student, formStudent.getEmail());
+            userAccount.setUserGroup(UserGroup.ROLE_STUDENT);
+            userAccount.setEnabled(true);
+            userAccount.persist();
+        }
+        
         student.setUserAccount(userAccount);
         student.copyFromFormStudent(formStudent);
         student.persist();

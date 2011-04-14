@@ -19,7 +19,6 @@ import javax.persistence.TypedQuery;
 
 import edu.unlv.cs.rebelhotel.domain.Term;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
 import edu.unlv.cs.rebelhotel.form.FormStudent;
 
 import java.util.Date;
