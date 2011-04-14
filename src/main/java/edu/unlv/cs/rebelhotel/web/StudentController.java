@@ -6,8 +6,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import javax.validation.Valid;
 
 import org.joda.time.format.DateTimeFormat;
 
+import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.enums.Degree;
@@ -88,8 +91,13 @@ public class StudentController {
     }
 	
 	@ModelAttribute("degree")
-    public Collection<Degree> populateDegree() {
-        return Arrays.asList(Degree.class.getEnumConstants());
+    public Collection<String> populateDegree() {
+        Set<String> degrees = new HashSet<String>();
+        Collection<CatalogRequirement> crs = CatalogRequirement.findAllCatalogRequirements();
+        for (CatalogRequirement cr : crs) {
+        	degrees.add(cr.getDegreeCodePrefix());
+        }
+        return degrees;
     }
 	
 	@ModelAttribute("validations")
