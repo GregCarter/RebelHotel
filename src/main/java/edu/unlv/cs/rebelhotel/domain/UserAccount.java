@@ -35,22 +35,23 @@ public class UserAccount {
     private UserGroup userGroup;
 
     private Boolean enabled = Boolean.TRUE;
-
-    public UserAccount() {
+    
+    public static UserAccount fromFileStudent(FileStudent fileStudent, String password) {
+    	UserAccount user = new UserAccount();
+    	user.setUserId(fileStudent.getStudentId());
+    	user.setPassword(password);
+    	user.setEmail(fileStudent.getEmail());
+    	user.setUserGroup(UserGroup.ROLE_USER);
+    	return user;
     }
     
-    public UserAccount(FileStudent fileStudent, String password) {
-    	this.userId = fileStudent.getStudentId();
-    	setPassword(password);
-    	this.email = fileStudent.getEmail();
-    	this.userGroup = UserGroup.ROLE_USER;
-    }
-    
-    public UserAccount(Student student, String password, String email) {
-    	this.userId = student.getUserId();
-    	setPassword(password);
-    	this.email = email;
-    	this.userGroup = UserGroup.ROLE_USER;
+    public static UserAccount fromStudent(Student student, String password, String email) {
+    	UserAccount user = new UserAccount();
+    	user.setUserId(student.getUserId());
+    	user.setPassword(password);
+    	user.setEmail(email);
+    	user.setUserGroup(UserGroup.ROLE_USER);
+    	return user;
     }
     
     public void setPassword(String password) {

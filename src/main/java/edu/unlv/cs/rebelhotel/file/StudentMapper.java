@@ -44,7 +44,8 @@ public class StudentMapper {
 			return studentAccount;
 		} catch(EmptyResultDataAccessException e) {
 			RandomPasswordGenerator rpg = new RandomPasswordGenerator();
-			studentAccount = new UserAccount(fileStudent,rpg.generateRandomPassword());
+			//studentAccount = new UserAccount(fileStudent,rpg.generateRandomPassword());
+			studentAccount = UserAccount.fromFileStudent(fileStudent, rpg.generateRandomPassword());
 			studentAccount.persist();
 		}
 		return studentAccount;

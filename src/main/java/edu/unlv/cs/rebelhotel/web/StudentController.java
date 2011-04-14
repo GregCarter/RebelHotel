@@ -375,7 +375,7 @@ public class StudentController {
         // the order of this is pretty strict
         Student student = new Student();
         student.setUserId(formStudent.getUserId());
-        UserAccount userAccount = new UserAccount(student, (new RandomPasswordGenerator()).generateRandomPassword(), formStudent.getEmail());
+        UserAccount userAccount = UserAccount.fromStudent(student, (new RandomPasswordGenerator()).generateRandomPassword(), formStudent.getEmail());
         userAccount.setUserGroup(UserGroup.ROLE_STUDENT);
         userAccount.setEnabled(true);
         userAccount.persist();
