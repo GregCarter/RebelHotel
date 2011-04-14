@@ -6,13 +6,12 @@ import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
-import edu.unlv.cs.rebelhotel.form.FormWorkEffortForStudent;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
-import edu.unlv.cs.rebelhotel.validators.WorkEffortForStudentValidator;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
 import org.joda.time.format.DateTimeFormat;
@@ -38,16 +37,9 @@ public class WorkEffortController {
 	
 	@Autowired
 	private WorkEffortValidator workEffortValidator;
-	
-	@Autowired
-	private WorkEffortForStudentValidator workEffortForStudentValidator;
-	
+		
 	public void setWorkEffortValidator(WorkEffortValidator workEffortValidator) {
 		this.workEffortValidator = workEffortValidator;
-	}
-	
-	public void setWorkEffortForStudentValidator(WorkEffortForStudentValidator workEffortForStudentValidator) {
-		this.workEffortForStudentValidator = workEffortForStudentValidator;
 	}
 	
 	@PreAuthorize("hasRole('ROLE_STUDENT')") // only students should have a list of work efforts ... though a different error than "access denied" might be desirable to admins
@@ -63,36 +55,21 @@ public class WorkEffortController {
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.POST)
-    public String createStudent(@PathVariable("sid") Long sid, FormWorkEffortForStudent formWorkEffortForStudent, BindingResult result, Model model, HttpServletRequest request) {
-		workEffortForStudentValidator.validate(formWorkEffortForStudent, result);
+    public String createStudent(@PathVariable("sid") Long sid, @Valid WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
 		if (result.hasErrors()) {
-            model.addAttribute("formWorkEffortForStudent", formWorkEffortForStudent);
+            model.addAttribute("workEffort", workEffort);
             addDateTimeFormatPatterns(model);
             Student student = Student.findStudent(sid);
-            Set<Major> majors = student.getMajors();
             model.addAttribute("student", student);
-            model.addAttribute("studentmajors", majors);
             model.addAttribute("sid", sid);
             return "workefforts/createFromStudent";
         }
-		WorkEffort workEffort = formWorkEffortForStudent.getWorkEffort();
-		/*Set<Major> majors = formWorkEffortForStudent.getMajors();
-		Set<WorkRequirement> workRequirements = new HashSet();
-		if (majors != null) {
-			for (Major major : majors) {
-				Set<WorkRequirement> lwrs = major.getWorkRequirements();
-				for (WorkRequirement workRequirement : lwrs) {
-					workRequirements.add(workRequirement);
-				}
-			}
-		}*
-		workEffort.setWorkRequirements(workRequirements);*/
 		workEffort.persist();
 		
 		Student student = workEffort.getStudent();
 		student.addWorkEffort(workEffort);
 		student.merge();
-        return "redirect:/workefforts/" + encodeUrlPathSegment(formWorkEffortForStudent.getWorkEffort().getId().toString(), request);
+        return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
@@ -138,16 +115,14 @@ public class WorkEffortController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.GET)
     public String createStudentForm(@PathVariable("sid") Long sid, Model model) {
-        model.addAttribute("formWorkEffortForStudent", new FormWorkEffortForStudent());
+        model.addAttribute("workEffort", new WorkEffort());
         addDateTimeFormatPatterns(model);
         List dependencies = new ArrayList();
         if (Student.countStudents() == 0) {
             dependencies.add(new String[]{"student", "students"});
         }
         Student student = Student.findStudent(sid);
-        Set<Major> majors = student.getMajors();
         model.addAttribute("student", student);
-        model.addAttribute("studentmajors", majors);
         model.addAttribute("dependencies", dependencies);
         model.addAttribute("sid", sid);
         // TODO check if one is able to place the value of the student here without relying on the hidden form element

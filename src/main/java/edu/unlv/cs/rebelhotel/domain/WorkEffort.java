@@ -179,23 +179,9 @@ public class WorkEffort {
     		
     		Integer totalOffseted = totalNeeded - relatedNeeded;
     		
-    		Integer totalValue = Math.min(totalOffseted.intValue(), totalHours[i].intValue());
     		Integer relatedValue = Math.min(relatedNeeded.intValue(), majorHours[i].intValue());
-    		
-    		/**
-    		 * Example: 
-    		 * catalogRequirement requires 1000 total hours and 500 related hours
-    		 * student works 700 related hours and 500 unrelated hours
-    		 * the overarching requirement is the 1000 total hours
-    		 * subtract the 500 related hours from the 1000 total hours to get the "unrestricted" hours requirement
-    		 * then MIN(1200, 500) = 500 to get the "unrestricted" portion
-    		 * then MIN(700, 500) = 500 to get the "related" portion
-    		 * then sum 500+500 = 1000 to get the "progress" hours (in this case, the student has the required 1000 hours)
-    		 * as a failing example, a student might have 700 unrelated hours and 400 related hours
-    		 * MIN(1100, 500) = 500 for the "unrestricted" portion
-    		 * MIN(400, 500) = 400 for the "related" portion
-    		 * thus, this second student would only "have" 900 of the 1000 required hours
-    		 */
+    		totalHours[i] -= relatedValue;
+    		Integer totalValue = Math.min(totalOffseted.intValue(), totalHours[i].intValue());
     		
     		majorArray[i].setTotalHours(new Long(totalValue+relatedValue));
     	}
@@ -301,8 +287,9 @@ public class WorkEffort {
     		
     		Integer totalOffseted = totalNeeded - relatedNeeded;
     		
-    		Integer totalValue = Math.min(totalOffseted.intValue(), totalHours[i].intValue());
     		Integer relatedValue = Math.min(relatedNeeded.intValue(), majorHours[i].intValue());
+    		totalHours[i] -= relatedValue;
+    		Integer totalValue = Math.min(totalOffseted.intValue(), totalHours[i].intValue());
     		
     		majorArray[i].setTotalHours(new Long(totalValue+relatedValue));
     	}
@@ -392,8 +379,9 @@ public class WorkEffort {
     		
     		Integer totalOffseted = totalNeeded - relatedNeeded;
     		
-    		Integer totalValue = Math.min(totalOffseted.intValue(), totalHours[i].intValue());
     		Integer relatedValue = Math.min(relatedNeeded.intValue(), majorHours[i].intValue());
+    		totalHours[i] -= relatedValue;
+    		Integer totalValue = Math.min(totalOffseted.intValue(), totalHours[i].intValue());
     		
     		majorArray[i].setTotalHours(new Long(totalValue+relatedValue));
     	}

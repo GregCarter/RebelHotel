@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CatalogRequirementController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(method = RequestMethod.POST)
-    public String reate(@Valid CatalogRequirement catalogRequirement, BindingResult result, Model model, HttpServletRequest request) {
+    public String create(@Valid CatalogRequirement catalogRequirement, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("catalogRequirement", catalogRequirement);
             return "catalogrequirements/create";
