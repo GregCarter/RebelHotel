@@ -38,32 +38,35 @@ public class ViewWorkEffortVoter implements AccessDecisionVoter {
 		
 		Collection<GrantedAuthority> authorities = authentication.getAuthorities();
 		
-		// users more powerful than students can view any work efforts
-		for (GrantedAuthority authority : authorities) {
-			if (authority.getAuthority().equals("ROLE_USER") || authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_SUPERUSER")) {
-				result = ACCESS_GRANTED;
-				break;
+		for (ConfigAttribute attribute : attributes) {
+			if (this.supports(attribute)) {
+				// users more powerful than students can view any work efforts
+				for (GrantedAuthority authority : authorities) {
+					if (authority.getAuthority().equals("ROLE_USER") || authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_SUPERUSER")) {
+						result = ACCESS_GRANTED;
+						break;
+					}
+				}
+				if (result == ACCESS_ABSTAIN) { // students themselves can only view their own work efforts
+					if (userInformation.getStudent() != null) {
+						Student accessor = userInformation.getStudent();
+						MethodInvocation mi = (MethodInvocation) object;
+						Long id = (Long) mi.getArguments()[0];
+						WorkEffort we = WorkEffort.findWorkEffort(id);
+						if (we == null) {
+							return ACCESS_ABSTAIN;
+						}
+						Student owner = we.getStudent();
+						if (accessor.getId().equals(owner.getId())) {
+							result = ACCESS_GRANTED;
+						}
+						else {
+							result = ACCESS_DENIED;
+						}
+					}
+				}
 			}
 		}
-		if (result == ACCESS_ABSTAIN) { // students themselves can only view their own work efforts
-			if (userInformation.getStudent() != null) {
-				Student accessor = userInformation.getStudent();
-				MethodInvocation mi = (MethodInvocation) object;
-				Long id = (Long) mi.getArguments()[0];
-				WorkEffort we = WorkEffort.findWorkEffort(id);
-				if (we == null) {
-					return ACCESS_ABSTAIN;
-				}
-				Student owner = we.getStudent();
-				if (accessor.getId().equals(owner.getId())) {
-					result = ACCESS_GRANTED;
-				}
-				else {
-					result = ACCESS_DENIED;
-				}
-			}
-		}
-		
 		return result;
 	}
 }

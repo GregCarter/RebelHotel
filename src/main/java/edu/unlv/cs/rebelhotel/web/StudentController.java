@@ -34,6 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -354,6 +355,7 @@ public class StudentController {
 		return "students/query";
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(method = RequestMethod.POST)
     public String create(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -375,6 +377,7 @@ public class StudentController {
         return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String createForm(Model model) {
         model.addAttribute("formStudent", new FormStudent());
@@ -385,12 +388,14 @@ public class StudentController {
     /**********************************************
      * Remove later; added as a temporary means of adding majors to students
      **********************************************/
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(value = "/{id}", params = "major", method = RequestMethod.GET)
     public String createMajor(@PathVariable("id") Long id, Model model) {
     	model.addAttribute("formStudentMajor", FormStudentMajor.createFromStudent(Student.findStudent(id)));
     	return "students/updateMajor";
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(params = "major", method = RequestMethod.PUT)
     public String updateMajor(@Valid FormStudentMajor fsm, BindingResult result, Model model, HttpServletRequest request) {
     	if (result.hasErrors()) {
@@ -405,6 +410,7 @@ public class StudentController {
     /************************************************
      ************************************************/
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(method = RequestMethod.PUT)
     public String update(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -418,6 +424,16 @@ public class StudentController {
         return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+        Student.findStudent(id).remove();
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("formStudent", FormStudent.createFromStudent(Student.findStudent(id)));

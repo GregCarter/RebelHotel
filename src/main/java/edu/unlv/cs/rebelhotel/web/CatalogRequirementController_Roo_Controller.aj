@@ -34,12 +34,6 @@ privileged aspect CatalogRequirementController_Roo_Controller {
         return "redirect:/catalogrequirements/" + encodeUrlPathSegment(catalogRequirement.getId().toString(), request);
     }
     
-    @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String CatalogRequirementController.createForm(Model model) {
-        model.addAttribute("catalogRequirement", new CatalogRequirement());
-        return "catalogrequirements/create";
-    }
-    
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String CatalogRequirementController.show(@PathVariable("id") Long id, Model model) {
         model.addAttribute("catalogrequirement", CatalogRequirement.findCatalogRequirement(id));
@@ -58,30 +52,6 @@ privileged aspect CatalogRequirementController_Roo_Controller {
             model.addAttribute("catalogrequirements", CatalogRequirement.findAllCatalogRequirements());
         }
         return "catalogrequirements/list";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT)
-    public String CatalogRequirementController.update(@Valid CatalogRequirement catalogRequirement, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("catalogRequirement", catalogRequirement);
-            return "catalogrequirements/update";
-        }
-        catalogRequirement.merge();
-        return "redirect:/catalogrequirements/" + encodeUrlPathSegment(catalogRequirement.getId().toString(), request);
-    }
-    
-    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String CatalogRequirementController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("catalogRequirement", CatalogRequirement.findCatalogRequirement(id));
-        return "catalogrequirements/update";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String CatalogRequirementController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
-        CatalogRequirement.findCatalogRequirement(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/catalogrequirements?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
     @ModelAttribute("terms")

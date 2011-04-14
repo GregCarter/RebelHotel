@@ -27,6 +27,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RooWebScaffold(path = "workefforts", formBackingObject = WorkEffort.class, exposeFinders=false)
 @RequestMapping("/workefforts")
@@ -49,7 +50,7 @@ public class WorkEffortController {
 		this.workEffortForStudentValidator = workEffortForStudentValidator;
 	}
 	
-	@PreAuthorize("hasRole('ROLE_STUDENT')")
+	@PreAuthorize("hasRole('ROLE_STUDENT')") // only students should have a list of work efforts ... though a different error than "access denied" might be desirable to admins
 	@RequestMapping(value = "/mywork", method = RequestMethod.GET)
 	public String listPersonalWork(Model model) {
 		Student student = userInformation.getStudent();
@@ -60,6 +61,7 @@ public class WorkEffortController {
 	
 	// NOTE : the params string should not be equivalent to any of the fields in the form
 	// otherwise the validator (?) will assume the params value is set to null (?) ... very annoying bug
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.POST)
     public String createStudent(@PathVariable("sid") Long sid, FormWorkEffortForStudent formWorkEffortForStudent, BindingResult result, Model model, HttpServletRequest request) {
 		workEffortForStudentValidator.validate(formWorkEffortForStudent, result);
@@ -93,6 +95,7 @@ public class WorkEffortController {
         return "redirect:/workefforts/" + encodeUrlPathSegment(formWorkEffortForStudent.getWorkEffort().getId().toString(), request);
     }
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(method = RequestMethod.POST)
     public String create(WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
         workEffortValidator.validate(workEffort, result);
@@ -107,6 +110,7 @@ public class WorkEffortController {
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(method = RequestMethod.PUT)
     public String update(WorkEffort workEffort, BindingResult result, Model model, HttpServletRequest request) {
         workEffortValidator.validate(workEffort, result);
@@ -117,7 +121,8 @@ public class WorkEffortController {
         workEffort.merge();
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
-	
+
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(params = "form", method = RequestMethod.GET)
     public String createForm(Model model) {
         model.addAttribute("workEffort", new WorkEffort());
@@ -130,6 +135,7 @@ public class WorkEffortController {
         return "workefforts/create";
     }
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(value = "/{sid}", params = "forstudent", method = RequestMethod.GET)
     public String createStudentForm(@PathVariable("sid") Long sid, Model model) {
         model.addAttribute("formWorkEffortForStudent", new FormWorkEffortForStudent());
@@ -149,11 +155,21 @@ public class WorkEffortController {
         return "workefforts/createFromStudent";
     }
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("workEffort", WorkEffort.findWorkEffort(id));
         addDateTimeFormatPatterns(model);
         return "workefforts/update";
+    }
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+        WorkEffort.findWorkEffort(id).remove();
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/workefforts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
 	
 	@Secured("VIEW_WORK_EFFORT") // custom voter will check this request

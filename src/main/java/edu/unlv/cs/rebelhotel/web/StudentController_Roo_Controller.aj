@@ -43,14 +43,6 @@ privileged aspect StudentController_Roo_Controller {
         return "students/list";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String StudentController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
-        Student.findStudent(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
-    }
-    
     @ModelAttribute("majors")
     public Collection<Major> StudentController.populateMajors() {
         return Major.findAllMajors();
