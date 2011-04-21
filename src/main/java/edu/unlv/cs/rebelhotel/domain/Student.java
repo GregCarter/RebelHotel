@@ -38,10 +38,6 @@ public class Student {
     @Column(unique = true)
     private String userId;
 
-    @NotNull
-
-    @Size(min = 5)
-    private String email = "default";
 
     @NotNull
     @Size(min = 2)

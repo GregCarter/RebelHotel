@@ -36,12 +36,14 @@
 		Edition annotations in your classes without needing to do any special configuration. 
 		The most commonly used annotation is @Autowired, which instructs Spring to 
 		dependency inject an object into your class. -->
+
 	<context:component-scan base-package="edu.unlv.cs.rebelhotel">
 		<context:exclude-filter expression=".*_Roo_.*"
 			type="regex" />
 		<context:exclude-filter expression="org.springframework.stereotype.Controller"
 			type="annotation" />
 	</context:component-scan>
+
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="${database.driverClassName}" />
@@ -67,10 +69,10 @@
 			<ref local="passwordEncoder" />
 		</property>
 	</bean>
-	<!-- <bean id = "authenticationManager" class = "org.springframework.security.authentication.ProviderManager"> 
+	<!--  <bean id = "authenticationManager" class = "org.springframework.security.authentication.ProviderManager"> 
 		<property name = "providers"> <list> <ref local = "daoAuthenticationProvider" 
 		/> <ref local = "anonymousAuthenticationProvider" /> <ref local = "ldapAuthenticationProvider" 
-		/> </list> </property> </bean> -->
+		/> </list> </property> </bean>  -->
 
 	<bean class="edu.unlv.cs.rebelhotel.service.UserInformation" id="userInformation"
 		scope="session">
@@ -86,9 +88,10 @@
 		id="entityManagerFactory">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<!-- Here is the mail sender, will need to inject the email sender into 
+		value -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="localhost" />
-
 	</bean>
 	<bean id="velocityEngine"
 		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
@@ -101,4 +104,36 @@
 			</props>
 		</property>
 	</bean>
+	<bean id="userEmailService" class="edu.unlv.cs.rebelhotel.email.UserEmailService">
+		<property name="mailSender" ref="mailSender" />
+	</bean>
+	<bean id="adminConfirmation"
+		class="edu.unlv.cs.rebelhotel.email.AdminConfirmationPreparator"
+		scope="prototype">
+		 <aop:scoped-proxy /> 
+		<property name="templateEngine" ref="velocityEngine" />
+		<property name="template"
+			value="/edu/unlv/cs/rebelhotel/email/admin-confirmation.vm" />
+	</bean>
+	<bean id="studentConfirmation"
+		class="edu.unlv.cs.rebelhotel.email.StudentConfirmationPreparator"
+		scope="prototype">
+		<aop:scoped-proxy />
+		<property name = "templateEngine" ref="velocityEngine" />
+		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/student-confirmation.vm" />
+	</bean>
+	<bean id="sendNewPassword" class="edu.unlv.cs.rebelhotel.email.SendNewPasswordPreparator"
+		scope="prototype">
+		<aop:scoped-proxy />
+		<property name ="templateEngine" ref="velocityEngine" />
+		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/new-password.vm" />
+	</bean>
+	
+	<bean id="sendWorkEffortConfirmation" class="edu.unlv.cs.rebelhotel.email.SendWorkEffortPreparator"
+		scope="prototype">
+		<aop:scoped-proxy />
+		<property name="templateEngine" ref="velocityEngine" />
+		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/work-confirmation.vm" />
+	</bean>
+
 </beans>

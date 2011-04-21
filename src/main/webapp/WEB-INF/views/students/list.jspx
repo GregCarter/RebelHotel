@@ -15,7 +15,8 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" property="majors" z="Ecda7DS1Cn6bKJSYGr68uCR7h8Y="/>
             
 
-        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_email" property="email" z="v0BGqklSPHIPXq+NepLkZBAqQxo="/>
+        
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" property="admitTerm" z="BUdDIBOqBFS9uGJzNcyq+qD/D/8="/>
         </table:table>
     </page:list>
 </div>

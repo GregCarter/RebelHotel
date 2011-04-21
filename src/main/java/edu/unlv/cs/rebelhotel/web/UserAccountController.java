@@ -22,7 +22,7 @@ public class UserAccountController {
 	UserEmailService userEmailService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-    public String create(@Valid UserAccount userAccount, BindingResult result, Model model, HttpServletRequest request) {
+    public String create(@Valid UserAccount userAccount, BindingResult result, Model model, HttpServletRequest request) throws Exception {
         if (result.hasErrors()) {
             model.addAttribute("userAccount", userAccount);
             return "useraccounts/create";

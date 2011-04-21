@@ -1,8 +1,8 @@
 package edu.unlv.cs.rebelhotel.email;
 
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.mail.internet.InternetAddress;
-import org.apache.velocity.app.VelocityEngine;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,59 +10,115 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
-import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import javax.mail.internet.MimeMessage;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.ui.velocity.VelocityEngineFactoryBean;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
+import edu.unlv.cs.rebelhotel.domain.UserAccount;
 
 @Service
 public class UserEmailService {
+
+	private JavaMailSender mailSender;
 	
-	    private JavaMailSender mailSender;
-	    private VelocityEngine velocityEngine;
-	    
-	    @Autowired
-	    public void setVelocityEngine(VelocityEngine velocityEngine) {
-			this.velocityEngine = velocityEngine;
-		}
-
-		@Autowired
-	    public void setMailSender(JavaMailSender mailSender) {
-	        this.mailSender = mailSender;
-	    }
-	    
+	@Autowired
+	private AdminConfirmationPreparator adminConfirmation;
+	private StudentConfirmationPreparator studentConfirmation;
+	private SendNewPasswordPreparator sendNewPassword;
+	private SendWorkEffortPreparator sendWorkEffotConfirmation;
 	
-		public void sendStudentConfirmation(final UserAccount user)
-		{
-			
-		}
-	    public void sendAdminComfirmation(final UserAccount user){
-	    	//do business calculations
-	    	
-	    	MimeMessagePreparator mimeMessagePreparator = new MimeMessagePreparator(){
 	
-		public void prepare(MimeMessage mimeMessage) throws Exception {
-			MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-			message.setTo(user.getEmail());
-			message.setFrom("webmaster@RebelHotel.unlv.edu");
-			message.setText("Welcome to UNLV RebelHotel Application, Your password is " + user.getPassword());
-		}
-	};
-		this.mailSender.send(mimeMessagePreparator );
-	    }
-	    
-	    public void sendNewPassword(final UserAccount user)
-	    {
-	    	
-	    }
-	    
-	    public void sendWorkEffortConfirmation(final UserAccount user)
-	    {
-	    	
-	    }
-	    }
+	// remove later; just for testing
+	@Autowired
+	private VelocityEngineFactoryBean engine;
 
 
+	@Autowired
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
+	}
 
- 
+	public void sendStudentConfirmation(final UserAccount userAccount) {
+		StudentConfirmationPreparator studentConfirmation = getStudentConfirmation();
+		studentConfirmation.setUserAccount(userAccount);
+		this.mailSender.send(adminConfirmation);
+
+	}
+	public StudentConfirmationPreparator getStudentConfirmation(){
+		return this.studentConfirmation;
+	}
+	
+	@Autowired
+	public void setStudentConfirmation(StudentConfirmationPreparator studentConfirmation){
+		this.studentConfirmation = studentConfirmation;
+	}
+	//=============================================================
+	public void sendAdminComfirmation(final UserAccount userAccount) throws Exception {
+		// do business calculations
+		//AdminConfirmationPreparator adminConfirmation = getAdminConfirmation();
+		
+		//adminConfirmation.setUserAccount(userAccount);
+		//this.mailSender.send(adminConfirmation);
+		
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+				message.setTo(userAccount.getEmail());
+				message.setFrom("webmaster@RebelHotel.unlv.edu");
+				Map model = new HashMap();
+				model.put("userAccount", userAccount);
+				model.put("name", "VALUE");
+				String text = VelocityEngineUtils.mergeTemplateIntoString(
+						engine.createVelocityEngine(),
+						"/edu/unlv/cs/rebelhotel/email/admin-confirmation.vm",
+						model);
+				message.setText(text, true);
+
+			}
+		};
+		this.mailSender.send(preparator);
+	}
+
+	public AdminConfirmationPreparator getAdminConfirmation() {
+		return this.adminConfirmation;
+	}
+	
+	@Autowired
+	public void setAdminConfirmation(AdminConfirmationPreparator adminConfirmation){
+		this.adminConfirmation = adminConfirmation;
+	}
+	
+	//=============================================================
+	public void sendNewPassword (final UserAccount userAccount)
+	{
+		SendNewPasswordPreparator sendNewPassword = getSendNewPassword();
+		sendNewPassword.setUserAccount(userAccount);
+		this.mailSender.send(sendNewPassword);
+	}
+	
+	public SendNewPasswordPreparator getSendNewPassword() {
+		return this.sendNewPassword;
+	}
+	
+	@Autowired 
+	public void setSendNewPassword(SendNewPasswordPreparator sendNewPassword){
+	this.sendNewPassword = sendNewPassword;
+	}
+	//=============================================================
+	
+	public void sendWorkEffortConfirmation(final UserAccount userAccount)
+	{
+		SendWorkEffortPreparator sendWorkEffortConfirmation = getSendWorkEffortConfirmation();
+		sendWorkEffortConfirmation.setUserAccount(userAccount);
+		this.mailSender.send(sendWorkEffortConfirmation);
+	}
+	
+	public SendWorkEffortPreparator getSendWorkEffortConfirmation(){
+		return this.sendWorkEffotConfirmation;
+	}
+	
+	@Autowired 
+	public void setSendWorkEfforConfirmation( SendWorkEffortPreparator sendWorkEffortConfirmation){
+		this.sendWorkEffotConfirmation = sendWorkEffortConfirmation;
+	}
+
+}

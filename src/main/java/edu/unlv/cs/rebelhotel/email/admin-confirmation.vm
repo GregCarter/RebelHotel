@@ -1,0 +1,21 @@
+<html>
+<body>
+
+##<h3> Welcome  ${userAccount.userId} </h3>
+<h3> Welcome  $name </h3>
+$userAccount.userId
+$userAccount.getUserId()
+${userAccount.getUserId()}
+${userAccount.userId}
+
+<div>
+Welcome to the William F. Harrah College of Hotel Administration system for tracking student work hours.
+When logging onto the system you will enter your user name, ${userAccount.userId}.
+Your temporary password is :  ${userAccount.password}
+<br/>
+You can personalize your password by creating a new once, once logged into the sytem.
+<br/>
+If you have any question please contact the Hotel College Administration
+</div>
+</body>
+</html>
