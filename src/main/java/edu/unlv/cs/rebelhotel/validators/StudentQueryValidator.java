@@ -21,41 +21,41 @@ public class StudentQueryValidator implements Validator {
 	}
 	
 	public void validate(Object target, Errors errors) {
-		FormStudentQuery fsq = (FormStudentQuery) target;
-		if (fsq.getUseUserId()) {
-			if (fsq.getUserId() == null || fsq.getUserId() == "") {
+		FormStudentQuery form = (FormStudentQuery) target;
+		if (form.getUseUserId()) {
+			if (form.getUserId() == null || form.getUserId() == "") {
 				errors.rejectValue("userId", "student_query.null_user", "User ID must be entered when using this filter");
 			}
 		}
-		if (fsq.getUseModified()) {
+		if (form.getUseModified()) {
 			boolean not_null = true;
-			if (fsq.getLastModifiedStart() == null) {
+			if (form.getLastModifiedStart() == null) {
 				errors.rejectValue("lastModifiedStart", "date.missing_start_date", "Enter the start date");
 				not_null = false;
 			}
-			if (fsq.getLastModifiedEnd() == null) {
+			if (form.getLastModifiedEnd() == null) {
 				errors.rejectValue("lastModifiedEnd", "date.missing_end_date", "Enter the end date");
 				not_null = false;
 			}
 			if (not_null) {
-				if (fsq.isStartDateAfterEndDate()) {
+				if (form.isStartDateAfterEndDate()) {
 					errors.rejectValue("lastModifiedStart", "date.invalid_combination", "First date should not be greater than the second date");
 				}
 			}
 		}
-		if (fsq.getUseCatalogTerm()) {
+		if (form.getUseCatalogTerm()) {
 			try {
 				errors.pushNestedPath("catalogTerm");
-				termValidator.validate(fsq.getCatalogTerm(), errors);
+				termValidator.validate(form.getCatalogTerm(), errors);
 			}
 			finally {
 				errors.popNestedPath();
 			}
 		}
-		if (fsq.getUseGradTerm()) {
+		if (form.getUseGradTerm()) {
 			try {
 				errors.pushNestedPath("gradTerm");
-				termValidator.validate(fsq.getGradTerm(), errors);
+				termValidator.validate(form.getGradTerm(), errors);
 			}
 			finally {
 				errors.popNestedPath();

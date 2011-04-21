@@ -21,7 +21,6 @@ import org.joda.time.format.DateTimeFormat;
 import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
@@ -251,7 +250,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value = "/listquery", method = RequestMethod.GET)
-	public String queryList(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String queryList(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
 		studentQueryValidator.validate(form, result); // rather than assigning the validator to the student controller (like with the work effort controller), it should only apply to this method
 		
 		if (result.hasErrors()) {
@@ -341,11 +340,12 @@ public class StudentController {
 				response.getOutputStream().close();
 			}
 			else {
+				// TODO make this more robust
 				response.setContentType("text/html");
-				PrintWriter pw = response.getWriter();
-				pw.println("<html>");
-				pw.println("FAIL");
-				pw.println("</html>");
+				PrintWriter writer = response.getWriter();
+				writer.println("<html>");
+				writer.println("FAIL");
+				writer.println("</html>");
 			}
 			
 			return null;
@@ -354,10 +354,10 @@ public class StudentController {
 	
 	@RequestMapping(value = "/query", method = RequestMethod.GET)
 	public String query(Model model) {
-		FormStudentQuery fsq = new FormStudentQuery();
-		fsq.setLastModifiedStart(new Date());
-		fsq.setLastModifiedEnd(new Date());
-		model.addAttribute("formStudentQuery", fsq);
+		FormStudentQuery form = new FormStudentQuery();
+		form.setLastModifiedStart(new Date());
+		form.setLastModifiedEnd(new Date());
+		model.addAttribute("formStudentQuery", form);
 		addQueryDateTimeFormatPatterns(model);
 		return "students/query";
 	}

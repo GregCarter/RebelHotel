@@ -40,8 +40,8 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 				if (authorities.contains(UserGroup.ROLE_STUDENT)) {
 					// All students should have the ROLE_STUDENT role and should also have usernames consisting of 10  digit numbers
 					try {
-						UserAccount ua = UserAccount.findUserAccountsByUserId(username).getSingleResult();
-						Student student = Student.findStudentsByUserAccount(ua).getSingleResult();
+						UserAccount account = UserAccount.findUserAccountsByUserId(username).getSingleResult();
+						Student student = Student.findStudentsByUserAccount(account).getSingleResult();
 						userInformation.setStudent(student);
 					}
 					catch (org.springframework.dao.EmptyResultDataAccessException exception) {

@@ -50,13 +50,13 @@ public class ViewWorkEffortVoter implements AccessDecisionVoter {
 				if (result == ACCESS_ABSTAIN) { // students themselves can only view their own work efforts
 					if (userInformation.getStudent() != null) {
 						Student accessor = userInformation.getStudent();
-						MethodInvocation mi = (MethodInvocation) object;
-						Long id = (Long) mi.getArguments()[0];
-						WorkEffort we = WorkEffort.findWorkEffort(id);
-						if (we == null) {
+						MethodInvocation invocation = (MethodInvocation) object;
+						Long id = (Long) invocation.getArguments()[0];
+						WorkEffort job = WorkEffort.findWorkEffort(id);
+						if (job == null) {
 							return ACCESS_ABSTAIN;
 						}
-						Student owner = we.getStudent();
+						Student owner = job.getStudent();
 						if (accessor.getId().equals(owner.getId())) {
 							result = ACCESS_GRANTED;
 						}

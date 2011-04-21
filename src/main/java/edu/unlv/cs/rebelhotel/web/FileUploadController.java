@@ -32,17 +32,17 @@ public class FileUploadController {
 
 	@RequestMapping(params = "upload", method = RequestMethod.POST)
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
-	public String uploadFormHandler(@RequestParam("file") MultipartFile multipart_file, Model model) throws IOException {
-		if (multipart_file.isEmpty()) {
+	public String uploadFormHandler(@RequestParam("file") MultipartFile multipartFile, Model model) throws IOException {
+		if (multipartFile.isEmpty()) {
 			return "file/upload";
 		}
-		byte[] file_data = multipart_file.getBytes();
+		byte[] fileData = multipartFile.getBytes();
 		
 		File file = File.createTempFile("students",".csv");
-		multipart_file.transferTo(file);
+		multipartFile.transferTo(file);
 		studentService.upload(file);
 		
-		model.addAttribute("file_data", new String(file_data).toString());
+		model.addAttribute("file_data", new String(fileData).toString());
 		return "file/show";
 	}
 }
