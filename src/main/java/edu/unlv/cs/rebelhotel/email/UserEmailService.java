@@ -52,7 +52,7 @@ public class UserEmailService {
 		this.studentConfirmation = studentConfirmation;
 	}
 	//=============================================================
-	public void sendAdminComfirmation(final UserAccount userAccount) throws Exception {
+	public void sendAdminComfirmation(final UserAccount userAccount, final String password) throws Exception {
 		// do business calculations
 		//AdminConfirmationPreparator adminConfirmation = getAdminConfirmation();
 		
@@ -66,7 +66,7 @@ public class UserEmailService {
 				message.setFrom("webmaster@RebelHotel.unlv.edu");
 				Map model = new HashMap();
 				model.put("userAccount", userAccount);
-				model.put("name", "VALUE");
+				model.put("password", password);
 				String text = VelocityEngineUtils.mergeTemplateIntoString(
 						engine.createVelocityEngine(),
 						"/edu/unlv/cs/rebelhotel/email/admin-confirmation.vm",

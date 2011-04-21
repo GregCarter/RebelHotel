@@ -1,5 +1,7 @@
 package edu.unlv.cs.rebelhotel.domain;
 
+import java.util.Random;
+
 import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -24,7 +26,10 @@ import javax.persistence.EnumType;
 
 public class UserAccount {
 
-    @NotNull
+    private static final int MAX_PASSWORD_LENGTH = 8;
+
+
+	@NotNull
     @Column(unique = true)
     private String userId;
 
@@ -74,11 +79,23 @@ public class UserAccount {
         sb.append("UserGroup: ").append(getUserGroup());
         return sb.toString();
     }
-    
-    public String GeneratePassword() {
-		password = "tempPass";
-    	return password;
-    }
+   
+    public String generatePassword() {
+    	String charset = "12345ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&abcdefghijklmnopqrstuvwxyz67890";
+		Random random = new Random();
+		StringBuilder sb = new StringBuilder();
+		
+		Integer pos;
+		for (int i = 0; i < MAX_PASSWORD_LENGTH; i++) {
+			pos = random.nextInt(charset.length());
+        	sb.append(charset.charAt(pos));
+		}
+		
+		 String password = sb.toString();
+		 setPassword(password);
+		 return password;
+	}
+
 
 
 	public String getEmail() {

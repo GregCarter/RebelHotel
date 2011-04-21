@@ -24,15 +24,15 @@ public class AdminConfirmationPreparator implements MimeMessagePreparator {
 
 	public void prepare(MimeMessage mimeMessage) throws Exception {
 		MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-		message.setTo("red@localhost");
-		//message.setTo(userAccount.getEmail());
+		//message.setTo("red@localhost");
+		message.setTo(userAccount.getEmail());
 		message.setFrom("webmaster@RebelHotel.unlv.edu");
 		// message.setText("Welcome to UNLV RebelHotel Application, Your password is "
 		// + user.getPassword());
 		//Map<String,Object> model = new HashMap<String,Object>();
 		Map model = new HashMap();
 		model.put("userAccount", userAccount);
-		model.put("name", "VALUE");
+		//model.put("name", "VALUE");
 		String text = VelocityEngineUtils.mergeTemplateIntoString(
 				templateEngine,
 				template,

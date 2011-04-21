@@ -42,7 +42,8 @@ public class UserEmailServiceTest {
 		replay(mailSender);
 		replay(adminConfirmation);
 		
-		instance.sendAdminComfirmation(userAccount);
+		String password= "";
+		instance.sendAdminComfirmation(userAccount, password);
 	}
 
 	@Test

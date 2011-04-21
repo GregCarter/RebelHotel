@@ -27,9 +27,16 @@ public class UserAccountController {
             model.addAttribute("userAccount", userAccount);
             return "useraccounts/create";
         }
-        userAccount.persist();
+        
         // ADD THE CALL TO MAILER
-         userEmailService.sendAdminComfirmation(userAccount);
+        //if(==userAccount.getUserGroup())
+        
+   
+        String password = userAccount.generatePassword();
+       
+         userAccount.persist();
+         userEmailService.sendAdminComfirmation(userAccount, password);
+         
         return "redirect:/useraccounts/" + encodeUrlPathSegment(userAccount.getId().toString(), request);
     }
 }
