@@ -1,0 +1,27 @@
+<html>
+<body>
+<h3> Welcome  ${userAccount.userId} </h3>
+
+
+<p style ="text-indent:25px;">
+   Welcome to the William F. Harrah College of Hotel Administration system for tracking student work hours.
+This site will be responsible for tracking and monitoring you major related hours needed for graduation. 
+You may check your progress  and the status of the jobs submitted site as you approach graduation.
+You will still need to hand in your time sheet or pay stubs for work verification at the advising department
+<br/>
+
+When logging onto the system you will enter your user name, ${userAccount.userId}. 
+Your temporary password is :  <span style = font-weight:bold> ${password} </span>
+<br/>
+You can personalize your password by creating a new once, once logged into the system.
+<br/>
+If you have any question please contact 
+<a href="http://hotel.unlv.edu/contact/">College of Hotel Administration</a>
+
+Thank You
+
+Hotel College Advising Department
+
+</p>
+</body>
+</html>

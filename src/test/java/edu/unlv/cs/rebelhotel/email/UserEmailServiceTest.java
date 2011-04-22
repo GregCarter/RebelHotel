@@ -16,7 +16,7 @@ public class UserEmailServiceTest {
 	private UserEmailService instance;
 	private JavaMailSender mailSender;
 	private AdminConfirmationPreparator adminConfirmation;
-
+/*
 	@Before
 	public void setUp(){
 		instance = new UserEmailService();
@@ -55,5 +55,5 @@ public class UserEmailServiceTest {
 	public void testSendWorkEffortConfirmation() {
 		fail("Not yet implemented");
 	}
-
+*/
 }

@@ -19,13 +19,13 @@ import edu.unlv.cs.rebelhotel.domain.UserAccount;
 public class UserEmailService {
 
 	private JavaMailSender mailSender;
-	
+	/*
 	@Autowired
 	private AdminConfirmationPreparator adminConfirmation;
 	private StudentConfirmationPreparator studentConfirmation;
 	private SendNewPasswordPreparator sendNewPassword;
 	private SendWorkEffortPreparator sendWorkEffotConfirmation;
-	
+	*/
 	
 	// remove later; just for testing
 	@Autowired
@@ -37,27 +37,36 @@ public class UserEmailService {
 		this.mailSender = mailSender;
 	}
 
-	public void sendStudentConfirmation(final UserAccount userAccount) {
-		StudentConfirmationPreparator studentConfirmation = getStudentConfirmation();
-		studentConfirmation.setUserAccount(userAccount);
-		this.mailSender.send(adminConfirmation);
+	public void sendStudentConfirmation(final UserAccount userAccount, final String password) throws Exception {
 
-	}
-	public StudentConfirmationPreparator getStudentConfirmation(){
-		return this.studentConfirmation;
-	}
+		MimeMessagePreparator preparator = new MimeMessagePreparator(){
+
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+				message.setTo(userAccount.getEmail());
+				message.setFrom("webmaster@RebelHotel.unlv.edu");
+				Map model = new HashMap();
+				model.put("userAccount", userAccount);
+				model.put("password", password);
+				String text = VelocityEngineUtils.mergeTemplateIntoString(
+						engine.createVelocityEngine(),
+						"/edu/unlv/cs/rebelhotel/email/student-confirmation.vm",
+						model);
+				message.setText(text, true);
 	
+				}
+			};
+			this.mailSender.send(preparator);
+	}
+	/*
 	@Autowired
 	public void setStudentConfirmation(StudentConfirmationPreparator studentConfirmation){
 		this.studentConfirmation = studentConfirmation;
-	}
+	
+	} */
 	//=============================================================
+	
 	public void sendAdminComfirmation(final UserAccount userAccount, final String password) throws Exception {
-		// do business calculations
-		//AdminConfirmationPreparator adminConfirmation = getAdminConfirmation();
-		
-		//adminConfirmation.setUserAccount(userAccount);
-		//this.mailSender.send(adminConfirmation);
 		
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -77,7 +86,55 @@ public class UserEmailService {
 		};
 		this.mailSender.send(preparator);
 	}
+	public void sendNewPassword(final UserAccount userAccount, final String password) throws Exception {
+		
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+				message.setTo(userAccount.getEmail());
+				message.setFrom("webmaster@RebelHotel.unlv.edu");
+				Map model = new HashMap();
+				model.put("userAccount", userAccount);
+				model.put("password", password);
+				String text = VelocityEngineUtils.mergeTemplateIntoString(
+						engine.createVelocityEngine(),
+						"/edu/unlv/cs/rebelhotel/email/new-password.vm",
+						model);
+				message.setText(text, true);
 
+			}
+		};
+		this.mailSender.send(preparator);
+	}
+	
+	public void sendWorkConfirmation(final UserAccount userAccount, final String password) throws Exception {
+		
+		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+				message.setTo(userAccount.getEmail());
+				message.setFrom("webmaster@RebelHotel.unlv.edu");
+				Map model = new HashMap();
+				model.put("userAccount", userAccount);
+				model.put("password", password);
+				String text = VelocityEngineUtils.mergeTemplateIntoString(
+						engine.createVelocityEngine(),
+						"/edu/unlv/cs/rebelhotel/email/work-confirmation.vm",
+						model);
+				message.setText(text, true);
+
+			}
+		};
+		this.mailSender.send(preparator);
+	}
+	
+}
+
+	
+	
+	
+	
+	/*
 	public AdminConfirmationPreparator getAdminConfirmation() {
 		return this.adminConfirmation;
 	}
@@ -122,3 +179,4 @@ public class UserEmailService {
 	}
 
 }
+*/

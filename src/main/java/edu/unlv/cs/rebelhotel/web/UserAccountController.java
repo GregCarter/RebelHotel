@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
+import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.email.UserEmailService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,21 @@ public class UserAccountController {
         }
         
         // ADD THE CALL TO MAILER
-        //if(==userAccount.getUserGroup())
-        
-   
+        if(userAccount.getUserGroup().equals(UserGroup.ROLE_STUDENT) )
+        {
+ 
+        	String password = userAccount.generatePassword();
+        	userAccount.persist();
+        	userEmailService.sendStudentConfirmation(userAccount, password);
+        }
+       
+        else
+        {
         String password = userAccount.generatePassword();
        
          userAccount.persist();
          userEmailService.sendAdminComfirmation(userAccount, password);
+        }
          
         return "redirect:/useraccounts/" + encodeUrlPathSegment(userAccount.getId().toString(), request);
     }
