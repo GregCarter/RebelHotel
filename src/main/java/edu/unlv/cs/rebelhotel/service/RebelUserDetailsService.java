@@ -12,8 +12,8 @@ import edu.unlv.cs.rebelhotel.domain.UserAccount;
 @Service("userService")
 public class RebelUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
-		UserAccount ua = (UserAccount) UserAccount.findUserAccountsByUserId(username).getSingleResult();
-		UserDetails ud = new RebelUserDetails(ua);
-		return ud;
+		UserAccount account = (UserAccount) UserAccount.findUserAccountsByUserId(username).getSingleResult();
+		UserDetails details = new RebelUserDetails(account);
+		return details;
 	}
 }

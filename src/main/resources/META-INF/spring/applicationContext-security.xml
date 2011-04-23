@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -23,6 +22,8 @@
 							class="org.springframework.security.access.expression.method.ExpressionBasedPreInvocationAdvice" />
 					</beans:constructor-arg>
 				</beans:bean>
+				
+				<beans:bean class = "edu.unlv.cs.rebelhotel.voters.ViewWorkEffortVoter" />
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -76,13 +77,7 @@
 				<user name="root"
 					password="9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
 					authorities="ROLE_ADMIN" />
-				<!-- <user name="user" password="04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb" 
-					authorities="ROLE_USER"/> -->
 			</user-service>
 		</authentication-provider>
-		<authentication-provider user-service-ref="userService">
-			<password-encoder hash="sha-256" />
-		</authentication-provider>
 	</authentication-manager>
-
 </beans:beans>

@@ -2,7 +2,16 @@ package edu.unlv.cs.rebelhotel.form;
 
 import java.util.Date;
 
+import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.roo.addon.javabean.RooJavaBean;
+
 import edu.unlv.cs.rebelhotel.domain.Term;
+import edu.unlv.cs.rebelhotel.domain.enums.Validation;
+import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 
 public class FormStudentQuery {
 	private boolean useUserId;
@@ -45,6 +54,34 @@ public class FormStudentQuery {
 	
 	private boolean useLastName;
 	private String lastName;
+	
+	private String employerName;
+
+	private String employerLocation;
+
+	@Enumerated
+	private Validation validation;
+	private boolean validationSelected;
+	
+	@Enumerated
+	private Verification verification;
+	private boolean verificationSelected;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(style = "S-")
+	private Date workEffortStartDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(style = "S-")
+	private Date workEffortEndDate;
+	
+	private boolean useHours;
+	private Integer hoursLow;
+	private Integer hoursHigh;
+	
+	private boolean studentUseHours;
+	private Integer studentHoursLow;
+	private Integer studentHoursHigh;
 			
 	public boolean getUseUserId() {
 		return useUserId;
@@ -150,7 +187,7 @@ public class FormStudentQuery {
 		return degreeCode;
 	}
 	
-	public void setDegree(String degreeCode) {
+	public void setDegreeCode(String degreeCode) {
 		this.degreeCode = degreeCode;
 	}
 	
@@ -288,5 +325,117 @@ public class FormStudentQuery {
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getEmployerName() {
+		return employerName;
+	}
+	
+	public void setEmployerName(String employerName) {
+		this.employerName = employerName;
+	}
+	
+	public String getEmployerLocation() {
+		return employerLocation;
+	}
+	
+	public void setEmployerLocation(String employerLocation) {
+		this.employerLocation = employerLocation;
+	}
+	
+	public Verification getVerification() {
+		return verification;
+	}
+	
+	public void setVerification(Verification verification) {
+		this.verification = verification;
+	}
+	
+	public boolean getVerificationSelected() {
+		return verificationSelected;
+	}
+	
+	public void setVerificationSelected(boolean verificationSelected) {
+		this.verificationSelected = verificationSelected;
+	}
+	
+	public Validation getValidation() {
+		return validation;
+	}
+	
+	public void setValidation(Validation validation) {
+		this.validation = validation;
+	}
+	
+	public boolean getValidationSelected() {
+		return validationSelected;
+	}
+	
+	public void setValidationSelected(boolean validationSelected) {
+		this.validationSelected = validationSelected;
+	}
+	
+	public Date getWorkEffortStartDate() {
+		return workEffortStartDate;
+	}
+	
+	public void setWorkEffortStartDate(Date workEffortStartDate) {
+		this.workEffortStartDate = workEffortStartDate;
+	}
+	
+	public Date getWorkEffortEndDate() {
+		return workEffortEndDate;
+	}
+	
+	public void setWorkEffortEndDate(Date workEffortEndDate) {
+		this.workEffortEndDate = workEffortEndDate;
+	}
+	
+	public boolean getUseHours() {
+		return useHours;
+	}
+	
+	public void setUseHours(boolean useHours) {
+		this.useHours = useHours;
+	}
+	
+	public Integer getHoursLow() {
+		return hoursLow;
+	}
+	
+	public void setHoursLow(Integer hoursLow) {
+		this.hoursLow = hoursLow;
+	}
+	
+	public Integer getHoursHigh() {
+		return hoursHigh;
+	}
+	
+	public void setHoursHigh(Integer hoursHigh) {
+		this.hoursHigh = hoursHigh;
+	}
+	
+	public boolean getStudentUseHours() {
+		return studentUseHours;
+	}
+	
+	public void setStudentUseHours(boolean studentUseHours) {
+		this.studentUseHours = studentUseHours;
+	}
+	
+	public Integer getStudentHoursLow() {
+		return studentHoursLow;
+	}
+	
+	public void setStudentHoursLow(Integer studentHoursLow) {
+		this.studentHoursLow = studentHoursLow;
+	}
+	
+	public Integer getStudentHoursHigh() {
+		return studentHoursHigh;
+	}
+	
+	public void setStudentHoursHigh(Integer studentHoursHigh) {
+		this.studentHoursHigh = studentHoursHigh;
 	}
 }

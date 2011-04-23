@@ -46,22 +46,24 @@ public class UserAccount {
     private UserGroup userGroup;
 
     private Boolean enabled = Boolean.TRUE;
+    
 
-    public UserAccount() {
+    public static UserAccount fromFileStudent(FileStudent fileStudent) {
+    	UserAccount user = new UserAccount();
+    	user.setUserId(fileStudent.getStudentId());
+    	user.setPassword(user.generatePassword());
+    	user.setEmail(fileStudent.getEmail());
+    	user.setUserGroup(UserGroup.ROLE_USER);
+    	return user;
     }
     
-    public UserAccount(FileStudent fileStudent, String password) {
-    	this.userId = fileStudent.getStudentId();
-    	this.password = password;
-    	this.email = fileStudent.getEmail();
-    	this.userGroup = UserGroup.ROLE_USER;
-    }
-    
-    public UserAccount(Student student, String password, String email) {
-    	this.userId = student.getUserId();
-    	this.password = password;
-    	this.email = email;
-    	this.userGroup = UserGroup.ROLE_USER;
+    public static UserAccount fromStudent(Student student, String email) {
+    	UserAccount user = new UserAccount();
+    	user.setUserId(student.getUserId());
+    	user.setPassword(user.generatePassword());
+    	user.setEmail(email);
+    	user.setUserGroup(UserGroup.ROLE_USER);
+    	return user;
     }
     
     public void setPassword(String password) {
@@ -79,7 +81,8 @@ public class UserAccount {
         sb.append("UserGroup: ").append(getUserGroup());
         return sb.toString();
     }
-   
+
+  
     public String generatePassword() {
     	String charset = "12345ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&abcdefghijklmnopqrstuvwxyz67890";
 		Random random = new Random();

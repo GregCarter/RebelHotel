@@ -3,32 +3,28 @@
 <tiles-definitions>
 	<definition extends = "default" name = "workefforts.default">
 		<put-attribute name = "workeffort_menu" value = "/WEB-INF/views/workefforts/workEffortsMenu.jspx" cascade = "true" />
+		<put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx" />
 	</definition>
     <definition extends="workefforts.default" name="workefforts/list">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/list.jspx"/>
-        <put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx"/>
     </definition>
 	<definition extends="workefforts.default" name="workefforts/show">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/show.jspx"/>
-		<put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx"/>
     </definition>
 	<definition extends="workefforts.default" name="workefforts/create">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/create.jspx"/>
-		<put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx"/>
     </definition>
     <definition extends="workefforts.default" name="workefforts/createFromStudent">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/createForStudent.jspx"/>
-        <put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx"/>
     </definition>
 	<definition extends="workefforts.default" name="workefforts/update">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/update.jspx"/>
-        <put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx"/>
     </definition>
 	<definition extends="workefforts.default" name="workefforts/findWorkEffortsByStudentEquals">
         <put-attribute name="body" value="/WEB-INF/views/workefforts/findWorkEffortsByStudentEquals.jspx"/>
     </definition>
     <definition extends = "workefforts.default" name = "workefforts/mywork">
     	<put-attribute name = "body" value = "/WEB-INF/views/workefforts/personalList.jspx" />
-    	<put-attribute name = "menu" value="/WEB-INF/views/workefforts/workefforts_menu.jspx"/>
+    	<put-attribute name = "menu" value="/WEB-INF/views/custom_menu.jspx" />
     </definition>
 </tiles-definitions>

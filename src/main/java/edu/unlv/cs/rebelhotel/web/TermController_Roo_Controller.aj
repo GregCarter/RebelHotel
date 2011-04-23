@@ -12,9 +12,7 @@ import java.lang.String;
 import java.util.Arrays;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,22 +22,6 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 privileged aspect TermController_Roo_Controller {
-    
-    @RequestMapping(method = RequestMethod.POST)
-    public String TermController.create(@Valid Term term, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("term", term);
-            return "terms/create";
-        }
-        term.persist();
-        return "redirect:/terms/" + encodeUrlPathSegment(term.getId().toString(), request);
-    }
-    
-    @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String TermController.createForm(Model model) {
-        model.addAttribute("term", new Term());
-        return "terms/create";
-    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String TermController.show(@PathVariable("id") Long id, Model model) {
@@ -59,30 +41,6 @@ privileged aspect TermController_Roo_Controller {
             model.addAttribute("terms", Term.findAllTerms());
         }
         return "terms/list";
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT)
-    public String TermController.update(@Valid Term term, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("term", term);
-            return "terms/update";
-        }
-        term.merge();
-        return "redirect:/terms/" + encodeUrlPathSegment(term.getId().toString(), request);
-    }
-    
-    @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String TermController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("term", Term.findTerm(id));
-        return "terms/update";
-    }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String TermController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
-        Term.findTerm(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/terms?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
     @RequestMapping(params = { "find=BySemester", "form" }, method = RequestMethod.GET)

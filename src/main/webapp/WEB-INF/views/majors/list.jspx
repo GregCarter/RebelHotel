@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
@@ -11,6 +11,10 @@
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_completed_work_requirements" property="completed_work_requirements" z="P4TsrCooGcXMUWvQtNYs6v2LPNo="/>
         
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_degreeCode" property="degreeCode" z="kDDCTtIrK1bCDtDRRMOTMoV9TAE="/>
+        
+        
+        <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_student" property="student" z="hFLmtWJF58A3jq49LT4GtJTOgls="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_domain_Major_totalHours" property="totalHours" z="VP7luK0pp+h0fucDR9ua6XWqscA="/>
         </table:table>
     </page:list>
 </div>

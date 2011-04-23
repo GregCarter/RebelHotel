@@ -135,5 +135,4 @@
 		<property name="templateEngine" ref="velocityEngine" />
 		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/work-confirmation.vm" />
 	</bean>
-
 </beans>

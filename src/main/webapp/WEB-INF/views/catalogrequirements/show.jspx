@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_unlv_cs_rebelhotel_domain_CatalogRequirement" object="${catalogrequirement}" path="/catalogrequirements" z="dlpTUpmzKCIWpxAm6YIdHgj+3gc=">
+        <field:display field="degreeCodePrefix" id="s_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_degreeCodePrefix" object="${catalogrequirement}" z="hp3T0PmCnsqup5vRT0ZG1iO3k5s="/>
+        <field:display field="startTerm" id="s_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_startTerm" object="${catalogrequirement}" z="HU85djC7uFAAkTZThVmIOzOLlZQ="/>
+        <field:display field="endTerm" id="s_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_endTerm" object="${catalogrequirement}" z="q6fXWK9T7lH0JZK6pXVeuzJDOyc="/>
+        <field:display field="totalHoursNeeded" id="s_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_totalHoursNeeded" object="${catalogrequirement}" z="weaFQtOsHOXX3PRY7ydaSFA5bzs="/>
+        <field:display field="totalRelatedHoursNeeded" id="s_edu_unlv_cs_rebelhotel_domain_CatalogRequirement_totalRelatedHoursNeeded" object="${catalogrequirement}" z="JsBXNVsjQEb8en+EEJamS0w5pEg="/>
+    </page:show>
+</div>

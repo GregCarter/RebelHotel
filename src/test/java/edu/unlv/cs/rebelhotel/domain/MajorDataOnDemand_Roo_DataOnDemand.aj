@@ -21,6 +21,8 @@ privileged aspect MajorDataOnDemand_Roo_DataOnDemand {
         obj.setReachedMilestone(true);
         obj.setDegreeCode("degreeCode_" + index);
         obj.setCatalogTerm(null);
+        obj.setStudent(null);
+        obj.setTotalHours(new Integer(index).longValue());
         obj.setCompleted_work_requirements(true);
         return obj;
     }

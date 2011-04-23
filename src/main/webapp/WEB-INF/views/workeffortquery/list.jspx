@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_edu_unlv_cs_rebelhotel_form_FormWorkEffort" items="${formworkefforts}" z="hEwApExw0poH7OuV+XTRDyN0dqU=">
+        <table:table data="${formworkefforts}" id="l_edu_unlv_cs_rebelhotel_form_FormWorkEffort" path="/formworkefforts" z="2DsnyNyWN6qnu8YPHUWhNf++01U=">
+            <table:column id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_NSHE" property="NSHE" z="DIvW4bULt0fIx9QpfhJItE4Whks="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_companyName" property="companyName" z="3pvhkRypRtuCL+mFAVwFS5W2d48="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_companyLocation" property="companyLocation" z="IhN/Mh0kH4p5smRCxIXYrZ5jRhc="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_validation" property="validation" z="1p30Ggh3ZmvGon1zR/1NxPkdI54="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_startDate" property="startDate" z="qoJzL2qBfDNI9sM6CX5PfnNhi98="/>
+            <table:column id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_endDate" property="endDate" z="4nd2j49dTT+FaDDXjO+wFK3BMqs="/>
+        </table:table>
+    </page:list>
+</div>

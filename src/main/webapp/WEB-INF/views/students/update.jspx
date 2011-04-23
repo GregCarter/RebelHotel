@@ -8,6 +8,7 @@
 
     
     <h1>Update Student Form</h1>
+
     <form:update id="fu_edu_unlv_cs_rebelhotel_domain_FormStudent" modelAttribute="formStudent" path="/students" z="GBNOAl+i5dH6v0+VrL7CjJscAjc=">
         <field:input field="userId" id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" required="true" z="Q+6uPHxy+J/BfpXNbnqjoUPl21g="/>
         <field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_Student_email" required="true" validationMessageCode="field_invalid_email" z="Tmzn/MVFDMgzmvP57HSeqAmM1Yg="/>

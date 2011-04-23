@@ -18,7 +18,10 @@ public class Major {
 
 	@ManyToOne
     private Term catalogTerm;
+	@ManyToOne
+	private Student student;
 	
+	private Long totalHours; // calculated progress toward completion is stored here
 
 
 	@Deprecated

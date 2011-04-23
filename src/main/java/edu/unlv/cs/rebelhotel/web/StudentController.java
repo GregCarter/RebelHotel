@@ -6,7 +6,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +18,15 @@ import javax.validation.Valid;
 
 import org.joda.time.format.DateTimeFormat;
 
+import edu.unlv.cs.rebelhotel.domain.CatalogRequirement;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-import edu.unlv.cs.rebelhotel.domain.enums.Degree;
 import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
-import edu.unlv.cs.rebelhotel.file.RandomPasswordGenerator;
+import edu.unlv.cs.rebelhotel.domain.enums.Validation;
+import edu.unlv.cs.rebelhotel.domain.enums.Verification;
 import edu.unlv.cs.rebelhotel.form.FormStudent;
+import edu.unlv.cs.rebelhotel.form.FormStudentMajor;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
 import edu.unlv.cs.rebelhotel.service.StudentQueryService;
 import edu.unlv.cs.rebelhotel.validators.StudentQueryValidator;
@@ -30,6 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.controller.RooWebScaffold;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -73,6 +79,8 @@ public class StudentController {
 	
 	void addQueryDateTimeFormatPatterns(Model model) {
         model.addAttribute("student_query_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        model.addAttribute("workEffortDuration_startdate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
+        model.addAttribute("workEffortDuration_enddate_date_format", DateTimeFormat.patternForStyle("S-", LocaleContextHolder.getLocale()));
     }
 	
 	@ModelAttribute("query_semesters")
@@ -81,8 +89,23 @@ public class StudentController {
     }
 	
 	@ModelAttribute("degree")
-    public Collection<Degree> populateDegree() {
-        return Arrays.asList(Degree.class.getEnumConstants());
+    public Collection<String> populateDegree() {
+        Set<String> degrees = new HashSet<String>();
+        Collection<CatalogRequirement> crs = CatalogRequirement.findAllCatalogRequirements();
+        for (CatalogRequirement cr : crs) {
+        	degrees.add(cr.getDegreeCodePrefix());
+        }
+        return degrees;
+    }
+	
+	@ModelAttribute("validations")
+    public Collection<Validation> populateValidations() {
+        return Arrays.asList(Validation.class.getEnumConstants());
+    }
+	
+	@ModelAttribute("verifications")
+    public Collection<Verification> populateVerifications() {
+        return Arrays.asList(Verification.class.getEnumConstants());
     }
 	
 	public int getNumProperties(FormStudentQuery formStudentQuery) {
@@ -227,7 +250,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value = "/listquery", method = RequestMethod.GET)
-	public String queryList(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String queryList(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @Valid FormStudentQuery form, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
 		studentQueryValidator.validate(form, result); // rather than assigning the validator to the student controller (like with the work effort controller), it should only apply to this method
 		
 		if (result.hasErrors()) {
@@ -317,11 +340,12 @@ public class StudentController {
 				response.getOutputStream().close();
 			}
 			else {
+				// TODO make this more robust
 				response.setContentType("text/html");
-				PrintWriter pw = response.getWriter();
-				pw.println("<html>");
-				pw.println("FAIL");
-				pw.println("</html>");
+				PrintWriter writer = response.getWriter();
+				writer.println("<html>");
+				writer.println("FAIL");
+				writer.println("</html>");
 			}
 			
 			return null;
@@ -330,14 +354,15 @@ public class StudentController {
 	
 	@RequestMapping(value = "/query", method = RequestMethod.GET)
 	public String query(Model model) {
-		FormStudentQuery fsq = new FormStudentQuery();
-		fsq.setLastModifiedStart(new Date());
-		fsq.setLastModifiedEnd(new Date());
-		model.addAttribute("formStudentQuery", fsq);
+		FormStudentQuery form = new FormStudentQuery();
+		form.setLastModifiedStart(new Date());
+		form.setLastModifiedEnd(new Date());
+		model.addAttribute("formStudentQuery", form);
 		addQueryDateTimeFormatPatterns(model);
 		return "students/query";
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(method = RequestMethod.POST)
     public String create(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -349,16 +374,28 @@ public class StudentController {
         // the order of this is pretty strict
         Student student = new Student();
         student.setUserId(formStudent.getUserId());
-        UserAccount userAccount = new UserAccount(student, (new RandomPasswordGenerator()).generateRandomPassword(), formStudent.getEmail());
-        userAccount.setUserGroup(UserGroup.ROLE_STUDENT);
-        userAccount.setEnabled(true);
-        userAccount.persist();
+        
+        // attempts to find a user account with matching user id first; this may not be desirable
+        // likely will want an error message if the found user account is assigned to a different user for some reason
+        UserAccount userAccount;
+        try {
+        	userAccount = UserAccount.findUserAccountsByUserId(student.getUserId()).getSingleResult();
+        	userAccount.setEmail(formStudent.getEmail()); // updates email
+        }
+        catch (org.springframework.dao.EmptyResultDataAccessException exception) {
+        	userAccount = UserAccount.fromStudent(student, formStudent.getEmail());
+            userAccount.setUserGroup(UserGroup.ROLE_STUDENT);
+            userAccount.setEnabled(true);
+            userAccount.persist();
+        }
+        
         student.setUserAccount(userAccount);
         student.copyFromFormStudent(formStudent);
         student.persist();
         return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String createForm(Model model) {
         model.addAttribute("formStudent", new FormStudent());
@@ -366,6 +403,32 @@ public class StudentController {
         return "students/create";
     }
     
+    /**********************************************
+     * Remove later; added as a temporary means of adding majors to students
+     **********************************************/
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+    @RequestMapping(value = "/{id}", params = "major", method = RequestMethod.GET)
+    public String createMajor(@PathVariable("id") Long id, Model model) {
+    	model.addAttribute("formStudentMajor", FormStudentMajor.createFromStudent(Student.findStudent(id)));
+    	return "students/updateMajor";
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+    @RequestMapping(params = "major", method = RequestMethod.PUT)
+    public String updateMajor(@Valid FormStudentMajor fsm, BindingResult result, Model model, HttpServletRequest request) {
+    	if (result.hasErrors()) {
+    		model.addAttribute("formStudentMajor", fsm);
+    		return "students/updateMajor";
+    	}
+    	Student student = Student.findStudent(fsm.getId());
+    	student.setMajors(fsm.getMajors());
+    	student.merge();
+    	return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
+    }
+    /************************************************
+     ************************************************/
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(method = RequestMethod.PUT)
     public String update(@Valid FormStudent formStudent, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -379,6 +442,16 @@ public class StudentController {
         return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+        Student.findStudent(id).remove();
+        model.addAttribute("page", (page == null) ? "1" : page.toString());
+        model.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/students?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("formStudent", FormStudent.createFromStudent(Student.findStudent(id)));

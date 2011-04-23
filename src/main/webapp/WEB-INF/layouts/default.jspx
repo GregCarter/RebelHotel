@@ -15,6 +15,8 @@
 		<title><spring:message code="welcome_h3" arguments="${app_name}" /></title>
 	</head>
 	
+	<tiles:insertAttribute name = "security_params" />
+	
   	<body class="tundra spring">
    		<div id="wrapper">
 		    <tiles:insertAttribute name="header" ignore="true" />

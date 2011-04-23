@@ -3,7 +3,9 @@
 
 package edu.unlv.cs.rebelhotel.domain;
 
+import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.Term;
+import java.lang.Long;
 import java.lang.String;
 
 privileged aspect Major_Roo_JavaBean {
@@ -30,6 +32,22 @@ privileged aspect Major_Roo_JavaBean {
     
     public void Major.setCatalogTerm(Term catalogTerm) {
         this.catalogTerm = catalogTerm;
+    }
+    
+    public Student Major.getStudent() {
+        return this.student;
+    }
+    
+    public void Major.setStudent(Student student) {
+        this.student = student;
+    }
+    
+    public Long Major.getTotalHours() {
+        return this.totalHours;
+    }
+    
+    public void Major.setTotalHours(Long totalHours) {
+        this.totalHours = totalHours;
     }
     
     public boolean Major.isCompleted_work_requirements() {

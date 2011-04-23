@@ -24,10 +24,10 @@ public class WorkEffortValidator implements Validator {
 	}
 	
 	public void validate(Object target, Errors errors) {
-		WorkEffort we = (WorkEffort) target;
+		WorkEffort job = (WorkEffort) target;
 		try {
 			errors.pushNestedPath("duration");
-			workEffortDurationValidator.validate(we.getDuration(), errors);
+			workEffortDurationValidator.validate(job.getDuration(), errors);
 		}
 		finally {
 			errors.popNestedPath();

@@ -3,8 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute name = "student_menu" ignore = "true" />
-    <br/>
-    <br/>
     <spring:url value = "/students/listquery" var = "form_base_url" />
     <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "get">
     	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
@@ -36,7 +34,9 @@
 					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
     			</td>
     			<td>
-    			
+    				<field:checkbox field = "studentUseHours" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentUseHours" />
+    				<field:input field = "studentHoursLow" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentHoursLow" />
+    				<field:input field = "studentHoursHigh" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentHoursHigh" />
     			</td>
     		</tr>
     		<tr>
@@ -100,6 +100,43 @@
     			</td>
     		</tr>
     	</table>
+    	<table>
+			<th colspan = "2">Search Work Efforts By...</th>
+			<tr>
+				<td>
+					<field:input field="employerName" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerName" />
+				</td>
+		
+				<td>
+					<field:input field="employerLocation" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerLocation" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:select field="validation" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_validation" items="${validations}" path="validations" />
+					<field:checkbox field="validationSelected" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useValidation" />
+				</td>
+				<td>
+					<field:select field="verification" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_verification" items="${verifications}" path="verifications" />
+					<field:checkbox field="verificationSelected" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useVerification" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:datetime dateTimePattern="${workEffortDuration_startdate_date_format}" field="workEffortStartDate" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_startDate" />
+				</td>
+				<td>
+					<field:datetime dateTimePattern="${workEffortDuration_enddate_date_format}" field="workEffortEndDate" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_endDate" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:input field="hoursLow" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursLow" validationMessageCode="field_invalid_integer" />
+					<field:input field="hoursHigh" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursHigh" validationMessageCode="field_invalid_integer" />
+					<field:checkbox field="useHours" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useHours" />
+				</td>
+			</tr>
+		</table>
     	<c:if test = "${not empty param.page}">
      		<input type = "hidden" name = "page" value = "${param.page}" />
      	</c:if>
@@ -123,14 +160,40 @@
 		      <c:set var="typeIdFieldName" value="id" />
 		    </c:if>
 		
+			<c:if test="${empty create}">
+		      <c:choose>
+		        <c:when test = "${not empty create_access}">
+		      	  <c:set var = "create" value = "${create_access}" />
+		      	</c:when>
+		        <c:otherwise>
+		      	  <c:set var="create" value="false" />
+		        </c:otherwise>
+		      </c:choose>
+		    </c:if>
+		
 		    <c:if test="${empty update}">
-		      <c:set var="update" value="true" />
+		      <c:choose>
+		        <c:when test = "${not empty update_access}">
+		      	  <c:set var = "update" value = "${update_access}" />
+		      	</c:when>
+		        <c:otherwise>
+		      	  <c:set var="update" value="false" />
+		        </c:otherwise>
+		      </c:choose>
 		    </c:if>
 		
 		    <c:if test="${empty delete}">
-		      <c:set var="delete" value="true" />
+		      <c:choose>
+		        <c:when test = "${not empty delete_access}">
+		      	  <c:set var = "delete" value = "${delete_access}" />
+		      	</c:when>
+		        <c:otherwise>
+		      	  <c:set var="delete" value="false" />
+		        </c:otherwise>
+		      </c:choose>
 		    </c:if>
 	        
+	        <c:set var = "path" value = "/students" />
 	        <c:set var="typeName" value="Student" />
 		    <c:set var="lengths" value="${fn:split(columnMaxLengths, ',')}" scope="request" />
 		
@@ -167,6 +230,22 @@
 		      	<sform:hidden path = "showFirstName" value = "${formStudentQuery.showFirstName}" />
 		      	<sform:hidden path = "showMiddleName" value = "${formStudentQuery.showMiddleName}" />
 		      	<sform:hidden path = "showLastName" value = "${formStudentQuery.showLastName}" />
+		      	<sform:hidden path = "studentUseHours" value = "${formStudentQuery.studentUseHours}" />
+		      	<sform:hidden path = "studentHoursLow" value = "${formStudentQuery.studentHoursLow}" />
+		      	<sform:hidden path = "studentHoursHigh" value = "${formStudentQuery.studentHoursHigh}" />
+		      	
+		      	<sform:hidden path = "employerName" value = "${formStudentQuery.employerName}" />
+		      	<sform:hidden path = "employerLocation" value = "${formStudentQuery.employerLocation}" />
+		      	<sform:hidden path = "validation" value = "${formStudentQuery.validation}" />
+		      	<sform:hidden path = "validationSelected" value = "${formStudentQuery.validationSelected}" />
+		      	<sform:hidden path = "verification" value = "${formStudentQuery.verification}" />
+		      	<sform:hidden path = "verificationSelected" value = "${formStudentQuery.verificationSelected}" />
+		      	<sform:hidden path = "workEffortStartDate" value = "${formStudentQuery.workEffortStartDate}" />
+		      	<sform:hidden path = "workEffortEndDate" value = "${formStudentQuery.workEffortEndDate}" />
+		      	<sform:hidden path = "hoursLow" value = "${formStudentQuery.hoursLow}" />
+		      	<sform:hidden path = "hoursHigh" value = "${formStudentQuery.hoursHigh}" />
+		      	<sform:hidden path = "useHours" value = "${formStudentQuery.useHours}" />
+		      	
 		      	<c:if test = "${not empty param.page}">
 		      		<input type = "hidden" name = "page" value = "${param.page}" />
 		      	</c:if>
@@ -261,7 +340,7 @@
 		      </c:forEach>
 		      <tr class="footer">
 		        <td colspan="10">
-		          <c:if test="${empty create or create}">
+		          <c:if test="${create}">
 		            <span class="new">
 		              <spring:url value="/${path}" var="create_url">
 		                <spring:param name="form" />

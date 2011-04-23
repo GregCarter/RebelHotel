@@ -6,6 +6,7 @@
     <br/>
     <br/>
     <h1>Listing All Students</h1>
+
     <page:list id="pl_edu_unlv_cs_rebelhotel_domain_Student" items="${students}" z="hCMx1aqT7xia55AYpzf+H6f/leo=">
         <table:table data="${students}" id="l_edu_unlv_cs_rebelhotel_domain_Student" path="/students" z="user-managed">
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_userId" property="userId" z="uTlFwFgTXOUDXh2dVyz9K0Bp8mk="/>
@@ -13,7 +14,6 @@
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_middleName" property="middleName" z="8uXOyZeSf0shV+U89xeEmrelQPI="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_lastName" property="lastName" z="mcWusAaOknABPLFWWi+jGJ2HGD0="/>
             <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_majors" property="majors" z="Ecda7DS1Cn6bKJSYGr68uCR7h8Y="/>
-            
 
         
         <table:column id="c_edu_unlv_cs_rebelhotel_domain_Student_admitTerm" property="admitTerm" z="BUdDIBOqBFS9uGJzNcyq+qD/D/8="/>

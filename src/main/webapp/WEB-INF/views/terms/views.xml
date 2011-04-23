@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="terms/list">
+	<definition extends = "default" name = "terms.default">
+		<put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx" />
+	</definition>
+    <definition extends="terms.default" name="terms/list">
         <put-attribute name="body" value="/WEB-INF/views/terms/list.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
-	<definition extends="default" name="terms/show">
+	<definition extends="terms.default" name="terms/show">
         <put-attribute name="body" value="/WEB-INF/views/terms/show.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
-	<definition extends="default" name="terms/create">
+	<definition extends="terms.default" name="terms/create">
         <put-attribute name="body" value="/WEB-INF/views/terms/create.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
-	<definition extends="default" name="terms/update">
+	<definition extends="terms.default" name="terms/update">
         <put-attribute name="body" value="/WEB-INF/views/terms/update.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
-    <definition extends="default" name="terms/generate">
+    <definition extends="terms.default" name="terms/generate">
     	<put-attribute name="body" value="/WEB-INF/views/terms/generatedTerms.jspx"/>
-    	<put-attribute name="menu" value="/WEB-INF/views/terms/term_menu.jspx"/>
     </definition>
-<definition extends="default" name="terms/findTermsBySemester">
+<definition extends="terms.default" name="terms/findTermsBySemester">
         <put-attribute name="body" value="/WEB-INF/views/terms/findTermsBySemester.jspx"/>
     </definition>
-<definition extends="default" name="terms/findTermsBySemesterAndTermYearEquals">
+<definition extends="terms.default" name="terms/findTermsBySemesterAndTermYearEquals">
         <put-attribute name="body" value="/WEB-INF/views/terms/findTermsBySemesterAndTermYearEquals.jspx"/>
     </definition>
 </tiles-definitions>

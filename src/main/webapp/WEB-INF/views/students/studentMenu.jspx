@@ -21,6 +21,7 @@
 					</td>
 				</tr>
 			</table>
+			<br /><br />
 		</span>
 	</security:authorize>
 </div>

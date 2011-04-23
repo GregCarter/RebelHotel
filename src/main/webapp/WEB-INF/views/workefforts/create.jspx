@@ -3,26 +3,18 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="workeffort_menu"/>
-    <br/>
-    <br/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_WorkEffort" modelAttribute="workEffort" path="/workefforts" render="${empty dependencies}" z="mtIzcW2wKXVHla+IgVE0khyNFNI=">
-    	<spring:message code="panel_employer_title" var="employer_form_title"/>
-		<util:panel id="employer_form" title="${employer_form_title}">
 		<!-- TODO remove this before deployment -->
 			<field:simple field="employer" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer" text="Employer Information"/>
 			<field:input field="employer.name" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_name"/>
 			<field:input field="employer.location" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_employer_location"/>
-		</util:panel>
 		<br/>
-    	<spring:message code="panel_supervisor_title" var="supervisor_form_title"/>
-        <util:panel id="supervisor_form" title="${supervisor_form_title}">
         	<!-- TODO remove this before deployment -->
         	<field:simple field="supervisor" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor" text="Supervisor Information"/>
         	<field:input field="supervisor.firstName" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_firstName"/>
 	        <field:input field="supervisor.lastName" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_lastName"/>
 	        <field:input field="supervisor.email" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_email"/>
 	        <field:input field="supervisor.phone" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_supervisor_phone"/>
-        </util:panel>
         <br/>
         <field:input field="workPosition" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" z="t6mrQRKmjvNXbHhaHXhvWk6puDE="/>
         <field:input field="comment" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_comment" z="qfXOn8hXQPrgk0sgBJY1xK8sVdk="/>
@@ -33,19 +25,17 @@
         <field:select field="verification" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_verification" items="${verifications}" path="verifications" z="AwKiAFujqkR5ZMQv560AxraxL74="/>
         <field:select field="payStatus" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_payStatus" items="${paystatuses}" path="paystatuses" z="Y/234bX/lvLoqut2yWTDLlr2rEg="/>
        
-		<spring:message code="panel_workeffortduration_title" var="workeffortduration_form_title"/>
-		<util:panel id="workeffortduration_form" title="${workeffortduration_form_title}">
 			<field:simple field="workeffortduration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" text="Work Effort Duration"/>
 			<field:datetime dateTimePattern="${workEffortDuration_startdate_date_format}" field="duration.startDate" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration_startDate" z="e1NnqzkemAXKA+kNm1HTZ7hquPw="/>
 			<field:datetime dateTimePattern="${workEffortDuration_enddate_date_format}" field="duration.endDate" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration_endDate" z="sq/AE9soB8d+B1rhARMLA9KwpqY="/>
 			<field:input field="duration.hours" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration_hours" validationMessageCode="field_invalid_integer" z="l3C/BiPrL+qL4qBAbC7fzFTV+m4="/>
-		</util:panel>
 		<br/>
 
 		<!--<field:select field="duration" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" itemValue="id" items="${workeffortdurations}" path="/workeffortdurations" z="QaCq/Hw0MnZvo4c/hWSOViBRtfs="/> -->
     	<field:select field="student" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" itemValue="id" items="${students}" path="/students" required="true" z="yTkhwm02NTixAW2YlgNkex9c7n4="/>    
         
     <field:select field="catalogRequirements" id="c_edu_unlv_cs_rebelhotel_domain_WorkEffort_catalogRequirements" itemValue="id" items="${catalogrequirements}" multiple="true" path="/catalogrequirements" z="wg4QYQgUBQSBmnQA9y+BOAHZjtg="/>
+    
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_WorkEffort" render="${not empty dependencies}" z="W3XbdY/iex0jvHnO25TKrlqRiW0="/>
 </div>

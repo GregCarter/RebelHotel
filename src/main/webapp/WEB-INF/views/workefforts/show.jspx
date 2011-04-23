@@ -3,8 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore="true" name="workeffort_menu"/>
-    <br/>
-    <br/>
     <page:show id="ps_edu_unlv_cs_rebelhotel_domain_WorkEffort" object="${workeffort}" path="/workefforts" z="bhkHP84liwpcuhs3SgFIFBymjYc=">
         <field:display field="student" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffort_student" object="${workeffort}" z="yeyldVeYMpOpmtBCR9J0DC623rs="/>
         <field:display field="workPosition" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffort_workPosition" object="${workeffort}" z="4qXs15Mp/JE8v6APHiNi5Ab3GlE="/>
@@ -18,5 +16,6 @@
         <field:display field="duration" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffort_duration" object="${workeffort}" z="fXnXtTpdZD9BP/U+BjPDqCbOtbo="/>
     
     <field:display field="catalogRequirements" id="s_edu_unlv_cs_rebelhotel_domain_WorkEffort_catalogRequirements" object="${workeffort}" z="viyMVVRoZ0bi5eb9t5SI9159Az0="/>
+    
     </page:show>
 </div>

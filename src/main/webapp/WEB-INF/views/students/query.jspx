@@ -3,8 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <tiles:insertAttribute ignore = "true" name = "student_menu"/>
-    <br/>
-    <br/>
     <spring:url value = "/students/listquery" var = "form_base_url" />
     <sform:form action="${form_base_url}" commandName = "formStudentQuery" method = "get">
     	<field:checkbox field="outputCsv" id="c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_outputCsv" />
@@ -36,7 +34,9 @@
 					<field:input field = "lastName" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_lastName" />
     			</td>
     			<td>
-    			
+    				<field:checkbox field = "studentUseHours" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentUseHours" />
+    				<field:input field = "studentHoursLow" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentHoursLow" />
+    				<field:input field = "studentHoursHigh" id = "c_edu_unlv_cs_rebelhotel_form_FormStudentQuery_studentHoursHigh" />
     			</td>
     		</tr>
     		<tr>
@@ -100,6 +100,43 @@
     			</td>
     		</tr>
     	</table>
+    	<table>
+			<th colspan = "2">Search Work Efforts By...</th>
+			<tr>
+				<td>
+					<field:input field="employerName" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerName" />
+				</td>
+		
+				<td>
+					<field:input field="employerLocation" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_employerLocation" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:select field="validation" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_validation" items="${validations}" path="validations" />
+					<field:checkbox field="validationSelected" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useValidation" />
+				</td>
+				<td>
+					<field:select field="verification" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_verification" items="${verifications}" path="verifications" />
+					<field:checkbox field="verificationSelected" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useVerification" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:datetime dateTimePattern="${workEffortDuration_startdate_date_format}" field="workEffortStartDate" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_startDate" />
+				</td>
+				<td>
+					<field:datetime dateTimePattern="${workEffortDuration_enddate_date_format}" field="workEffortEndDate" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffort_endDate" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<field:input field="hoursLow" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursLow" validationMessageCode="field_invalid_integer" />
+					<field:input field="hoursHigh" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_hoursHigh" validationMessageCode="field_invalid_integer" />
+					<field:checkbox field="useHours" id="c_edu_unlv_cs_rebelhotel_form_FormWorkEffortQuery_useHours" />
+				</td>
+			</tr>
+		</table>
     	<input type ="hidden" name = "page" value = "1" />
     	<input type = "submit" value = "Submit Query" />
     </sform:form>
