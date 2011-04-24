@@ -30,7 +30,7 @@ public class UserAccountController {
 	@Autowired
 	UserEmailService userEmailService;
 	
-	@PreAuthorize("hasRole('ROLE_SUPERUSER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
 	@RequestMapping(method = RequestMethod.POST)
     public String create(@Valid UserAccount userAccount, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -44,12 +44,8 @@ public class UserAccountController {
  
         	String password = userAccount.generatePassword();
         	userAccount.persist();
-        	try {
 				userEmailService.sendStudentConfirmation(userAccount, password);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
         }
        
         else
@@ -57,25 +53,20 @@ public class UserAccountController {
         String password = userAccount.generatePassword();
        
          userAccount.persist();
-         try {
 			userEmailService.sendAdminComfirmation(userAccount, password);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         }
          
         return "redirect:/useraccounts/" + encodeUrlPathSegment(userAccount.getId().toString(), request);
     }
     
-	@PreAuthorize("hasRole('ROLE_SUPERUSER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String createForm(Model model) {
         model.addAttribute("userAccount", new UserAccount());
         return "useraccounts/create";
     }
     
-	@PreAuthorize("hasRole('ROLE_SUPERUSER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(method = RequestMethod.PUT)
     public String update(@Valid UserAccount userAccount, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
@@ -86,14 +77,14 @@ public class UserAccountController {
         return "redirect:/useraccounts/" + encodeUrlPathSegment(userAccount.getId().toString(), request);
     }
     
-	@PreAuthorize("hasRole('ROLE_SUPERUSER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("userAccount", UserAccount.findUserAccount(id));
         return "useraccounts/update";
     }
     
-	@PreAuthorize("hasRole('ROLE_SUPERUSER')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPERUSER')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
         UserAccount.findUserAccount(id).remove();

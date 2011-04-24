@@ -4,10 +4,10 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_edu_unlv_cs_rebelhotel_domain_UserAccount" modelAttribute="userAccount" path="/useraccounts" render="${empty dependencies}" z="RzSG8rysPVs7TNR/dOkwR8Ufghc=">
         <field:input field="userId" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userId" required="true" z="9q8pG/zVVHHMJ7w7+PPeHuX51uA="/>
-        <field:input field="password" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" required="true" z="GdYdMthJw0wuVZ0k5B6mB7QEUS0="/>
         <field:select field="userGroup" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_userGroup" items="${usergroups}" path="usergroups" z="sRIMSynGJSubX4xr8l1GwlZb0R4="/>
         <field:checkbox field="enabled" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_enabled" z="VmA3vpPhfsW+BCroMX1EyJX/uqs="/>
    		<field:input field="email" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_email" required="true" validationMessageCode="field_invalid_email" z="Tmzn/MVFDMgzmvP57HSeqAmM1Yg="/>
+    <field:input field="password" id="c_edu_unlv_cs_rebelhotel_domain_UserAccount_password" required="true" z="GdYdMthJw0wuVZ0k5B6mB7QEUS0="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_unlv_cs_rebelhotel_domain_UserAccount" render="${not empty dependencies}" z="DYvglhP4gnRSBRB0yBr5fTNycYY="/>
 </div>

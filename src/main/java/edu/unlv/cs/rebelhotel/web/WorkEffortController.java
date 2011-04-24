@@ -64,11 +64,13 @@ public class WorkEffortController {
             model.addAttribute("sid", sid);
             return "workefforts/createFromStudent";
         }
+		
 		workEffort.persist();
 		
 		Student student = workEffort.getStudent();
 		student.addWorkEffort(workEffort);
 		student.merge();
+		//=================ENTER CODE HERE===================
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
 	
@@ -95,6 +97,7 @@ public class WorkEffortController {
             model.addAttribute("workEffort", workEffort);
             return "workefforts/update";
         }
+		
         workEffort.merge();
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }

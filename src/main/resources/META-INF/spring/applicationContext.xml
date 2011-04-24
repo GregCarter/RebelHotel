@@ -104,9 +104,6 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="userEmailService" class="edu.unlv.cs.rebelhotel.email.UserEmailService">
-		<property name="mailSender" ref="mailSender" />
-	</bean>
 	<bean id="adminConfirmation"
 		class="edu.unlv.cs.rebelhotel.email.AdminConfirmationPreparator"
 		scope="prototype">
