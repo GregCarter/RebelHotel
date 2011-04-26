@@ -25,6 +25,7 @@ import edu.unlv.cs.rebelhotel.domain.enums.Semester;
 import edu.unlv.cs.rebelhotel.domain.enums.UserGroup;
 import edu.unlv.cs.rebelhotel.domain.enums.Validation;
 import edu.unlv.cs.rebelhotel.domain.enums.Verification;
+import edu.unlv.cs.rebelhotel.email.UserEmailService;
 import edu.unlv.cs.rebelhotel.form.FormStudent;
 import edu.unlv.cs.rebelhotel.form.FormStudentMajor;
 import edu.unlv.cs.rebelhotel.form.FormStudentQuery;
@@ -60,6 +61,9 @@ public class StudentController {
 	
 	@Autowired
 	StudentQueryService studentQueryService;
+	
+	@Autowired
+	UserEmailService userEmailService;
 	
 	public void setMessageSource(MessageSource messageSource) {
 		this.messageSource = messageSource;
@@ -391,7 +395,14 @@ public class StudentController {
         
         student.setUserAccount(userAccount);
         student.copyFromFormStudent(formStudent);
-        student.persist();
+
+        
+        //Send Email to student's account with generated password
+    	String password = userAccount.generatePassword();
+    	student.persist();
+    	userAccount.persist();
+		userEmailService.sendStudentConfirmation(userAccount, password);
+
         return "redirect:/students/" + encodeUrlPathSegment(student.getId().toString(), request);
     }
     

@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
+import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
+import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 
 @Service
 public class DefaultUserEmailService implements UserEmailService{
@@ -42,6 +45,7 @@ public class DefaultUserEmailService implements UserEmailService{
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(userAccount.getEmail());
+				message.setSubject("HOTEL WORK EXPERIENCE TRACKING SYSTEM ");
 				message.setFrom("webmaster@RebelHotel.unlv.edu");
 				Map<String, Object> model = new HashMap<String, Object>();
 				model.put("userAccount", userAccount);
@@ -56,20 +60,17 @@ public class DefaultUserEmailService implements UserEmailService{
 			};
 			this.mailSender.send(preparator);
 	}
-	/*
-	@Autowired
-	public void setStudentConfirmation(StudentConfirmationPreparator studentConfirmation){
-		this.studentConfirmation = studentConfirmation;
+
 	
-	} */
-	//=============================================================
 	
+	@Async
 	public void sendAdminComfirmation(final UserAccount userAccount, final String password)  {
 		
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(userAccount.getEmail());
+				message.setSubject("HOTEL WORK EXPERIENCE TRACKING SYSTEM ");
 				message.setFrom("webmaster@RebelHotel.unlv.edu");
 				Map<String, Object> model = new HashMap<String, Object>();
 				model.put("userAccount", userAccount);
@@ -84,6 +85,9 @@ public class DefaultUserEmailService implements UserEmailService{
 		};
 		this.mailSender.send(preparator);
 	}
+	
+	
+	@Async
 	public void sendNewPassword(final UserAccount userAccount, final String password) {
 		
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -91,6 +95,7 @@ public class DefaultUserEmailService implements UserEmailService{
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(userAccount.getEmail());
 				message.setFrom("webmaster@RebelHotel.unlv.edu");
+				message.setSubject("New Password from Hotel College");
 				Map<String, Object> model = new HashMap<String, Object>();
 				model.put("userAccount", userAccount);
 				model.put("password", password);
@@ -104,17 +109,18 @@ public class DefaultUserEmailService implements UserEmailService{
 		};
 		this.mailSender.send(preparator);
 	}
-	
-	public void sendWorkConfirmation(final UserAccount userAccount, final String password){
+	@Async
+	public void sendWorkConfirmation(final Student student, final WorkEffort workEffort){
 		
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-				message.setTo(userAccount.getEmail());
+				message.setTo(student.getUserAccount().getEmail());
 				message.setFrom("webmaster@RebelHotel.unlv.edu");
+				message.setSubject("Work Confirmation from Hotel College");
 				Map<String,Object> model = new HashMap<String,Object>();
-				model.put("userAccount", userAccount);
-				model.put("password", password);
+				model.put("student", student);
+				model.put("workEffort", workEffort);
 				String text = VelocityEngineUtils.mergeTemplateIntoString(
 						engine.createVelocityEngine(),
 						"/edu/unlv/cs/rebelhotel/email/work-confirmation.vm",
@@ -127,54 +133,3 @@ public class DefaultUserEmailService implements UserEmailService{
 	}
 	
 }
-
-	
-	
-	
-	
-	/*
-	public AdminConfirmationPreparator getAdminConfirmation() {
-		return this.adminConfirmation;
-	}
-	
-	@Autowired
-	public void setAdminConfirmation(AdminConfirmationPreparator adminConfirmation){
-		this.adminConfirmation = adminConfirmation;
-	}
-	
-	//=============================================================
-	public void sendNewPassword (final UserAccount userAccount)
-	{
-		SendNewPasswordPreparator sendNewPassword = getSendNewPassword();
-		sendNewPassword.setUserAccount(userAccount);
-		this.mailSender.send(sendNewPassword);
-	}
-	
-	public SendNewPasswordPreparator getSendNewPassword() {
-		return this.sendNewPassword;
-	}
-	
-	@Autowired 
-	public void setSendNewPassword(SendNewPasswordPreparator sendNewPassword){
-	this.sendNewPassword = sendNewPassword;
-	}
-	//=============================================================
-	
-	public void sendWorkEffortConfirmation(final UserAccount userAccount)
-	{
-		SendWorkEffortPreparator sendWorkEffortConfirmation = getSendWorkEffortConfirmation();
-		sendWorkEffortConfirmation.setUserAccount(userAccount);
-		this.mailSender.send(sendWorkEffortConfirmation);
-	}
-	
-	public SendWorkEffortPreparator getSendWorkEffortConfirmation(){
-		return this.sendWorkEffotConfirmation;
-	}
-	
-	@Autowired 
-	public void setSendWorkEfforConfirmation( SendWorkEffortPreparator sendWorkEffortConfirmation){
-		this.sendWorkEffotConfirmation = sendWorkEffortConfirmation;
-	}
-
-}
-*/

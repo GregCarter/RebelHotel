@@ -4,22 +4,31 @@
 
 
 <p style ="text-indent:25px;">
-   Welcome to the William F. Harrah College of Hotel Administration system for tracking student work hours.
-This site will be responsible for tracking and monitoring you major related hours needed for graduation. 
-You may check your progress  and the status of the jobs submitted site as you approach graduation.
-You will still need to hand in your time sheet or pay stubs for work verification at the advising department
+ The Hotel Administration Work Experience Tracking System is a convenient way for you to track your 
+ progress in completing the Work Experience hours required for graduation. <br/>
+ Verification of your hours must be given to the Work Experience Clerk in the Office for Student Advising (OSA) 
+ in BEH 543 before they can be posted to this system. <br/>
+ You can check your progress  and the status of the jobs submitted on this system as you approach graduation.  
+ Remember, all hours must be turned in and approved two weeks prior to the end of your final semester. 
 <br/>
-
-When logging onto the system you will enter your user name, ${userAccount.userId}. 
+<br/>
+When logging onto the system you will enter your user name, JoeStudent. NSHE ID
+<span style = font-weight:bold>  ${userAccount.userId}. </span><br/>
 Your temporary password is :  <span style = font-weight:bold> ${password} </span>
+<br/>
 <br/>
 You can personalize your password by creating a new once, once logged into the system.
 <br/>
-If you have any question please contact 
+<br/>
+<br/>
+If you have any questions, contact the OSA at 702-895-3616 for assistance. 
+<br/>
 <a href="http://hotel.unlv.edu/contact/">College of Hotel Administration</a>
-
+<br/>
+<br/>
 Thank You
-
+<br/>
+<br/>
 Hotel College Advising Department
 
 </p>

@@ -69,10 +69,10 @@
 			<ref local="passwordEncoder" />
 		</property>
 	</bean>
-	<!--  <bean id = "authenticationManager" class = "org.springframework.security.authentication.ProviderManager"> 
+	<!-- <bean id = "authenticationManager" class = "org.springframework.security.authentication.ProviderManager"> 
 		<property name = "providers"> <list> <ref local = "daoAuthenticationProvider" 
 		/> <ref local = "anonymousAuthenticationProvider" /> <ref local = "ldapAuthenticationProvider" 
-		/> </list> </property> </bean>  -->
+		/> </list> </property> </bean> -->
 
 	<bean class="edu.unlv.cs.rebelhotel.service.UserInformation" id="userInformation"
 		scope="session">
@@ -103,33 +103,5 @@
 				</prop>
 			</props>
 		</property>
-	</bean>
-	<bean id="adminConfirmation"
-		class="edu.unlv.cs.rebelhotel.email.AdminConfirmationPreparator"
-		scope="prototype">
-		 <aop:scoped-proxy /> 
-		<property name="templateEngine" ref="velocityEngine" />
-		<property name="template"
-			value="/edu/unlv/cs/rebelhotel/email/admin-confirmation.vm" />
-	</bean>
-	<bean id="studentConfirmation"
-		class="edu.unlv.cs.rebelhotel.email.StudentConfirmationPreparator"
-		scope="prototype">
-		<aop:scoped-proxy />
-		<property name = "templateEngine" ref="velocityEngine" />
-		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/student-confirmation.vm" />
-	</bean>
-	<bean id="sendNewPassword" class="edu.unlv.cs.rebelhotel.email.SendNewPasswordPreparator"
-		scope="prototype">
-		<aop:scoped-proxy />
-		<property name ="templateEngine" ref="velocityEngine" />
-		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/new-password.vm" />
-	</bean>
-	
-	<bean id="sendWorkEffortConfirmation" class="edu.unlv.cs.rebelhotel.email.SendWorkEffortPreparator"
-		scope="prototype">
-		<aop:scoped-proxy />
-		<property name="templateEngine" ref="velocityEngine" />
-		<property name ="template" value="/edu/unlv/cs/rebelhotel/email/work-confirmation.vm" />
 	</bean>
 </beans>

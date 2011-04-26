@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import edu.unlv.cs.rebelhotel.domain.Major;
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;
+import edu.unlv.cs.rebelhotel.email.UserEmailService;
 import edu.unlv.cs.rebelhotel.service.UserInformation;
 import edu.unlv.cs.rebelhotel.validators.WorkEffortValidator;
 
@@ -34,6 +35,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class WorkEffortController {
 	@Autowired
 	private UserInformation userInformation;
+	
+	@Autowired
+	UserEmailService userEmailService;
 	
 	@Autowired
 	private WorkEffortValidator workEffortValidator;
@@ -62,6 +66,7 @@ public class WorkEffortController {
             Student student = Student.findStudent(sid);
             model.addAttribute("student", student);
             model.addAttribute("sid", sid);
+            
             return "workefforts/createFromStudent";
         }
 		
@@ -70,7 +75,8 @@ public class WorkEffortController {
 		Student student = workEffort.getStudent();
 		student.addWorkEffort(workEffort);
 		student.merge();
-		//=================ENTER CODE HERE===================
+		userEmailService.sendWorkConfirmation(student, workEffort);
+		
         return "redirect:/workefforts/" + encodeUrlPathSegment(workEffort.getId().toString(), request);
     }
 	

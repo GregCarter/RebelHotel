@@ -12,11 +12,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 
 public class UserEmailServiceTest {
-
+	/*
 	private UserEmailService instance;
 	private JavaMailSender mailSender;
 	private AdminConfirmationPreparator adminConfirmation;
-/*
+
 	@Before
 	public void setUp(){
 		instance = new UserEmailService();

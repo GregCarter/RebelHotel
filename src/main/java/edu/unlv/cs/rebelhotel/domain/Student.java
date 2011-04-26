@@ -67,7 +67,9 @@ public class Student {
     @OneToOne(optional = false, cascade= { CascadeType.PERSIST, CascadeType.REMOVE } )
     private UserAccount userAccount;
     
-    @PreUpdate
+
+
+	@PreUpdate
     @PrePersist
     public void onUpdate() {
     	lastModified = new Date();
@@ -152,4 +154,6 @@ public class Student {
     	setGradTerm(formStudent.getGradTerm());
     	setCodeOfConductSigned(formStudent.getCodeOfConductSigned());
     }
+    
+    
 }

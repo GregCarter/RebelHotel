@@ -1,6 +1,8 @@
 package edu.unlv.cs.rebelhotel.email;
 
+import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
+import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 
 public interface UserEmailService {
 
@@ -10,7 +12,7 @@ public interface UserEmailService {
 		
 	public void sendNewPassword(final UserAccount userAccount, final String password);
 	
-	public void sendWorkConfirmation(final UserAccount userAccount, final String password);
+	public void sendWorkConfirmation(final Student student, final WorkEffort workEffort);
 
 }
 	
