@@ -1,5 +1,7 @@
 package edu.unlv.cs.rebelhotel.email;
 
+import org.springframework.mail.javamail.JavaMailSender;
+
 import edu.unlv.cs.rebelhotel.domain.Student;
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
 import edu.unlv.cs.rebelhotel.domain.WorkEffort;

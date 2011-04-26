@@ -10,16 +10,16 @@ import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import edu.unlv.cs.rebelhotel.domain.UserAccount;
-
-public class UserEmailServiceTest {
-	/*
-	private UserEmailService instance;
+/*
+public class DefaultUserEmailServiceTest {
+	
+	private DefaultUserEmailService instance;
 	private JavaMailSender mailSender;
-	private AdminConfirmationPreparator adminConfirmation;
+	//private AdminConfirmationPreparator adminConfirmation;
 
 	@Before
 	public void setUp(){
-		instance = new UserEmailService();
+		instance = new DefaultUserEmailService();
 		mailSender = createStrictMock(JavaMailSender.class);
 		instance.setMailSender(mailSender);
 		adminConfirmation = createStrictMock(AdminConfirmationPreparator.class);
@@ -55,5 +55,6 @@ public class UserEmailServiceTest {
 	public void testSendWorkEffortConfirmation() {
 		fail("Not yet implemented");
 	}
-*/
+
 }
+*/

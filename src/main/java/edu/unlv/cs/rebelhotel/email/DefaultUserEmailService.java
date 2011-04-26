@@ -5,7 +5,15 @@ import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailAuthenticationException;
+import org.springframework.mail.MailException;
+import org.springframework.mail.MailParseException;
+import org.springframework.mail.MailPreparationException;
+import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -21,6 +29,7 @@ import edu.unlv.cs.rebelhotel.domain.WorkEffort;
 @Service
 public class DefaultUserEmailService implements UserEmailService{
 
+	private static final Logger LOG = LoggerFactory.getLogger(DefaultUserEmailService.class);
 	private JavaMailSender mailSender;
 
 
@@ -38,9 +47,33 @@ public class DefaultUserEmailService implements UserEmailService{
 		this.mailSender = mailSender;
 	}
 
+	private void send(MimeMessagePreparator preparator){
+		try{
+			this.mailSender.send(preparator);
+		} 
+        catch (MailAuthenticationException ex) {
+            //log it and go on
+            LOG.warn(" Mail Server Failed Authorization", ex);            
+        }
+        catch(MailParseException ex){
+        	//log it and go on
+        	LOG.warn(" Unable To Parse Email Message", ex);
+        }
+        catch(MailPreparationException ex){
+        	//log it and go on
+        	LOG.warn(" Mail Preparation Failure ", ex);
+        }
+        catch(MailSendException ex){
+        	//log it and go on
+        	LOG.warn(" Error Sending Mail Send Exception ", ex);
+        }     
+    }
+	
+	
+    @Async    
 	public void sendStudentConfirmation(final UserAccount userAccount, final String password)  {
 
-		MimeMessagePreparator preparator = new MimeMessagePreparator(){
+		send(new MimeMessagePreparator(){
 
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
@@ -57,16 +90,15 @@ public class DefaultUserEmailService implements UserEmailService{
 				message.setText(text, true);
 	
 				}
-			};
-			this.mailSender.send(preparator);
+			});
+			
 	}
-
 	
 	
 	@Async
 	public void sendAdminComfirmation(final UserAccount userAccount, final String password)  {
 		
-		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+		send(new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(userAccount.getEmail());
@@ -82,15 +114,15 @@ public class DefaultUserEmailService implements UserEmailService{
 				message.setText(text, true);
 
 			}
-		};
-		this.mailSender.send(preparator);
-	}
+		});
+		
+}
 	
 	
 	@Async
 	public void sendNewPassword(final UserAccount userAccount, final String password) {
 		
-		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+		send(new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(userAccount.getEmail());
@@ -106,13 +138,14 @@ public class DefaultUserEmailService implements UserEmailService{
 				message.setText(text, true);
 
 			}
-		};
-		this.mailSender.send(preparator);
-	}
+		});
+		
+}
+	
 	@Async
 	public void sendWorkConfirmation(final Student student, final WorkEffort workEffort){
 		
-		MimeMessagePreparator preparator = new MimeMessagePreparator() {
+		send(new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(student.getUserAccount().getEmail());
@@ -126,10 +159,8 @@ public class DefaultUserEmailService implements UserEmailService{
 						"/edu/unlv/cs/rebelhotel/email/work-confirmation.vm",
 						model);
 				message.setText(text, true);
-
 			}
-		};
-		this.mailSender.send(preparator);
-	}
-	
+		});
+		
+	}	
 }
